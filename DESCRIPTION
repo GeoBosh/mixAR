@@ -25,7 +25,7 @@ Imports: stats, graphics, utils, stats4, BB, combinat, timeDate, fGarch, Rdpack 
          gbutils (>= 0.3-1), MCMCpack, e1071, permute, mvtnorm  
 Suggests: fma, testthat
 RdMacros: Rdpack
-URL: https://geobosh.github.io/mixAR (website)  https://github.com/GeoBosh/mixAR (devel)
+URL: https://geobosh.github.io/mixAR/ (website)  https://github.com/GeoBosh/mixAR/ (devel)
 BugReports: https://github.com/GeoBosh/mixAR/issues
 Collate: raggedCoef.R raggedCoefS.R
 	 mixComp.R
