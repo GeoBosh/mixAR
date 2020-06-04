@@ -1,0 +1,145 @@
+
+reference:
+  - title: "mixAR overview"
+    contents:
+      - "mixAR-package"
+      - "exampleModels"
+      - "show_diff"
+  - title: "EM and Bayesian estimation of Mixture autoregressive models"
+    desc: >
+      Fit mixture autoregressive models using the EM algorithm or MCMC.
+    contents:
+      - fit_mixAR
+      - fit_mixARreg
+      - mixARreg
+      - mixSARfit
+      - "mixAR_diag"
+      - "mixAR_BIC"
+      - "bayes_mixAR"
+  - title: "Simulation of mixAR time series"
+    desc: >
+      mixAR simulation 
+    contents:
+      - "mixARnoise_sim"
+      - "mixAR_sim"
+  - title: "Bayesian utilities for MixAR models"
+    contents:
+      - "Choose_pk"
+      - "sampZpi"
+      - "bx_dx"
+      - "label_switch"
+  - title: "Mixture distributions"
+    desc: >
+      Compute properties of mixture distributions.
+    contents:
+      - "dist_norm"
+      - "fnoise"
+      - "mix_moment"
+      - "noise_dist"
+      - "stdnormmoment"
+  - title: "mixAR parameters"
+    desc: >
+      mixAR parameters.
+    contents:
+      - parameters
+      - isStable
+      - lik_params
+      - lik_params_bounds
+      - mixAR_switch
+      - predict_coef
+      - tomarparambyComp
+  - title: "mixAR models"
+    desc: >
+      mixAR models.
+    contents:
+      - "make_fcond_lik-methods"
+      - "get_edist-methods"
+      - mixAR
+      - "mixAR-class"
+      - "mixARGaussian-class"
+      - "mixARgen-class"
+      - "mix_central_moment-methods"
+      - "mix_location-methods"
+      - "mix_moment-methods"
+      - "mix_ncomp-methods"
+      - "mix_pdf-methods"
+      - "mix_se-methods"
+      - "mix_variance-methods"
+      - "multiStep_dist-methods"
+      - "row_lengths-methods"
+  - title: "Operators and functions"
+    desc: >
+      Operators and functions for computations with components of mixAR models.
+    contents:
+      - inner
+      - "percent_of"
+  - title: "Computations with noise distributions of mixAR models"
+    desc: >
+      Computations involving noise distributions of mixAR models.
+    contents:
+      - "noise_dist-methods"
+      - "noise_moment-methods"
+      - "noise_params-methods"
+      - "noise_rand-methods"
+  - title: "Computations with components of mixAR models"
+    desc: >
+      Computations involving components of mixAR models.
+    contents:
+      - "mixComp-class"
+      - "mix_ek"
+      - "mix_hatk"
+      - "raghat1"
+      
+  - title: "multivariate mixAR (mixVAR)"
+    contents:
+      - "mixVAR_sim"
+      - "mixVARfit"
+      - "mixVAR-class"
+      - "mixVARGaussian-class"
+      - "fit_mixVAR-methods"
+      - "raggedCoefV-class"
+
+  - title: "EM and other utilities for mixAR models"
+    desc: >
+      EM and other utilities for mixAR models. 
+    contents:
+      - "em_est_dist"
+      - "em_est_sigma"
+      - "em_rinit"
+      - "em_tau"
+      - "est_templ"
+      - "cond_loglik"
+      - "marg_loglik"
+      - "mixAR_cond_probs"
+      - "mixARemFixedPoint"
+      - "mixgenMstep"
+      - "mixMstep"
+      - "mixFilter"
+      - "mixSubsolve"
+      - "randomArCoefficients"
+      - "tau2probhat"
+      - tauCorrelate
+      - tau2arcoef
+  - title: "Ragged coefficients"
+    desc: 
+      Ragged coefficients.
+    contents:
+      - "raggedCoef-class"
+      - "raggedCoefS-class"
+      - "raggedCoef"
+      - "ragged"
+      - "ragged2char"
+  - title: "Datasets"
+    contents:
+      - "PortfolioData1"
+  - title: "Internal utility functions"
+    contents:
+      - "adjustLengths"
+      - ".canonic_coef"
+      - "companion_matrix"
+      - "err_k"
+      - "err"
+      - "initialize-methods"
+      - "lastn"
+      - "ui"
+

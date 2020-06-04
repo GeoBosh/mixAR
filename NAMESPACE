@@ -1,0 +1,211 @@
+import(methods)
+
+importFrom(stats, approxfun, density, dnorm, ecdf, pnorm,
+           sd, uniroot, var, ar, dgamma, dpois, lm, rgamma, rnorm, runif,
+           ks.test, punif, qnorm, shapiro.test, 
+           Box.test, acf, pacf, tsdiag)
+
+importFrom(graphics, title, par, lines, hist, plot)
+
+importFrom(utils, head, str, tail, as.relistable)
+importFrom(MCMCpack, rdirichlet, ddirichlet)
+importFrom(e1071, rdiscrete)
+importFrom(permute, allPerms)
+import(BB)
+
+
+importFrom(combinat, permn)
+
+## 2020-01-13: import selectively.
+##   import(fGarch)
+importFrom(fGarch, pstd, dstd, rstd, qstd)
+importFrom(timeDate, skewness, kurtosis)
+
+importFrom(gbutils, plotpdf, pseudoInverse)
+importFrom(Rdpack, reprompt)
+
+importFrom(mvtnorm, dmvnorm, rmvnorm)
+
+S3method(tsdiag, "mixARGaussian")
+
+exportMethods(
+    "-",
+    "%of%",
+    "*",
+    "/",
+    "[",
+    "[[",
+    "+",
+    "initialize",
+    "inner",
+    "mix_cdf",
+    "mix_ek",
+    "mix_hatk",
+    "mix_pdf",
+    "mixFilter",
+    "noise_dist",
+
+    "mix_se",
+    "fit_mixARreg",    ##new method
+    "fit_mixVAR"
+)
+exportClasses(
+    "mixAR",
+     "mixARGaussian",
+     "mixComp",
+     "raggedCoef",
+    "raggedCoefS",##new class
+    "raggedCoefV",
+    "mixVAR",
+    "mixVARGaussian"
+)
+
+## exportPattern("^[[:alpha:]]+")
+
+export(
+"%of%",
+adjustLengths,
+b_show,
+# cdf2q,
+companion_matrix,
+cond_loglik,
+dist_norm,
+distlist,
+ed_nparam,
+ed_parse,
+ed_skeleton,
+ed_src,
+ed_stdnorm,
+ed_stdt,
+ed_stdt0,
+ed_stdt1,
+em_est_dist,
+em_est_sigma,
+em_rinit,
+em_tau,
+em_tau_safe,
+est_templ,
+etk2tau,
+# extend_index,
+fdist_stdnorm,
+fdist_stdt,
+fit_mixAR,
+fn_stdt,
+ft_stdt,
+get_edist,
+inner,
+isStable,
+lastn, # todo: deprecate
+lik_params,
+lik_params_bounds,
+make_fcond_lik,
+mix_cdf,
+mix_central_moment,
+mix_ek,
+mix_ekurtosis,
+mix_hatk,
+mix_kurtosis,
+mix_location,
+mix_moment,
+mix_ncomp, 
+mix_pdf,
+mix_variance,
+mixAny_sim,
+mixAR,
+mixAR_cond_probs,
+mixAR_permute,
+mixAR_sim,
+mixAR_switch,
+mixARemFixedPoint,
+mixARGaussian,
+mixARgen,
+mixARgenemFixedPoint,
+mixARnoise_sim,
+mixFilter,
+mixgenMstep,
+mixMstep,
+mixSubsolve,
+
+# moWLar,      # exampleModels$WL_ibm@prob
+# moWLprob,    # exampleModels$WL_ibm@scale
+# moWLsigma,   # exampleModels$WL_ibm@arcoef@a
+#
+# moT_A,    these now are in exampleModels, see names(exampleModels)
+# moT_B,
+# moT_B2,
+# moT_B3,
+# moT_C1,
+# moT_C2,
+# moT_C3,
+# moWL,
+# moWL_A,
+# moWL_B,
+# moWL_I,
+# moWL_II,
+# moWLgen,
+# moWLt3v,
+# moWLtf,
+
+multiStep_dist,
+noise_dist,
+noise_moment,
+noise_params,
+noise_rand,
+param_score_stdt,
+parameters,
+permuteArpar,
+# plotpdf,
+predict_coef,
+#pseudoInverse,  moved to gbutils
+rag_modify,
+ragged2char,
+ragged2vec,
+raggedCoef,
+raghat1,
+randomArCoefficients,
+randomMarParametersKernel,
+randomMarResiduals,
+row_lengths,
+set_noise_params,
+"parameters<-", # to replace set_parameters
+show_diff,
+stdnormabsmoment,
+stdnormmoment,
+stdtabsmoment,
+stdtmoment,
+tabsmoment,
+tau2arcoef,
+tau2probhat,
+tauCorrelate,
+tauetk2sigmahat,
+tomarparambyComp,
+tomarparambyType,
+tsDesignMatrixExtended,
+exampleModels,
+##ui, don't export internal functions  ## New functions from this line
+bayes_mixAR,
+err,
+err_k,
+bx_dx,
+Choose_pk,
+sampZpi,
+sampMuShift,
+sampSigmaTau,
+marg_loglik,
+mixSARfit,
+mixARreg,
+cond_loglikS,
+label_switch,
+mixVARfit,
+mixVAR_sim,
+fit_mixVAR,
+mixAR_BIC,
+mixAR_diag,
+BIC_comp,
+## from mixARsim
+simuExperiment,
+mixARExperiment,
+permn_cols,
+unswitch,
+test_unswitch
+)
