@@ -48,7 +48,7 @@ label_switch(x, m)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-model <- new("mixARGaussian",
+model <- new("MixARGaussian",
              prob   = exampleModels$WL_At@prob,      # c(0.5, 0.5)
              scale  = exampleModels$WL_At@scale,     # c(1, 2)        
              arcoef = exampleModels$WL_At@arcoef@a ) # list(-0.5, 1.1)
@@ -63,6 +63,6 @@ x <- bayes_mixAR(y, model, fix_shift = FALSE, tau = c(.15, .25),
 
 label_switch(x$mix_weights, m = 5)
 }
-\keyword{ labels }% use one of  RShowDoc("KEYWORDS")
+%\keyword{ labels }% use one of  RShowDoc("KEYWORDS")
 
 

@@ -133,7 +133,7 @@
     </tr>
     <tr>
       <th>model</th>
-      <td><p>an object of class <code>"mixAR"</code> including seasonal components.</p></td>
+      <td><p>an object of class <code>"MixAR"</code> including seasonal components.</p></td>
     </tr>
     <tr>
       <th>est_shift</th>
@@ -150,12 +150,12 @@
 
     
 
-<p>This function only works for <code>"mixAR"</code> objects in which slot
+<p>This function only works for <code>"MixAR"</code> objects in which slot
   <code>arcoef</code> is of class <code>"raggedCoefS"</code>.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A list of 2:</p>
-<dt>model</dt><dd><p>an object of class <code>"mixAR"</code>. The estimated model.</p></dd>
+<dt>model</dt><dd><p>an object of class <code>"MixAR"</code>. The estimated model.</p></dd>
   <dt>vallogf</dt><dd><p>the value of the loglikelihood function for the returned model.</p></dd>
 
 
@@ -166,52 +166,52 @@
 
 <span class='no'>rag</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"raggedCoefS"</span>, <span class='kw'>a</span> <span class='kw'>=</span> <span class='no'>ar1</span>, <span class='kw'>as</span> <span class='kw'>=</span> <span class='no'>ar12</span>, <span class='kw'>s</span> <span class='kw'>=</span> <span class='no'>s</span>)
 
-<span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_A</span>@<span class='kw'>prob</span>, <span class='co'># c(0.5, 0.5)</span>
+<span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_A</span>@<span class='kw'>prob</span>, <span class='co'># c(0.5, 0.5)</span>
              <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_A</span>@<span class='kw'>scale</span>,                <span class='co'># c(5, 1)</span>
              <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>rag</span>)
 
 <span class='co'>#set.seed(1234)</span>
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>model</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>, <span class='fl'>24</span>))
 
-<span class='fu'>mixSARfit</span>(<span class='no'>y</span>, <span class='no'>model</span>)</div><div class='output co'>#&gt; Initial vallogf:  -1289.877 
-#&gt; Final niter:  21 	vallogf:  -1285.272 </div><div class='output co'>#&gt; $model
+<span class='fu'>mixSARfit</span>(<span class='no'>y</span>, <span class='no'>model</span>)</div><div class='output co'>#&gt; Initial vallogf:  -1272.672 
+#&gt; Final niter:  17 	vallogf:  -1270.103 </div><div class='output co'>#&gt; $model
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
-#&gt;        prob      shift       scale     order ar_1      ar_2         ar_3      
-#&gt; Comp_1 0.4960326 -0.25384321 4.8804343   2   0.4653227 -0.497871220           
-#&gt; Comp_2 0.5039674 -0.03347416 0.9368791   3   1.0984148  0.003608709 -0.5104407
+#&gt;        prob      shift       scale     order ar_1      ar_2        ar_3      
+#&gt; Comp_1 0.5089895 -0.02519907 4.6889558   2   0.4939814 -0.49472700           
+#&gt; Comp_2 0.4910105  0.01927292 0.9469448   3   1.1014709  0.00704324 -0.4987572
 #&gt;        s_order ar_12       ar_24     
-#&gt; Comp_1 1       -0.03180571           
-#&gt; Comp_2 2       -0.30409580 0.09912557
+#&gt; Comp_1 1        0.01816282           
+#&gt; Comp_2 2       -0.29926214 0.09761281
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
 #&gt; 
 #&gt; 
 #&gt; $vallogf
-#&gt; [1] -1285.272
+#&gt; [1] -1270.103
 #&gt; </div><div class='input'><span class='co'>## fix the intercepts to zero</span>
-<span class='fu'>mixSARfit</span>(<span class='no'>y</span>, <span class='no'>model</span>, <span class='kw'>est_shift</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Initial vallogf:  -1289.877 
-#&gt; Final niter:  21 	vallogf:  -1285.272 </div><div class='output co'>#&gt; $model
+<span class='fu'>mixSARfit</span>(<span class='no'>y</span>, <span class='no'>model</span>, <span class='kw'>est_shift</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Initial vallogf:  -1272.672 
+#&gt; Final niter:  17 	vallogf:  -1270.103 </div><div class='output co'>#&gt; $model
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
-#&gt;        prob      shift       scale     order ar_1      ar_2         ar_3      
-#&gt; Comp_1 0.4960326 -0.25384321 4.8804343   2   0.4653227 -0.497871220           
-#&gt; Comp_2 0.5039674 -0.03347416 0.9368791   3   1.0984148  0.003608709 -0.5104407
+#&gt;        prob      shift       scale     order ar_1      ar_2        ar_3      
+#&gt; Comp_1 0.5089895 -0.02519907 4.6889558   2   0.4939814 -0.49472700           
+#&gt; Comp_2 0.4910105  0.01927292 0.9469448   3   1.1014709  0.00704324 -0.4987572
 #&gt;        s_order ar_12       ar_24     
-#&gt; Comp_1 1       -0.03180571           
-#&gt; Comp_2 2       -0.30409580 0.09912557
+#&gt; Comp_1 1        0.01816282           
+#&gt; Comp_2 2       -0.29926214 0.09761281
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
 #&gt; 
 #&gt; 
 #&gt; $vallogf
-#&gt; [1] -1285.272
+#&gt; [1] -1270.103
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -3,27 +3,27 @@
 \alias{parameters}
 \alias{parameters-methods}
 \alias{parameters,ANY-method}
-\alias{parameters,mixAR-method}
+\alias{parameters,MixAR-method}
 
 \alias{parameters<-}
 \alias{parameters<--methods}
 \alias{parameters<-,ANY-method}
-\alias{parameters<-,mixAR-method}
+\alias{parameters<-,MixAR-method}
 
 % deprecated:
 \alias{set_parameters}
 \alias{set_parameters-methods}
 \alias{set_parameters,ANY-method}
-\alias{set_parameters,mixAR-method}
+\alias{set_parameters,MixAR-method}
 
 
-\title{Set or extract the parameters of mixAR objects}
-\description{Set or extract the parameters of mixAR objects.}
+\title{Set or extract the parameters of MixAR objects}
+\description{Set or extract the parameters of MixAR objects.}
 \usage{
 parameters(model, namesflag = FALSE, drop = character(0))
 
 parameters(model) <- value
-\S4method{parameters}{mixAR}(model) <- value
+\S4method{parameters}{MixAR}(model) <- value
 \S4method{parameters}{ANY}(model) <- value
 }
 \arguments{
@@ -40,7 +40,7 @@ parameters(model) <- value
   This is a generic function. The dispatch is on argument \code{model}.
   The default calls \code{coef}.
 
-  \code{parameters} extracts the parameters of a mixAR object. It
+  \code{parameters} extracts the parameters of a MixAR object. It
   returns a numeric vector. If \code{namesflag} is \code{TRUE} the
   returned vector is named, so that the parameters can be referred to by
   names. Argument \code{drop} is a character vector giving names of
@@ -54,7 +54,7 @@ parameters(model) <- value
   
   
 
-  todo: (1) currently there is no specific method for class \code{"mixARgen"}.
+  todo: (1) currently there is no specific method for class \code{"MixARgen"}.
 
         (2) related to (1) above - what is the intention? are parameters
         of the noise distributions parameters in the sense of this
@@ -76,7 +76,7 @@ parameters(model) <- value
       %%  ~~describe this method here~~
     }
 
-    \item{\code{signature(model = "mixAR")}}{
+    \item{\code{signature(model = "MixAR")}}{
       %%  ~~describe this method here~~
     }
 }}
@@ -92,4 +92,4 @@ parameters(exampleModels$WL_I,  namesflag = TRUE)
 parameters(exampleModels$WL_II, namesflag = TRUE)
 }
 \keyword{methods}
-\keyword{mixAR}
+\keyword{MixAR}

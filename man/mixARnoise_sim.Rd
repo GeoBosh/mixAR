@@ -6,7 +6,7 @@
 }
 \description{
   Simulate white noise series from a list of functions and vector of
-  regimes. This function is used internally for simulation from  mixAR models.
+  regimes. This function is used internally for simulation from  MixAR models.
 }
 \usage{
 mixARnoise_sim(rdist, z)
@@ -32,7 +32,7 @@ mixARnoise_sim(rdist, z)
   \code{\link{mixAR_sim}}
 }
 \examples{
-## mixAR with 2 components: N(0,1) and t_5
+## MixAR with 2 components: N(0,1) and t_5
 set.seed = 1234
 z <- sample(2, size = 5, replace = TRUE)
 mixARnoise_sim(list(rnorm, function(n) rt(n, 5)), z)

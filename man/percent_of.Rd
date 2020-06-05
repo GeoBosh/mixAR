@@ -3,9 +3,9 @@
 \alias{\%of\%}
 \alias{\%of\%-methods}
 \alias{\%of\%,ANY,ANY-method}
-\alias{\%of\%,character,mixComp-method}
-\alias{\%of\%,function,mixComp-method}
-\alias{\%of\%,list,mixComp-method}
+\alias{\%of\%,character,MixComp-method}
+\alias{\%of\%,function,MixComp-method}
+\alias{\%of\%,list,MixComp-method}
 \title{
   Infix operator to apply functions to matrix-like objects
 }
@@ -48,14 +48,14 @@ e1 \%of\% e2
   \code{e2}. The i-th function is applied to each element of the i-th
   column.
 
-  The methods for \code{"mixComp"} objects allow for very transparent
-  and convenient computing with \code{"mixAR"} objects.
+  The methods for \code{"MixComp"} objects allow for very transparent
+  and convenient computing with \code{"MixAR"} objects.
 
 }
 \value{
   for the default method, a matrix;
 
-  for methods with \code{e2} from class \code{mixComp}, a \code{mixComp}
+  for methods with \code{e2} from class \code{MixComp}, a \code{MixComp}
   object with its slot \code{m} replaced by the result of applying
   \code{e1} to its elements, see the descriptions of the individual
   methods for details;
@@ -77,15 +77,15 @@ e1 \%of\% e2
       \code{e2} is a matrix or array.
 
     }
-    \item{\code{signature(e1 = "function", e2 = "mixComp")}}{
+    \item{\code{signature(e1 = "function", e2 = "MixComp")}}{
 
-      Create (and return) a \code{mixComp} object with its slot \code{m}
+      Create (and return) a \code{MixComp} object with its slot \code{m}
       replaced by the result of applying the function \code{e1} to each
-      element of the \code{mixComp} object \code{e2}, see
-      \code{\linkS4class{mixComp}}.
+      element of the \code{MixComp} object \code{e2}, see
+      \code{\linkS4class{MixComp}}.
 
     }
-    \item{\code{signature(e1 = "character", e2 = "mixComp")}}{
+    \item{\code{signature(e1 = "character", e2 = "MixComp")}}{
 
       Here \code{e1} contains the names of one or more functions.  If
       \code{length(e1) = 1}, this is equivalent to the method for
@@ -97,7 +97,7 @@ e1 \%of\% e2
       have \code{ncol(e2@m)} elements.
 
     }
-    \item{\code{signature(e1 = "list", e2 = "mixComp")}}{
+    \item{\code{signature(e1 = "list", e2 = "MixComp")}}{
 
       Here each element of \code{e1} is a function or the name of a
       function. It works analogously to the method with \code{e1} from
@@ -126,7 +126,7 @@ e1 \%of\% e2
   
 }
 \seealso{
-  class \code{"\linkS4class{mixComp}"}
+  class \code{"\linkS4class{MixComp}"}
 }
 \examples{
 m <- matrix(rnorm(18), ncol = 3)
@@ -137,7 +137,7 @@ f3 <- list(pnorm, function(x, ...) pnorm(x, mean = 0.1),
 ## no method for f from "list" yet:
 ## pm2 <- f3 \%of\% m
 
-mc <- new("mixComp", m = m)
+mc <- new("MixComp", m = m)
 pnorm \%of\% mc
 pmc3 <- f3 \%of\% mc
 ## result is equivalent to applying f3[[i] to m[ , i]:
@@ -145,4 +145,4 @@ all.equal(pmc3@m, cbind(f3[[1]](m[ , 1]), f3[[2]](m[ , 2]), f3[[3]](m[ , 3])))
 }
 \keyword{math}
 \keyword{methods}
-\keyword{mixComp}
+\keyword{MixComp}

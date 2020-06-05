@@ -1,8 +1,8 @@
-test_that("mixComp class and methods are ok", {
+test_that("MixComp class and methods are ok", {
 
     ## TODO: need more meaningful examples (for the Rd file, here no problem)
 ## dim, nrow, ncol
-a <- new("mixComp", m = matrix(c(1:7, 11:17, 21:27), ncol = 3))
+a <- new("MixComp", m = matrix(c(1:7, 11:17, 21:27), ncol = 3))
 a
 dim(a)
 nrow(a)
@@ -20,14 +20,14 @@ a*2
 a^2
 sqrt(a)
 
-b <- new("mixComp", m = matrix(rnorm(21), ncol = 3))
+b <- new("MixComp", m = matrix(rnorm(21), ncol = 3))
 
 
 2/a
 1:7 / a
 a * b
 
-## apply a function to the columns of a mixComp object
+## apply a function to the columns of a MixComp object
 pnorm %of% b
 "pnorm" %of% b # same
 pnorm * b # same

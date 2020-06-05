@@ -6,7 +6,7 @@
 }
 \description{
   Supporting function for EM algorithm. Update the conditional
-  probabilities of the components of the mixAR model
+  probabilities of the components of the MixAR model
   (for E-step of EM algorithm).
 }
 \usage{
@@ -17,7 +17,7 @@ em_tau_safe(stdetk, prob, scale, pdf = dnorm)
 \details{
 
   \code{em_tau} and \code{em_tau_safe} compute the conditional
-  probabilities of the components of the mixAR model (for the E-step of
+  probabilities of the components of the MixAR model (for the E-step of
   the EM algorithm). The two functions do the same computations but
   \code{em_tau_safe}, in addition, protects agains \code{NaN}'s and
   infinite values in argument \code{stdetk} or obtained during
@@ -26,7 +26,7 @@ em_tau_safe(stdetk, prob, scale, pdf = dnorm)
 }
 \arguments{
   \item{stdetk}{
-    standardised component residuals, a \code{mixComp} object.
+    standardised component residuals, a \code{MixComp} object.
   }
   \item{prob}{
     current estimates of the probabilities of the components, a numeric

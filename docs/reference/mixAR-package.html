@@ -166,7 +166,7 @@
 <!-- %%%%  -->
 <!-- %%%%  -->
 <!-- %%%%   \Sexpr[stage=build,results=hide]{pat &lt;- c(pat, list(mixAR = -->
-<!-- %%%%     c("^mixAR-class", "^mixARGaussian-class", "^mixARgen-class", -->
+<!-- %%%%     c("^mixAR-class", "^MixARGaussian-class", "^mixARgen-class", -->
 <!-- %%%%     "^mixAR-methods", "^show_diff-methods", "^parameters-methods" )))} -->
 <!-- %%%%   \subsection{mixAR classes}{ -->
 <!-- %%%%     \Sexpr[stage=build,results=rd]{lbpaste(pat[["mixAR"]])} -->
@@ -217,13 +217,13 @@
 <!-- %%%%   } -->
 <!-- %%%%    -->
 <!-- %%%%  -->
-<!-- %%%%   \Sexpr[stage=build,results=hide]{pat &lt;- c(pat, list(mixComp = -->
-<!-- %%%%     c("^mixComp-class", "^mix_ncomp-methods", "^mix_ek-methods", -->
+<!-- %%%%   \Sexpr[stage=build,results=hide]{pat &lt;- c(pat, list(MixComp = -->
+<!-- %%%%     c("^MixComp-class", "^mix_ncomp-methods", "^mix_ek-methods", -->
 <!-- %%%%     "^mix_hatk-methods", "^\%of\%", "^inner", "^row_lengths"  )))} -->
-<!-- %%%%   \subsection{mixComp}{ -->
+<!-- %%%%   \subsection{MixComp}{ -->
 <!-- %%%%     Convenient computing with mixAR time series. -->
 <!-- %%%%      -->
-<!-- %%%%     \Sexpr[stage=build,results=rd]{lbpaste(pat[["mixComp"]])} -->
+<!-- %%%%     \Sexpr[stage=build,results=rd]{lbpaste(pat[["MixComp"]])} -->
 <!-- %%%%   } -->
 <!-- %%%%  -->
 <!-- %%%%    -->
@@ -282,16 +282,16 @@
 <!-- %%%%   } --></p>
 
 <p><!-- % An overview of how to use the package, including the most important functions --></p>
-<p>Package mixAR provides functions for modelling with mixture
-  autoregressive (mixAR) models. The S4 class <code>"mixARGaussian"</code> can
+<p>Package <span class="pkg">mixAR</span> provides functions for modelling with mixture
+  autoregressive (MixAR) models. The S4 class <code>"MixARGaussian"</code> can
   be used when the error distributions of the components are standard
-  Gaussian. The class <code>"mixARgen"</code> admits arbitrary (well, within
+  Gaussian. The class <code>"MixARgen"</code> admits arbitrary (well, within
   reason) distributions for the error components. Both classes inherit
-  from the virtual class <code>"mixAR"</code>.</p>
+  from the virtual class <code>"MixAR"</code>.</p>
 <p>Estimation can be done with <code>fit_mixAR</code>.  Currently, the EM
   algorithm is used for estimation.</p>
-<p>For <code>"mixARGaussian"</code> the M-step of the EM algorithm reduces to a
-  system of linear equations. For <code>"mixARgen"</code> the problem is
+<p>For <code>"MixARGaussian"</code> the M-step of the EM algorithm reduces to a
+  system of linear equations. For <code>"MixARgen"</code> the problem is
   substantially non-linear. The implementation is fairly general but
   currently not optimised for efficiency. The specification of the error
   distributions went through several stages and may still be
@@ -347,7 +347,7 @@ doi: <a href='https://doi.org/10.1198/016214501753208645'>10.1198/01621450175320
 #&gt;  [6] "WL_ibm_gen" "WL_ibm_t3v" "WL_ibm_tf"  "WL_At"      "WL_Bt_1"   
 #&gt; [11] "WL_Bt_2"    "WL_Bt_3"    "WL_Ct_1"    "WL_Ct_2"    "WL_Ct_3"   </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob   shift scale   order ar_1   ar_2   
 #&gt; Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
@@ -363,49 +363,49 @@ doi: <a href='https://doi.org/10.1198/016214501753208645'>10.1198/01621450175320
 <span class='no'>mo_WLsigma</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4.8227</span>, <span class='fl'>6.0082</span>, <span class='fl'>18.1716</span>)
 <span class='no'>mo_WLar</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.6792</span>, <span class='fl'>0.3208</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.6711</span>, -<span class='fl'>0.6711</span>), <span class='fl'>1</span>)
 
-<span class='no'>mo_WL</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>mo_WLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>mo_WLsigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>mo_WLar</span>)
+<span class='no'>mo_WL</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>mo_WLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>mo_WLsigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>mo_WLar</span>)
 
-<span class='no'>mo_WL_A</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>                         <span class='co'># WongLi, model A</span>
+<span class='no'>mo_WL_A</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>                         <span class='co'># WongLi, model A</span>
               , <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>0.5</span>)
               , <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>, <span class='fl'>1</span>)
               , <span class='kw'>shift</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>)
               , <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.1</span>))
               )
 
-<span class='no'>mo_WL_B</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>                         <span class='co'># WongLi, model B</span>
+<span class='no'>mo_WL_B</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>                         <span class='co'># WongLi, model B</span>
               , <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.75</span>, <span class='fl'>0.25</span>)
               , <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>, <span class='fl'>1</span>)
               , <span class='kw'>shift</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>)
               , <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.4</span>))
               )
 
-<span class='no'>mo_WL_I</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>                          <span class='co'># WongLi, model I</span>
+<span class='no'>mo_WL_I</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>                          <span class='co'># WongLi, model I</span>
               , <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.4</span>, <span class='fl'>0.3</span>, <span class='fl'>0.3</span>)
               , <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>5</span>)
               , <span class='kw'>shift</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, -<span class='fl'>5</span>)
               , <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.9</span>, -<span class='fl'>0.6</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.5</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.50</span>, -<span class='fl'>0.74</span>, <span class='fl'>0.12</span>))
               )
 
-<span class='no'>mo_WL_II</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>                         <span class='co'># WongLi, model II</span>
+<span class='no'>mo_WL_II</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>                         <span class='co'># WongLi, model II</span>
                , <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.4</span>, <span class='fl'>0.3</span>, <span class='fl'>0.3</span>)
                , <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>5</span>)
                , <span class='kw'>shift</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>, <span class='fl'>0</span>, -<span class='fl'>5</span>)
                , <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.9</span>, -<span class='fl'>0.6</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.7</span>, <span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>( <span class='fl'>0</span>, <span class='fl'>0.80</span>))
                )
 
-<span class='co'>## mixAR models with arbitrary dist. of the components</span>
+<span class='co'>## MixAR models with arbitrary dist. of the components</span>
 <span class='co'>## (user interface not finalized)</span>
 
 <span class='co'>## Gaussian</span>
-<span class='no'>mo_WLgen</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARgen"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>mo_WLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>mo_WLsigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>mo_WLar</span>,
+<span class='no'>mo_WLgen</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARgen"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>mo_WLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>mo_WLsigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>mo_WLar</span>,
                <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>dist_norm</span>))
 
 <span class='co'>## t_3</span>
-<span class='no'>mo_WLt3v</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARgen"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>mo_WLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>mo_WLsigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>mo_WLar</span>,
+<span class='no'>mo_WLt3v</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARgen"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>mo_WLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>mo_WLsigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>mo_WLar</span>,
                <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='fnoise.html'>fdist_stdt</a></span>(<span class='fl'>3</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)))
 
 <span class='co'>## t_20, t_30, t_40 (can be used to start estimation)</span>
-<span class='no'>mo_WLtf</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARgen"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>mo_WLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>mo_WLsigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>mo_WLar</span>,
+<span class='no'>mo_WLtf</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARgen"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>mo_WLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>mo_WLsigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>mo_WLar</span>,
               <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>generator</span> <span class='kw'>=</span>
                               <span class='kw'>function</span>(<span class='no'>par</span>)
                                   <span class='fu'><a href='fnoise.html'>fn_stdt</a></span>(<span class='no'>par</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>), <span class='kw'>param</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>20</span>, <span class='fl'>30</span>, <span class='fl'>40</span>)))
@@ -416,30 +416,32 @@ doi: <a href='https://doi.org/10.1198/016214501753208645'>10.1198/01621450175320
 <span class='co'>## to avoid cummulative time of more than 5s on CRAN.</span>
 
 <span class='co'>## fit a MAR(2,2,1) model</span>
-<span class='no'>a0a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>))</div><div class='output co'>#&gt; cond:  15658311 
-#&gt; cond:  22452843 
-#&gt; cond:  12296240 
-#&gt; Initial vallogf:  -1245.714 
-#&gt; niter:  25 	vallogf:  -1206.726 
-#&gt; niter:  50 	vallogf:  -1201.072 
-#&gt; niter:  75 	vallogf:  -1199.791 
-#&gt; niter:  100 	vallogf:  -1199.786 
-#&gt; niter:  125 	vallogf:  -1199.786 
-#&gt; niter:  150 	vallogf:  -1199.786 
-#&gt; Final niter:  159 	vallogf:  -1199.786 </div><div class='input'><span class='co'>## same with 2 sets of automatically generated initial values.</span>
+<span class='no'>a0a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>))</div><div class='output co'>#&gt; cond:  37844644 
+#&gt; cond:  49346768 
+#&gt; cond:  44205436 
+#&gt; Initial vallogf:  -1244.823 
+#&gt; niter:  25 	vallogf:  -1201.216 
+#&gt; niter:  50 	vallogf:  -1201.118 
+#&gt; niter:  75 	vallogf:  -1200.91 
+#&gt; niter:  100 	vallogf:  -1200.281 
+#&gt; niter:  125 	vallogf:  -1200.037 
+#&gt; niter:  150 	vallogf:  -1200.02 
+#&gt; niter:  175 	vallogf:  -1200.019 
+#&gt; niter:  200 	vallogf:  -1200.019 
+#&gt; Final niter:  200 	vallogf:  -1200.019 </div><div class='input'><span class='co'>## same with 2 sets of automatically generated initial values.</span>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='no'>a0b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='fl'>2</span>)
 }
 
 <span class='co'>## fix the shift parameters:</span>
-<span class='no'>a1a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='kw'>fix</span> <span class='kw'>=</span> <span class='st'>"shift"</span>)</div><div class='output co'>#&gt; cond:  98470.13 
-#&gt; cond:  76063.17 
-#&gt; cond:  35410.72 
-#&gt; Initial vallogf:  -1242.599 
-#&gt; niter:  25 	vallogf:  -1213.62 
-#&gt; niter:  50 	vallogf:  -1213.453 
-#&gt; niter:  75 	vallogf:  -1213.427 
-#&gt; niter:  100 	vallogf:  -1213.424 
+<span class='no'>a1a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='kw'>fix</span> <span class='kw'>=</span> <span class='st'>"shift"</span>)</div><div class='output co'>#&gt; cond:  67949.37 
+#&gt; cond:  1709713 
+#&gt; cond:  7424.067 
+#&gt; Initial vallogf:  -1241.973 
+#&gt; niter:  25 	vallogf:  -1213.723 
+#&gt; niter:  50 	vallogf:  -1213.478 
+#&gt; niter:  75 	vallogf:  -1213.429 
+#&gt; niter:  100 	vallogf:  -1213.425 
 #&gt; niter:  125 	vallogf:  -1213.424 
 #&gt; niter:  150 	vallogf:  -1213.424 
 #&gt; niter:  175 	vallogf:  -1213.424 
@@ -450,14 +452,14 @@ doi: <a href='https://doi.org/10.1198/016214501753208645'>10.1198/01621450175320
 }
 
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='co'>## specify the model using a mixAR model object</span>
+<span class='co'>## specify the model using a MixAR model object</span>
 <span class='no'>a1c</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='no'>a1a</span>$<span class='no'>model</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='no'>a0a</span>$<span class='no'>model</span>, <span class='kw'>fix</span> <span class='kw'>=</span> <span class='st'>"shift"</span>)
 
 <span class='co'>## fit a model like mo_WL using as initial values 3 automatically generated sets.</span>
 <span class='no'>a2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='no'>mo_WL</span>, <span class='fl'>3</span>, <span class='kw'>fix</span> <span class='kw'>=</span> <span class='st'>"shift"</span>, <span class='kw'>permute</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 }
 
-<span class='no'>moT_B3</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARgen"</span>
+<span class='no'>moT_B3</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARgen"</span>
                , <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.3</span>, <span class='fl'>0.3</span>, <span class='fl'>0.4</span>)
                , <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>1</span>, <span class='fl'>0.5</span>)
                , <span class='kw'>shift</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>, -<span class='fl'>5</span>, <span class='fl'>0</span>)
@@ -466,7 +468,7 @@ doi: <a href='https://doi.org/10.1198/016214501753208645'>10.1198/01621450175320
                , <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fu'><a href='fnoise.html'>distlist</a></span>(<span class='st'>"stdt"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>10</span>), <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>FALSE</span>, <span class='fl'>TRUE</span>), <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>))
                )
 
-<span class='no'>moT_C1</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARgen"</span>
+<span class='no'>moT_C1</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARgen"</span>
               , <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.3</span>, <span class='fl'>0.3</span>, <span class='fl'>0.4</span>)
               , <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>1</span>, <span class='fl'>0.5</span>)
               , <span class='kw'>shift</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>, -<span class='fl'>5</span>, <span class='fl'>0</span>)
@@ -478,7 +480,7 @@ doi: <a href='https://doi.org/10.1198/016214501753208645'>10.1198/01621450175320
 <span class='co'>## demonstrate reuse of existing models</span>
 <span class='no'>exampleModels</span>$<span class='no'>WL_Bt_1</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARgen"
+#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
@@ -489,11 +491,11 @@ doi: <a href='https://doi.org/10.1198/016214501753208645'>10.1198/01621450175320
 #&gt; 	Component 1: Student t with 4 df
 #&gt; 	Component 2: Student t with 6 df
 #&gt; 	Component 3: Student t with 10 df
-#&gt; </div><div class='input'><span class='no'>moT_C2</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARgen"</span>
+#&gt; </div><div class='input'><span class='no'>moT_C2</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARgen"</span>
               , <span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_Bt_1</span>
               , <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fu'><a href='fnoise.html'>distlist</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"stdt"</span>, <span class='st'>"stdt"</span>, <span class='st'>"stdnorm"</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>7</span>))  <span class='co'># t4, t7, N(0,1)</span>
               )
-<span class='no'>moT_C3</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_Bt_1</span> )</div></pre>
+<span class='no'>moT_C3</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_Bt_1</span> )</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

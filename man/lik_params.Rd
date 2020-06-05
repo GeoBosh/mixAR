@@ -2,13 +2,13 @@
 \docType{methods}
 \alias{lik_params}
 \alias{lik_params-methods}
-\alias{lik_params,mixAR-method}
-\alias{lik_params,mixARgen-method}
+\alias{lik_params,MixAR-method}
+\alias{lik_params,MixARgen-method}
 
-\title{  Vector of parameters of a mixAR model }
+\title{  Vector of parameters of a MixAR model }
 \description{
 
-  Give a numeric vector containing non-redundant parameters of a mixAR
+  Give a numeric vector containing non-redundant parameters of a MixAR
   model in a form suitable for use by optimisation routines.  The
   methods defined in package \pkg{mixAR} for this generic function are
   described here.
@@ -18,13 +18,13 @@
 lik_params(model)
 }
 \arguments{
-  \item{model}{a mixAR model.}
+  \item{model}{a MixAR model.}
 }
 \details{
-  \code{lik_params} gives the parameters of a mixAR model as a numeric
+  \code{lik_params} gives the parameters of a MixAR model as a numeric
   vector.
 
-  This is a generic function.  Parameters common to all mixAR models are
+  This is a generic function.  Parameters common to all MixAR models are
   arranged as described below. There are no other parameters when the error
   distributions do not contain parameters of their own.  Methods for
   sub-classes with additional parameters should append them after the
@@ -78,11 +78,11 @@ lik_params(model)
 \section{Methods}{
 \describe{
 
-\item{\code{signature(model = "mixAR")}}{
+\item{\code{signature(model = "MixAR")}}{
 %%  ~~describe this method here~~
 }
 
-\item{\code{signature(model = "mixARgen")}}{
+\item{\code{signature(model = "MixARgen")}}{
 %%  ~~describe this method here~~
 }
 }}
@@ -91,4 +91,4 @@ lik_params(model)
 %}
 %\examples{}
 \keyword{methods}
-\keyword{mixAR}
+\keyword{MixAR}

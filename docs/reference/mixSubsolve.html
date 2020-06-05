@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Support for EM estimation of mixAR models, internal function. — mixSubsolve • mixAR</title>
+<title>Support for EM estimation of MixAR models, internal function. — mixSubsolve • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Support for EM estimation of mixAR models, internal function. — mixSubsolve" />
+<meta property="og:title" content="Support for EM estimation of MixAR models, internal function. — mixSubsolve" />
 <meta property="og:description" content="Solve the linear sub-system arising in the M-step of the EM algorithm
-  for mixAR models with Gaussian noise components. This gives estimates
+  for MixAR models with Gaussian noise components. This gives estimates
   of the parameters of the \(k\)th AR component of the model." />
 
 
@@ -113,14 +113,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Support for EM estimation of mixAR models, internal function.</h1>
+    <h1>Support for EM estimation of MixAR models, internal function.</h1>
     
     <div class="hidden name"><code>mixSubsolve.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Solve the linear sub-system arising in the M-step of the EM algorithm
-  for mixAR models with Gaussian noise components. This gives estimates
+  for MixAR models with Gaussian noise components. This gives estimates
   of the parameters of the \(k\)th AR component of the model.</p>
     </div>
 
@@ -157,7 +157,7 @@
 
 <p><code>mixSubsolve</code> forms and solves a linear subsytem to obtain
   estimates of the AR parameters (and the shift, if <code>shift</code> is
-  <code>TRUE</code>)  for the <code>k</code>-th mixAR component.</p>
+  <code>TRUE</code>)  for the <code>k</code>-th MixAR component.</p>
 <p>First, <code><a href='https://rdrr.io/r/base/solve.html'>solve()</a></code> is tried. If it reports that the system is
   (numerically) singular, a solution is computed using SVD with
   tolerance <code>tol</code>.</p>

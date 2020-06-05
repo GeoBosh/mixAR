@@ -3,17 +3,17 @@
 \alias{inner}
 \alias{inner-methods}
 \alias{inner,ANY,ANY,ANY,ANY-method}
-\alias{inner,mixComp,missing,missing,missing-method}
-\alias{inner,mixComp,numeric,missing,missing-method}
-\alias{inner,numeric,mixComp,missing,missing-method}
-\alias{inner,mixComp,numeric,ANY,ANY-method}
-\alias{inner,mixComp,numeric,ANY,missing-method}
+\alias{inner,MixComp,missing,missing,missing-method}
+\alias{inner,MixComp,numeric,missing,missing-method}
+\alias{inner,numeric,MixComp,missing,missing-method}
+\alias{inner,MixComp,numeric,ANY,ANY-method}
+\alias{inner,MixComp,numeric,ANY,missing-method}
 \title{
-  Generalised inner product and methods for class \code{"mixComp"}
+  Generalised inner product and methods for class \code{"MixComp"}
 }
 \description{
-  Generalised inner product and methods for class mixComp. The methods
-  for mixComp provide for very convenient computing with mixAR models.
+  Generalised inner product and methods for class MixComp. The methods
+  for MixComp provide for very convenient computing with MixAR models.
 }
 \usage{
 inner(x, y, star = "*", plus = .mplus)
@@ -50,15 +50,15 @@ inner(x, y, star = "*", plus = .mplus)
   % % commented out on 2011-07-12: does not correspond to the R code.
   % %
   % % but the definition here is commutative, i.e. it does not matter in
-  % % what order the two objects, the \code{mixComp} and the vector, are
+  % % what order the two objects, the \code{MixComp} and the vector, are
   % % given.
 
-  Methods for inner product between a \code{"mixComp"} object and a
+  Methods for inner product between a \code{"MixComp"} object and a
   vector are similar to a product between a matrix and a vector but
-  comply with the conventions of class \code{"mixComp"}. For this reason
+  comply with the conventions of class \code{"MixComp"}. For this reason
   they are described in the help page for class
-  \code{"\linkS4class{mixComp}"}, along with methods for other functions
-  and operators applied to \code{"mixComp"} objects.
+  \code{"\linkS4class{MixComp}"}, along with methods for other functions
+  and operators applied to \code{"MixComp"} objects.
   
   \describe{
 
@@ -66,31 +66,31 @@ inner(x, y, star = "*", plus = .mplus)
       This is the default method, see section Details.
     }
 
-    \item{\code{signature(x = "mixComp", y = "missing", star = "missing", plus = "missing")}}{
-      see \code{\linkS4class{mixComp}}.
+    \item{\code{signature(x = "MixComp", y = "missing", star = "missing", plus = "missing")}}{
+      see \code{\linkS4class{MixComp}}.
     }
 
-    \item{\code{signature(x = "mixComp", y = "numeric", star = "missing", plus = "missing")}}{
-      see \code{\linkS4class{mixComp}}.
+    \item{\code{signature(x = "MixComp", y = "numeric", star = "missing", plus = "missing")}}{
+      see \code{\linkS4class{MixComp}}.
     }
 
-    \item{\code{signature(x = "numeric", y = "mixComp", star = "missing", plus = "missing")}}{
-      see \code{\linkS4class{mixComp}}.
+    \item{\code{signature(x = "numeric", y = "MixComp", star = "missing", plus = "missing")}}{
+      see \code{\linkS4class{MixComp}}.
     }
     
-    \item{\code{signature(x = "mixComp", y = "numeric", star = "ANY", plus = "ANY")}}{{
-	see \code{\linkS4class{mixComp}}.
+    \item{\code{signature(x = "MixComp", y = "numeric", star = "ANY", plus = "ANY")}}{{
+	see \code{\linkS4class{MixComp}}.
       }
     }
 
-    \item{\code{signature(x = "mixComp", y = "numeric", star = "ANY", plus = "missing")}}{
-	see \code{\linkS4class{mixComp}}.
+    \item{\code{signature(x = "MixComp", y = "numeric", star = "ANY", plus = "missing")}}{
+	see \code{\linkS4class{MixComp}}.
     }
     
   }
 }
 \seealso{
-  \code{\linkS4class{mixComp}}
+  \code{\linkS4class{MixComp}}
 }
 \examples{
 inner(1:3, 2:4) # [1] 20
@@ -100,5 +100,5 @@ class(inner(1:3, 2:4)) # [1] "integer"
 class(1:3 \%*\% 2:4) # matrix
 }
 \keyword{methods}
-\keyword{mixComp}
+\keyword{MixComp}
 \keyword{math}

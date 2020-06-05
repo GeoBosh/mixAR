@@ -1,16 +1,18 @@
 \name{fit_mixARreg-methods}
-\alias{mixARreg}
 \docType{methods}
+
+\alias{mixARreg}
 \alias{fit_mixARreg}
 \alias{fit_mixARreg-methods}
-\alias{fit_mixARreg,ANY,data.frame,mixAR,missing-method}
-\alias{fit_mixARreg,ANY,matrix,mixAR,missing-method}
+\alias{fit_mixARreg,ANY,data.frame,MixAR,missing-method}
+\alias{fit_mixARreg,ANY,matrix,MixAR,missing-method}
 \alias{fit_mixARreg,ANY,data.frame,missing,list-method}
 \alias{fit_mixARreg,ANY,matrix,missing,list-method}
-\alias{fit_mixARreg,ANY,numeric,mixAR,missing-method}
+\alias{fit_mixARreg,ANY,numeric,MixAR,missing-method}
 \alias{fit_mixARreg,ANY,numeric,missing,list-method}
 \alias{fit_mixARreg,ANY,ANY,ANY,ANY-method}
 \alias{fit_mixARreg,ANY,ANY,missing,list-method}
+
 \title{
   Fit time series regression models with mixture autoregressive residuals
 }
@@ -32,19 +34,19 @@ mixARreg(x, y, mixARmodel, tol = 1e-6, niter = 200)
     is done. 
   }
   \item{mixARmodel}{
-    An object inheriting from class \code{"mixAR"}, giving initial
+    An object inheriting from class \code{"MixAR"}, giving initial
     values for EM-estimation of mixture autoregressive
-    parameters. Currenlty only \code{"mixARGaussian"} is supported.
+    parameters. Currenlty only \code{"MixARGaussian"} is supported.
   }
   \item{EMinit}{
-    starting values for EM estimation of mixAR parameters. If present,
+    starting values for EM estimation of MixAR parameters. If present,
     must be a named list, containing at least \code{prob} and
     \code{scale} as numeric vectors, and a list for \code{arcoef}.
   }
   \item{tol}{
     threshold for convergence criterion.
   }
-  \item{...}{passed on to \code{mixARreg}.}
+  \item{...}{passed on to \code{MixARreg}.}
   \item{niter}{maximal number of iterations.}
 }
 \details{
@@ -54,7 +56,7 @@ mixARreg(x, y, mixARmodel, tol = 1e-6, niter = 200)
   Arguments \code{y}, \code{mixARmodel}, \code{EMinit} can be given in a
   number of ways, see individual methods for details. 
 
-  Argument \code{mixARmodel} gives the details of the the mixAR part of
+  Argument \code{mixARmodel} gives the details of the the MixAR part of
   the model and initial values for the parameters. For
   \code{fit_mixARreg} this can alternatively be done with a list using 
   argument \code{EMinit}.
@@ -75,13 +77,13 @@ mixARreg(x, y, mixARmodel, tol = 1e-6, niter = 200)
 \section{Methods}{
   \describe{
     \item{\code{signature(x = "ANY", y = "data.frame", mixARmodel =
-	"mixAR", EMinit = "missing")
+	"MixAR", EMinit = "missing")
     }}{}
     \item{\code{signature(x = "ANY", y = "matrix",
-        mixARmodel = "mixAR", EMinit = "missing")}
+        mixARmodel = "MixAR", EMinit = "missing")}
     }{}
     \item{\code{signature(x = "ANY", y = "numeric",
-        mixARmodel = "mixAR", EMinit = "missing")}
+        mixARmodel = "MixAR", EMinit = "missing")}
     }{}
     \item{\code{signature(x = "ANY", y = "ANY", mixARmodel = "ANY", EMinit = "ANY")}}{
 	%%  ~~describe this method here~~
@@ -112,19 +114,19 @@ n <- 100 # for CRAN
 y <- data.frame(rnorm(n, 7, 1), rt(n, 3), rnorm(n, 3, 2))
 
 ## Build mixAR part
-model <- new("mixARGaussian", 
+model <- new("MixARGaussian", 
              prob   = exampleModels$WL_At@prob,      # c(0.5, 0.5)
              scale  = exampleModels$WL_At@scale,     # c(1, 2)        
              arcoef = exampleModels$WL_At@arcoef@a ) # list(-0.5, 1.1)
 
-## Simulate from mixAR part
+## Simulate from MixAR part
 u <- mixAR_sim(model, n, 0)
 
 x <- 10 + y[, 1] + 3 * y[, 2] + 2 * y[, 3] + u
 
 ## Fit model
 
-## Using mixARGaussian
+## Using MixARGaussian
 fit_mixARreg(x = x, y = y, mixARmodel = model, niter = 5)
 
 ## Using EMinit
@@ -134,4 +136,4 @@ fit_mixARreg(x = x, y = y, EMinit = EMinit, niter = 5)
 }
 \keyword{ regression }
 \keyword{ residuals }
-\keyword{ mixAR }
+\keyword{ MixAR }

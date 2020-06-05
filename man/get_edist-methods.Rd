@@ -1,15 +1,15 @@
 \name{get_edist-methods}
 \docType{methods}
 \alias{get_edist-methods}
-\alias{get_edist,mixAR-method}
-\alias{get_edist,mixARGaussian-method}
-\alias{get_edist,mixARgen-method}
+\alias{get_edist,MixAR-method}
+\alias{get_edist,MixARGaussian-method}
+\alias{get_edist,MixARgen-method}
 \title{ Methods for function \code{get_edist} in package \pkg{mixAR} }
 \description{
   Methods for function \code{get_edist} in package \pkg{mixAR}
 }
 \section{Methods}{
-  \code{get_edist} gives the error (or noise) distribution of mixAR
+  \code{get_edist} gives the error (or noise) distribution of MixAR
   objects.
 
   Currently the distribution is returned as a list of functions. The
@@ -19,34 +19,34 @@
 
   Note that the distribution is not necessarily stored in slot
   \code{dist} in this format, see the description of this slot in class
-  \code{\linkS4class{mixARgen}}.
+  \code{\linkS4class{MixARgen}}.
   Such a slot may even not exist if the distribution of the error
-  components is fixed as is the case for class \code{mixARGaussian}.
+  components is fixed as is the case for class \code{MixARGaussian}.
 
-  Each subclass of \code{mixAR} needs to define a method for
+  Each subclass of \code{MixAR} needs to define a method for
   \code{get_edist}.
 
 
   \describe{
 
-    \item{\code{signature(model = "mixAR")}}{
+    \item{\code{signature(model = "MixAR")}}{
       Issue an error message and stop.
 
-      This method is invoked for subclasses of \code{mixAR} that have
+      This method is invoked for subclasses of \code{MixAR} that have
       not defined their own method for \code{get_edist}. This is an
       error.
 
     }
 
-    \item{\code{signature(model = "mixARGaussian")}}{
+    \item{\code{signature(model = "MixARGaussian")}}{
       Return an object representing the fact that the error
-      distributions of the components of \code{mixARGaussian} objects
+      distributions of the components of \code{MixARGaussian} objects
       are standard normal.
     }
 
-    \item{\code{signature(model = "mixARgen")}}{
+    \item{\code{signature(model = "MixARgen")}}{
       Return an object representing the error distributions of the
-      components of \code{mixARgen} objects. The distributions are not
+      components of \code{MixARgen} objects. The distributions are not
       necessarilly the same for such objects.
     }
 }}

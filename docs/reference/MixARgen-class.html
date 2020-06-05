@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Class <code>"mixARgen"</code> — mixARgen-class • mixAR</title>
+<title>Class <code>"MixARgen"</code> — MixARgen-class • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Class <code>"mixARgen"</code> — mixARgen-class" />
-<meta property="og:description" content="A class for mixAR models with arbitrary noise distributions. &quot;mixARgen&quot;
-  inherits from &quot;mixAR&quot;." />
+<meta property="og:title" content="Class <code>"MixARgen"</code> — MixARgen-class" />
+<meta property="og:description" content="A class for MixAR models with arbitrary noise distributions. &quot;MixARgen&quot;
+  inherits from &quot;MixAR&quot;." />
 
 
 
@@ -112,31 +112,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Class <code>"mixARgen"</code></h1>
+    <h1>Class <code>"MixARgen"</code></h1>
     
-    <div class="hidden name"><code>mixARgen-class.Rd</code></div>
+    <div class="hidden name"><code>MixARgen-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A class for mixAR models with arbitrary noise distributions. <code>"mixARgen"</code>
-  inherits from <code>"mixAR"</code>.</p>
+    <p>A class for MixAR models with arbitrary noise distributions. <code>"MixARgen"</code>
+  inherits from <code>"MixAR"</code>.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="objects-from-the-class"><a class="anchor" href="#objects-from-the-class"></a>Objects from the Class</h2>
 
-    <p>Objects can be created by calls of the form <code>new("mixARgen",
-  dist, ...)</code>  or <code>mixARgen(...)</code>. The two forms are completely
+    <p>Objects can be created by calls of the form <code>new("MixARgen",
+  dist, ...)</code>  or <code><a href='mixARgen-class.html'>mixARgen(...)</a></code>. The two forms are completely
   equivalent. The latter is available from version 0.19-15 of package
-  mixAR.
+  MixAR.
 <!-- %%  ~~ describe objects here ~~ --></p>
     <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
 
     <p></p><dl'>
     <dt><code>dist</code>:</dt><dd><p>Object of class <code>"list"</code>, representing the
       noise distributions. The list contains one element for each
-      component of the mixAR model or a single element if the
+      component of the MixAR model or a single element if the
       noise distribution is the same for all components.      If the distributions do not contain parameters (e.g. Gaussian or
       \(t_4\)) it is sufficient to give the list of functions in the
       element <code>dist</code> of the list.      If the distributions do contain parameters the recommended
@@ -154,42 +154,42 @@
 
     <h2 class="hasAnchor" id="extends"><a class="anchor" href="#extends"></a>Extends</h2>
 
-    <p>Class <code>"<a href='mixAR-class.html'>mixAR</a>"</code>, directly.</p>
+    <p>Class <code>"MixAR"</code>, directly.</p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     <p></p><dl'>
     
-    <dt>get_edist</dt><dd><p><code>signature(model = "mixARgen")</code>: ...</p></dd>
-    <dt>initialize</dt><dd><p><code>signature(.Object = "mixARgen")</code>: ...</p></dd>
-    <dt>lik_params</dt><dd><p><code>signature(model = "mixARgen")</code>: ...</p></dd>
+    <dt>get_edist</dt><dd><p><code>signature(model = "MixARgen")</code>: ...</p></dd>
+    <dt>initialize</dt><dd><p><code>signature(.Object = "MixARgen")</code>: ...</p></dd>
+    <dt>lik_params</dt><dd><p><code>signature(model = "MixARgen")</code>: ...</p></dd>
     
-    <dt>mix_cdf</dt><dd><p><code>signature(model = "mixARgen", x = "missing", index = "missing", xcond = "numeric")</code>: ...</p></dd> 
+    <dt>mix_cdf</dt><dd><p><code>signature(model = "MixARgen", x = "missing", index = "missing", xcond = "numeric")</code>: ...</p></dd> 
 
-    <dt>mix_cdf</dt><dd><p><code>signature(model = "mixARgen", x = "numeric", index = "missing", xcond = "numeric")</code>: ...</p></dd>
+    <dt>mix_cdf</dt><dd><p><code>signature(model = "MixARgen", x = "numeric", index = "missing", xcond = "numeric")</code>: ...</p></dd>
 
-    <dt>mix_cdf</dt><dd><p><code>signature(model = "mixARgen", x = "numeric", index = "numeric", xcond = "missing")</code>: ...</p></dd>
+    <dt>mix_cdf</dt><dd><p><code>signature(model = "MixARgen", x = "numeric", index = "numeric", xcond = "missing")</code>: ...</p></dd>
 
-    <dt>mix_pdf</dt><dd><p><code>signature(model = "mixARgen", x = "missing", index = "missing", xcond = "numeric")</code>: ...</p></dd>
+    <dt>mix_pdf</dt><dd><p><code>signature(model = "MixARgen", x = "missing", index = "missing", xcond = "numeric")</code>: ...</p></dd>
 
-    <dt>mix_pdf</dt><dd><p><code>signature(model = "mixARgen", x = "numeric", index = "missing", xcond = "numeric")</code>: ...</p></dd>
+    <dt>mix_pdf</dt><dd><p><code>signature(model = "MixARgen", x = "numeric", index = "missing", xcond = "numeric")</code>: ...</p></dd>
 
-    <dt>mix_pdf</dt><dd><p><code>signature(model = "mixARgen", x = "numeric", index = "numeric", xcond = "missing")</code>: ...</p></dd>
+    <dt>mix_pdf</dt><dd><p><code>signature(model = "MixARgen", x = "numeric", index = "numeric", xcond = "missing")</code>: ...</p></dd>
 
-    <dt>noise_dist</dt><dd><p><code>signature(model = "mixARgen")</code>: ...</p></dd>
-    <dt>noise_params</dt><dd><p><code>signature(model = "mixARgen")</code>: ...</p></dd>
-    <dt>noise_rand</dt><dd><p><code>signature(model = "mixARgen")</code>: ...</p></dd>
+    <dt>noise_dist</dt><dd><p><code>signature(model = "MixARgen")</code>: ...</p></dd>
+    <dt>noise_params</dt><dd><p><code>signature(model = "MixARgen")</code>: ...</p></dd>
+    <dt>noise_rand</dt><dd><p><code>signature(model = "MixARgen")</code>: ...</p></dd>
 </dl>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>showClass</span>(<span class='st'>"mixARgen"</span>)</div><div class='output co'>#&gt; Class "mixARgen" [package "mixAR"]
+    <pre class="examples"><div class='input'><span class='fu'>showClass</span>(<span class='st'>"MixARgen"</span>)</div><div class='output co'>#&gt; Class "MixARgen" [package "mixAR"]
 #&gt; 
 #&gt; Slots:
 #&gt;                                                                         
 #&gt; Name:        dist       prob      order      shift      scale     arcoef
 #&gt; Class:       list    numeric    numeric    numeric    numeric raggedCoef
 #&gt; 
-#&gt; Extends: "mixAR"</div><div class='input'>
+#&gt; Extends: "MixAR"</div><div class='input'>
 <span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>@<span class='kw'>dist</span></div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]]$pdf
 #&gt; [1] "dnorm"
@@ -203,44 +203,44 @@
 #&gt; [[1]]$logpdf
 #&gt; function (x) 
 #&gt; log(dnorm(x))
-#&gt; &lt;bytecode: 0x558a80ca5978&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2b9598&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; [[1]]$Fscore
 #&gt; function (x) 
 #&gt; -x
-#&gt; &lt;bytecode: 0x558a80ca52e8&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2b8f08&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; [[1]]$xFscore
 #&gt; function (x) 
 #&gt; -x^2
-#&gt; &lt;bytecode: 0x558a80caa3b8&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2b8958&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; [[1]]$Parscore
 #&gt; function () 
 #&gt; 0
-#&gt; &lt;bytecode: 0x558a80ca9d98&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2bd6a8&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; [[1]]$get_param
 #&gt; function () 
 #&gt; numeric()
-#&gt; &lt;bytecode: 0x558a80ca9890&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2bd1a0&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; [[1]]$set_param
 #&gt; function () 
 #&gt; stop("Standard normal has no parameters to set.")
-#&gt; &lt;bytecode: 0x558a80ca9350&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2bcc60&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; [[1]]$any_param
 #&gt; function () 
 #&gt; param_flag
-#&gt; &lt;bytecode: 0x558a80ca8dd8&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2bc6e8&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; </div><div class='input'><span class='fu'><a href='noise_dist.html'>noise_dist</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='st'>"cdf"</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "pnorm"
@@ -269,35 +269,35 @@
 <span class='no'>cdf1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_cdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))
 <span class='kw pkg'>gbutils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gbutils/man/plotpdf.html'>plotpdf</a></span>(<span class='no'>pdf1</span>, <span class='kw'>cdf</span> <span class='kw'>=</span> <span class='no'>cdf1</span>, <span class='kw'>lq</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>uq</span> <span class='kw'>=</span> <span class='fl'>0.999</span>)</div><div class='input'>
 <span class='no'>pdf1gen</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_pdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))
-<span class='no'>cdf1gen</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_cdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; [1] "gen!"</div><div class='input'><span class='kw pkg'>gbutils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gbutils/man/plotpdf.html'>plotpdf</a></span>(<span class='no'>pdf1gen</span>, <span class='kw'>cdf</span> <span class='kw'>=</span> <span class='no'>cdf1gen</span>, <span class='kw'>lq</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>uq</span> <span class='kw'>=</span> <span class='fl'>0.999</span>)</div><div class='img'><img src='mixARgen-class-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='no'>cdf1gen</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_cdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; [1] "gen!"</div><div class='input'><span class='kw pkg'>gbutils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gbutils/man/plotpdf.html'>plotpdf</a></span>(<span class='no'>pdf1gen</span>, <span class='kw'>cdf</span> <span class='kw'>=</span> <span class='no'>cdf1gen</span>, <span class='kw'>lq</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>uq</span> <span class='kw'>=</span> <span class='fl'>0.999</span>)</div><div class='img'><img src='MixARgen-class-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>)</div><div class='output co'>#&gt; [1] 369</div><div class='input'><span class='no'>cdf1gena</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_cdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>)[-(<span class='fl'>369</span>:<span class='fl'>369</span>)])</div><div class='output co'>#&gt; [1] "gen!"</div><div class='input'><span class='no'>pdf1gena</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_pdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>)[-(<span class='fl'>369</span>:<span class='fl'>369</span>)])
 <span class='kw pkg'>gbutils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gbutils/man/plotpdf.html'>plotpdf</a></span>(<span class='no'>pdf1gena</span>, <span class='kw'>cdf</span> <span class='kw'>=</span> <span class='no'>cdf1gena</span>, <span class='kw'>lq</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>uq</span> <span class='kw'>=</span> <span class='fl'>0.999</span>)</div><div class='input'>
 <span class='no'>pdf1a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_pdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>)[-(<span class='fl'>369</span>:<span class='fl'>369</span>)])
 <span class='no'>cdf1a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_cdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>)[-(<span class='fl'>369</span>:<span class='fl'>369</span>)])
-<span class='kw pkg'>gbutils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gbutils/man/plotpdf.html'>plotpdf</a></span>(<span class='no'>pdf1a</span>, <span class='kw'>cdf</span> <span class='kw'>=</span> <span class='no'>cdf1a</span>, <span class='kw'>lq</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>uq</span> <span class='kw'>=</span> <span class='fl'>0.999</span>)</div><div class='img'><img src='mixARgen-class-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='kw pkg'>gbutils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gbutils/man/plotpdf.html'>plotpdf</a></span>(<span class='no'>pdf1a</span>, <span class='kw'>cdf</span> <span class='kw'>=</span> <span class='no'>cdf1a</span>, <span class='kw'>lq</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>uq</span> <span class='kw'>=</span> <span class='fl'>0.999</span>)</div><div class='img'><img src='MixARgen-class-2.png' alt='' width='700' height='433' /></div><div class='input'>
 
 <span class='no'>cdf1gena</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_cdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>)[-(<span class='fl'>369</span>:<span class='fl'>369</span>)])</div><div class='output co'>#&gt; [1] "gen!"</div><div class='input'>
 <span class='co'># cond_loglik(exampleModels$WL_ibm, fma::ibmclose) # doesn't work currently, no method for `ts'</span>
 <span class='fu'><a href='cond_loglik.html'>cond_loglik</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; [1] -1212.188</div><div class='input'><span class='fu'><a href='cond_loglik.html'>cond_loglik</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; [1] -1212.188</div><div class='input'>
 <span class='no'>ts1gen</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>346</span>, <span class='fl'>352</span>, <span class='fl'>357</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>0</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>ts1gen</span>)</div><div class='img'><img src='mixARgen-class-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>ts1gen</span>)</div><div class='img'><img src='MixARgen-class-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>346</span>, <span class='fl'>352</span>, <span class='fl'>357</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>0</span>),
-     <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"l"</span>)</div><div class='img'><img src='mixARgen-class-4.png' alt='' width='700' height='433' /></div><div class='input'>
+     <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"l"</span>)</div><div class='img'><img src='MixARgen-class-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/diff.html'>diff</a></span>(<span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>346</span>, <span class='fl'>352</span>, <span class='fl'>357</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>0</span>)),
-     <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"l"</span>)</div><div class='img'><img src='mixARgen-class-5.png' alt='' width='700' height='433' /></div><div class='input'>
+     <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"l"</span>)</div><div class='img'><img src='MixARgen-class-5.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='noise_dist.html'>noise_dist</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='st'>"Fscore"</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; function (x) 
 #&gt; -x
-#&gt; &lt;bytecode: 0x558a80ca52e8&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2b8f08&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; </div><div class='input'>
 <span class='no'>prob</span>   <span class='kw'>&lt;-</span> <span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>@<span class='kw'>prob</span>
 <span class='no'>scale</span>  <span class='kw'>&lt;-</span> <span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>@<span class='kw'>scale</span>
 <span class='no'>arcoef</span> <span class='kw'>&lt;-</span> <span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>@<span class='kw'>arcoef</span>@<span class='kw'>a</span>
 
-<span class='no'>mo_WLt3</span>  <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARgen"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>prob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>scale</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>arcoef</span>,
+<span class='no'>mo_WLt3</span>  <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARgen"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>prob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>scale</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>arcoef</span>,
                 <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='fnoise.html'>fdist_stdt</a></span>(<span class='fl'>3</span>)))
-<span class='no'>mo_WLt30</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARgen"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>prob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>scale</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>arcoef</span>,
+<span class='no'>mo_WLt30</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARgen"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>prob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>scale</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>arcoef</span>,
                 <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='fnoise.html'>fdist_stdt</a></span>(<span class='fl'>30</span>)))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

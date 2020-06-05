@@ -1,12 +1,12 @@
 \name{est_templ}
 \alias{est_templ}
-\title{Create estimation templates from mixAR model objects}
-\description{Create estimation templates from mixAR model objects.}
+\title{Create estimation templates from MixAR model objects}
+\description{Create estimation templates from MixAR model objects.}
 \usage{
 est_templ(model, shift = TRUE, ...)
 }
 \arguments{
-  \item{model}{a \code{"mixAR"} object.}
+  \item{model}{a \code{"MixAR"} object.}
   \item{shift}{logical, see Details.}
   \item{\dots}{currently not used.}
 }
@@ -22,7 +22,7 @@ est_templ(model, shift = TRUE, ...)
 
   Argument \code{shift} can be used to overwrite some or values
   component \code{shift} in \code{model}.  If \code{shift} has length
-  one, it is replicated to the number of mixAR components. If
+  one, it is replicated to the number of MixAR components. If
   \code{shift[k]} is \code{TRUE}, then the shift coefficient for the
   k-th component is set to \code{NA} to request its
   estimation. Otherwise, the value of the shift for the k-th component
@@ -33,8 +33,8 @@ est_templ(model, shift = TRUE, ...)
   model. 
 
   \code{est_templ} returns a list with as many components as there are
-  mixAR components in the model. The k-th component of the list is itself a list
-  specifing which parameters of the i-th mixAR component to estimate or fix. 
+  MixAR components in the model. The k-th component of the list is itself a list
+  specifing which parameters of the i-th MixAR component to estimate or fix. 
 }
 \value{
   a list, as described in Details. 

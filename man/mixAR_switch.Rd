@@ -5,9 +5,9 @@
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 
-\title{Relabel the components of a mixAR model}
+\title{Relabel the components of a MixAR model}
 
-\description{Relabel the components of a mixAR model.}
+\description{Relabel the components of a MixAR model.}
 
 \usage{
 mixAR_switch(model, perm)
@@ -17,7 +17,7 @@ mixAR_permute(model, perm)
 %- maybe also 'usage' for other objects documented here.
 
 \arguments{
-  \item{model}{a mixAR model}
+  \item{model}{a MixAR model}
   \item{perm}{a permutation for relabeling}
 }
 
@@ -36,11 +36,11 @@ mixAR_permute(model, perm)
 
 \note{
   Currently the function only reorders the "usual"
-  components. Subclasses of "mixAR" may contain other parameters
+  components. Subclasses of "MixAR" may contain other parameters
   (e.g. different error distributions). So this function may not be
   appropriate for them.
 
-  todo: make it generic.
+  % todo: make it generic.
 }
 
 
@@ -56,4 +56,4 @@ mixAR_permute(model, perm)
 
 % R documentation directory.
 
-\keyword{mixAR }
+\keyword{MixAR}

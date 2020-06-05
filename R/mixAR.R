@@ -35,7 +35,7 @@ setGeneric("mix_cdf",
               standardGeneric("mix_cdf"), 
            useAsDefault=FALSE)
 
-setClass("mixAR", 
+setClass("MixAR", 
          representation(prob = "numeric", 
                         order = "numeric", 
                         shift = "numeric", 
@@ -50,7 +50,7 @@ setClass("mixAR",
 ## zasega default stoynosti na prob sa NA, na shift 0, na scale 1.
 ##     todo: dali vsichki da sa NA?
 setMethod("initialize", 
-    signature(.Object = "mixAR"), 
+    signature(.Object = "MixAR"), 
     function (.Object, arcoef, order, prob, shift, scale, model, ...)#2012-10-30 new arg model
     {
         mis_order <- missing(order)
@@ -234,13 +234,13 @@ mixAR <- function(template, coef, ..., filler = NA_real_){       # todo: make mo
     if(g == 1)
         stop("A mixAR model must have two or more components.")
 
-    new("mixARGaussian", arcoef = coef$arcoef, order = coef$order,
+    new("MixARGaussian", arcoef = coef$arcoef, order = coef$order,
                          prob = coef$prob, shift = coef$shift, scale = coef$scale, ...)
 }
 
 setGeneric("mixAR")    # note: the name of the 1st arg. is appropriate for the default only.
 
-setMethod("mixAR", signature(template = "mixAR"),
+setMethod("mixAR", signature(template = "MixAR"),
           function(template, coef, ..., filler = NA){
               model <- template
               if(missing(coef))
@@ -284,7 +284,7 @@ setMethod("mixAR", signature(template = "mixAR"),
     wrk
 }
 
-setMethod("show", "mixAR", # 12-09-2018 "show" method adapted to handle class "raggedCoefS"
+setMethod("show", "MixAR", # 12-09-2018 "show" method adapted to handle class "raggedCoefS"
           function(object) { #note: previous content has not been changed, only "if" were added
               cl <- class(object)
               g <- length(object@prob)
@@ -330,7 +330,7 @@ setMethod("show", "mixAR", # 12-09-2018 "show" method adapted to handle class "r
               invisible(object)
           })
 
-setAs("mixAR", "list",
+setAs("MixAR", "list",
       function(from){
               # nams <- slotNames(from)
               # structure(lapply(nams, function(x) slot(from, x)),
@@ -342,7 +342,7 @@ setAs("mixAR", "list",
                arcoef = from@arcoef@a ) # notice @a
       })
 
-setMethod("lik_params", c(model = "mixAR"), 
+setMethod("lik_params", c(model = "MixAR"), 
           function(model){
               k <- .nmix(model)   # note: this is for estimation purposes, 
                                         # only k-1 of the mixing probs are passed on.
@@ -350,12 +350,12 @@ setMethod("lik_params", c(model = "mixAR"),
                 )
           })
 
-setMethod("mix_ncomp", signature(x="mixAR"), 
+setMethod("mix_ncomp", signature(x="MixAR"), 
           function(x){
               length(x@prob)
           })
 
-setMethod("row_lengths", signature(x="mixAR"), 
+setMethod("row_lengths", signature(x="MixAR"), 
           function(x){
               x@order
           })
@@ -363,7 +363,7 @@ setMethod("row_lengths", signature(x="mixAR"),
 ## 2012-11-11 new
 .nmix <- function(model) length(model@prob) # number of components in a mixAR model
 
-setMethod("make_fcond_lik", signature(model="mixAR", ts="numeric"), 
+setMethod("make_fcond_lik", signature(model="MixAR", ts="numeric"), 
           function(model, ts){            ## mixar order  is assumed constant in this function.
               locts <- ts
               mixar <- model
@@ -394,19 +394,19 @@ setMethod("make_fcond_lik", signature(model="mixAR", ts="numeric"),
               f
           })
 
-setMethod("mix_hatk", signature(model="mixAR", x="numeric", index="numeric", xcond="missing"), 
+setMethod("mix_hatk", signature(model="MixAR", x="numeric", index="numeric", xcond="missing"), 
           function(model, x, index, xcond) {
               mixFilter(x, model@arcoef, index, shift=model@shift)
           })
 
-setMethod("mix_ek", signature(model="mixAR", x="numeric", index="numeric", xcond="missing", 
+setMethod("mix_ek", signature(model="MixAR", x="numeric", index="numeric", xcond="missing", 
                               scale="missing"), 
           function(model, x, index, xcond, scale) {
               mixFilter(x, model@arcoef, index, shift=model@shift, 
                         residual=TRUE)
           })
 
-setMethod("mix_ek", signature(model="mixAR", x="numeric", index="numeric", xcond="missing", 
+setMethod("mix_ek", signature(model="MixAR", x="numeric", index="numeric", xcond="missing", 
                               scale="logical"), 
           function(model, x, index, xcond, scale) {
               mixFilter(x, model@arcoef, index, shift=model@shift, 
@@ -416,24 +416,24 @@ setMethod("mix_ek", signature(model="mixAR", x="numeric", index="numeric", xcond
 ## kogato xcond e dadeno, x se interpretira kato stoynosti na x_t za koito da se smyata
 ## Prognoz se smyata samo za xcond. Zasega samo edna stoynost na xcond.
 ##    Primerno prilozhenie - plot na pdf ili cdf pri dadeni xcond.
-setMethod("mix_ek", signature(model="mixAR", x="numeric", index="missing", xcond="numeric", 
+setMethod("mix_ek", signature(model="MixAR", x="numeric", index="missing", xcond="numeric", 
                               scale="missing"), 
           function(model, x, index, xcond) {
               wrk <- mix_hatk(model, xcond, length(xcond)+1)
               x - wrk      ## todo: check!
           })
 
-setMethod("mix_ek", signature(model="mixAR", x="numeric", index="missing", xcond="numeric", 
+setMethod("mix_ek", signature(model="MixAR", x="numeric", index="missing", xcond="numeric", 
                               scale="logical"), 
           function(model, x, index, xcond, scale) {
               wrk <- mix_hatk(model, xcond, length(xcond)+1)
               (x - wrk) / model@scale
           })
 
-mixARgen <- setClass("mixARgen", representation(dist = "list" ), contains="mixAR")
+mixARgen <- setClass("MixARgen", representation(dist = "list" ), contains="MixAR")
 
 setMethod("initialize", 
-    signature(.Object = "mixARgen"), 
+    signature(.Object = "MixARgen"), 
     function (.Object, dist, model, ...)   # 2012-10-30 new arg. 'model'
     {                                  # todo: investigate the following:
         # .Object <- callNextMethod()  # predava samo '...' args, seemingly contradicts doc.
@@ -446,7 +446,7 @@ setMethod("initialize",
                 stop("Argument 'dist' must be a list.")
         }else if(.hasSlot(model, "dist"))
             .Object@dist <- model@dist
-        # else if(is(model, "mixARGaussian")) TODO: makes sense to set Gaussian components.
+        # else if(is(model, "MixARGaussian")) TODO: makes sense to set Gaussian components.
         else
             stop("Cannot set the distribution since argument 'dist' is missing.")
 
@@ -454,7 +454,7 @@ setMethod("initialize",
     }
 )
 
-setMethod("show", "mixARgen",            # todo: this is only a quick fix, more work is needed
+setMethod("show", "MixARgen",            # todo: this is only a quick fix, more work is needed
 	  function(object) {
               callNextMethod()
                                        # cat("Parameters of the component distributions:\n\t")
@@ -467,7 +467,7 @@ setMethod("show", "mixARgen",            # todo: this is only a quick fix, more 
               invisible(object)
 	  })
 
-setMethod("lik_params", c(model = "mixARgen"), 
+setMethod("lik_params", c(model = "MixARgen"), 
           function(model){
               res <- callNextMethod()   # get the "usual" params
               ## 2017-04-21 was:  wrk <- mix_noiseparams(model) # get the noise params
@@ -478,9 +478,9 @@ setMethod("lik_params", c(model = "mixARgen"),
               res
           })
 
-# 2011-07-17 pravya mix_pdf etc za "mixAR" (predi byacha samo za mixARGaussian)
+# 2011-07-17 pravya mix_pdf etc za "MixAR" (predi byacha samo za MixARGaussian)
 ## cdf
-setMethod("mix_cdf", signature(model="mixARgen", x="numeric", index="numeric", 
+setMethod("mix_cdf", signature(model="MixARgen", x="numeric", index="numeric", 
                                xcond="missing", scale="ANY"), # note: scale is ignored here!
           function(model, x, index, xcond, scale) {
               print("gen!")
@@ -492,7 +492,7 @@ setMethod("mix_cdf", signature(model="mixARgen", x="numeric", index="numeric",
               wrk
           })
 
-setMethod("mix_cdf", signature(model="mixARgen", x="numeric", index="missing", 
+setMethod("mix_cdf", signature(model="MixARgen", x="numeric", index="missing", 
                                xcond="numeric", scale="ANY"), 
           function(model, x, index, xcond, scale) {
               print("gen!")
@@ -506,7 +506,7 @@ setMethod("mix_cdf", signature(model="mixARgen", x="numeric", index="missing",
               wrk
           })
 
-setMethod("mix_cdf", signature(model="mixARgen", x="missing", index="missing", 
+setMethod("mix_cdf", signature(model="MixARgen", x="missing", index="missing", 
                                xcond="numeric", scale="ANY"), 
           function(model, x, index, xcond, scale) {
               print("gen!")
@@ -522,7 +522,7 @@ setMethod("mix_cdf", signature(model="mixARgen", x="missing", index="missing",
           })
 
 ## pdf
-setMethod("mix_pdf", signature(model="mixARgen", x="numeric", index="numeric", 
+setMethod("mix_pdf", signature(model="MixARgen", x="numeric", index="numeric", 
                                xcond="missing", scale="ANY"),  # note: scale is ignored here!
           function(model, x, index, xcond, scale) {
               pdf <- noise_dist(model, "pdf")
@@ -534,7 +534,7 @@ setMethod("mix_pdf", signature(model="mixARgen", x="numeric", index="numeric",
           })
 
 
-setMethod("mix_pdf", signature(model="mixARgen", x="numeric", index="missing", 
+setMethod("mix_pdf", signature(model="MixARgen", x="numeric", index="missing", 
                                xcond="numeric", scale="ANY"), 
           function(model, x, index, xcond, scale) {
               pdf <- noise_dist(model, "pdf")
@@ -548,7 +548,7 @@ setMethod("mix_pdf", signature(model="mixARgen", x="numeric", index="missing",
           })
 
 
-setMethod("mix_pdf", signature(model="mixARgen", x="missing", index="missing", 
+setMethod("mix_pdf", signature(model="MixARgen", x="missing", index="missing", 
                               xcond="numeric", scale="ANY"), 
           function(model, x, index, xcond, scale) {
               pdf <- noise_dist(model, "pdf")
@@ -564,14 +564,14 @@ setMethod("mix_pdf", signature(model="mixARgen", x="missing", index="missing",
               f
           })
 
-mixARGaussian <- setClass("mixARGaussian", 
+MixARGaussian <- setClass("MixARGaussian", 
          ## representation(), 
          ## prototype, 
-         contains="mixAR"
+         contains="MixAR"
          ## validity, access, where, version, sealed, package, 
          )
 
-setMethod("show", "mixARGaussian", 
+setMethod("show", "MixARGaussian", 
 	  function(object) {
               callNextMethod()
 
@@ -584,7 +584,7 @@ setMethod("show", "mixARGaussian",
 	  })
 
 ## cdf
-setMethod("mix_cdf", signature(model="mixARGaussian", x="numeric", index="numeric", 
+setMethod("mix_cdf", signature(model="MixARGaussian", x="numeric", index="numeric", 
                                xcond="missing", scale="ANY"), # note: scale is ignored here!
           function(model, x, index, xcond, scale) {
               wrk <- mix_ek(model, x, index, scale=TRUE)
@@ -594,7 +594,7 @@ setMethod("mix_cdf", signature(model="mixARGaussian", x="numeric", index="numeri
           })
 
 
-setMethod("mix_cdf", signature(model="mixARGaussian", x="numeric", index="missing", xcond="numeric", 
+setMethod("mix_cdf", signature(model="MixARGaussian", x="numeric", index="missing", xcond="numeric", 
                               scale="ANY"), 
           function(model, x, index, xcond, scale) {
               wrk <- mix_hatk(model, xcond, length(xcond)+1)
@@ -605,7 +605,7 @@ setMethod("mix_cdf", signature(model="mixARGaussian", x="numeric", index="missin
               wrk
           })
 
-setMethod("mix_cdf", signature(model="mixARGaussian", x="missing", index="missing", xcond="numeric", 
+setMethod("mix_cdf", signature(model="MixARGaussian", x="missing", index="missing", xcond="numeric", 
                               scale="ANY"), 
           function(model, x, index, xcond, scale) {
               wrk <- mix_hatk(model, xcond, length(xcond)+1)
@@ -619,7 +619,7 @@ setMethod("mix_cdf", signature(model="mixARGaussian", x="missing", index="missin
           })
 
 ## pdf
-setMethod("mix_pdf", signature(model="mixARGaussian", x="numeric", index="numeric", xcond="missing", 
+setMethod("mix_pdf", signature(model="MixARGaussian", x="numeric", index="numeric", xcond="missing", 
                               scale="ANY"),  # note: scale is ignored here!
           function(model, x, index, xcond, scale) {
               wrk <- mix_ek(model, x, index, scale=TRUE)
@@ -629,7 +629,7 @@ setMethod("mix_pdf", signature(model="mixARGaussian", x="numeric", index="numeri
           })
 
 
-setMethod("mix_pdf", signature(model="mixARGaussian", x="numeric", index="missing", xcond="numeric", 
+setMethod("mix_pdf", signature(model="MixARGaussian", x="numeric", index="missing", xcond="numeric", 
                               scale="ANY"), 
           function(model, x, index, xcond, scale) {
               wrk <- mix_hatk(model, xcond, length(xcond)+1)
@@ -641,7 +641,7 @@ setMethod("mix_pdf", signature(model="mixARGaussian", x="numeric", index="missin
           })
 
 
-setMethod("mix_pdf", signature(model="mixARGaussian", x="missing", index="missing", 
+setMethod("mix_pdf", signature(model="MixARGaussian", x="missing", index="missing", 
                               xcond="numeric", scale="ANY"), 
           function(model, x, index, xcond, scale) {
               wrk <- mix_hatk(model, xcond, length(xcond)+1)
@@ -669,11 +669,11 @@ setMethod("fit_mixAR", signature(x = "ANY", model = "numeric", init = "missing")
 
 setMethod("fit_mixAR", signature(x = "ANY", model = "numeric", init = "numeric"), 
           function(x, model, init, fix, ...){
-              model <- new("mixARGaussian", order = model)
+              model <- new("MixARGaussian", order = model)
               fit_mixAR(x, model, init = init, fix = fix, ...)
           })
 
-setMethod("fit_mixAR", signature(x = "ANY", model = "mixAR", init = "list"), 
+setMethod("fit_mixAR", signature(x = "ANY", model = "MixAR", init = "list"), 
           function(x, model, init, fix, ...){
               wrk <- list()
               for(i in init){
@@ -682,7 +682,7 @@ setMethod("fit_mixAR", signature(x = "ANY", model = "mixAR", init = "list"),
               wrk                     # todo: process the result, e.g. to select a best model?
           })
 
-setMethod("fit_mixAR", signature(x = "ANY", model = "mixAR", init = "numeric"), 
+setMethod("fit_mixAR", signature(x = "ANY", model = "MixAR", init = "numeric"), 
           function(x, model, init, fix, permute, select = TRUE, ...){
               if(missing(permute))
                  permute <- FALSE
@@ -762,7 +762,7 @@ setMethod("fit_mixAR", signature(x = "ANY", model = "mixAR", init = "numeric"),
 
 ## 12/09/2018 The following method now handles "raggedCoefS" objects
 ## note: previous content has not been changed, only added "if" conditions
-setMethod("fit_mixAR", signature(x = "ANY", model = "mixAR", init = "missing"), 
+setMethod("fit_mixAR", signature(x = "ANY", model = "MixAR", init = "missing"), 
           function(x, model, init, fix, ...){
               if(inherits(model@arcoef, "raggedCoefS")){
                       # if(missing(fix)) {
@@ -774,6 +774,16 @@ setMethod("fit_mixAR", signature(x = "ANY", model = "mixAR", init = "missing"),
                              FALSE
                          else if(is.logical(fix))
                              fix
+                         ## 2020-06-05 amended by Georgi
+                         ##     you can't just use a completely different syntax for 
+                         ##     an argument that works for other methods.
+                         ##     An example in inst/slowtests/example.R actually uses 
+                         ##     fix = "shift" and throws error (before this change).
+                         ## TODO: error message below is still confusing since the 
+                         ##     may not notice that it is about mixSARfit, not mixARfit
+                         ##     and even if they did, that would be equally confusing.
+                         else if(is.character(fix) && length(fix) == 1 && fix == "shift")
+                             TRUE
                          else
                              stop("'fix' must be boolean or missing for 'mixSARfit()'")
                   mixSARfit(x, model, est_shift = fix)
@@ -782,7 +792,7 @@ setMethod("fit_mixAR", signature(x = "ANY", model = "mixAR", init = "missing"),
               }# todo: do more here?
           })
 
-setMethod("fit_mixAR", signature(x = "ANY", model = "mixAR", init = "mixAR"), 
+setMethod("fit_mixAR", signature(x = "ANY", model = "MixAR", init = "MixAR"), 
           function(x, model, init, fix, ...){             # todo: process "..." for est_shift?
               ## 2012-11-02 premestvam processing na "fix" v mixARemFixedPoint
               ##    todo: da machna 'fix' ot spisaka na argumentite, za da se predava s '...'.
@@ -800,7 +810,7 @@ setMethod("fit_mixAR", signature(x = "ANY", model = "mixAR", init = "mixAR"),
                   mixARgenemFixedPoint(x, init, fix = fix, ...)
           })
 
-setMethod("fit_mixAR", signature(x = "ANY", model = "mixARGaussian", init = "mixAR"), 
+setMethod("fit_mixAR", signature(x = "ANY", model = "MixARGaussian", init = "MixAR"), 
           function(x, model, init, fix, ...){             # todo: process "..." for est_shift?
               est_shift <- missing(fix) || ! identical(fix, "shift")  # tova beshe krapka, za
                                                                      # da tragnat nestata.
@@ -836,7 +846,7 @@ setGeneric("mix_location",                         # 2012-11-08 new
            useAsDefault = FALSE)
 
 setMethod("mix_location", 
-          signature(model = "mixAR", x = "missing", index = "missing", xcond = "numeric"), 
+          signature(model = "MixAR", x = "missing", index = "missing", xcond = "numeric"), 
           function(model, x, index, xcond) {
               wrk <- mix_hatk(model, xcond, length(xcond)+1) # todo: make simpler!
               wrk <- inner(wrk, model@prob)
@@ -844,7 +854,7 @@ setMethod("mix_location",
           })
 
 setMethod("mix_location", 
-          signature(model = "mixAR", x = "missing", index = "missing", xcond = "missing"), 
+          signature(model = "MixAR", x = "missing", index = "missing", xcond = "missing"), 
           function(model, x, index, xcond) {
               model <- model
               f <- function(xcond){
@@ -856,7 +866,7 @@ setMethod("mix_location",
           })
 
 setMethod("mix_location", 
-          signature(model = "mixAR", x = "numeric", index = "numeric", xcond = "missing"), 
+          signature(model = "MixAR", x = "numeric", index = "numeric", xcond = "missing"), 
           function(model, x, index, xcond) {
                                            # mix_pdf and others use mix_hatk for this purpose, 
                                            # mixFilter is cleaner (and the name is better)
@@ -865,7 +875,7 @@ setMethod("mix_location",
           })
 
 setMethod("mix_location", 
-          signature(model = "mixAR", x = "numeric", index = "missing", xcond = "missing"), 
+          signature(model = "MixAR", x = "numeric", index = "missing", xcond = "missing"), 
           function(model, x, index, xcond){
               index <- seq_along(x)[-(1:max(model@order))]
                                            # mix_pdf and others use mix_hatk for this purpose, 
@@ -882,7 +892,7 @@ setGeneric("mix_variance",                         # 2012-11-08 new
            useAsDefault = FALSE)
 
 setMethod("mix_variance", 
-          signature(model = "mixAR", x = "missing", index = "missing", xcond = "numeric"), 
+          signature(model = "MixAR", x = "missing", index = "missing", xcond = "numeric"), 
           function(model, x, index, xcond) {
               wrk <- mix_hatk(model, xcond, length(xcond)+1) # todo: make simpler!
               loc <- inner(wrk, model@prob)
@@ -892,7 +902,7 @@ setMethod("mix_variance",
           })
 
 setMethod("mix_variance", 
-          signature(model = "mixAR", x = "missing", index = "missing", xcond = "missing"), 
+          signature(model = "MixAR", x = "missing", index = "missing", xcond = "missing"), 
           function(model, x, index, xcond) {
               model <- model
               f <- function(xcond){
@@ -907,7 +917,7 @@ setMethod("mix_variance",
           })
 
 setMethod("mix_variance", 
-          signature(model = "mixAR", x = "numeric", index = "numeric", xcond = "missing"), 
+          signature(model = "MixAR", x = "numeric", index = "numeric", xcond = "missing"), 
           function(model, x, index, xcond) {
                                            # mix_pdf and others use mix_hatk for this purpose, 
                                            # mixFilter is cleaner (and the name is better)
@@ -919,7 +929,7 @@ setMethod("mix_variance",
           })
 
 # setMethod("mix_variance", 
-#           signature(model = "mixAR", x = "numeric", index = "missing", xcond = "missing"), 
+#           signature(model = "MixAR", x = "numeric", index = "missing", xcond = "missing"), 
 #           function(model, x, index, xcond){
 #               index <- seq_along(x)[-(1:max(model@order))]
 #                                            # mix_pdf and others use mix_hatk for this purpose, 
@@ -937,7 +947,7 @@ setGeneric("mix_moment",                         # 2012-11-08 new
            useAsDefault = FALSE)
 
 setMethod("mix_moment", 
-          signature(model = "mixAR", x = "missing", index = "missing", xcond = "numeric"), 
+          signature(model = "MixAR", x = "missing", index = "missing", xcond = "numeric"), 
           function(model, x, index, xcond, k) {
               locall <- mix_hatk(model, xcond, length(xcond)+1) # todo: make simpler!
               loc <- inner(locall, model@prob)
@@ -958,7 +968,7 @@ setGeneric("mix_central_moment",                         # 2012-11-08 new
            useAsDefault = FALSE)
 
 setMethod("mix_central_moment",                                # note: k is scalar (currently)
-          signature(model = "mixAR", x = "missing", index = "missing", xcond = "numeric"), 
+          signature(model = "MixAR", x = "missing", index = "missing", xcond = "numeric"), 
           function(model, x, index, xcond, k) {
               locall <- mix_hatk(model, xcond, length(xcond)+1) # todo: make simpler!
               loc <- inner(locall, model@prob)
@@ -996,7 +1006,7 @@ noise_moment <- function(model, k){ #elements of k are >= 0; odd moments are zer
 
 setGeneric("noise_moment")
 
-setMethod("noise_moment", signature(model = "mixARGaussian", k = "numeric"), 
+setMethod("noise_moment", signature(model = "MixARGaussian", k = "numeric"), 
           function(model, k){
               wrk <-
               if(max(k) <= 5)
@@ -1011,7 +1021,7 @@ setMethod("noise_moment", signature(model = "mixARGaussian", k = "numeric"),
           })
 
 
-setMethod("noise_moment", signature(model = "mixARgen", k = "numeric"), 
+setMethod("noise_moment", signature(model = "MixARgen", k = "numeric"), 
           function(model, k){
               dist <- get_edist(model)
               wrk <- sapply(dist, function(x) x$moment(k))
@@ -1027,19 +1037,19 @@ setGeneric("noise_rand",
               standardGeneric("noise_rand"), 
            useAsDefault = FALSE)
 
-setMethod("noise_rand", signature(model = "mixAR"), 
+setMethod("noise_rand", signature(model = "MixAR"), 
           function(model, expand = FALSE){
               mess <- paste("No method for argument of class", class(model))
               stop(mess)
           })
 
-setMethod("noise_rand", signature(model = "mixARGaussian"), 
+setMethod("noise_rand", signature(model = "MixARGaussian"), 
           function(model, expand = FALSE){
               if(expand) rep(list("rnorm"), mix_ncomp(model))
               else       list("rnorm")
           })
 
-setMethod("noise_rand", signature(model = "mixARgen"), 
+setMethod("noise_rand", signature(model = "MixARgen"), 
           function(model, expand = FALSE){
               dist <- get_edist(model)
               res <- lapply(dist, function(x) x[["rand"]])
@@ -1056,13 +1066,13 @@ setGeneric("noise_dist",
            useAsDefault = FALSE)
 
 
-setMethod("noise_dist", signature(model = "mixAR"), 
+setMethod("noise_dist", signature(model = "MixAR"), 
           function(model, what, expand = FALSE){
               mess <- paste("No method for argument of class", class(model))
               stop(mess)
           })
 
-setMethod("noise_dist", signature(model = "mixARGaussian"), 
+setMethod("noise_dist", signature(model = "MixARGaussian"), 
           function(model, what, expand = FALSE){
               res <- dist_norm[[what]]
 
@@ -1079,13 +1089,13 @@ setGeneric("get_edist",
            useAsDefault = FALSE)
 
 
-setMethod("get_edist", signature(model = "mixAR"), 
+setMethod("get_edist", signature(model = "MixAR"), 
           function(model){
               mess <- paste("No method for argument of class", class(model))
               stop(mess)
           })
 
-setMethod("get_edist", signature(model = "mixARGaussian"), 
+setMethod("get_edist", signature(model = "MixARGaussian"), 
           function(model){
               list(dist_norm)
           })
@@ -1097,12 +1107,12 @@ setGeneric("noise_params",
            useAsDefault = FALSE)
 
 
-setMethod("noise_params", signature(model = "mixAR"), 
+setMethod("noise_params", signature(model = "MixAR"), 
           function(model){
               list()    # the default is no parameters (but todo: should this be numeric(0)?
           })
 
-setMethod("noise_params", signature(model = "mixARgen"),       # todo:  needs further thought !!
+setMethod("noise_params", signature(model = "MixARgen"),       # todo:  needs further thought !!
           function(model){
               if(!is.null(model@dist$param)){     # todo: krapka, to avoid breaking old code
                   ## for old code
@@ -1125,7 +1135,7 @@ set_noise_params <- function(model, nu){
     model
 }
 
-setMethod("noise_dist", signature(model = "mixARgen"), 
+setMethod("noise_dist", signature(model = "MixARgen"), 
           function(model, what, expand = FALSE){
               wrk <- get_edist(model)
               res <- lapply(wrk, function(x) x[[what]])
@@ -1137,7 +1147,7 @@ setMethod("noise_dist", signature(model = "mixARgen"),
               else       res
           })
 
-setMethod("get_edist", signature(model = "mixARgen"), 
+setMethod("get_edist", signature(model = "MixARgen"), 
           function(model){ # todo: the else part of 'if' is a patch, to avoid breaking old code
               res <- if(!is.null(model@dist$generator)){
                          par <- model@dist$param
@@ -1156,7 +1166,7 @@ setGeneric("show_diff",
               standardGeneric("show_diff"),
            useAsDefault=FALSE)
 
-setMethod("show_diff", signature(model1="mixAR", model2="mixAR"),
+setMethod("show_diff", signature(model1="MixAR", model2="MixAR"),
           function(model1, model2){
               if(!identical(model1@order, model2@order)){
                   cat("The two models need to have the same number of components\n",
@@ -1189,7 +1199,7 @@ setMethod("show_diff", signature(model1="mixAR", model2="mixAR"),
 
                                      # todo: if all subclasses of mixAR can return a vector of
                                      # descriptions will not need so many additional methods.
-setMethod("show_diff", signature(model1="mixARgen", model2="mixARgen"),
+setMethod("show_diff", signature(model1="MixARgen", model2="MixARgen"),
           function(model1, model2){
               callNextMethod()
 
@@ -1202,7 +1212,7 @@ setMethod("show_diff", signature(model1="mixARgen", model2="mixARgen"),
               invisible("")
 	  })
 
-setMethod("show_diff", signature(model1="mixARgen", model2="mixARGaussian"),
+setMethod("show_diff", signature(model1="MixARgen", model2="MixARGaussian"),
           function(model1, model2){
               callNextMethod()
 
@@ -1215,7 +1225,7 @@ setMethod("show_diff", signature(model1="mixARgen", model2="mixARGaussian"),
               invisible("")
 	  })
 
-setMethod("show_diff", signature(model1="mixARGaussian", model2="mixARgen"),
+setMethod("show_diff", signature(model1="MixARGaussian", model2="MixARgen"),
           function(model1, model2){
               callNextMethod()
 
@@ -1234,7 +1244,7 @@ parameters <- function(model, namesflag = FALSE, drop = character(0)){
 }
 setGeneric("parameters")
 
-setMethod("parameters", "mixAR",
+setMethod("parameters", "MixAR",
           function(model, namesflag = FALSE, drop = character(0)){  # todo: return named list!
               nams <- c("order", "prob", "shift", "scale")
               nams <- nams[!(nams %in% drop)]  # todo: process arcoef similarly?
@@ -1257,7 +1267,7 @@ setMethod("parameters", "mixAR",
 }
 setGeneric("parameters<-")
 
-setMethod("parameters<-", "mixAR",
+setMethod("parameters<-", "MixAR",
           function(model, value){                                    # todo: return named list!
               nams <- c("order", "prob", "shift", "scale") # todo: put this in a variable?
               g <- .nmix(model)
@@ -1291,7 +1301,7 @@ companion_matrix <- function(v, ncol = length(v), nrow = ncol){
 }
 
 isStable <- function(x){     # todo: make generic?
-    cl <-inherits(x, "mixVAR")
+    cl <-inherits(x, "MixVAR")
     nc <- max(x@order)
     co <- if(cl) x@arcoef else x@arcoef[]    # a matrix
     prob <- x@prob

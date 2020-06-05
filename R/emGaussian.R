@@ -78,7 +78,7 @@ mixMstep <- function(y, tau, order, index, est_shift = TRUE){
     shift <- co$shift
     scale <- rep(NA_real_, length(order))
 
-    model <- new("mixARGaussian", prob = prob, order = order, shift = shift, scale = scale, 
+    model <- new("MixARGaussian", prob = prob, order = order, shift = shift, scale = scale, 
                  arcoef = arcoef)
 
     etk <- mix_ek(model, y, index)
@@ -92,7 +92,7 @@ em_rinit <- function(y, order, partempl){
     etk <- randomMarResiduals(y, order, partempl)
 
     tau <- etk2tau(etk)
-    tau <- new("mixComp", m = tau)
+    tau <- new("MixComp", m = tau)
 
     indx <- (max(order) + 1) : length(y)
 
@@ -108,7 +108,7 @@ em_rinit <- function(y, order, partempl){
             else
                 FALSE
         }
-    mixMstep(y, tau, order, indx, est_shift = est_shift)         # returns mixARGaussian model
+    mixMstep(y, tau, order, indx, est_shift = est_shift)         # returns MixARGaussian model
 }
 
 ## 2018-11-24: changing instead of devel_envir, use local()

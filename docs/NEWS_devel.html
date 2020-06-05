@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>mixAR 0.21.1 • mixAR</title>
+<title>mixAR 0.22.0 • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="mixAR 0.21.1" />
+<meta property="og:title" content="mixAR 0.22.0" />
 
 
 
@@ -110,13 +110,21 @@
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>mixAR 0.21.1</h1>
+      <h1>mixAR 0.22.0</h1>
     </div>
 
 
-<div id="mixar-0211" class="section level1">
+<div id="mixar-0220" class="section level1">
 
 <ul>
+<li>changed names of mixXXX classes to MixXXX.</li>
+</ul>
+</div>
+<div id="mixar-0211" class="section level1">
+<h1 class="hasAnchor">
+<a href="#mixar-0211" class="anchor"></a>mixAR 0.21.1</h1>
+<ul>
+<li><p>numerous other changes not recorded in this file.</p></li>
 <li><p>Edited code for <code>obs_info_matrix.R</code> and <code>mix_se</code>. The function that calculates standard errors is now one, able to handle cases with fix/non-fix shift and, seasonal/non-seasonal models.</p></li>
 <li><p>Edited functions: Bayesian analysis to handle more input errors (i.e. mostly to write tests), <code>[]</code> and <code><a href="https://rdrr.io/r/base/Extract.html">[[</a></code> methods for <code>raggedCoefV</code>.</p></li>
 <li><p>Written tests for Bayesian functions, added tests for <code><a href="reference/mix_se-methods.html">mix_se()</a></code> and <code>raggedCoefS</code>, written tests for <code>raggedCoefV</code> (incomplete).</p></li>
@@ -137,7 +145,7 @@
 <p>Ah, Davide’s commit 3eaf2b07ce7d3fe564d2605df70be371a0d501a1 has changed “mix_se”. Apparently this lead to change of the default.</p>
 <p>@Davide: have you tested <code>fix_shift = FALSE</code>? In such cases it is a good idea to add examples, if not tests. In any case, add an entry to NEWS.md (this file).</p>
 </li>
-<li><p>removed <code>mix_nindex()</code> for “mixComp” objects, use <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> instead.</p></li>
+<li><p>removed <code>mix_nindex()</code> for “MixComp” objects, use <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> instead.</p></li>
 <li><p>In the version number now use only dots as separators.</p></li>
 <li><p>now importing only selected objects from package “fGarch”, not everything.</p></li>
 <li><p>stopped exporting <code><a href="reference/parameters.html">set_parameters()</a></code>, use <code>parameters&lt;-()</code> instead.</p></li>

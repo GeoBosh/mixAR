@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>mixAR models with Gaussian noise components — mixARGaussian-class • mixAR</title>
+<title>mixAR models with Gaussian noise components — MixARGaussian-class • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="mixAR models with Gaussian noise components — mixARGaussian-class" />
-<meta property="og:description" content="Class &quot;mixARGaussian&quot; represents mixAR models with Gaussian
+<meta property="og:title" content="mixAR models with Gaussian noise components — MixARGaussian-class" />
+<meta property="og:description" content="Class &quot;MixARGaussian&quot; represents MixAR models with Gaussian
   noise components." />
 
 
@@ -114,11 +114,11 @@
     <div class="page-header">
     <h1>mixAR models with Gaussian noise components</h1>
     
-    <div class="hidden name"><code>mixARGaussian-class.Rd</code></div>
+    <div class="hidden name"><code>MixARGaussian-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Class <code>"mixARGaussian"</code> represents mixAR models with Gaussian
+    <p>Class <code>"MixARGaussian"</code> represents MixAR models with Gaussian
   noise components.</p>
     </div>
 
@@ -128,11 +128,11 @@
 
     
 
-<p>Objects can be created by calls of the form <code>new("mixARGaussian",
+<p>Objects can be created by calls of the form <code>new("MixARGaussian",
   ...)</code>, giving the elements of the model as named arguments, see the
   examples below. All elements of the model, except <code>arcoef</code>, are
-  simple numeric vectors. From version 0.19-15 of package mixAR it is
-  possible to create objects using <code>mixARGaussian(...)</code>. The two
+  simple numeric vectors. From version 0.19-15 of package MixAR it is
+  possible to create objects using <code>MixARGaussian(...)</code>. The two
   forms are completely equivalent.</p>
 <p><code>arcoef</code> contains the AR coefficients, one numeric vector for
   each mixture component. It can be given as a
@@ -161,52 +161,53 @@
 
     <h2 class="hasAnchor" id="extends"><a class="anchor" href="#extends"></a>Extends</h2>
 
-    <p>Class <code>"<a href='mixAR-class.html'>mixAR</a>"</code>, directly.</p>
+    <p>Class <code>"MixAR"</code>, directly.</p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     <p></p><dl'>
     <dt>mix_cdf</dt><dd><p><!-- % -->
-      <code>signature(model = "mixARGaussian", x = "numeric", index = "numeric", xcond = "missing")</code>:
+      <code>signature(model = "MixARGaussian", x = "numeric", index = "numeric", xcond = "missing")</code>:
       ...</p></dd>
     <dt>mix_cdf</dt><dd><p><!-- % -->
-      <code>signature(model = "mixARGaussian", x = "numeric", index = "missing", xcond = "numeric")</code>:
+      <code>signature(model = "MixARGaussian", x = "numeric", index = "missing", xcond = "numeric")</code>:
       ...</p></dd>
 
-    <dt>fit_mixAR</dt><dd><p><code>signature(x = "ANY", model = "mixARGaussian", init = "mixAR")</code>: ...</p></dd>
-    <dt>get_edist</dt><dd><p><code>signature(model = "mixARGaussian")</code>: ...</p></dd>
-    <dt>mix_cdf</dt><dd><p><code>signature(model = "mixARGaussian", x = "missing", index = "missing", xcond = "numeric")</code>: ...</p></dd>
-    <dt>mix_pdf</dt><dd><p><code>signature(model = "mixARGaussian", x = "missing", index = "missing", xcond = "numeric")</code>: ...</p></dd>
-    <dt>mix_pdf</dt><dd><p><code>signature(model = "mixARGaussian", x = "numeric", index = "missing", xcond = "numeric")</code>: ...</p></dd>
-    <dt>mix_pdf</dt><dd><p><code>signature(model = "mixARGaussian", x = "numeric", index = "numeric", xcond = "missing")</code>: ...</p></dd>
-    <dt>noise_dist</dt><dd><p><code>signature(model = "mixARGaussian")</code>: ...</p></dd>
-    <dt>noise_rand</dt><dd><p><code>signature(model = "mixARGaussian")</code>: ...</p></dd>
+    <dt>fit_mixAR</dt><dd><p><code>signature(x = "ANY", model = "MixARGaussian", init = "MixAR")</code>: ...</p></dd>
+    <dt>get_edist</dt><dd><p><code>signature(model = "MixARGaussian")</code>: ...</p></dd>
+    <dt>mix_cdf</dt><dd><p><code>signature(model = "MixARGaussian", x = "missing", index = "missing", xcond = "numeric")</code>: ...</p></dd>
+    <dt>mix_pdf</dt><dd><p><code>signature(model = "MixARGaussian", x = "missing", index = "missing", xcond = "numeric")</code>: ...</p></dd>
+    <dt>mix_pdf</dt><dd><p><code>signature(model = "MixARGaussian", x = "numeric", index = "missing", xcond = "numeric")</code>: ...</p></dd>
+    <dt>mix_pdf</dt><dd><p><code>signature(model = "MixARGaussian", x = "numeric", index = "numeric", xcond = "missing")</code>: ...</p></dd>
+    <dt>noise_dist</dt><dd><p><code>signature(model = "MixARGaussian")</code>: ...</p></dd>
+    <dt>noise_rand</dt><dd><p><code>signature(model = "MixARGaussian")</code>: ...</p></dd>
 </dl>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><!-- %	~~objects to See Also as \code{\link{~~fun~~}}, ~~~ -->
-  <code><a href='mixAR-class.html'>mixAR</a></code></p></div>
+    <div class='dont-index'><p><code>MixARgen</code>,
+  <code>MixAR</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>showClass</span>(<span class='st'>"mixARGaussian"</span>)</div><div class='output co'>#&gt; Class "mixARGaussian" [package "mixAR"]
+    <pre class="examples"><div class='input'><span class='fu'>showClass</span>(<span class='st'>"MixARGaussian"</span>)</div><div class='output co'>#&gt; Class "MixARGaussian" [package "mixAR"]
 #&gt; 
 #&gt; Slots:
 #&gt;                                                              
 #&gt; Name:        prob      order      shift      scale     arcoef
 #&gt; Class:    numeric    numeric    numeric    numeric raggedCoef
 #&gt; 
-#&gt; Extends: "mixAR"</div><div class='input'>
+#&gt; Extends: "MixAR"</div><div class='input'>
 <span class='co'>## load ibm data from BJ</span>
 <span class='co'>## data(ibmclose, package = "fma")</span>
 
 <span class='co'>## compute a predictive density, assuming exampleModels$WL_ibm model</span>
 <span class='co'>## for the first date after the end of the data</span>
-<span class='no'>pdf1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_pdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))
-
+<span class='no'>pdf1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_pdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'quantmod':</span>
+#&gt; <span class='message'>  method            from</span>
+#&gt; <span class='message'>  as.zoo.data.frame zoo </span></div><div class='input'>
 <span class='co'>## plot the predictive density</span>
 <span class='co'>## (cdf is used to determine limits on the x-axis)</span>
 <span class='no'>cdf1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_cdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))
-<span class='kw pkg'>gbutils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gbutils/man/plotpdf.html'>plotpdf</a></span>(<span class='no'>pdf1</span>, <span class='kw'>cdf</span> <span class='kw'>=</span> <span class='no'>cdf1</span>, <span class='kw'>lq</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>uq</span> <span class='kw'>=</span> <span class='fl'>0.999</span>)</div><div class='img'><img src='mixARGaussian-class-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='kw pkg'>gbutils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gbutils/man/plotpdf.html'>plotpdf</a></span>(<span class='no'>pdf1</span>, <span class='kw'>cdf</span> <span class='kw'>=</span> <span class='no'>cdf1</span>, <span class='kw'>lq</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>uq</span> <span class='kw'>=</span> <span class='fl'>0.999</span>)</div><div class='img'><img src='MixARGaussian-class-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

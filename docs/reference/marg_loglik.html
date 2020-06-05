@@ -40,13 +40,16 @@
 
 
 <meta property="og:title" content="Calculate marginal loglikelihood at high density points of a MAR model. — marg_loglik" />
-<meta property="og:description" content="The function implements the method by (Chib 1995)
+<meta property="og:description" content="
+  
+The function implements the method by
+  Chib (1995)
  and
-  (Chib and Jeliazkov 2001)
- for calculation of the marginal
-  loglikelihood of a mixture autoregressive model. It automatically
-  finds high density values for model parameters, and evaluates the
-  likelihood at such points." />
+  Chib and Jeliazkov (2001)
+ for calculation of the
+  marginal loglikelihood of a mixture autoregressive model. It
+  automatically finds high density values for model parameters, and
+  evaluates the likelihood at such points." />
 
 
 
@@ -123,13 +126,16 @@
     </div>
 
     <div class="ref-description">
-    <p>The function implements the method by (Chib 1995)
+    
+  
+<p>The function implements the method by
+  Chib (1995)
  and
-  (Chib and Jeliazkov 2001)
- for calculation of the marginal
-  loglikelihood of a mixture autoregressive model. It automatically
-  finds high density values for model parameters, and evaluates the
-  likelihood at such points.</p>
+  Chib and Jeliazkov (2001)
+ for calculation of the
+  marginal loglikelihood of a mixture autoregressive model. It
+  automatically finds high density values for model parameters, and
+  evaluates the likelihood at such points.</p>
     </div>
 
     <pre class="usage"><span class='fu'>marg_loglik</span>(<span class='no'>y</span>, <span class='no'>model</span>, <span class='no'>tau</span>, <span class='no'>nsim</span>, <span class='no'>prob_mod</span>)</pre>
@@ -143,8 +149,8 @@
     </tr>
     <tr>
       <th>model</th>
-      <td><p>object of formal class <code>mixAR</code>, containing initial values for
-    the parameters. Currently available for <code>mixARGaussian</code> objects
+      <td><p>object of formal class <code>MixAR</code>, containing initial values for
+    the parameters. Currently available for <code>MixARGaussian</code> objects
     only.</p></td>
     </tr>
     <tr>
@@ -195,29 +201,29 @@
 <span class='no'>sigma</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>)
 <span class='no'>arco</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(-<span class='fl'>0.5</span>, <span class='fl'>1</span>)
 
-<span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>prob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>sigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>arco</span>)
+<span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>prob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>sigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>arco</span>)
 
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>model</span>, <span class='fl'>250</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>, <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='no'>model</span>@<span class='kw'>order</span>)), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>100</span>)  <span class='co'># data</span>
 
 <span class='fu'>marg_loglik</span>(<span class='no'>y</span>, <span class='no'>model</span>, <span class='kw'>tau</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.15</span>, <span class='fl'>.25</span>), <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='fl'>0.5</span>)</div><div class='output co'>#&gt; $marg_loglik
-#&gt; [1] -511.1255
+#&gt; [1] -549.4419
 #&gt; 
 #&gt; $phi_hd
 #&gt; $phi_hd[[1]]
-#&gt; [1] -0.4944666
+#&gt; [1] -0.471619
 #&gt; 
 #&gt; $phi_hd[[2]]
-#&gt; [1] 1.039929
+#&gt; [1] 1.010916
 #&gt; 
 #&gt; 
 #&gt; $prec_hd
-#&gt; [1] 1.110663 0.300590
+#&gt; [1] 0.8207148 0.2249754
 #&gt; 
 #&gt; $mu_hd
-#&gt; [1] -0.06182814 -2.94851607
+#&gt; [1] -0.07199147  2.94373842
 #&gt; 
 #&gt; $weig_hd
-#&gt; [1] 0.4496736 0.5503264
+#&gt; [1] 0.5223636 0.4776364
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

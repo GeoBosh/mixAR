@@ -127,11 +127,11 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>models</th>
-      <td><p>a list of mixAR models to process.</p></td>
+      <td><p>a list of MixAR models to process.</p></td>
     </tr>
     <tr>
       <th>true_model</th>
-      <td><p>the mixAR model used in the experiment.</p></td>
+      <td><p>the MixAR model used in the experiment.</p></td>
     </tr>
     <tr>
       <th>allperm</th>
@@ -165,107 +165,107 @@
     <pre class="examples"><div class='input'><span class='co'>## all examples run succesfully, commenting out some for CRAN</span>
 
 <span class='no'>aII10data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixARExperiment.html'>mixARExperiment</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_II</span>, <span class='kw'>N</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>raw</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; sa$init is:  0 0 
-#&gt; Initial vallogf:  -520.5954 
-#&gt; Final niter:  11 	vallogf:  -512.1701 
-#&gt; Initial vallogf:  -541.4835 
-#&gt; Final niter:  11 	vallogf:  -537.715 
-#&gt; Initial vallogf:  -568.4226 
-#&gt; Final niter:  11 	vallogf:  -561.7493 
-#&gt; Initial vallogf:  -534.8803 
-#&gt; Final niter:  11 	vallogf:  -532.24 
-#&gt; Initial vallogf:  -547.4792 
-#&gt; Final niter:  11 	vallogf:  -538.8828 
-#&gt; Initial vallogf:  -549.6299 
-#&gt; Final niter:  11 	vallogf:  -545.427 
-#&gt; Initial vallogf:  -575.2438 
-#&gt; Final niter:  11 	vallogf:  -568.9168 
-#&gt; Initial vallogf:  -583.0667 
-#&gt; Final niter:  11 	vallogf:  -567.1207 
-#&gt; Initial vallogf:  -564.8206 
-#&gt; Final niter:  11 	vallogf:  -555.7546 
-#&gt; Initial vallogf:  -543.2036 
-#&gt; Final niter:  11 	vallogf:  -535.6613 
-#&gt; [1]  1 18  9 55 15  0
-#&gt; [1]  1 18  9 55 15  0
-#&gt; [1]  1 18  9 55 15  0
-#&gt; [1]  1 18  9 55 15  0
-#&gt; [1]  2 17  9 55 15  0
-#&gt; [1]  1 18  9 55 15  0
-#&gt; [1]  1 18  9 55 15  0
-#&gt; [1]  2 17  9 55 15  0
-#&gt; [1]  1 18  9 55 15  0
-#&gt; [1]  1 18  9 55 15  0</div><div class='input'><span class='no'>aII10</span> <span class='kw'>&lt;-</span> <span class='fu'>test_unswitch</span>(<span class='no'>aII10data</span>$<span class='no'>Raw</span>, <span class='no'>exampleModels</span>$<span class='no'>WL_II</span>)</div><div class='output co'>#&gt; [1] 90  2  0  2  0  4
+#&gt; Initial vallogf:  -562.6168 
+#&gt; Final niter:  11 	vallogf:  -553.2166 
+#&gt; Initial vallogf:  -555.698 
+#&gt; Final niter:  11 	vallogf:  -547.9174 
+#&gt; Initial vallogf:  -543.3575 
+#&gt; Final niter:  11 	vallogf:  -536.9771 
+#&gt; Initial vallogf:  -569.5125 
+#&gt; Final niter:  11 	vallogf:  -563.3693 
+#&gt; Initial vallogf:  -551.3478 
+#&gt; Final niter:  11 	vallogf:  -543.0349 
+#&gt; Initial vallogf:  -582.44 
+#&gt; Final niter:  11 	vallogf:  -572.2396 
+#&gt; Initial vallogf:  -531.5807 
+#&gt; Final niter:  11 	vallogf:  -524.724 
+#&gt; Initial vallogf:  -549.2164 
+#&gt; Final niter:  11 	vallogf:  -540.9751 
+#&gt; Initial vallogf:  -545.081 
+#&gt; Final niter:  11 	vallogf:  -540.7735 
+#&gt; Initial vallogf:  -562.7443 
+#&gt; Final niter:  11 	vallogf:  -559.6766 
+#&gt; [1]  0  0 28 33 35  2
+#&gt; [1]  0  0 28 33 35  2
+#&gt; [1]  0  0 28 33 35  2
+#&gt; [1]  0  0 28 33 35  2
+#&gt; [1]  0  0 28 33 35  2
+#&gt; [1]  0  0 28 33 35  2
+#&gt; [1]  0  0 28 33 35  2
+#&gt; [1]  0  0 28 33 35  2
+#&gt; [1]  0  0 28 33 35  2
+#&gt; [1]  0  0 28 33 35  2</div><div class='input'><span class='no'>aII10</span> <span class='kw'>&lt;-</span> <span class='fu'>test_unswitch</span>(<span class='no'>aII10data</span>$<span class='no'>Raw</span>, <span class='no'>exampleModels</span>$<span class='no'>WL_II</span>)</div><div class='output co'>#&gt; [1] 94  1  0  1  0  2
+#&gt; [1] 95  1  0  1  0  1
+#&gt; [1] 94  3  0  1  0  0
+#&gt; [1] 96  0  0  1  0  1
+#&gt; [1] 96  0  0  1  1  0
+#&gt; [1] 95  2  0  0  0  1
+#&gt; [1] 96  2  0  0  0  0
+#&gt; [1] 94  1  0  1  0  2
+#&gt; [1] 95  2  0  0  0  1
 #&gt; [1] 93  2  0  2  0  1
-#&gt; [1] 87  5  0  3  0  3
-#&gt; [1] 93  3  0  0  0  2
-#&gt; [1] 87  6  0  0  0  5
-#&gt; [1] 91  3  0  1  0  3
-#&gt; [1] 87  3  0  3  0  5
-#&gt; [1] 85  7  0  3  0  3
-#&gt; [1] 92  5  0  1  0  0
-#&gt; [1] 88  5  0  0  0  5
-#&gt; [1]  0  1  0  6 89  2
-#&gt; [1]  0 94  4  0  0  0
-#&gt; [1] 89  1  0  2  0  6
-#&gt; [1]  0 93  4  0  1  0
-#&gt; [1]  0  9 85  3  0  1
-#&gt; [1]  6  0  1  0  0 91
-#&gt; [1]  6  0  0  0  0 92
-#&gt; [1]  4  0  1  0  1 92
-#&gt; [1]  3 92  1  0  2  0
-#&gt; [1]  0  8 85  3  0  2</div><div class='input'><span class='no'>aII10</span></div><div class='output co'>#&gt; $mean
-#&gt;            original   u_original      messed     u_messed
-#&gt; order1  2.000000000  2.000000000  2.00000000  2.000000000
-#&gt; order2  2.000000000  2.000000000  2.00000000  2.000000000
-#&gt; order3  2.000000000  2.000000000  2.00000000  2.000000000
-#&gt; prob1   0.382418348  0.382418348  0.30971041  0.382418348
-#&gt; prob2   0.292742413  0.292742413  0.33091388  0.292742413
-#&gt; prob3   0.324839239  0.324839239  0.35937571  0.324839239
-#&gt; shift1  4.981617726  4.981617726  1.54125871  4.981617726
-#&gt; shift2 -0.004153722 -0.004153722 -0.48017153 -0.004153722
-#&gt; shift3 -4.795983620 -4.795983620 -0.87960679 -4.795983620
-#&gt; scale1  1.025035961  1.025035961  1.32708556  1.025035961
-#&gt; scale2  0.867857878  0.867857878  2.77785929  0.867857878
-#&gt; scale3  4.837939585  4.837939585  2.62588857  4.837939585
-#&gt; ar_11   0.903810029  0.903810029  0.01699505  0.903810029
-#&gt; ar_12  -0.604676358 -0.604676358 -0.15463054 -0.604676358
-#&gt; ar_21  -0.701302059 -0.701302059  0.25019921 -0.701302059
-#&gt; ar_22  -0.002672210 -0.002672210  0.15809901 -0.002672210
-#&gt; ar_31  -0.010013992 -0.010013992 -0.07470028 -0.010013992
-#&gt; ar_32   0.785409731  0.785409731  0.17459269  0.785409731
+#&gt; [1]  0  4  0  3 90  1
+#&gt; [1]  1  0  1  0  0 96
+#&gt; [1] 96  1  0  1  0  0
+#&gt; [1] 95  1  0  1  0  1
+#&gt; [1]  2  0  3  0  1 92
+#&gt; [1]  2  0  1 95  0  0
+#&gt; [1]  1 96  0  0  1  0
+#&gt; [1]  1 91  3  0  3  0
+#&gt; [1]  1  0  0  0  0 97
+#&gt; [1]  0  0  0  2 96  0</div><div class='input'><span class='no'>aII10</span></div><div class='output co'>#&gt; $mean
+#&gt;           original  u_original      messed    u_messed
+#&gt; order1  2.00000000  2.00000000  2.00000000  2.00000000
+#&gt; order2  2.00000000  2.00000000  2.00000000  2.00000000
+#&gt; order3  2.00000000  2.00000000  2.00000000  2.00000000
+#&gt; prob1   0.39162755  0.39162755  0.36397751  0.39162755
+#&gt; prob2   0.29927859  0.29927859  0.32840091  0.29927859
+#&gt; prob3   0.30909387  0.30909387  0.30762158  0.30909387
+#&gt; shift1  5.01086826  5.01086826  0.37988128  5.01086826
+#&gt; shift2  0.05954967  0.05954967  1.46073321  0.05954967
+#&gt; shift3 -5.44204094 -5.44204094 -2.21223751 -5.44204094
+#&gt; scale1  0.95664095  0.95664095  2.21120126  0.95664095
+#&gt; scale2  0.98757511  0.98757511  1.77697565  0.98757511
+#&gt; scale3  5.08808403  5.08808403  3.04412318  5.08808403
+#&gt; ar_11   0.90284396  0.90284396  0.17035899  0.90284396
+#&gt; ar_12  -0.60147950 -0.60147950 -0.03575286 -0.60147950
+#&gt; ar_21  -0.69573186 -0.69573186  0.25216096 -0.69573186
+#&gt; ar_22   0.00625185  0.00625185 -0.13869984  0.00625185
+#&gt; ar_31   0.05513947  0.05513947 -0.16026839  0.05513947
+#&gt; ar_32   0.76735777  0.76735777  0.34658281  0.76735777
 #&gt; 
 #&gt; $sd
-#&gt;           original  u_original     messed    u_messed
-#&gt; order1 2.000000000 2.000000000 2.00000000 2.000000000
-#&gt; order2 2.000000000 2.000000000 2.00000000 2.000000000
-#&gt; order3 2.000000000 2.000000000 2.00000000 2.000000000
-#&gt; prob1  0.040743411 0.040743411 0.06536829 0.040743411
-#&gt; prob2  0.048181456 0.048181456 0.04423146 0.048181456
-#&gt; prob3  0.046903102 0.046903102 0.05621150 0.046903102
-#&gt; shift1 0.175508267 0.175508267 3.30218686 0.175508267
-#&gt; shift2 0.153546737 0.153546737 4.86237624 0.153546737
-#&gt; shift3 0.519987714 0.519987714 3.89274307 0.519987714
-#&gt; scale1 0.071455366 0.071455366 1.30441797 0.071455366
-#&gt; scale2 0.074490279 0.074490279 1.90724755 0.074490279
-#&gt; scale3 0.438383225 0.438383225 2.16383093 0.438383225
-#&gt; ar_11  0.010377163 0.010377163 0.79797694 0.010377163
-#&gt; ar_12  0.009711080 0.009711080 0.46594450 0.009711080
-#&gt; ar_21  0.019007873 0.019007873 0.59979064 0.019007873
-#&gt; ar_22  0.009688285 0.009688285 0.70589408 0.009688285
-#&gt; ar_31  0.110296847 0.110296847 0.62790247 0.110296847
-#&gt; ar_32  0.086543862 0.086543862 0.54383323 0.086543862
+#&gt;          original u_original     messed   u_messed
+#&gt; order1 2.00000000 2.00000000 2.00000000 2.00000000
+#&gt; order2 2.00000000 2.00000000 2.00000000 2.00000000
+#&gt; order3 2.00000000 2.00000000 2.00000000 2.00000000
+#&gt; prob1  0.04171298 0.04171298 0.05907437 0.04171298
+#&gt; prob2  0.03433360 0.03433360 0.06158998 0.03433360
+#&gt; prob3  0.03428261 0.03428261 0.02689213 0.03428261
+#&gt; shift1 0.11529845 0.11529845 4.60807081 0.11529845
+#&gt; shift2 0.13078574 0.13078574 4.16536402 0.13078574
+#&gt; shift3 0.64493692 0.64493692 3.83430448 0.64493692
+#&gt; scale1 0.12134871 0.12134871 2.04943285 0.12134871
+#&gt; scale2 0.09115965 0.09115965 1.72799212 0.09115965
+#&gt; scale3 0.30814767 0.30814767 2.13541543 0.30814767
+#&gt; ar_11  0.01358781 0.01358781 0.70764009 0.01358781
+#&gt; ar_12  0.01403822 0.01403822 0.56281884 0.01403822
+#&gt; ar_21  0.01931290 0.01931290 0.74424760 0.01931290
+#&gt; ar_22  0.01294099 0.01294099 0.57102393 0.01294099
+#&gt; ar_31  0.14010403 0.14010403 0.53008605 0.14010403
+#&gt; ar_32  0.12133032 0.12133032 0.52179822 0.12133032
 #&gt; 
 #&gt; $summaries
 #&gt; $summaries$original
 #&gt; $summaries$original$mean
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift        scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3824183  4.981617726 1.0250360   2    0.90381003 -0.60467636
-#&gt; Comp_2 0.2927424 -0.004153722 0.8678579   2   -0.70130206 -0.00267221
-#&gt; Comp_3 0.3248392 -4.795983620 4.8379396   2   -0.01001399  0.78540973
+#&gt;        prob      shift       scale     order ar_1        ar_2       
+#&gt; Comp_1 0.3916275  5.01086826 0.9566409   2    0.90284396 -0.60147950
+#&gt; Comp_2 0.2992786  0.05954967 0.9875751   2   -0.69573186  0.00625185
+#&gt; Comp_3 0.3090939 -5.44204094 5.0880840   2    0.05513947  0.76735777
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -274,12 +274,12 @@
 #&gt; $summaries$original$sd
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob       shift     scale      order ar_1       ar_2       
-#&gt; Comp_1 0.04074341 0.1755083 0.07145537   2   0.01037716 0.009711080
-#&gt; Comp_2 0.04818146 0.1535467 0.07449028   2   0.01900787 0.009688285
-#&gt; Comp_3 0.04690310 0.5199877 0.43838322   2   0.11029685 0.086543862
+#&gt;        prob       shift     scale      order ar_1       ar_2      
+#&gt; Comp_1 0.04171298 0.1152984 0.12134871   2   0.01358781 0.01403822
+#&gt; Comp_2 0.03433360 0.1307857 0.09115965   2   0.01931290 0.01294099
+#&gt; Comp_3 0.03428261 0.6449369 0.30814767   2   0.14010403 0.12133032
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -290,12 +290,12 @@
 #&gt; $summaries$u_original$mean
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift        scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3824183  4.981617726 1.0250360   2    0.90381003 -0.60467636
-#&gt; Comp_2 0.2927424 -0.004153722 0.8678579   2   -0.70130206 -0.00267221
-#&gt; Comp_3 0.3248392 -4.795983620 4.8379396   2   -0.01001399  0.78540973
+#&gt;        prob      shift       scale     order ar_1        ar_2       
+#&gt; Comp_1 0.3916275  5.01086826 0.9566409   2    0.90284396 -0.60147950
+#&gt; Comp_2 0.2992786  0.05954967 0.9875751   2   -0.69573186  0.00625185
+#&gt; Comp_3 0.3090939 -5.44204094 5.0880840   2    0.05513947  0.76735777
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -304,12 +304,12 @@
 #&gt; $summaries$u_original$sd
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob       shift     scale      order ar_1       ar_2       
-#&gt; Comp_1 0.04074341 0.1755083 0.07145537   2   0.01037716 0.009711080
-#&gt; Comp_2 0.04818146 0.1535467 0.07449028   2   0.01900787 0.009688285
-#&gt; Comp_3 0.04690310 0.5199877 0.43838322   2   0.11029685 0.086543862
+#&gt;        prob       shift     scale      order ar_1       ar_2      
+#&gt; Comp_1 0.04171298 0.1152984 0.12134871   2   0.01358781 0.01403822
+#&gt; Comp_2 0.03433360 0.1307857 0.09115965   2   0.01931290 0.01294099
+#&gt; Comp_3 0.03428261 0.6449369 0.30814767   2   0.14010403 0.12133032
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -320,12 +320,12 @@
 #&gt; $summaries$messed$mean
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1        ar_2      
-#&gt; Comp_1 0.3097104  1.5412587 1.327086   2    0.01699505 -0.1546305
-#&gt; Comp_2 0.3309139 -0.4801715 2.777859   2    0.25019921  0.1580990
-#&gt; Comp_3 0.3593757 -0.8796068 2.625889   2   -0.07470028  0.1745927
+#&gt;        prob      shift      scale    order ar_1       ar_2       
+#&gt; Comp_1 0.3639775  0.3798813 2.211201   2    0.1703590 -0.03575286
+#&gt; Comp_2 0.3284009  1.4607332 1.776976   2    0.2521610 -0.13869984
+#&gt; Comp_3 0.3076216 -2.2122375 3.044123   2   -0.1602684  0.34658281
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -334,12 +334,12 @@
 #&gt; $summaries$messed$sd
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob       shift    scale    order ar_1      ar_2     
-#&gt; Comp_1 0.06536829 3.302187 1.304418   2   0.7979769 0.4659445
-#&gt; Comp_2 0.04423146 4.862376 1.907248   2   0.5997906 0.7058941
-#&gt; Comp_3 0.05621150 3.892743 2.163831   2   0.6279025 0.5438332
+#&gt; Comp_1 0.05907437 4.608071 2.049433   2   0.7076401 0.5628188
+#&gt; Comp_2 0.06158998 4.165364 1.727992   2   0.7442476 0.5710239
+#&gt; Comp_3 0.02689213 3.834304 2.135415   2   0.5300861 0.5217982
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -350,12 +350,12 @@
 #&gt; $summaries$u_messed$mean
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift        scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3824183  4.981617726 1.0250360   2    0.90381003 -0.60467636
-#&gt; Comp_2 0.2927424 -0.004153722 0.8678579   2   -0.70130206 -0.00267221
-#&gt; Comp_3 0.3248392 -4.795983620 4.8379396   2   -0.01001399  0.78540973
+#&gt;        prob      shift       scale     order ar_1        ar_2       
+#&gt; Comp_1 0.3916275  5.01086826 0.9566409   2    0.90284396 -0.60147950
+#&gt; Comp_2 0.2992786  0.05954967 0.9875751   2   -0.69573186  0.00625185
+#&gt; Comp_3 0.3090939 -5.44204094 5.0880840   2    0.05513947  0.76735777
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -364,12 +364,12 @@
 #&gt; $summaries$u_messed$sd
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob       shift     scale      order ar_1       ar_2       
-#&gt; Comp_1 0.04074341 0.1755083 0.07145537   2   0.01037716 0.009711080
-#&gt; Comp_2 0.04818146 0.1535467 0.07449028   2   0.01900787 0.009688285
-#&gt; Comp_3 0.04690310 0.5199877 0.43838322   2   0.11029685 0.086543862
+#&gt;        prob       shift     scale      order ar_1       ar_2      
+#&gt; Comp_1 0.04171298 0.1152984 0.12134871   2   0.01358781 0.01403822
+#&gt; Comp_2 0.03433360 0.1307857 0.09115965   2   0.01931290 0.01294099
+#&gt; Comp_3 0.03428261 0.6449369 0.30814767   2   0.14010403 0.12133032
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -382,12 +382,12 @@
 #&gt; $Raw$original[[1]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3667142  4.79782910 1.0619587   2    0.91263500 -0.61752544
-#&gt; Comp_2 0.3896770  0.04361111 0.8661917   2   -0.67388797 -0.01745147
-#&gt; Comp_3 0.2436088 -4.82587921 5.0243190   2    0.08238799  0.85965233
+#&gt;        prob      shift      scale     order ar_1       ar_2       
+#&gt; Comp_1 0.3411785  5.0481659 0.7778885   2    0.9081446 -0.59469956
+#&gt; Comp_2 0.3302305  0.1907312 1.0471221   2   -0.7114060  0.01372811
+#&gt; Comp_3 0.3285910 -5.6091689 5.1552906   2    0.2496454  0.56609025
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -396,12 +396,12 @@
 #&gt; $Raw$original[[2]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1       ar_2       
-#&gt; Comp_1 0.3779636  4.92156993 0.9959037   2    0.9090501 -0.59585490
-#&gt; Comp_2 0.3401775  0.05201454 0.9103321   2   -0.6982902  0.00694013
-#&gt; Comp_3 0.2818588 -4.25211753 5.0454036   2   -0.1094308  0.67765242
+#&gt;        prob      shift      scale     order ar_1        ar_2      
+#&gt; Comp_1 0.3954514  4.8741264 1.0896556   2    0.88258421 -0.5920730
+#&gt; Comp_2 0.3249282  0.1200711 0.9134834   2   -0.72033087  0.0112507
+#&gt; Comp_3 0.2796204 -6.4014794 4.8808943   2    0.06336508  0.9359427
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -410,12 +410,12 @@
 #&gt; $Raw$original[[3]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3520531  4.8949714 1.1211427   2    0.89568706 -0.60953347
-#&gt; Comp_2 0.2860046 -0.1573934 0.8728482   2   -0.72559922 -0.01192794
-#&gt; Comp_3 0.3619423 -4.9985312 4.6076374   2   -0.04903766  0.71207348
+#&gt; Comp_1 0.4463385  4.9767944 0.9282775   2    0.89871866 -0.60528856
+#&gt; Comp_2 0.2187610  0.3004256 0.9179463   2   -0.68412523  0.01098884
+#&gt; Comp_3 0.3349005 -5.5463957 4.4927152   2   -0.04097905  0.79021179
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -424,12 +424,12 @@
 #&gt; $Raw$original[[4]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale     order ar_1        ar_2         
-#&gt; Comp_1 0.3782962  5.1197566 0.9977251   2    0.90100495 -0.5949859794
-#&gt; Comp_2 0.3258736 -0.1353261 0.9052810   2   -0.70619113 -0.0004355487
-#&gt; Comp_3 0.2958302 -4.5382237 4.5026685   2    0.01273192  0.7742613562
+#&gt;        prob      shift       scale     order ar_1        ar_2        
+#&gt; Comp_1 0.4022243  5.13488530 1.1299216   2    0.90396671 -0.601712306
+#&gt; Comp_2 0.3018146  0.02411551 0.8950687   2   -0.72719889 -0.004330968
+#&gt; Comp_3 0.2959611 -6.14239591 5.2644403   2    0.02202054  0.834244616
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -438,12 +438,12 @@
 #&gt; $Raw$original[[5]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1       ar_2       
-#&gt; Comp_1 0.3976360  5.17561649 0.9962960   2    0.8980398 -0.59980522
-#&gt; Comp_2 0.2675038 -0.06860527 0.7401275   2   -0.7330952  0.01735214
-#&gt; Comp_3 0.3348602 -4.59441376 4.7223314   2   -0.1236820  0.82457849
+#&gt;        prob      shift       scale     order ar_1       ar_2      
+#&gt; Comp_1 0.3741067  4.99599434 0.8713118   2    0.9294032 -0.6101145
+#&gt; Comp_2 0.3073134 -0.09492807 1.0363693   2   -0.6840775  0.0195349
+#&gt; Comp_3 0.3185799 -4.04026198 5.6074104   2    0.2753504  0.5842785
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -452,12 +452,12 @@
 #&gt; $Raw$original[[6]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1        ar_2        
-#&gt; Comp_1 0.4291830  5.0709450 1.075168   2    0.89756712 -0.610081703
-#&gt; Comp_2 0.2705983 -0.0277807 0.858818   2   -0.69783849 -0.002577413
-#&gt; Comp_3 0.3002188 -4.3679211 5.255042   2    0.02295799  0.651679082
+#&gt;        prob      shift      scale    order ar_1        ar_2      
+#&gt; Comp_1 0.3423785  5.1085362 1.012887   2    0.88228692 -0.5745788
+#&gt; Comp_2 0.2837135 -0.1170835 1.064417   2   -0.67897873  0.0250349
+#&gt; Comp_3 0.3739080 -5.2704326 5.433096   2   -0.08646821  0.6970709
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -466,12 +466,12 @@
 #&gt; $Raw$original[[7]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale     order ar_1         ar_2        
-#&gt; Comp_1 0.3107450  5.0222549 1.0407452   2    0.927059065 -0.611998238
-#&gt; Comp_2 0.3088892  0.2409876 0.9229496   2   -0.704310854 -0.003507493
-#&gt; Comp_3 0.3803658 -4.9766579 5.0074391   2    0.008182389  0.755849808
+#&gt;        prob      shift       scale    order ar_1       ar_2         
+#&gt; Comp_1 0.4697938  4.91133340 0.908227   2    0.9033138 -0.5883061706
+#&gt; Comp_2 0.2697366  0.02050758 0.922624   2   -0.6714126  0.0004211999
+#&gt; Comp_3 0.2604695 -5.48591352 5.058611   2   -0.1193858  0.8459882603
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -480,12 +480,12 @@
 #&gt; $Raw$original[[8]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1       ar_2       
-#&gt; Comp_1 0.3511850  4.66992367 0.8637362   2    0.8913071 -0.58674478
-#&gt; Comp_2 0.2518653  0.04013054 0.7966959   2   -0.7078356 -0.00286745
-#&gt; Comp_3 0.3969497 -4.58557211 5.6208216   2    0.2363464  0.85557438
+#&gt;        prob      shift      scale     order ar_1       ar_2       
+#&gt; Comp_1 0.3643027  5.1727045 0.7953464   2    0.9079930 -0.61923664
+#&gt; Comp_2 0.3076846  0.1430743 1.0575703   2   -0.6826026 -0.01426371
+#&gt; Comp_3 0.3280128 -4.9186408 5.0419639   2    0.1991377  0.76099307
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -494,12 +494,12 @@
 #&gt; $Raw$original[[9]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1       ar_2        
-#&gt; Comp_1 0.4123606  4.9094491 1.009975   2    0.8997830 -0.610836962
-#&gt; Comp_2 0.2528697 -0.2371627 1.002135   2   -0.6910895 -0.009100816
-#&gt; Comp_3 0.3347698 -6.1080709 4.107260   2   -0.1137856  0.920290952
+#&gt;        prob      shift       scale     order ar_1        ar_2       
+#&gt; Comp_1 0.4044208  5.06131140 1.0682997   2    0.90988764 -0.61581868
+#&gt; Comp_2 0.3235295  0.04971036 0.8804056   2   -0.68898719 -0.01068206
+#&gt; Comp_3 0.2720497 -5.41356394 5.0148236   2   -0.03110754  0.88500719
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -508,12 +508,12 @@
 #&gt; $Raw$original[[10]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift     scale     order ar_1        ar_2        
-#&gt; Comp_1 0.4480468  5.233861 1.0877100   2    0.90596705 -0.609396886
-#&gt; Comp_2 0.2339652  0.207987 0.8031997   2   -0.67488242 -0.003146252
-#&gt; Comp_3 0.3179880 -4.712449 4.4864732   2   -0.06681049  0.822485029
+#&gt;        prob      shift      scale     order ar_1        ar_2       
+#&gt; Comp_1 0.3760804  4.8248307 0.9845945   2    0.90214092 -0.61296679
+#&gt; Comp_2 0.3250740 -0.0411274 1.1407447   2   -0.70819896  0.01083658
+#&gt; Comp_3 0.2988457 -5.5921567 4.9315949   2    0.01981614  0.77375037
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -524,12 +524,12 @@
 #&gt; $Raw$u_original[[1]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3667142  4.79782910 1.0619587   2    0.91263500 -0.61752544
-#&gt; Comp_2 0.3896770  0.04361111 0.8661917   2   -0.67388797 -0.01745147
-#&gt; Comp_3 0.2436088 -4.82587921 5.0243190   2    0.08238799  0.85965233
+#&gt;        prob      shift      scale     order ar_1       ar_2       
+#&gt; Comp_1 0.3411785  5.0481659 0.7778885   2    0.9081446 -0.59469956
+#&gt; Comp_2 0.3302305  0.1907312 1.0471221   2   -0.7114060  0.01372811
+#&gt; Comp_3 0.3285910 -5.6091689 5.1552906   2    0.2496454  0.56609025
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -538,12 +538,12 @@
 #&gt; $Raw$u_original[[2]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1       ar_2       
-#&gt; Comp_1 0.3779636  4.92156993 0.9959037   2    0.9090501 -0.59585490
-#&gt; Comp_2 0.3401775  0.05201454 0.9103321   2   -0.6982902  0.00694013
-#&gt; Comp_3 0.2818588 -4.25211753 5.0454036   2   -0.1094308  0.67765242
+#&gt;        prob      shift      scale     order ar_1        ar_2      
+#&gt; Comp_1 0.3954514  4.8741264 1.0896556   2    0.88258421 -0.5920730
+#&gt; Comp_2 0.3249282  0.1200711 0.9134834   2   -0.72033087  0.0112507
+#&gt; Comp_3 0.2796204 -6.4014794 4.8808943   2    0.06336508  0.9359427
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -552,12 +552,12 @@
 #&gt; $Raw$u_original[[3]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3520531  4.8949714 1.1211427   2    0.89568706 -0.60953347
-#&gt; Comp_2 0.2860046 -0.1573934 0.8728482   2   -0.72559922 -0.01192794
-#&gt; Comp_3 0.3619423 -4.9985312 4.6076374   2   -0.04903766  0.71207348
+#&gt; Comp_1 0.4463385  4.9767944 0.9282775   2    0.89871866 -0.60528856
+#&gt; Comp_2 0.2187610  0.3004256 0.9179463   2   -0.68412523  0.01098884
+#&gt; Comp_3 0.3349005 -5.5463957 4.4927152   2   -0.04097905  0.79021179
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -566,12 +566,12 @@
 #&gt; $Raw$u_original[[4]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale     order ar_1        ar_2         
-#&gt; Comp_1 0.3782962  5.1197566 0.9977251   2    0.90100495 -0.5949859794
-#&gt; Comp_2 0.3258736 -0.1353261 0.9052810   2   -0.70619113 -0.0004355487
-#&gt; Comp_3 0.2958302 -4.5382237 4.5026685   2    0.01273192  0.7742613562
+#&gt;        prob      shift       scale     order ar_1        ar_2        
+#&gt; Comp_1 0.4022243  5.13488530 1.1299216   2    0.90396671 -0.601712306
+#&gt; Comp_2 0.3018146  0.02411551 0.8950687   2   -0.72719889 -0.004330968
+#&gt; Comp_3 0.2959611 -6.14239591 5.2644403   2    0.02202054  0.834244616
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -580,12 +580,12 @@
 #&gt; $Raw$u_original[[5]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1       ar_2       
-#&gt; Comp_1 0.3976360  5.17561649 0.9962960   2    0.8980398 -0.59980522
-#&gt; Comp_2 0.2675038 -0.06860527 0.7401275   2   -0.7330952  0.01735214
-#&gt; Comp_3 0.3348602 -4.59441376 4.7223314   2   -0.1236820  0.82457849
+#&gt;        prob      shift       scale     order ar_1       ar_2      
+#&gt; Comp_1 0.3741067  4.99599434 0.8713118   2    0.9294032 -0.6101145
+#&gt; Comp_2 0.3073134 -0.09492807 1.0363693   2   -0.6840775  0.0195349
+#&gt; Comp_3 0.3185799 -4.04026198 5.6074104   2    0.2753504  0.5842785
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -594,12 +594,12 @@
 #&gt; $Raw$u_original[[6]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1        ar_2        
-#&gt; Comp_1 0.4291830  5.0709450 1.075168   2    0.89756712 -0.610081703
-#&gt; Comp_2 0.2705983 -0.0277807 0.858818   2   -0.69783849 -0.002577413
-#&gt; Comp_3 0.3002188 -4.3679211 5.255042   2    0.02295799  0.651679082
+#&gt;        prob      shift      scale    order ar_1        ar_2      
+#&gt; Comp_1 0.3423785  5.1085362 1.012887   2    0.88228692 -0.5745788
+#&gt; Comp_2 0.2837135 -0.1170835 1.064417   2   -0.67897873  0.0250349
+#&gt; Comp_3 0.3739080 -5.2704326 5.433096   2   -0.08646821  0.6970709
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -608,12 +608,12 @@
 #&gt; $Raw$u_original[[7]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale     order ar_1         ar_2        
-#&gt; Comp_1 0.3107450  5.0222549 1.0407452   2    0.927059065 -0.611998238
-#&gt; Comp_2 0.3088892  0.2409876 0.9229496   2   -0.704310854 -0.003507493
-#&gt; Comp_3 0.3803658 -4.9766579 5.0074391   2    0.008182389  0.755849808
+#&gt;        prob      shift       scale    order ar_1       ar_2         
+#&gt; Comp_1 0.4697938  4.91133340 0.908227   2    0.9033138 -0.5883061706
+#&gt; Comp_2 0.2697366  0.02050758 0.922624   2   -0.6714126  0.0004211999
+#&gt; Comp_3 0.2604695 -5.48591352 5.058611   2   -0.1193858  0.8459882603
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -622,12 +622,12 @@
 #&gt; $Raw$u_original[[8]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1       ar_2       
-#&gt; Comp_1 0.3511850  4.66992367 0.8637362   2    0.8913071 -0.58674478
-#&gt; Comp_2 0.2518653  0.04013054 0.7966959   2   -0.7078356 -0.00286745
-#&gt; Comp_3 0.3969497 -4.58557211 5.6208216   2    0.2363464  0.85557438
+#&gt;        prob      shift      scale     order ar_1       ar_2       
+#&gt; Comp_1 0.3643027  5.1727045 0.7953464   2    0.9079930 -0.61923664
+#&gt; Comp_2 0.3076846  0.1430743 1.0575703   2   -0.6826026 -0.01426371
+#&gt; Comp_3 0.3280128 -4.9186408 5.0419639   2    0.1991377  0.76099307
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -636,12 +636,12 @@
 #&gt; $Raw$u_original[[9]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1       ar_2        
-#&gt; Comp_1 0.4123606  4.9094491 1.009975   2    0.8997830 -0.610836962
-#&gt; Comp_2 0.2528697 -0.2371627 1.002135   2   -0.6910895 -0.009100816
-#&gt; Comp_3 0.3347698 -6.1080709 4.107260   2   -0.1137856  0.920290952
+#&gt;        prob      shift       scale     order ar_1        ar_2       
+#&gt; Comp_1 0.4044208  5.06131140 1.0682997   2    0.90988764 -0.61581868
+#&gt; Comp_2 0.3235295  0.04971036 0.8804056   2   -0.68898719 -0.01068206
+#&gt; Comp_3 0.2720497 -5.41356394 5.0148236   2   -0.03110754  0.88500719
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -650,12 +650,12 @@
 #&gt; $Raw$u_original[[10]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift     scale     order ar_1        ar_2        
-#&gt; Comp_1 0.4480468  5.233861 1.0877100   2    0.90596705 -0.609396886
-#&gt; Comp_2 0.2339652  0.207987 0.8031997   2   -0.67488242 -0.003146252
-#&gt; Comp_3 0.3179880 -4.712449 4.4864732   2   -0.06681049  0.822485029
+#&gt;        prob      shift      scale     order ar_1        ar_2       
+#&gt; Comp_1 0.3760804  4.8248307 0.9845945   2    0.90214092 -0.61296679
+#&gt; Comp_2 0.3250740 -0.0411274 1.1407447   2   -0.70819896  0.01083658
+#&gt; Comp_3 0.2988457 -5.5921567 4.9315949   2    0.01981614  0.77375037
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -666,12 +666,12 @@
 #&gt; $Raw$messed[[1]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2       
-#&gt; Comp_1 0.2436088 -4.82587921 5.0243190   2    0.08238799  0.85965233
-#&gt; Comp_2 0.3667142  4.79782910 1.0619587   2    0.91263500 -0.61752544
-#&gt; Comp_3 0.3896770  0.04361111 0.8661917   2   -0.67388797 -0.01745147
+#&gt;        prob      shift      scale     order ar_1       ar_2       
+#&gt; Comp_1 0.3285910 -5.6091689 5.1552906   2    0.2496454  0.56609025
+#&gt; Comp_2 0.3411785  5.0481659 0.7778885   2    0.9081446 -0.59469956
+#&gt; Comp_3 0.3302305  0.1907312 1.0471221   2   -0.7114060  0.01372811
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -680,12 +680,12 @@
 #&gt; $Raw$messed[[2]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1       ar_2       
-#&gt; Comp_1 0.3779636  4.92156993 0.9959037   2    0.9090501 -0.59585490
-#&gt; Comp_2 0.2818588 -4.25211753 5.0454036   2   -0.1094308  0.67765242
-#&gt; Comp_3 0.3401775  0.05201454 0.9103321   2   -0.6982902  0.00694013
+#&gt;        prob      shift      scale     order ar_1        ar_2      
+#&gt; Comp_1 0.3249282  0.1200711 0.9134834   2   -0.72033087  0.0112507
+#&gt; Comp_2 0.3954514  4.8741264 1.0896556   2    0.88258421 -0.5920730
+#&gt; Comp_3 0.2796204 -6.4014794 4.8808943   2    0.06336508  0.9359427
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -694,12 +694,12 @@
 #&gt; $Raw$messed[[3]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3520531  4.8949714 1.1211427   2    0.89568706 -0.60953347
-#&gt; Comp_2 0.2860046 -0.1573934 0.8728482   2   -0.72559922 -0.01192794
-#&gt; Comp_3 0.3619423 -4.9985312 4.6076374   2   -0.04903766  0.71207348
+#&gt; Comp_1 0.4463385  4.9767944 0.9282775   2    0.89871866 -0.60528856
+#&gt; Comp_2 0.2187610  0.3004256 0.9179463   2   -0.68412523  0.01098884
+#&gt; Comp_3 0.3349005 -5.5463957 4.4927152   2   -0.04097905  0.79021179
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -708,12 +708,12 @@
 #&gt; $Raw$messed[[4]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale     order ar_1        ar_2         
-#&gt; Comp_1 0.3782962  5.1197566 0.9977251   2    0.90100495 -0.5949859794
-#&gt; Comp_2 0.2958302 -4.5382237 4.5026685   2    0.01273192  0.7742613562
-#&gt; Comp_3 0.3258736 -0.1353261 0.9052810   2   -0.70619113 -0.0004355487
+#&gt;        prob      shift       scale     order ar_1        ar_2        
+#&gt; Comp_1 0.4022243  5.13488530 1.1299216   2    0.90396671 -0.601712306
+#&gt; Comp_2 0.3018146  0.02411551 0.8950687   2   -0.72719889 -0.004330968
+#&gt; Comp_3 0.2959611 -6.14239591 5.2644403   2    0.02202054  0.834244616
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -722,12 +722,12 @@
 #&gt; $Raw$messed[[5]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1       ar_2       
-#&gt; Comp_1 0.2675038 -0.06860527 0.7401275   2   -0.7330952  0.01735214
-#&gt; Comp_2 0.3348602 -4.59441376 4.7223314   2   -0.1236820  0.82457849
-#&gt; Comp_3 0.3976360  5.17561649 0.9962960   2    0.8980398 -0.59980522
+#&gt;        prob      shift       scale     order ar_1       ar_2      
+#&gt; Comp_1 0.3073134 -0.09492807 1.0363693   2   -0.6840775  0.0195349
+#&gt; Comp_2 0.3741067  4.99599434 0.8713118   2    0.9294032 -0.6101145
+#&gt; Comp_3 0.3185799 -4.04026198 5.6074104   2    0.2753504  0.5842785
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -736,12 +736,12 @@
 #&gt; $Raw$messed[[6]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1        ar_2        
-#&gt; Comp_1 0.2705983 -0.0277807 0.858818   2   -0.69783849 -0.002577413
-#&gt; Comp_2 0.4291830  5.0709450 1.075168   2    0.89756712 -0.610081703
-#&gt; Comp_3 0.3002188 -4.3679211 5.255042   2    0.02295799  0.651679082
+#&gt;        prob      shift      scale    order ar_1        ar_2      
+#&gt; Comp_1 0.3739080 -5.2704326 5.433096   2   -0.08646821  0.6970709
+#&gt; Comp_2 0.2837135 -0.1170835 1.064417   2   -0.67897873  0.0250349
+#&gt; Comp_3 0.3423785  5.1085362 1.012887   2    0.88228692 -0.5745788
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -750,12 +750,12 @@
 #&gt; $Raw$messed[[7]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale     order ar_1         ar_2        
-#&gt; Comp_1 0.3088892  0.2409876 0.9229496   2   -0.704310854 -0.003507493
-#&gt; Comp_2 0.3107450  5.0222549 1.0407452   2    0.927059065 -0.611998238
-#&gt; Comp_3 0.3803658 -4.9766579 5.0074391   2    0.008182389  0.755849808
+#&gt;        prob      shift       scale    order ar_1       ar_2         
+#&gt; Comp_1 0.4697938  4.91133340 0.908227   2    0.9033138 -0.5883061706
+#&gt; Comp_2 0.2604695 -5.48591352 5.058611   2   -0.1193858  0.8459882603
+#&gt; Comp_3 0.2697366  0.02050758 0.922624   2   -0.6714126  0.0004211999
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -764,12 +764,12 @@
 #&gt; $Raw$messed[[8]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1       ar_2       
-#&gt; Comp_1 0.2518653  0.04013054 0.7966959   2   -0.7078356 -0.00286745
-#&gt; Comp_2 0.3511850  4.66992367 0.8637362   2    0.8913071 -0.58674478
-#&gt; Comp_3 0.3969497 -4.58557211 5.6208216   2    0.2363464  0.85557438
+#&gt;        prob      shift      scale     order ar_1       ar_2       
+#&gt; Comp_1 0.3643027  5.1727045 0.7953464   2    0.9079930 -0.61923664
+#&gt; Comp_2 0.3280128 -4.9186408 5.0419639   2    0.1991377  0.76099307
+#&gt; Comp_3 0.3076846  0.1430743 1.0575703   2   -0.6826026 -0.01426371
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -778,12 +778,12 @@
 #&gt; $Raw$messed[[9]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1       ar_2        
-#&gt; Comp_1 0.4123606  4.9094491 1.009975   2    0.8997830 -0.610836962
-#&gt; Comp_2 0.3347698 -6.1080709 4.107260   2   -0.1137856  0.920290952
-#&gt; Comp_3 0.2528697 -0.2371627 1.002135   2   -0.6910895 -0.009100816
+#&gt;        prob      shift       scale     order ar_1        ar_2       
+#&gt; Comp_1 0.3235295  0.04971036 0.8804056   2   -0.68898719 -0.01068206
+#&gt; Comp_2 0.4044208  5.06131140 1.0682997   2    0.90988764 -0.61581868
+#&gt; Comp_3 0.2720497 -5.41356394 5.0148236   2   -0.03110754  0.88500719
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -792,12 +792,12 @@
 #&gt; $Raw$messed[[10]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift     scale     order ar_1        ar_2        
-#&gt; Comp_1 0.2339652  0.207987 0.8031997   2   -0.67488242 -0.003146252
-#&gt; Comp_2 0.3179880 -4.712449 4.4864732   2   -0.06681049  0.822485029
-#&gt; Comp_3 0.4480468  5.233861 1.0877100   2    0.90596705 -0.609396886
+#&gt;        prob      shift      scale     order ar_1        ar_2       
+#&gt; Comp_1 0.2988457 -5.5921567 4.9315949   2    0.01981614  0.77375037
+#&gt; Comp_2 0.3760804  4.8248307 0.9845945   2    0.90214092 -0.61296679
+#&gt; Comp_3 0.3250740 -0.0411274 1.1407447   2   -0.70819896  0.01083658
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -808,12 +808,12 @@
 #&gt; $Raw$u_messed[[1]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3667142  4.79782910 1.0619587   2    0.91263500 -0.61752544
-#&gt; Comp_2 0.3896770  0.04361111 0.8661917   2   -0.67388797 -0.01745147
-#&gt; Comp_3 0.2436088 -4.82587921 5.0243190   2    0.08238799  0.85965233
+#&gt;        prob      shift      scale     order ar_1       ar_2       
+#&gt; Comp_1 0.3411785  5.0481659 0.7778885   2    0.9081446 -0.59469956
+#&gt; Comp_2 0.3302305  0.1907312 1.0471221   2   -0.7114060  0.01372811
+#&gt; Comp_3 0.3285910 -5.6091689 5.1552906   2    0.2496454  0.56609025
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -822,12 +822,12 @@
 #&gt; $Raw$u_messed[[2]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1       ar_2       
-#&gt; Comp_1 0.3779636  4.92156993 0.9959037   2    0.9090501 -0.59585490
-#&gt; Comp_2 0.3401775  0.05201454 0.9103321   2   -0.6982902  0.00694013
-#&gt; Comp_3 0.2818588 -4.25211753 5.0454036   2   -0.1094308  0.67765242
+#&gt;        prob      shift      scale     order ar_1        ar_2      
+#&gt; Comp_1 0.3954514  4.8741264 1.0896556   2    0.88258421 -0.5920730
+#&gt; Comp_2 0.3249282  0.1200711 0.9134834   2   -0.72033087  0.0112507
+#&gt; Comp_3 0.2796204 -6.4014794 4.8808943   2    0.06336508  0.9359427
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -836,12 +836,12 @@
 #&gt; $Raw$u_messed[[3]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3520531  4.8949714 1.1211427   2    0.89568706 -0.60953347
-#&gt; Comp_2 0.2860046 -0.1573934 0.8728482   2   -0.72559922 -0.01192794
-#&gt; Comp_3 0.3619423 -4.9985312 4.6076374   2   -0.04903766  0.71207348
+#&gt; Comp_1 0.4463385  4.9767944 0.9282775   2    0.89871866 -0.60528856
+#&gt; Comp_2 0.2187610  0.3004256 0.9179463   2   -0.68412523  0.01098884
+#&gt; Comp_3 0.3349005 -5.5463957 4.4927152   2   -0.04097905  0.79021179
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -850,12 +850,12 @@
 #&gt; $Raw$u_messed[[4]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale     order ar_1        ar_2         
-#&gt; Comp_1 0.3782962  5.1197566 0.9977251   2    0.90100495 -0.5949859794
-#&gt; Comp_2 0.3258736 -0.1353261 0.9052810   2   -0.70619113 -0.0004355487
-#&gt; Comp_3 0.2958302 -4.5382237 4.5026685   2    0.01273192  0.7742613562
+#&gt;        prob      shift       scale     order ar_1        ar_2        
+#&gt; Comp_1 0.4022243  5.13488530 1.1299216   2    0.90396671 -0.601712306
+#&gt; Comp_2 0.3018146  0.02411551 0.8950687   2   -0.72719889 -0.004330968
+#&gt; Comp_3 0.2959611 -6.14239591 5.2644403   2    0.02202054  0.834244616
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -864,12 +864,12 @@
 #&gt; $Raw$u_messed[[5]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1       ar_2       
-#&gt; Comp_1 0.3976360  5.17561649 0.9962960   2    0.8980398 -0.59980522
-#&gt; Comp_2 0.2675038 -0.06860527 0.7401275   2   -0.7330952  0.01735214
-#&gt; Comp_3 0.3348602 -4.59441376 4.7223314   2   -0.1236820  0.82457849
+#&gt;        prob      shift       scale     order ar_1       ar_2      
+#&gt; Comp_1 0.3741067  4.99599434 0.8713118   2    0.9294032 -0.6101145
+#&gt; Comp_2 0.3073134 -0.09492807 1.0363693   2   -0.6840775  0.0195349
+#&gt; Comp_3 0.3185799 -4.04026198 5.6074104   2    0.2753504  0.5842785
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -878,12 +878,12 @@
 #&gt; $Raw$u_messed[[6]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1        ar_2        
-#&gt; Comp_1 0.4291830  5.0709450 1.075168   2    0.89756712 -0.610081703
-#&gt; Comp_2 0.2705983 -0.0277807 0.858818   2   -0.69783849 -0.002577413
-#&gt; Comp_3 0.3002188 -4.3679211 5.255042   2    0.02295799  0.651679082
+#&gt;        prob      shift      scale    order ar_1        ar_2      
+#&gt; Comp_1 0.3423785  5.1085362 1.012887   2    0.88228692 -0.5745788
+#&gt; Comp_2 0.2837135 -0.1170835 1.064417   2   -0.67897873  0.0250349
+#&gt; Comp_3 0.3739080 -5.2704326 5.433096   2   -0.08646821  0.6970709
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -892,12 +892,12 @@
 #&gt; $Raw$u_messed[[7]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale     order ar_1         ar_2        
-#&gt; Comp_1 0.3107450  5.0222549 1.0407452   2    0.927059065 -0.611998238
-#&gt; Comp_2 0.3088892  0.2409876 0.9229496   2   -0.704310854 -0.003507493
-#&gt; Comp_3 0.3803658 -4.9766579 5.0074391   2    0.008182389  0.755849808
+#&gt;        prob      shift       scale    order ar_1       ar_2         
+#&gt; Comp_1 0.4697938  4.91133340 0.908227   2    0.9033138 -0.5883061706
+#&gt; Comp_2 0.2697366  0.02050758 0.922624   2   -0.6714126  0.0004211999
+#&gt; Comp_3 0.2604695 -5.48591352 5.058611   2   -0.1193858  0.8459882603
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -906,12 +906,12 @@
 #&gt; $Raw$u_messed[[8]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1       ar_2       
-#&gt; Comp_1 0.3511850  4.66992367 0.8637362   2    0.8913071 -0.58674478
-#&gt; Comp_2 0.2518653  0.04013054 0.7966959   2   -0.7078356 -0.00286745
-#&gt; Comp_3 0.3969497 -4.58557211 5.6208216   2    0.2363464  0.85557438
+#&gt;        prob      shift      scale     order ar_1       ar_2       
+#&gt; Comp_1 0.3643027  5.1727045 0.7953464   2    0.9079930 -0.61923664
+#&gt; Comp_2 0.3076846  0.1430743 1.0575703   2   -0.6826026 -0.01426371
+#&gt; Comp_3 0.3280128 -4.9186408 5.0419639   2    0.1991377  0.76099307
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -920,12 +920,12 @@
 #&gt; $Raw$u_messed[[9]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1       ar_2        
-#&gt; Comp_1 0.4123606  4.9094491 1.009975   2    0.8997830 -0.610836962
-#&gt; Comp_2 0.2528697 -0.2371627 1.002135   2   -0.6910895 -0.009100816
-#&gt; Comp_3 0.3347698 -6.1080709 4.107260   2   -0.1137856  0.920290952
+#&gt;        prob      shift       scale     order ar_1        ar_2       
+#&gt; Comp_1 0.4044208  5.06131140 1.0682997   2    0.90988764 -0.61581868
+#&gt; Comp_2 0.3235295  0.04971036 0.8804056   2   -0.68898719 -0.01068206
+#&gt; Comp_3 0.2720497 -5.41356394 5.0148236   2   -0.03110754  0.88500719
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -934,12 +934,12 @@
 #&gt; $Raw$u_messed[[10]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift     scale     order ar_1        ar_2        
-#&gt; Comp_1 0.4480468  5.233861 1.0877100   2    0.90596705 -0.609396886
-#&gt; Comp_2 0.2339652  0.207987 0.8031997   2   -0.67488242 -0.003146252
-#&gt; Comp_3 0.3179880 -4.712449 4.4864732   2   -0.06681049  0.822485029
+#&gt;        prob      shift      scale     order ar_1        ar_2       
+#&gt; Comp_1 0.3760804  4.8248307 0.9845945   2    0.90214092 -0.61296679
+#&gt; Comp_2 0.3250740 -0.0411274 1.1407447   2   -0.70819896  0.01083658
+#&gt; Comp_3 0.2988457 -5.5921567 4.9315949   2    0.01981614  0.77375037
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -948,107 +948,107 @@
 #&gt; 
 #&gt; </div><div class='input'>
 <span class='no'>aII10adata</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixARExperiment.html'>mixARExperiment</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_II</span>, <span class='kw'>N</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>raw</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>simargs</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span><span class='kw'>=</span><span class='fl'>500</span>))</div><div class='output co'>#&gt; sa$init is:  0 0 
-#&gt; Initial vallogf:  -1388.173 
-#&gt; Final niter:  11 	vallogf:  -1383.501 
-#&gt; Initial vallogf:  -1399.919 
-#&gt; Final niter:  11 	vallogf:  -1392.864 
-#&gt; Initial vallogf:  -1380.086 
-#&gt; Final niter:  11 	vallogf:  -1370.266 
-#&gt; Initial vallogf:  -1413.298 
-#&gt; Final niter:  11 	vallogf:  -1408.53 
-#&gt; Initial vallogf:  -1376.753 
-#&gt; Final niter:  11 	vallogf:  -1360.848 
-#&gt; Initial vallogf:  -1358.082 
-#&gt; Final niter:  11 	vallogf:  -1352.209 
-#&gt; Initial vallogf:  -1402.999 
-#&gt; Final niter:  11 	vallogf:  -1396.153 
-#&gt; Initial vallogf:  -1407.615 
-#&gt; Final niter:  11 	vallogf:  -1399.532 
-#&gt; Initial vallogf:  -1374.258 
-#&gt; Final niter:  11 	vallogf:  -1369.145 
-#&gt; Initial vallogf:  -1310.905 
-#&gt; Final niter:  11 	vallogf:  -1303.886 
-#&gt; [1]  6  3 20 36 30  3
-#&gt; [1]  6  3 20 36 30  3
-#&gt; [1]  6  3 20 36 30  3
-#&gt; [1]  6  3 20 36 30  3
-#&gt; [1]  6  3 20 36 30  3
-#&gt; [1]  6  3 20 36 30  3
-#&gt; [1]  6  3 20 36 30  3
-#&gt; [1]  6  3 20 36 30  3
-#&gt; [1]  6  3 20 36 30  3
-#&gt; [1]  6  3 20 36 30  3</div><div class='input'><span class='no'>aII10a</span> <span class='kw'>&lt;-</span> <span class='fu'>test_unswitch</span>(<span class='no'>aII10adata</span>$<span class='no'>Raw</span>, <span class='no'>exampleModels</span>$<span class='no'>WL_II</span>)</div><div class='output co'>#&gt; [1] 94  2  0  0  0  2
-#&gt; [1] 94  2  0  0  0  2
-#&gt; [1] 92  2  0  2  0  2
-#&gt; [1] 93  2  0  1  0  2
-#&gt; [1] 92  4  0  0  0  2
-#&gt; [1] 93  2  0  1  0  2
-#&gt; [1] 92  2  0  2  0  2
-#&gt; [1] 94  3  0  1  0  0
+#&gt; Initial vallogf:  -1352.882 
+#&gt; Final niter:  11 	vallogf:  -1346.093 
+#&gt; Initial vallogf:  -1376.685 
+#&gt; Final niter:  11 	vallogf:  -1365.328 
+#&gt; Initial vallogf:  -1363.466 
+#&gt; Final niter:  11 	vallogf:  -1358.467 
+#&gt; Initial vallogf:  -1408.44 
+#&gt; Final niter:  11 	vallogf:  -1403.272 
+#&gt; Initial vallogf:  -1376.856 
+#&gt; Final niter:  11 	vallogf:  -1367.918 
+#&gt; Initial vallogf:  -1380.74 
+#&gt; Final niter:  11 	vallogf:  -1373.288 
+#&gt; Initial vallogf:  -1360.557 
+#&gt; Final niter:  11 	vallogf:  -1356.073 
+#&gt; Initial vallogf:  -1403.304 
+#&gt; Final niter:  11 	vallogf:  -1397.346 
+#&gt; Initial vallogf:  -1372.973 
+#&gt; Final niter:  11 	vallogf:  -1366.925 
+#&gt; Initial vallogf:  -1399.809 
+#&gt; Final niter:  11 	vallogf:  -1392.181 
+#&gt; [1]  2 39  0 57  0  0
+#&gt; [1]  2 39  0 57  0  0
+#&gt; [1]  2 39  0 57  0  0
+#&gt; [1]  2 39  0 57  0  0
+#&gt; [1]  2 39  0 57  0  0
+#&gt; [1]  2 39  0 57  0  0
+#&gt; [1]  2 39  0 57  0  0
+#&gt; [1]  2 39  0 57  0  0
+#&gt; [1]  2 39  0 57  0  0
+#&gt; [1]  5 36  0 57  0  0</div><div class='input'><span class='no'>aII10a</span> <span class='kw'>&lt;-</span> <span class='fu'>test_unswitch</span>(<span class='no'>aII10adata</span>$<span class='no'>Raw</span>, <span class='no'>exampleModels</span>$<span class='no'>WL_II</span>)</div><div class='output co'>#&gt; [1] 96  1  0  1  0  0
+#&gt; [1] 94  0  0  1  0  3
+#&gt; [1] 98  0  0  0  0  0
+#&gt; [1] 98  0  0  0  0  0
+#&gt; [1] 95  0  0  1  0  2
+#&gt; [1] 96  1  0  1  0  0
+#&gt; [1] 96  0  0  0  0  2
+#&gt; [1] 97  0  0  0  0  1
+#&gt; [1] 96  0  0  1  0  1
+#&gt; [1] 95  1  0  0  0  2
+#&gt; [1]  1  0  1  0  3 93
+#&gt; [1]  0  0 97  0  0  1
+#&gt; [1]  0 94  3  0  1  0
 #&gt; [1] 95  2  0  0  0  1
+#&gt; [1]  0  0 98  0  0  0
+#&gt; [1]  0  0  1 95  2  0
+#&gt; [1]  0  0 98  0  0  0
 #&gt; [1] 96  1  0  0  0  1
-#&gt; [1]  0  0  0  4 92  2
-#&gt; [1] 94  1  0  0  0  3
-#&gt; [1]  0  1  0  3 93  1
-#&gt; [1]  0  2 95  0  0  1
-#&gt; [1]  0  1  0  5 90  2
-#&gt; [1]  0  1  0  4 92  1
-#&gt; [1]  0  1  0  2 94  1
-#&gt; [1]  1 94  3  0  0  0
-#&gt; [1]  0  1 95  1  0  1
-#&gt; [1]  0  0  0  1 97  0</div><div class='input'><span class='no'>aII10a</span></div><div class='output co'>#&gt; $mean
-#&gt;            original   u_original      messed     u_messed
-#&gt; order1  2.000000000  2.000000000  2.00000000  2.000000000
-#&gt; order2  2.000000000  2.000000000  2.00000000  2.000000000
-#&gt; order3  2.000000000  2.000000000  2.00000000  2.000000000
-#&gt; prob1   0.393552066  0.393552066  0.30602089  0.393552066
-#&gt; prob2   0.300915444  0.300915444  0.36455304  0.300915444
-#&gt; prob3   0.305532491  0.305532491  0.32942607  0.305532491
-#&gt; shift1  4.984638793  4.984638793 -2.01415501  4.984638793
-#&gt; shift2  0.009990344  0.009990344  1.47816067  0.009990344
-#&gt; shift3 -5.056664971 -5.056664971  0.47395850 -5.056664971
-#&gt; scale1  1.008294229  1.008294229  3.34672761  1.008294229
-#&gt; scale2  0.961343053  0.961343053  2.18950995  0.961343053
-#&gt; scale3  4.974346678  4.974346678  1.40774640  4.974346678
-#&gt; ar_11   0.897501131  0.897501131  0.03156213  0.897501131
-#&gt; ar_12  -0.597785949 -0.597785949  0.34936961 -0.597785949
-#&gt; ar_21  -0.699727411 -0.699727411  0.47424077 -0.699727411
-#&gt; ar_22  -0.005705857 -0.005705857 -0.11069276 -0.005705857
-#&gt; ar_31  -0.010065885 -0.010065885 -0.31809507 -0.010065885
-#&gt; ar_32   0.800092291  0.800092291 -0.04207637  0.800092291
+#&gt; [1]  0  0  0  0 95  3
+#&gt; [1]  3 94  1  0  0  0</div><div class='input'><span class='no'>aII10a</span></div><div class='output co'>#&gt; $mean
+#&gt;             original    u_original       messed      u_messed
+#&gt; order1  2.000000e+00  2.000000e+00  2.000000000  2.000000e+00
+#&gt; order2  2.000000e+00  2.000000e+00  2.000000000  2.000000e+00
+#&gt; order3  2.000000e+00  2.000000e+00  2.000000000  2.000000e+00
+#&gt; prob1   3.993431e-01  3.993431e-01  0.350493448  3.993431e-01
+#&gt; prob2   3.031335e-01  3.031335e-01  0.306014726  3.031335e-01
+#&gt; prob3   2.975234e-01  2.975234e-01  0.343491826  2.975234e-01
+#&gt; shift1  5.031226e+00  5.031226e+00  0.937610630  5.031226e+00
+#&gt; shift2 -3.962047e-02 -3.962047e-02 -1.330973667 -3.962047e-02
+#&gt; shift3 -4.830151e+00 -4.830151e+00  0.554817769 -4.830151e+00
+#&gt; scale1  9.995067e-01  9.995067e-01  1.708717119  9.995067e-01
+#&gt; scale2  9.675893e-01  9.675893e-01  3.072024099  9.675893e-01
+#&gt; scale3  5.006372e+00  5.006372e+00  2.192726513  5.006372e+00
+#&gt; ar_11   9.012175e-01  9.012175e-01  0.071787554  9.012175e-01
+#&gt; ar_12  -6.004699e-01 -6.004699e-01 -0.069046298 -6.004699e-01
+#&gt; ar_21  -7.031782e-01 -7.031782e-01 -0.036847295 -7.031782e-01
+#&gt; ar_22   9.149181e-05  9.149181e-05  0.292243086  9.149181e-05
+#&gt; ar_31  -2.210249e-02 -2.210249e-02  0.140996571 -2.210249e-02
+#&gt; ar_32   8.322981e-01  8.322981e-01  0.008722883  8.322981e-01
 #&gt; 
 #&gt; $sd
 #&gt;           original  u_original     messed    u_messed
 #&gt; order1 2.000000000 2.000000000 2.00000000 2.000000000
 #&gt; order2 2.000000000 2.000000000 2.00000000 2.000000000
 #&gt; order3 2.000000000 2.000000000 2.00000000 2.000000000
-#&gt; prob1  0.027893082 0.027893082 0.04259629 0.027893082
-#&gt; prob2  0.032450839 0.032450839 0.05115159 0.032450839
-#&gt; prob3  0.029021510 0.029021510 0.04867529 0.029021510
-#&gt; shift1 0.064460193 0.064460193 4.24991369 0.064460193
-#&gt; shift2 0.109941836 0.109941836 4.76215876 0.109941836
-#&gt; shift3 0.459937317 0.459937317 2.88468067 0.459937317
-#&gt; scale1 0.084748466 0.084748466 2.04799720 0.084748466
-#&gt; scale2 0.069269842 0.069269842 1.91730698 0.069269842
-#&gt; scale3 0.276572713 0.276572713 1.37637858 0.276572713
-#&gt; ar_11  0.007254676 0.007254676 0.53302019 0.007254676
-#&gt; ar_12  0.009243020 0.009243020 0.59338896 0.009243020
-#&gt; ar_21  0.008884471 0.008884471 0.58713082 0.008884471
-#&gt; ar_22  0.006274077 0.006274077 0.67144557 0.006274077
-#&gt; ar_31  0.055408537 0.055408537 0.67088233 0.055408537
-#&gt; ar_32  0.052653504 0.052653504 0.39637057 0.052653504
+#&gt; prob1  0.011949797 0.011949797 0.04844791 0.011949797
+#&gt; prob2  0.028055048 0.028055048 0.04584900 0.028055048
+#&gt; prob3  0.028470285 0.028470285 0.05744267 0.028470285
+#&gt; shift1 0.071509858 0.071509858 4.02633921 0.071509858
+#&gt; shift2 0.083412496 0.083412496 3.98233304 0.083412496
+#&gt; shift3 0.655898122 0.655898122 4.37434941 0.655898122
+#&gt; scale1 0.045655882 0.045655882 1.55372957 0.045655882
+#&gt; scale2 0.050941531 0.050941531 2.21583159 0.050941531
+#&gt; scale3 0.364578086 0.364578086 1.93395259 0.364578086
+#&gt; ar_11  0.008301354 0.008301354 0.76007868 0.008301354
+#&gt; ar_12  0.004098519 0.004098519 0.56472586 0.004098519
+#&gt; ar_21  0.012567547 0.012567547 0.58562487 0.012567547
+#&gt; ar_22  0.009458582 0.009458582 0.60137743 0.009458582
+#&gt; ar_31  0.028098748 0.028098748 0.70950381 0.028098748
+#&gt; ar_32  0.042333584 0.042333584 0.62559329 0.042333584
 #&gt; 
 #&gt; $summaries
 #&gt; $summaries$original
 #&gt; $summaries$original$mean
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift        scale     order ar_1        ar_2        
-#&gt; Comp_1 0.3935521  4.984638793 1.0082942   2    0.89750113 -0.597785949
-#&gt; Comp_2 0.3009154  0.009990344 0.9613431   2   -0.69972741 -0.005705857
-#&gt; Comp_3 0.3055325 -5.056664971 4.9743467   2   -0.01006589  0.800092291
+#&gt;        prob      shift       scale     order ar_1        ar_2         
+#&gt; Comp_1 0.3993431  5.03122623 0.9995067   2    0.90121749 -6.004699e-01
+#&gt; Comp_2 0.3031335 -0.03962047 0.9675893   2   -0.70317816  9.149181e-05
+#&gt; Comp_3 0.2975234 -4.83015103 5.0063718   2   -0.02210249  8.322981e-01
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1057,12 +1057,12 @@
 #&gt; $summaries$original$sd
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob       shift      scale      order ar_1        ar_2       
-#&gt; Comp_1 0.02789308 0.06446019 0.08474847   2   0.007254676 0.009243020
-#&gt; Comp_2 0.03245084 0.10994184 0.06926984   2   0.008884471 0.006274077
-#&gt; Comp_3 0.02902151 0.45993732 0.27657271   2   0.055408537 0.052653504
+#&gt; Comp_1 0.01194980 0.07150986 0.04565588   2   0.008301354 0.004098519
+#&gt; Comp_2 0.02805505 0.08341250 0.05094153   2   0.012567547 0.009458582
+#&gt; Comp_3 0.02847028 0.65589812 0.36457809   2   0.028098748 0.042333584
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1073,12 +1073,12 @@
 #&gt; $summaries$u_original$mean
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift        scale     order ar_1        ar_2        
-#&gt; Comp_1 0.3935521  4.984638793 1.0082942   2    0.89750113 -0.597785949
-#&gt; Comp_2 0.3009154  0.009990344 0.9613431   2   -0.69972741 -0.005705857
-#&gt; Comp_3 0.3055325 -5.056664971 4.9743467   2   -0.01006589  0.800092291
+#&gt;        prob      shift       scale     order ar_1        ar_2         
+#&gt; Comp_1 0.3993431  5.03122623 0.9995067   2    0.90121749 -6.004699e-01
+#&gt; Comp_2 0.3031335 -0.03962047 0.9675893   2   -0.70317816  9.149181e-05
+#&gt; Comp_3 0.2975234 -4.83015103 5.0063718   2   -0.02210249  8.322981e-01
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1087,12 +1087,12 @@
 #&gt; $summaries$u_original$sd
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob       shift      scale      order ar_1        ar_2       
-#&gt; Comp_1 0.02789308 0.06446019 0.08474847   2   0.007254676 0.009243020
-#&gt; Comp_2 0.03245084 0.10994184 0.06926984   2   0.008884471 0.006274077
-#&gt; Comp_3 0.02902151 0.45993732 0.27657271   2   0.055408537 0.052653504
+#&gt; Comp_1 0.01194980 0.07150986 0.04565588   2   0.008301354 0.004098519
+#&gt; Comp_2 0.02805505 0.08341250 0.05094153   2   0.012567547 0.009458582
+#&gt; Comp_3 0.02847028 0.65589812 0.36457809   2   0.028098748 0.042333584
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1103,12 +1103,12 @@
 #&gt; $summaries$messed$mean
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1        ar_2       
-#&gt; Comp_1 0.3060209 -2.0141550 3.346728   2    0.03156213  0.34936961
-#&gt; Comp_2 0.3645530  1.4781607 2.189510   2    0.47424077 -0.11069276
-#&gt; Comp_3 0.3294261  0.4739585 1.407746   2   -0.31809507 -0.04207637
+#&gt;        prob      shift      scale    order ar_1        ar_2        
+#&gt; Comp_1 0.3504934  0.9376106 1.708717   2    0.07178755 -0.069046298
+#&gt; Comp_2 0.3060147 -1.3309737 3.072024   2   -0.03684730  0.292243086
+#&gt; Comp_3 0.3434918  0.5548178 2.192727   2    0.14099657  0.008722883
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1117,12 +1117,12 @@
 #&gt; $summaries$messed$sd
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob       shift    scale    order ar_1      ar_2     
-#&gt; Comp_1 0.04259629 4.249914 2.047997   2   0.5330202 0.5933890
-#&gt; Comp_2 0.05115159 4.762159 1.917307   2   0.5871308 0.6714456
-#&gt; Comp_3 0.04867529 2.884681 1.376379   2   0.6708823 0.3963706
+#&gt; Comp_1 0.04844791 4.026339 1.553730   2   0.7600787 0.5647259
+#&gt; Comp_2 0.04584900 3.982333 2.215832   2   0.5856249 0.6013774
+#&gt; Comp_3 0.05744267 4.374349 1.933953   2   0.7095038 0.6255933
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1133,12 +1133,12 @@
 #&gt; $summaries$u_messed$mean
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift        scale     order ar_1        ar_2        
-#&gt; Comp_1 0.3935521  4.984638793 1.0082942   2    0.89750113 -0.597785949
-#&gt; Comp_2 0.3009154  0.009990344 0.9613431   2   -0.69972741 -0.005705857
-#&gt; Comp_3 0.3055325 -5.056664971 4.9743467   2   -0.01006589  0.800092291
+#&gt;        prob      shift       scale     order ar_1        ar_2         
+#&gt; Comp_1 0.3993431  5.03122623 0.9995067   2    0.90121749 -6.004699e-01
+#&gt; Comp_2 0.3031335 -0.03962047 0.9675893   2   -0.70317816  9.149181e-05
+#&gt; Comp_3 0.2975234 -4.83015103 5.0063718   2   -0.02210249  8.322981e-01
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1147,12 +1147,12 @@
 #&gt; $summaries$u_messed$sd
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob       shift      scale      order ar_1        ar_2       
-#&gt; Comp_1 0.02789308 0.06446019 0.08474847   2   0.007254676 0.009243020
-#&gt; Comp_2 0.03245084 0.10994184 0.06926984   2   0.008884471 0.006274077
-#&gt; Comp_3 0.02902151 0.45993732 0.27657271   2   0.055408537 0.052653504
+#&gt; Comp_1 0.01194980 0.07150986 0.04565588   2   0.008301354 0.004098519
+#&gt; Comp_2 0.02805505 0.08341250 0.05094153   2   0.012567547 0.009458582
+#&gt; Comp_3 0.02847028 0.65589812 0.36457809   2   0.028098748 0.042333584
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1165,12 +1165,12 @@
 #&gt; $Raw$original[[1]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale    order ar_1         ar_2        
-#&gt; Comp_1 0.3617862  5.01434869 0.970863   2    0.897923583 -0.596716587
-#&gt; Comp_2 0.3540669  0.01466971 1.070288   2   -0.699267826 -0.003826217
-#&gt; Comp_3 0.2841469 -4.83694370 5.308068   2    0.005015535  0.858321424
+#&gt;        prob      shift      scale     order ar_1        ar_2      
+#&gt; Comp_1 0.3837787  5.0107137 0.9369880   2    0.89594284 -0.6042538
+#&gt; Comp_2 0.3336337 -0.1182025 0.9697179   2   -0.69092484 -0.0144215
+#&gt; Comp_3 0.2825876 -4.1249142 5.2405044   2   -0.01615209  0.8072761
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1179,12 +1179,12 @@
 #&gt; $Raw$original[[2]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2        
-#&gt; Comp_1 0.3854062  4.98114090 0.9580810   2    0.88685425 -0.596671521
-#&gt; Comp_2 0.2811789  0.05988685 0.8783794   2   -0.69239119  0.006373247
-#&gt; Comp_3 0.3334148 -5.25344099 5.3187608   2   -0.06917677  0.838947858
+#&gt;        prob      shift       scale    order ar_1        ar_2        
+#&gt; Comp_1 0.4079447  5.19524233 1.076011   2    0.89249785 -0.601181936
+#&gt; Comp_2 0.3474146 -0.09649506 1.014855   2   -0.70184141 -0.005439705
+#&gt; Comp_3 0.2446407 -5.85310994 5.621186   2   -0.04538993  0.839062416
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1193,12 +1193,12 @@
 #&gt; $Raw$original[[3]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale     order ar_1        ar_2       
-#&gt; Comp_1 0.4112744  4.8176866 1.0974563   2    0.90687248 -0.59764001
-#&gt; Comp_2 0.3020483  0.1204882 0.9069231   2   -0.68534726 -0.01187463
-#&gt; Comp_3 0.2866773 -5.5444292 5.0745240   2    0.05647645  0.83220447
+#&gt;        prob      shift        scale     order ar_1        ar_2        
+#&gt; Comp_1 0.4086823  4.971543825 0.9397238   2    0.90978486 -0.600290612
+#&gt; Comp_2 0.3038508 -0.009199629 1.0063863   2   -0.70887900  0.003248513
+#&gt; Comp_3 0.2874669 -3.993123322 5.3042194   2    0.02436515  0.817977866
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1207,12 +1207,12 @@
 #&gt; $Raw$original[[4]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale    order ar_1        ar_2        
-#&gt; Comp_1 0.3853814  4.97232076 1.131284   2    0.89852950 -0.595187549
-#&gt; Comp_2 0.2866158  0.06978931 1.046564   2   -0.70111508 -0.008028828
-#&gt; Comp_3 0.3280028 -4.67112418 4.788439   2   -0.01042722  0.812094435
+#&gt;        prob      shift         scale    order ar_1        ar_2        
+#&gt; Comp_1 0.3938959  5.0368948753 1.003195   2    0.90177151 -0.599022529
+#&gt; Comp_2 0.2715246 -0.0001542473 1.000400   2   -0.68265135  0.006973753
+#&gt; Comp_3 0.3345796 -5.0021355160 4.698486   2   -0.04750475  0.819856790
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1221,12 +1221,12 @@
 #&gt; $Raw$original[[5]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3497075  5.0118894 0.9606843   2    0.90187183 -0.61754034
-#&gt; Comp_2 0.3509762 -0.2484707 0.9235441   2   -0.71591540 -0.01145784
-#&gt; Comp_3 0.2993163 -4.5190517 5.0415896   2   -0.09171312  0.72487666
+#&gt; Comp_1 0.4146727  5.1081622 1.0319510   2    0.89641863 -0.60693773
+#&gt; Comp_2 0.2904566  0.1329193 0.9294254   2   -0.72356942  0.00986732
+#&gt; Comp_3 0.2948707 -4.9363255 4.4921880   2   -0.05587535  0.86072104
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1235,12 +1235,12 @@
 #&gt; $Raw$original[[6]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3852182  5.00212054 1.0587829   2    0.90202642 -0.58907935
-#&gt; Comp_2 0.3232613  0.07316261 0.8830235   2   -0.70059961 -0.01294752
-#&gt; Comp_3 0.2915205 -4.81146655 4.7490760   2   -0.08538275  0.80128221
+#&gt;        prob      shift       scale    order ar_1       ar_2       
+#&gt; Comp_1 0.4082496  5.02741361 1.014433   2    0.9047033 -0.59828074
+#&gt; Comp_2 0.3111177 -0.05539672 1.060663   2   -0.6897300  0.01566197
+#&gt; Comp_3 0.2806327 -5.40155555 4.684876   2   -0.0190606  0.91666841
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1249,12 +1249,12 @@
 #&gt; $Raw$original[[7]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1         ar_2        
-#&gt; Comp_1 0.4200283  5.0286538 1.120783   2    0.905156094 -0.592534292
-#&gt; Comp_2 0.2738700  0.1114864 1.012515   2   -0.693021240 -0.008513261
-#&gt; Comp_3 0.3061017 -5.6243652 4.468322   2    0.009460298  0.777785988
+#&gt;        prob      shift      scale     order ar_1        ar_2        
+#&gt; Comp_1 0.3922252  5.0190382 0.9923392   2    0.89968402 -0.594198684
+#&gt; Comp_2 0.3287459  0.0173626 0.9090805   2   -0.70832469 -0.005818253
+#&gt; Comp_3 0.2790290 -4.3957759 5.2260470   2   -0.03184661  0.824559486
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1263,12 +1263,12 @@
 #&gt; $Raw$original[[8]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2        
-#&gt; Comp_1 0.3812986  5.05754684 0.9066718   2    0.88598467 -0.589941681
-#&gt; Comp_2 0.2575381 -0.02952076 0.9561583   2   -0.70764527  0.001420035
-#&gt; Comp_3 0.3611633 -4.66687687 5.2547849   2   -0.01089939  0.829649881
+#&gt;        prob      shift       scale     order ar_1          ar_2        
+#&gt; Comp_1 0.3970291  4.95322588 0.9606885   2    0.9071525618 -0.597971145
+#&gt; Comp_2 0.2783769 -0.04910986 0.9440169   2   -0.7143084229  0.004185366
+#&gt; Comp_3 0.3245940 -5.44750083 5.0258064   2    0.0007502491  0.870789096
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1277,12 +1277,12 @@
 #&gt; $Raw$original[[9]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2        
-#&gt; Comp_1 0.4141180  4.97202400 0.9511736   2    0.89856222 -0.610767622
-#&gt; Comp_2 0.2800132 -0.07845395 1.0122420   2   -0.69490221 -0.001646619
-#&gt; Comp_3 0.3058689 -5.80363450 4.8377645   2    0.05104486  0.830245986
+#&gt;        prob      shift       scale     order ar_1        ar_2       
+#&gt; Comp_1 0.3791085  5.00761947 0.9903042   2    0.91567989 -0.60579305
+#&gt; Comp_2 0.3042919 -0.04670343 0.9164992   2   -0.71102900 -0.01023975
+#&gt; Comp_3 0.3165995 -5.10199514 4.6261760   2   -0.04565184  0.80273417
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1291,12 +1291,12 @@
 #&gt; $Raw$original[[10]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift        scale     order ar_1        ar_2        
-#&gt; Comp_1 0.4413019  4.988656389 0.9271621   2    0.89123026 -0.591780533
-#&gt; Comp_2 0.2995857  0.006865736 0.9237938   2   -0.70706902 -0.006556937
-#&gt; Comp_3 0.2591124 -4.835316777 4.9021381   2    0.04494324  0.695514002
+#&gt;        prob      shift      scale     order ar_1        ar_2        
+#&gt; Comp_1 0.4078441  4.9824081 1.0494336   2    0.88853940 -0.596769136
+#&gt; Comp_2 0.2619221 -0.1712251 0.9248486   2   -0.70052352 -0.003102791
+#&gt; Comp_3 0.3302337 -4.0450744 5.1442284   2    0.01534082  0.763335821
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1307,12 +1307,12 @@
 #&gt; $Raw$u_original[[1]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale    order ar_1         ar_2        
-#&gt; Comp_1 0.3617862  5.01434869 0.970863   2    0.897923583 -0.596716587
-#&gt; Comp_2 0.3540669  0.01466971 1.070288   2   -0.699267826 -0.003826217
-#&gt; Comp_3 0.2841469 -4.83694370 5.308068   2    0.005015535  0.858321424
+#&gt;        prob      shift      scale     order ar_1        ar_2      
+#&gt; Comp_1 0.3837787  5.0107137 0.9369880   2    0.89594284 -0.6042538
+#&gt; Comp_2 0.3336337 -0.1182025 0.9697179   2   -0.69092484 -0.0144215
+#&gt; Comp_3 0.2825876 -4.1249142 5.2405044   2   -0.01615209  0.8072761
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1321,12 +1321,12 @@
 #&gt; $Raw$u_original[[2]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2        
-#&gt; Comp_1 0.3854062  4.98114090 0.9580810   2    0.88685425 -0.596671521
-#&gt; Comp_2 0.2811789  0.05988685 0.8783794   2   -0.69239119  0.006373247
-#&gt; Comp_3 0.3334148 -5.25344099 5.3187608   2   -0.06917677  0.838947858
+#&gt;        prob      shift       scale    order ar_1        ar_2        
+#&gt; Comp_1 0.4079447  5.19524233 1.076011   2    0.89249785 -0.601181936
+#&gt; Comp_2 0.3474146 -0.09649506 1.014855   2   -0.70184141 -0.005439705
+#&gt; Comp_3 0.2446407 -5.85310994 5.621186   2   -0.04538993  0.839062416
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1335,12 +1335,12 @@
 #&gt; $Raw$u_original[[3]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale     order ar_1        ar_2       
-#&gt; Comp_1 0.4112744  4.8176866 1.0974563   2    0.90687248 -0.59764001
-#&gt; Comp_2 0.3020483  0.1204882 0.9069231   2   -0.68534726 -0.01187463
-#&gt; Comp_3 0.2866773 -5.5444292 5.0745240   2    0.05647645  0.83220447
+#&gt;        prob      shift        scale     order ar_1        ar_2        
+#&gt; Comp_1 0.4086823  4.971543825 0.9397238   2    0.90978486 -0.600290612
+#&gt; Comp_2 0.3038508 -0.009199629 1.0063863   2   -0.70887900  0.003248513
+#&gt; Comp_3 0.2874669 -3.993123322 5.3042194   2    0.02436515  0.817977866
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1349,12 +1349,12 @@
 #&gt; $Raw$u_original[[4]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale    order ar_1        ar_2        
-#&gt; Comp_1 0.3853814  4.97232076 1.131284   2    0.89852950 -0.595187549
-#&gt; Comp_2 0.2866158  0.06978931 1.046564   2   -0.70111508 -0.008028828
-#&gt; Comp_3 0.3280028 -4.67112418 4.788439   2   -0.01042722  0.812094435
+#&gt;        prob      shift         scale    order ar_1        ar_2        
+#&gt; Comp_1 0.3938959  5.0368948753 1.003195   2    0.90177151 -0.599022529
+#&gt; Comp_2 0.2715246 -0.0001542473 1.000400   2   -0.68265135  0.006973753
+#&gt; Comp_3 0.3345796 -5.0021355160 4.698486   2   -0.04750475  0.819856790
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1363,12 +1363,12 @@
 #&gt; $Raw$u_original[[5]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3497075  5.0118894 0.9606843   2    0.90187183 -0.61754034
-#&gt; Comp_2 0.3509762 -0.2484707 0.9235441   2   -0.71591540 -0.01145784
-#&gt; Comp_3 0.2993163 -4.5190517 5.0415896   2   -0.09171312  0.72487666
+#&gt; Comp_1 0.4146727  5.1081622 1.0319510   2    0.89641863 -0.60693773
+#&gt; Comp_2 0.2904566  0.1329193 0.9294254   2   -0.72356942  0.00986732
+#&gt; Comp_3 0.2948707 -4.9363255 4.4921880   2   -0.05587535  0.86072104
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1377,12 +1377,12 @@
 #&gt; $Raw$u_original[[6]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3852182  5.00212054 1.0587829   2    0.90202642 -0.58907935
-#&gt; Comp_2 0.3232613  0.07316261 0.8830235   2   -0.70059961 -0.01294752
-#&gt; Comp_3 0.2915205 -4.81146655 4.7490760   2   -0.08538275  0.80128221
+#&gt;        prob      shift       scale    order ar_1       ar_2       
+#&gt; Comp_1 0.4082496  5.02741361 1.014433   2    0.9047033 -0.59828074
+#&gt; Comp_2 0.3111177 -0.05539672 1.060663   2   -0.6897300  0.01566197
+#&gt; Comp_3 0.2806327 -5.40155555 4.684876   2   -0.0190606  0.91666841
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1391,12 +1391,12 @@
 #&gt; $Raw$u_original[[7]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1         ar_2        
-#&gt; Comp_1 0.4200283  5.0286538 1.120783   2    0.905156094 -0.592534292
-#&gt; Comp_2 0.2738700  0.1114864 1.012515   2   -0.693021240 -0.008513261
-#&gt; Comp_3 0.3061017 -5.6243652 4.468322   2    0.009460298  0.777785988
+#&gt;        prob      shift      scale     order ar_1        ar_2        
+#&gt; Comp_1 0.3922252  5.0190382 0.9923392   2    0.89968402 -0.594198684
+#&gt; Comp_2 0.3287459  0.0173626 0.9090805   2   -0.70832469 -0.005818253
+#&gt; Comp_3 0.2790290 -4.3957759 5.2260470   2   -0.03184661  0.824559486
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1405,12 +1405,12 @@
 #&gt; $Raw$u_original[[8]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2        
-#&gt; Comp_1 0.3812986  5.05754684 0.9066718   2    0.88598467 -0.589941681
-#&gt; Comp_2 0.2575381 -0.02952076 0.9561583   2   -0.70764527  0.001420035
-#&gt; Comp_3 0.3611633 -4.66687687 5.2547849   2   -0.01089939  0.829649881
+#&gt;        prob      shift       scale     order ar_1          ar_2        
+#&gt; Comp_1 0.3970291  4.95322588 0.9606885   2    0.9071525618 -0.597971145
+#&gt; Comp_2 0.2783769 -0.04910986 0.9440169   2   -0.7143084229  0.004185366
+#&gt; Comp_3 0.3245940 -5.44750083 5.0258064   2    0.0007502491  0.870789096
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1419,12 +1419,12 @@
 #&gt; $Raw$u_original[[9]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2        
-#&gt; Comp_1 0.4141180  4.97202400 0.9511736   2    0.89856222 -0.610767622
-#&gt; Comp_2 0.2800132 -0.07845395 1.0122420   2   -0.69490221 -0.001646619
-#&gt; Comp_3 0.3058689 -5.80363450 4.8377645   2    0.05104486  0.830245986
+#&gt;        prob      shift       scale     order ar_1        ar_2       
+#&gt; Comp_1 0.3791085  5.00761947 0.9903042   2    0.91567989 -0.60579305
+#&gt; Comp_2 0.3042919 -0.04670343 0.9164992   2   -0.71102900 -0.01023975
+#&gt; Comp_3 0.3165995 -5.10199514 4.6261760   2   -0.04565184  0.80273417
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1433,12 +1433,12 @@
 #&gt; $Raw$u_original[[10]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift        scale     order ar_1        ar_2        
-#&gt; Comp_1 0.4413019  4.988656389 0.9271621   2    0.89123026 -0.591780533
-#&gt; Comp_2 0.2995857  0.006865736 0.9237938   2   -0.70706902 -0.006556937
-#&gt; Comp_3 0.2591124 -4.835316777 4.9021381   2    0.04494324  0.695514002
+#&gt;        prob      shift      scale     order ar_1        ar_2        
+#&gt; Comp_1 0.4078441  4.9824081 1.0494336   2    0.88853940 -0.596769136
+#&gt; Comp_2 0.2619221 -0.1712251 0.9248486   2   -0.70052352 -0.003102791
+#&gt; Comp_3 0.3302337 -4.0450744 5.1442284   2    0.01534082  0.763335821
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1449,12 +1449,12 @@
 #&gt; $Raw$messed[[1]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale    order ar_1         ar_2        
-#&gt; Comp_1 0.2841469 -4.83694370 5.308068   2    0.005015535  0.858321424
-#&gt; Comp_2 0.3617862  5.01434869 0.970863   2    0.897923583 -0.596716587
-#&gt; Comp_3 0.3540669  0.01466971 1.070288   2   -0.699267826 -0.003826217
+#&gt;        prob      shift      scale     order ar_1        ar_2      
+#&gt; Comp_1 0.3336337 -0.1182025 0.9697179   2   -0.69092484 -0.0144215
+#&gt; Comp_2 0.3837787  5.0107137 0.9369880   2    0.89594284 -0.6042538
+#&gt; Comp_3 0.2825876 -4.1249142 5.2405044   2   -0.01615209  0.8072761
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1463,12 +1463,12 @@
 #&gt; $Raw$messed[[2]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2        
-#&gt; Comp_1 0.3854062  4.98114090 0.9580810   2    0.88685425 -0.596671521
-#&gt; Comp_2 0.2811789  0.05988685 0.8783794   2   -0.69239119  0.006373247
-#&gt; Comp_3 0.3334148 -5.25344099 5.3187608   2   -0.06917677  0.838947858
+#&gt;        prob      shift       scale    order ar_1        ar_2        
+#&gt; Comp_1 0.3474146 -0.09649506 1.014855   2   -0.70184141 -0.005439705
+#&gt; Comp_2 0.2446407 -5.85310994 5.621186   2   -0.04538993  0.839062416
+#&gt; Comp_3 0.4079447  5.19524233 1.076011   2    0.89249785 -0.601181936
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1477,12 +1477,12 @@
 #&gt; $Raw$messed[[3]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale     order ar_1        ar_2       
-#&gt; Comp_1 0.2866773 -5.5444292 5.0745240   2    0.05647645  0.83220447
-#&gt; Comp_2 0.4112744  4.8176866 1.0974563   2    0.90687248 -0.59764001
-#&gt; Comp_3 0.3020483  0.1204882 0.9069231   2   -0.68534726 -0.01187463
+#&gt;        prob      shift        scale     order ar_1        ar_2        
+#&gt; Comp_1 0.4086823  4.971543825 0.9397238   2    0.90978486 -0.600290612
+#&gt; Comp_2 0.2874669 -3.993123322 5.3042194   2    0.02436515  0.817977866
+#&gt; Comp_3 0.3038508 -0.009199629 1.0063863   2   -0.70887900  0.003248513
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1491,12 +1491,12 @@
 #&gt; $Raw$messed[[4]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale    order ar_1        ar_2        
-#&gt; Comp_1 0.2866158  0.06978931 1.046564   2   -0.70111508 -0.008028828
-#&gt; Comp_2 0.3280028 -4.67112418 4.788439   2   -0.01042722  0.812094435
-#&gt; Comp_3 0.3853814  4.97232076 1.131284   2    0.89852950 -0.595187549
+#&gt;        prob      shift         scale    order ar_1        ar_2        
+#&gt; Comp_1 0.3938959  5.0368948753 1.003195   2    0.90177151 -0.599022529
+#&gt; Comp_2 0.2715246 -0.0001542473 1.000400   2   -0.68265135  0.006973753
+#&gt; Comp_3 0.3345796 -5.0021355160 4.698486   2   -0.04750475  0.819856790
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1505,12 +1505,12 @@
 #&gt; $Raw$messed[[5]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1        ar_2       
-#&gt; Comp_1 0.2993163 -4.5190517 5.0415896   2   -0.09171312  0.72487666
-#&gt; Comp_2 0.3497075  5.0118894 0.9606843   2    0.90187183 -0.61754034
-#&gt; Comp_3 0.3509762 -0.2484707 0.9235441   2   -0.71591540 -0.01145784
+#&gt; Comp_1 0.2904566  0.1329193 0.9294254   2   -0.72356942  0.00986732
+#&gt; Comp_2 0.2948707 -4.9363255 4.4921880   2   -0.05587535  0.86072104
+#&gt; Comp_3 0.4146727  5.1081622 1.0319510   2    0.89641863 -0.60693773
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1519,12 +1519,12 @@
 #&gt; $Raw$messed[[6]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2       
-#&gt; Comp_1 0.2915205 -4.81146655 4.7490760   2   -0.08538275  0.80128221
-#&gt; Comp_2 0.3852182  5.00212054 1.0587829   2    0.90202642 -0.58907935
-#&gt; Comp_3 0.3232613  0.07316261 0.8830235   2   -0.70059961 -0.01294752
+#&gt;        prob      shift       scale    order ar_1       ar_2       
+#&gt; Comp_1 0.2806327 -5.40155555 4.684876   2   -0.0190606  0.91666841
+#&gt; Comp_2 0.3111177 -0.05539672 1.060663   2   -0.6897300  0.01566197
+#&gt; Comp_3 0.4082496  5.02741361 1.014433   2    0.9047033 -0.59828074
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1533,12 +1533,12 @@
 #&gt; $Raw$messed[[7]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1         ar_2        
-#&gt; Comp_1 0.3061017 -5.6243652 4.468322   2    0.009460298  0.777785988
-#&gt; Comp_2 0.4200283  5.0286538 1.120783   2    0.905156094 -0.592534292
-#&gt; Comp_3 0.2738700  0.1114864 1.012515   2   -0.693021240 -0.008513261
+#&gt;        prob      shift      scale     order ar_1        ar_2        
+#&gt; Comp_1 0.3287459  0.0173626 0.9090805   2   -0.70832469 -0.005818253
+#&gt; Comp_2 0.2790290 -4.3957759 5.2260470   2   -0.03184661  0.824559486
+#&gt; Comp_3 0.3922252  5.0190382 0.9923392   2    0.89968402 -0.594198684
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1547,12 +1547,12 @@
 #&gt; $Raw$messed[[8]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2        
-#&gt; Comp_1 0.3812986  5.05754684 0.9066718   2    0.88598467 -0.589941681
-#&gt; Comp_2 0.3611633 -4.66687687 5.2547849   2   -0.01089939  0.829649881
-#&gt; Comp_3 0.2575381 -0.02952076 0.9561583   2   -0.70764527  0.001420035
+#&gt;        prob      shift       scale     order ar_1          ar_2        
+#&gt; Comp_1 0.3970291  4.95322588 0.9606885   2    0.9071525618 -0.597971145
+#&gt; Comp_2 0.2783769 -0.04910986 0.9440169   2   -0.7143084229  0.004185366
+#&gt; Comp_3 0.3245940 -5.44750083 5.0258064   2    0.0007502491  0.870789096
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1561,12 +1561,12 @@
 #&gt; $Raw$messed[[9]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2        
-#&gt; Comp_1 0.2800132 -0.07845395 1.0122420   2   -0.69490221 -0.001646619
-#&gt; Comp_2 0.3058689 -5.80363450 4.8377645   2    0.05104486  0.830245986
-#&gt; Comp_3 0.4141180  4.97202400 0.9511736   2    0.89856222 -0.610767622
+#&gt;        prob      shift       scale     order ar_1        ar_2       
+#&gt; Comp_1 0.3165995 -5.10199514 4.6261760   2   -0.04565184  0.80273417
+#&gt; Comp_2 0.3791085  5.00761947 0.9903042   2    0.91567989 -0.60579305
+#&gt; Comp_3 0.3042919 -0.04670343 0.9164992   2   -0.71102900 -0.01023975
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1575,12 +1575,12 @@
 #&gt; $Raw$messed[[10]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift        scale     order ar_1        ar_2        
-#&gt; Comp_1 0.2591124 -4.835316777 4.9021381   2    0.04494324  0.695514002
-#&gt; Comp_2 0.4413019  4.988656389 0.9271621   2    0.89123026 -0.591780533
-#&gt; Comp_3 0.2995857  0.006865736 0.9237938   2   -0.70706902 -0.006556937
+#&gt;        prob      shift      scale     order ar_1        ar_2        
+#&gt; Comp_1 0.4078441  4.9824081 1.0494336   2    0.88853940 -0.596769136
+#&gt; Comp_2 0.3302337 -4.0450744 5.1442284   2    0.01534082  0.763335821
+#&gt; Comp_3 0.2619221 -0.1712251 0.9248486   2   -0.70052352 -0.003102791
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1591,12 +1591,12 @@
 #&gt; $Raw$u_messed[[1]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale    order ar_1         ar_2        
-#&gt; Comp_1 0.3617862  5.01434869 0.970863   2    0.897923583 -0.596716587
-#&gt; Comp_2 0.3540669  0.01466971 1.070288   2   -0.699267826 -0.003826217
-#&gt; Comp_3 0.2841469 -4.83694370 5.308068   2    0.005015535  0.858321424
+#&gt;        prob      shift      scale     order ar_1        ar_2      
+#&gt; Comp_1 0.3837787  5.0107137 0.9369880   2    0.89594284 -0.6042538
+#&gt; Comp_2 0.3336337 -0.1182025 0.9697179   2   -0.69092484 -0.0144215
+#&gt; Comp_3 0.2825876 -4.1249142 5.2405044   2   -0.01615209  0.8072761
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1605,12 +1605,12 @@
 #&gt; $Raw$u_messed[[2]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2        
-#&gt; Comp_1 0.3854062  4.98114090 0.9580810   2    0.88685425 -0.596671521
-#&gt; Comp_2 0.2811789  0.05988685 0.8783794   2   -0.69239119  0.006373247
-#&gt; Comp_3 0.3334148 -5.25344099 5.3187608   2   -0.06917677  0.838947858
+#&gt;        prob      shift       scale    order ar_1        ar_2        
+#&gt; Comp_1 0.4079447  5.19524233 1.076011   2    0.89249785 -0.601181936
+#&gt; Comp_2 0.3474146 -0.09649506 1.014855   2   -0.70184141 -0.005439705
+#&gt; Comp_3 0.2446407 -5.85310994 5.621186   2   -0.04538993  0.839062416
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1619,12 +1619,12 @@
 #&gt; $Raw$u_messed[[3]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale     order ar_1        ar_2       
-#&gt; Comp_1 0.4112744  4.8176866 1.0974563   2    0.90687248 -0.59764001
-#&gt; Comp_2 0.3020483  0.1204882 0.9069231   2   -0.68534726 -0.01187463
-#&gt; Comp_3 0.2866773 -5.5444292 5.0745240   2    0.05647645  0.83220447
+#&gt;        prob      shift        scale     order ar_1        ar_2        
+#&gt; Comp_1 0.4086823  4.971543825 0.9397238   2    0.90978486 -0.600290612
+#&gt; Comp_2 0.3038508 -0.009199629 1.0063863   2   -0.70887900  0.003248513
+#&gt; Comp_3 0.2874669 -3.993123322 5.3042194   2    0.02436515  0.817977866
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1633,12 +1633,12 @@
 #&gt; $Raw$u_messed[[4]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale    order ar_1        ar_2        
-#&gt; Comp_1 0.3853814  4.97232076 1.131284   2    0.89852950 -0.595187549
-#&gt; Comp_2 0.2866158  0.06978931 1.046564   2   -0.70111508 -0.008028828
-#&gt; Comp_3 0.3280028 -4.67112418 4.788439   2   -0.01042722  0.812094435
+#&gt;        prob      shift         scale    order ar_1        ar_2        
+#&gt; Comp_1 0.3938959  5.0368948753 1.003195   2    0.90177151 -0.599022529
+#&gt; Comp_2 0.2715246 -0.0001542473 1.000400   2   -0.68265135  0.006973753
+#&gt; Comp_3 0.3345796 -5.0021355160 4.698486   2   -0.04750475  0.819856790
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1647,12 +1647,12 @@
 #&gt; $Raw$u_messed[[5]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3497075  5.0118894 0.9606843   2    0.90187183 -0.61754034
-#&gt; Comp_2 0.3509762 -0.2484707 0.9235441   2   -0.71591540 -0.01145784
-#&gt; Comp_3 0.2993163 -4.5190517 5.0415896   2   -0.09171312  0.72487666
+#&gt; Comp_1 0.4146727  5.1081622 1.0319510   2    0.89641863 -0.60693773
+#&gt; Comp_2 0.2904566  0.1329193 0.9294254   2   -0.72356942  0.00986732
+#&gt; Comp_3 0.2948707 -4.9363255 4.4921880   2   -0.05587535  0.86072104
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1661,12 +1661,12 @@
 #&gt; $Raw$u_messed[[6]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2       
-#&gt; Comp_1 0.3852182  5.00212054 1.0587829   2    0.90202642 -0.58907935
-#&gt; Comp_2 0.3232613  0.07316261 0.8830235   2   -0.70059961 -0.01294752
-#&gt; Comp_3 0.2915205 -4.81146655 4.7490760   2   -0.08538275  0.80128221
+#&gt;        prob      shift       scale    order ar_1       ar_2       
+#&gt; Comp_1 0.4082496  5.02741361 1.014433   2    0.9047033 -0.59828074
+#&gt; Comp_2 0.3111177 -0.05539672 1.060663   2   -0.6897300  0.01566197
+#&gt; Comp_3 0.2806327 -5.40155555 4.684876   2   -0.0190606  0.91666841
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1675,12 +1675,12 @@
 #&gt; $Raw$u_messed[[7]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift      scale    order ar_1         ar_2        
-#&gt; Comp_1 0.4200283  5.0286538 1.120783   2    0.905156094 -0.592534292
-#&gt; Comp_2 0.2738700  0.1114864 1.012515   2   -0.693021240 -0.008513261
-#&gt; Comp_3 0.3061017 -5.6243652 4.468322   2    0.009460298  0.777785988
+#&gt;        prob      shift      scale     order ar_1        ar_2        
+#&gt; Comp_1 0.3922252  5.0190382 0.9923392   2    0.89968402 -0.594198684
+#&gt; Comp_2 0.3287459  0.0173626 0.9090805   2   -0.70832469 -0.005818253
+#&gt; Comp_3 0.2790290 -4.3957759 5.2260470   2   -0.03184661  0.824559486
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1689,12 +1689,12 @@
 #&gt; $Raw$u_messed[[8]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2        
-#&gt; Comp_1 0.3812986  5.05754684 0.9066718   2    0.88598467 -0.589941681
-#&gt; Comp_2 0.2575381 -0.02952076 0.9561583   2   -0.70764527  0.001420035
-#&gt; Comp_3 0.3611633 -4.66687687 5.2547849   2   -0.01089939  0.829649881
+#&gt;        prob      shift       scale     order ar_1          ar_2        
+#&gt; Comp_1 0.3970291  4.95322588 0.9606885   2    0.9071525618 -0.597971145
+#&gt; Comp_2 0.2783769 -0.04910986 0.9440169   2   -0.7143084229  0.004185366
+#&gt; Comp_3 0.3245940 -5.44750083 5.0258064   2    0.0007502491  0.870789096
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1703,12 +1703,12 @@
 #&gt; $Raw$u_messed[[9]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift       scale     order ar_1        ar_2        
-#&gt; Comp_1 0.4141180  4.97202400 0.9511736   2    0.89856222 -0.610767622
-#&gt; Comp_2 0.2800132 -0.07845395 1.0122420   2   -0.69490221 -0.001646619
-#&gt; Comp_3 0.3058689 -5.80363450 4.8377645   2    0.05104486  0.830245986
+#&gt;        prob      shift       scale     order ar_1        ar_2       
+#&gt; Comp_1 0.3791085  5.00761947 0.9903042   2    0.91567989 -0.60579305
+#&gt; Comp_2 0.3042919 -0.04670343 0.9164992   2   -0.71102900 -0.01023975
+#&gt; Comp_3 0.3165995 -5.10199514 4.6261760   2   -0.04565184  0.80273417
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
@@ -1717,12 +1717,12 @@
 #&gt; $Raw$u_messed[[10]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
-#&gt;        prob      shift        scale     order ar_1        ar_2        
-#&gt; Comp_1 0.4413019  4.988656389 0.9271621   2    0.89123026 -0.591780533
-#&gt; Comp_2 0.2995857  0.006865736 0.9237938   2   -0.70706902 -0.006556937
-#&gt; Comp_3 0.2591124 -4.835316777 4.9021381   2    0.04494324  0.695514002
+#&gt;        prob      shift      scale     order ar_1        ar_2        
+#&gt; Comp_1 0.4078441  4.9824081 1.0494336   2    0.88853940 -0.596769136
+#&gt; Comp_2 0.2619221 -0.1712251 0.9248486   2   -0.70052352 -0.003102791
+#&gt; Comp_3 0.3302337 -4.0450744 5.1442284   2    0.01534082  0.763335821
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian

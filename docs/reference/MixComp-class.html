@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Class <code>"mixComp"</code> --- manipulation of mixAR time series — mixComp-class • mixAR</title>
+<title>Class <code>"MixComp"</code> --- manipulation of MixAR time series — MixComp-class • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,10 @@
 
 
 
-<meta property="og:title" content="Class <code>"mixComp"</code> --- manipulation of mixAR time series — mixComp-class" />
+<meta property="og:title" content="Class <code>"MixComp"</code> --- manipulation of MixAR time series — MixComp-class" />
 <meta property="og:description" content="
   
-Class &quot;mixComp&quot; represents components of mixture autoregressive
+Class &quot;MixComp&quot; represents components of mixture autoregressive
   time series and their transformations obtained by arithmetic and
   related operations. Methods are provided to allow convenient
   computation with such time series." />
@@ -116,15 +116,15 @@ Class &quot;mixComp&quot; represents components of mixture autoregressive
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Class <code>"mixComp"</code> --- manipulation of mixAR time series</h1>
+    <h1>Class <code>"MixComp"</code> --- manipulation of MixAR time series</h1>
     
-    <div class="hidden name"><code>mixComp-class.Rd</code></div>
+    <div class="hidden name"><code>MixComp-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
   
-<p>Class <code>"mixComp"</code> represents components of mixture autoregressive
+<p>Class <code>"MixComp"</code> represents components of mixture autoregressive
   time series and their transformations obtained by arithmetic and
   related operations. Methods are provided to allow convenient
   computation with such time series.</p>
@@ -134,13 +134,13 @@ Class &quot;mixComp&quot; represents components of mixture autoregressive
 
     <h2 class="hasAnchor" id="objects-from-the-class"><a class="anchor" href="#objects-from-the-class"></a>Objects from the Class</h2>
 
-    <p>Objects can be created by calls of the form <code>new("mixComp", ...)</code>. 
+    <p>Objects can be created by calls of the form <code>new("MixComp", ...)</code>. 
   It is more usual however to obtain such objects initially
   from functions such as <code>mix_ek</code>. Methods are defined to allow for
   convenient and intuitive further manipulation of such objects.</p>
-<p>Internally, an object of class <code>mixComp</code> is a matrix with one column
+<p>Internally, an object of class <code>MixComp</code> is a matrix with one column
   for each component. However, methods for arithmetic operations
-  involving <code>mixComp</code> objects  are defined to perform natural
+  involving <code>MixComp</code> objects  are defined to perform natural
   operations for mixture objects. For example, multiplication by
   vectors is commutative and ``does the right thing''.</p>
     <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
@@ -153,62 +153,62 @@ Class &quot;mixComp&quot; represents components of mixture autoregressive
 
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
-    <p>Arithmetic operations involving <code>mixComp</code> objects are defined
+    <p>Arithmetic operations involving <code>MixComp</code> objects are defined
     to allow for convenient execution of computations for mixture
-    autoregressive models, see <code>mixComp</code>.</p>
+    autoregressive models, see <code>MixComp</code>.</p>
 <p></p><dl'>
-    <dt>-</dt><dd><p><code>signature(e1 = "mixComp", e2 = "missing")</code>:
-      unary minus for "mixComp" objects.</p></dd>
-    <dt>-</dt><dd><p><code>signature(e1 = "numeric", e2 = "mixComp")</code>:      If <code>e2</code> is thought of as a matrix, \(m\), then the number
+    <dt>-</dt><dd><p><code>signature(e1 = "MixComp", e2 = "missing")</code>:
+      unary minus for "MixComp" objects.</p></dd>
+    <dt>-</dt><dd><p><code>signature(e1 = "numeric", e2 = "MixComp")</code>:      If <code>e2</code> is thought of as a matrix, \(m\), then the number
       of elements of <code>e1</code> must be the same as the number of rows
       of \(m\) and each column of \(m\) is subtracted from
       <code>e1</code>, see also <code>"mix_ek"</code>, <code>"mix_hatk"</code>.      As a special case, if \(m\) has only one row, then it is
       subtracted from each element of <code>e1</code>, i.e. that row is
       replicated to obtain a matrix with as many rows as the length of
-      <code>e1</code> and then subtracted from <code>e1</code> as above.      The result is a <code>mixComp</code> object.</p></dd>
-    <dt>-</dt><dd><p><code>signature(e1 = "mixComp", e2 = "numeric")</code>:
+      <code>e1</code> and then subtracted from <code>e1</code> as above.      The result is a <code>MixComp</code> object.</p></dd>
+    <dt>-</dt><dd><p><code>signature(e1 = "MixComp", e2 = "numeric")</code>:
       This is analogous to the above method. (<b>FIXME:</b> the code
       of this function does not deal with the special case as in the
       above method. Is this an omission or I have done it on purpose?)</p></dd>
 
-    <dt>%of%</dt><dd><p><code>signature(e1 = "function", e2 = "mixComp")</code>:
+    <dt>%of%</dt><dd><p><code>signature(e1 = "function", e2 = "MixComp")</code>:
       This applies the function <code>e1</code> to each element of
       <code>e2</code>. Together with the arithmetic operations this allows for
-      easy computation with mixComp objects (e.g. pdfs, likelihoods).</p></dd>
-    <dt>%of%</dt><dd><p><code>signature(e1 = "character", e2 = "mixComp")</code>:</p></dd>
-    <dt>%of%</dt><dd><p><code>signature(e1 = "list", e2 = "mixComp")</code>:
+      easy computation with MixComp objects (e.g. pdfs, likelihoods).</p></dd>
+    <dt>%of%</dt><dd><p><code>signature(e1 = "character", e2 = "MixComp")</code>:</p></dd>
+    <dt>%of%</dt><dd><p><code>signature(e1 = "list", e2 = "MixComp")</code>:
       If <code>e1</code> is of length one it specifies a function to be
       applied to each element of <code>e2</code>, otherwise it is a list of
       functions, such that the \(i\)th function is applied to the
       \(i\)th column of <code>e2@m</code>.</p></dd>
 
 
-    <dt>*</dt><dd><p><code>signature(e1 = "mixComp", e2 = "mixComp")</code>: ...</p></dd>
+    <dt>*</dt><dd><p><code>signature(e1 = "MixComp", e2 = "MixComp")</code>: ...</p></dd>
 
-    <dt>*</dt><dd><p><code>signature(e1 = "mixComp", e2 = "numeric")</code>:
+    <dt>*</dt><dd><p><code>signature(e1 = "MixComp", e2 = "numeric")</code>:
       see the following.</p></dd>
-    <dt>*</dt><dd><p><code>signature(e1 = "numeric", e2 = "mixComp")</code>:
-      ``Column'' \(i\) of the <code>mixComp</code> object is multiplied by
+    <dt>*</dt><dd><p><code>signature(e1 = "numeric", e2 = "MixComp")</code>:
+      ``Column'' \(i\) of the <code>MixComp</code> object is multiplied by
       the \(i\)th element of the numeric vector, i.e. each ``row''
-      of the <code>mixComp</code> object is multiplied by the vector (or, the
+      of the <code>MixComp</code> object is multiplied by the vector (or, the
       vector is replicated to a matrix to be multiplied by the
-      <code>mixComp</code> object).</p></dd>
-    <dt>*</dt><dd><p><code>signature(e1 = "function", e2 = "mixComp")</code>:
-      Multiplying a function by  a <code>mixComp</code> object actually
+      <code>MixComp</code> object).</p></dd>
+    <dt>*</dt><dd><p><code>signature(e1 = "function", e2 = "MixComp")</code>:
+      Multiplying a function by  a <code>MixComp</code> object actually
       applies the function to each element of the object.
       <b>TODO:</b> This is a misuse of methods, see operator
       <code>%of%</code> which does the same.</p></dd>
-    <dt>*</dt><dd><p><code>signature(e1 = "character", e2 = "mixComp")</code>:
+    <dt>*</dt><dd><p><code>signature(e1 = "character", e2 = "MixComp")</code>:
       The first argument is a name of a function which is
-      applied to each element of the <code>mixComp</code> object. This is a
+      applied to each element of the <code>MixComp</code> object. This is a
       misuse of methods, see operator <code>%of%</code> which does the same.
       (<b>TODO:</b> but the latter does not have a method with this
       signature.)</p></dd>
-    <dt>/</dt><dd><p><code>signature(e1 = "mixComp", e2 = "numeric")</code>:</p></dd>
-    <dt>/</dt><dd><p><code>signature(e1 = "numeric", e2 = "mixComp")</code>:
+    <dt>/</dt><dd><p><code>signature(e1 = "MixComp", e2 = "numeric")</code>:</p></dd>
+    <dt>/</dt><dd><p><code>signature(e1 = "numeric", e2 = "MixComp")</code>:
       Division works analogously to <code><a href='https://rdrr.io/r/base/Arithmetic.html'>"*"</a></code>.</p></dd>
 
-    <dt>^</dt><dd><p><code>signature(e1 = "mixComp", e2 = "numeric")</code>:
+    <dt>^</dt><dd><p><code>signature(e1 = "MixComp", e2 = "numeric")</code>:
       If <code>k</code> is a scalar, raise each element of <code>e1@m</code> to
       power <code>k</code>.      <b>TODO:</b> for consistency this operation should have the
       semantics of "*" and "/" but this operator probably makes sense
@@ -216,23 +216,23 @@ Class &quot;mixComp&quot; represents components of mixture autoregressive
       don't bother for now.</p></dd>
 
 
-    <dt>+</dt><dd><p><code>signature(e1 = "numeric", e2 = "mixComp")</code>:</p></dd>
-    <dt>+</dt><dd><p><code>signature(e1 = "mixComp", e2 = "numeric")</code>:
-      Addition involving <code>mixComp</code> objects works analogously to subtraction.</p></dd>
+    <dt>+</dt><dd><p><code>signature(e1 = "numeric", e2 = "MixComp")</code>:</p></dd>
+    <dt>+</dt><dd><p><code>signature(e1 = "MixComp", e2 = "numeric")</code>:
+      Addition involving <code>MixComp</code> objects works analogously to subtraction.</p></dd>
 
-    <dt>inner</dt><dd><p><code>signature(x = "mixComp", y = "missing", star = "missing", plus = "missing")</code>:
+    <dt>inner</dt><dd><p><code>signature(x = "MixComp", y = "missing", star = "missing", plus = "missing")</code>:
       With one argument <code>inner</code> computes the sum of the columns of
       the argument. This is conceptually equivalent to <code>y</code> being a
       vector of ones.</p></dd>
-    <dt>inner</dt><dd><p><code>signature(x = "mixComp", y = "numeric", star = "missing", plus = "missing")</code>:</p></dd>
-    <dt>inner</dt><dd><p><code>signature(x = "numeric", y = "mixComp", star = "missing", plus = "missing")</code>:
+    <dt>inner</dt><dd><p><code>signature(x = "MixComp", y = "numeric", star = "missing", plus = "missing")</code>:</p></dd>
+    <dt>inner</dt><dd><p><code>signature(x = "numeric", y = "MixComp", star = "missing", plus = "missing")</code>:
       The number of elements of the numeric argument should be equal to
-      the number of rows of the <code>mixComp</code> object. Effectively,
+      the number of rows of the <code>MixComp</code> object. Effectively,
       computes the inner product of the two arguments. The order of the
         arguments does not matter. (<b>TODO:</b> <b>FIXME:</b> make sure that this
         is true!)      Returns a numeric vector.</p></dd>
 
-    <dt>inner</dt><dd><p><code>signature(x = "mixComp", y = "numeric", star = "ANY", plus = "ANY")</code>:
+    <dt>inner</dt><dd><p><code>signature(x = "MixComp", y = "numeric", star = "ANY", plus = "ANY")</code>:
       Computes a generalised inner product of <code>x</code> with <code>y</code> using the
       specified functions in place of the usual "*" and "+"
       operations. The defaults for <code>star</code> and <code>+</code> are
@@ -243,17 +243,17 @@ Class &quot;mixComp&quot; represents components of mixture autoregressive
       (In fact, <code>plus</code> is given a single argument, the vector of
       values to work on. Since "+" works as a unary operator on one
       argument, it would give surprising results if left as is.)</p></dd>
-    <dt>inner</dt><dd><p><code>signature(x = "mixComp", y = "numeric", star = "ANY", plus = "missing")</code>:
+    <dt>inner</dt><dd><p><code>signature(x = "MixComp", y = "numeric", star = "ANY", plus = "missing")</code>:
       This is a more efficient implementation for the case when
       <code>plus = sum</code>.</p></dd>
 
-    <dt>mix_ncomp</dt><dd><p><code>signature(x = "mixComp")</code>:
+    <dt>mix_ncomp</dt><dd><p><code>signature(x = "MixComp")</code>:
       Number of components.</p></dd>
 
-    <dt><code>signature(x = "mixComp")</code></dt><dd><p>A <code>"mixComp"</code> object is essentially a matrix. This method
+    <dt><code>signature(x = "MixComp")</code></dt><dd><p>A <code>"MixComp"</code> object is essentially a matrix. This method
       gives the dimension of the underlying matrix. This method
       indirectly ensures that <code><a href='https://rdrr.io/r/base/nrow.html'>nrow()</a></code> and <code><a href='https://rdrr.io/r/base/nrow.html'>ncol()</a></code> work
-      naturally for <code>"mixComp"</code> objects.</p></dd>
+      naturally for <code>"MixComp"</code> objects.</p></dd>
     
   
 </dl>
@@ -262,8 +262,8 @@ Class &quot;mixComp&quot; represents components of mixture autoregressive
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## dim, nrow, ncol</span>
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixComp"</span>, <span class='kw'>m</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>7</span>, <span class='fl'>11</span>:<span class='fl'>17</span>, <span class='fl'>21</span>:<span class='fl'>27</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>))
-<span class='no'>a</span></div><div class='output co'>#&gt; An object of class "mixComp"
+<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixComp"</span>, <span class='kw'>m</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>7</span>, <span class='fl'>11</span>:<span class='fl'>17</span>, <span class='fl'>21</span>:<span class='fl'>27</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>))
+<span class='no'>a</span></div><div class='output co'>#&gt; An object of class "MixComp"
 #&gt; Slot "m":
 #&gt;      [,1] [,2] [,3]
 #&gt; [1,]    1   11   21
@@ -274,7 +274,7 @@ Class &quot;mixComp&quot; represents components of mixture autoregressive
 #&gt; [6,]    6   16   26
 #&gt; [7,]    7   17   27
 #&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>a</span>)</div><div class='output co'>#&gt; [1] 7 3</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>a</span>)</div><div class='output co'>#&gt; [1] 7</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>a</span>)</div><div class='output co'>#&gt; [1] 3</div><div class='input'><span class='fu'><a href='mix_ncomp-methods.html'>mix_ncomp</a></span>(<span class='no'>a</span>)</div><div class='output co'>#&gt; [1] 3</div><div class='input'>
--<span class='no'>a</span></div><div class='output co'>#&gt; An object of class "mixComp"
+-<span class='no'>a</span></div><div class='output co'>#&gt; An object of class "MixComp"
 #&gt; Slot "m":
 #&gt;      [,1] [,2] [,3]
 #&gt; [1,]   -1  -11  -21
@@ -284,7 +284,7 @@ Class &quot;mixComp&quot; represents components of mixture autoregressive
 #&gt; [5,]   -5  -15  -25
 #&gt; [6,]   -6  -16  -26
 #&gt; [7,]   -7  -17  -27
-#&gt; </div><div class='input'><span class='no'>a</span> - <span class='fl'>1</span>:<span class='fl'>7</span></div><div class='output co'>#&gt; An object of class "mixComp"
+#&gt; </div><div class='input'><span class='no'>a</span> - <span class='fl'>1</span>:<span class='fl'>7</span></div><div class='output co'>#&gt; An object of class "MixComp"
 #&gt; Slot "m":
 #&gt;      [,1] [,2] [,3]
 #&gt; [1,]    0   10   20
@@ -294,7 +294,7 @@ Class &quot;mixComp&quot; represents components of mixture autoregressive
 #&gt; [5,]    0   10   20
 #&gt; [6,]    0   10   20
 #&gt; [7,]    0   10   20
-#&gt; </div><div class='input'><span class='fl'>1</span>:<span class='fl'>7</span> + <span class='no'>a</span></div><div class='output co'>#&gt; An object of class "mixComp"
+#&gt; </div><div class='input'><span class='fl'>1</span>:<span class='fl'>7</span> + <span class='no'>a</span></div><div class='output co'>#&gt; An object of class "MixComp"
 #&gt; Slot "m":
 #&gt;      [,1] [,2] [,3]
 #&gt; [1,]    2   12   22
@@ -304,7 +304,7 @@ Class &quot;mixComp&quot; represents components of mixture autoregressive
 #&gt; [5,]   10   20   30
 #&gt; [6,]   12   22   32
 #&gt; [7,]   14   24   34
-#&gt; </div><div class='input'><span class='fl'>2</span>*<span class='no'>a</span></div><div class='output co'>#&gt; An object of class "mixComp"
+#&gt; </div><div class='input'><span class='fl'>2</span>*<span class='no'>a</span></div><div class='output co'>#&gt; An object of class "MixComp"
 #&gt; Slot "m":
 #&gt;      [,1] [,2] [,3]
 #&gt; [1,]    2   22   42
@@ -316,32 +316,32 @@ Class &quot;mixComp&quot; represents components of mixture autoregressive
 #&gt; [7,]   14   34   54
 #&gt; </div><div class='input'>
 
-<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixComp"</span>, <span class='kw'>m</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>18</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>))
+<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixComp"</span>, <span class='kw'>m</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>18</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>))
 
-<span class='co'>## apply a function to the columns of a mixComp object</span>
-<span class='no'>pnorm</span> <span class='kw'>%of%</span> <span class='no'>b</span></div><div class='output co'>#&gt; An object of class "mixComp"
+<span class='co'>## apply a function to the columns of a MixComp object</span>
+<span class='no'>pnorm</span> <span class='kw'>%of%</span> <span class='no'>b</span></div><div class='output co'>#&gt; An object of class "MixComp"
 #&gt; Slot "m":
-#&gt;           [,1]      [,2]      [,3]
-#&gt; [1,] 0.5225333 0.5213429 0.8470498
-#&gt; [2,] 0.7880802 0.4988129 0.4412435
-#&gt; [3,] 0.8794302 0.3831370 0.4088476
-#&gt; [4,] 0.2652453 0.2631807 0.5037119
-#&gt; [5,] 0.3539105 0.6660556 0.3952841
-#&gt; [6,] 0.3271248 0.3082116 0.5569291
+#&gt;           [,1]      [,2]       [,3]
+#&gt; [1,] 0.2680852 0.8412992 0.90699040
+#&gt; [2,] 0.4026271 0.6210143 0.82711846
+#&gt; [3,] 0.5131745 0.5562202 0.30128873
+#&gt; [4,] 0.3492557 0.3184254 0.06584878
+#&gt; [5,] 0.4120147 0.4094805 0.45309541
+#&gt; [6,] 0.2048458 0.5127332 0.91119419
 #&gt; </div><div class='input'>
 <span class='co'>## apply a separate function to to each column</span>
 <span class='no'>flist</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span>(<span class='no'>x</span>),
               <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>pt</a></span>(<span class='no'>x</span>, <span class='kw'>df</span> <span class='kw'>=</span> <span class='fl'>5</span>),
               <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>pt</a></span>(<span class='no'>x</span>, <span class='kw'>df</span> <span class='kw'>=</span> <span class='fl'>4</span>) )
-<span class='no'>flist</span> <span class='kw'>%of%</span> <span class='no'>b</span></div><div class='output co'>#&gt; An object of class "mixComp"
+<span class='no'>flist</span> <span class='kw'>%of%</span> <span class='no'>b</span></div><div class='output co'>#&gt; An object of class "MixComp"
 #&gt; Slot "m":
 #&gt;           [,1]      [,2]      [,3]
-#&gt; [1,] 0.5225333 0.5203065 0.8181109
-#&gt; [2,] 0.7880802 0.4988704 0.4448194
-#&gt; [3,] 0.8794302 0.3891138 0.4145024
-#&gt; [4,] 0.2652453 0.2771034 0.5034891
-#&gt; [5,] 0.3539105 0.6571268 0.4018470
-#&gt; [6,] 0.3271248 0.3188459 0.5534673
+#&gt; [1,] 0.2680852 0.8183499 0.8717177
+#&gt; [2,] 0.4026271 0.6148023 0.8004261
+#&gt; [3,] 0.5131745 0.5534601 0.3150359
+#&gt; [4,] 0.3492557 0.3283683 0.1030897
+#&gt; [5,] 0.4120147 0.4140141 0.4559357
+#&gt; [6,] 0.2048458 0.5121157 0.8755522
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

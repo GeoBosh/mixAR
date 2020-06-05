@@ -9,23 +9,23 @@
 %
 \alias{mix_pdf}
 \alias{mix_pdf-methods}
-\alias{mix_pdf,mixARGaussian,missing,missing,numeric-method}
-\alias{mix_pdf,mixARGaussian,numeric,missing,numeric-method}
-\alias{mix_pdf,mixARGaussian,numeric,numeric,missing-method}
-\alias{mix_pdf,mixARgen,missing,missing,numeric-method}
-\alias{mix_pdf,mixARgen,numeric,missing,numeric-method}
-\alias{mix_pdf,mixARgen,numeric,numeric,missing-method}
+\alias{mix_pdf,MixARGaussian,missing,missing,numeric-method}
+\alias{mix_pdf,MixARGaussian,numeric,missing,numeric-method}
+\alias{mix_pdf,MixARGaussian,numeric,numeric,missing-method}
+\alias{mix_pdf,MixARgen,missing,missing,numeric-method}
+\alias{mix_pdf,MixARgen,numeric,missing,numeric-method}
+\alias{mix_pdf,MixARgen,numeric,numeric,missing-method}
 
 \alias{mix_cdf}
 \alias{mix_cdf-methods}
-\alias{mix_cdf,mixARGaussian,missing,missing,numeric-method}
-\alias{mix_cdf,mixARGaussian,numeric,missing,numeric-method}
-\alias{mix_cdf,mixARGaussian,numeric,numeric,missing-method}
-\alias{mix_cdf,mixARgen,missing,missing,numeric-method}
-\alias{mix_cdf,mixARgen,numeric,missing,numeric-method}
-\alias{mix_cdf,mixARgen,numeric,numeric,missing-method}
+\alias{mix_cdf,MixARGaussian,missing,missing,numeric-method}
+\alias{mix_cdf,MixARGaussian,numeric,missing,numeric-method}
+\alias{mix_cdf,MixARGaussian,numeric,numeric,missing-method}
+\alias{mix_cdf,MixARgen,missing,missing,numeric-method}
+\alias{mix_cdf,MixARgen,numeric,missing,numeric-method}
+\alias{mix_cdf,MixARgen,numeric,numeric,missing-method}
 
-\title{Conditional pdf's and cdf's of mixAR models}
+\title{Conditional pdf's and cdf's of MixAR models}
 \description{
  Gives conditional probability densities and distribution functions of
  mixture autoregressive models. 
@@ -43,7 +43,7 @@
   signatures. 
 
   \describe{
-    \item{\code{signature(model = "mixARGaussian", x = "missing", index = "missing", xcond = "numeric")}}{
+    \item{\code{signature(model = "MixARGaussian", x = "missing", index = "missing", xcond = "numeric")}}{
 
       Return (as a function of one argument) the conditional density
       (respectively cdf), \eqn{f(x|xcond)}, of \eqn{X_{t+1}}{X[t+1]} given
@@ -54,11 +54,11 @@
       only the necessary ones are used.
 
     }
-    \item{\code{signature(model = "mixARGaussian", x = "numeric", index = "missing", xcond = "numeric")}}{
+    \item{\code{signature(model = "MixARGaussian", x = "numeric", index = "missing", xcond = "numeric")}}{
       Compute the conditional density (respectively cdf) at the values given
       by \code{x}.
     }
-    \item{\code{signature(model = "mixARGaussian", x = "numeric", index = "numeric", xcond = "missing")}}{
+    \item{\code{signature(model = "MixARGaussian", x = "numeric", index = "numeric", xcond = "missing")}}{
 
       Compute conditional densities (respectively cdf) for times
       specified in \code{index}. For each \eqn{t\in{}}\code{index} the
@@ -66,15 +66,15 @@
       \code{\ldots,x[t-2],x[t-1]}.
 
     }
-  \item{\code{signature(model = "mixARgen", x = "missing", index = "missing",
+  \item{\code{signature(model = "MixARgen", x = "missing", index = "missing",
           xcond = "numeric")}}{{
 %%  ~~describe this method here~~
 }
-}\item{\code{signature(model = "mixARgen", x = "numeric", index = "missing",
+}\item{\code{signature(model = "MixARgen", x = "numeric", index = "missing",
           xcond = "numeric")}}{{
 %%  ~~describe this method here~~
 }
-}\item{\code{signature(model = "mixARgen", x = "numeric", index = "numeric",
+}\item{\code{signature(model = "MixARgen", x = "numeric", index = "numeric",
           xcond = "missing")}}{{
 %%  ~~describe this method here~~
 }
@@ -86,7 +86,8 @@
   predictive distributions 
 }
 \keyword{methods}
-\keyword{mixAR}
+\keyword{MixAR}
+\keyword{prediction}
 
        % \eqn{\;\;\;\;\;\;}{ }       % \verb{ }
        % \eqn{\;}{ }

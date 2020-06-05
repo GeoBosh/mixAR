@@ -1,24 +1,24 @@
 \name{mixAR_diag}
 \alias{mixAR_diag}
 \alias{tsdiag}
-\alias{tsdiag.mixARGaussian}
+\alias{tsdiag.MixARGaussian}
 
 \title{
   Diagnostic checks for mixture autoregressive models
 }
 \description{
-  Perform diagnostic checks and tests on given \code{mixARGaussian}
+  Perform diagnostic checks and tests on given \code{MixARGaussian}
   object with respect to a given time series.
 }
 \usage{
-\method{tsdiag}{mixARGaussian}(object, gof.lag, y, ask = interactive(), ...)
+\method{tsdiag}{MixARGaussian}(object, gof.lag, y, ask = interactive(), ...)
 
 mixAR_diag(model, y, ask = interactive())
 }
 \arguments{
   \item{model,object}{
     the model on which to perform the checks, an object from class
-    \code{mixAR}. \code{model} can also be the output list from
+    \code{MixAR}. \code{model} can also be the output list from
     \code{fit_mixAR}.
   }
   \item{gof.lag}{
@@ -89,14 +89,14 @@ mixAR_diag(model, y, ask = interactive())
 }
 \author{Davide Ravagli and Georgi N. Boshnakov}
 \note{
-  This function should be used for diagnostic checking of \code{mixARGaussian}
+  This function should be used for diagnostic checking of \code{MixARGaussian}
   objects only.
 }
 \seealso{
   \code{\link{mixAR_BIC}}
 }
 \examples{
-model1 <- new("mixARGaussian", prob = c(0.5, 0.5), scale = c(1, 2),
+model1 <- new("MixARGaussian", prob = c(0.5, 0.5), scale = c(1, 2),
               arcoef = list(-0.5, 1.1))
 set.seed(123)
 y <- mixAR_sim(model1, 400, c(0,0,0), nskip = 100) 
@@ -104,5 +104,5 @@ y <- mixAR_sim(model1, 400, c(0,0,0), nskip = 100)
 fit1 <- fit_mixAR(y, model1)
 mixAR_diag(fit1, y)
 }
-\keyword{ mixAR }% use one of  RShowDoc("KEYWORDS")
-\keyword{ diag }
+\keyword{ MixAR }% use one of  RShowDoc("KEYWORDS")
+%\keyword{}

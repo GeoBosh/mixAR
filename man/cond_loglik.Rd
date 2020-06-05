@@ -2,10 +2,10 @@
 \alias{cond_loglik}
 \alias{cond_loglikS}
 \title{
-  Log-likelihood of mixAR models
+  Log-likelihood of MixAR models
 }
 \description{
-  Compute the log-likelihood of a mixAR model for a univariate time
+  Compute the log-likelihood of a MixAR model for a univariate time
   series.
 }
 \usage{
@@ -13,7 +13,7 @@ cond_loglik(model, x, index)
 cond_loglikS(model, x, index)
 }
 \arguments{
-  \item{model}{a mixAR model.}
+  \item{model}{a MixAR model.}
   \item{x}{a time series or numeric vector.}
   \item{index}{
 
@@ -25,7 +25,7 @@ cond_loglikS(model, x, index)
 }
 \details{
 
-  \code{cond_loglik} computes the conditional log-likelihood of a mixAR
+  \code{cond_loglik} computes the conditional log-likelihood of a MixAR
   model. Conditional here means conditional on the first \code{p} values
   being fixed, where \code{p} is the maximum AR order of the components
   of the model.
@@ -51,10 +51,10 @@ sar <- new("raggedCoefS", a = list(c(1.1022, -0.2835), c(1.5279, -0.8871)),
                           as = list(c(0, 0), 0), s = 10)
 
 ## SMAR(2; 2, 2)(2, 1)_10
-model_s10 <- new("mixARGaussian", prob = c(.3, .7), scale = c(.08, .202),
+model_s10 <- new("MixARGaussian", prob = c(.3, .7), scale = c(.08, .202),
                                   arcoef = sar, shift = c(.7,1)) 
 cond_loglikS(model_s10, log(lynx))
 cond_loglikS(model_s10, log(lynx), index = 45:114) # on reduced dataset
 }
 \keyword{ts}
-\keyword{mixAR}
+\keyword{MixAR}

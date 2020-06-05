@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Simulate from mixAR models — mixAR_sim • mixAR</title>
+<title>Simulate from MixAR models — mixAR_sim • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Simulate from mixAR models — mixAR_sim" />
-<meta property="og:description" content="Simulate from mixAR models" />
+<meta property="og:title" content="Simulate from MixAR models — mixAR_sim" />
+<meta property="og:description" content="Simulate from MixAR models" />
 
 
 
@@ -111,13 +111,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Simulate from mixAR models</h1>
+    <h1>Simulate from MixAR models</h1>
     
     <div class="hidden name"><code>mixAR_sim.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Simulate from mixAR models</p>
+    <p>Simulate from MixAR models</p>
     </div>
 
     <pre class="usage"><span class='fu'>mixAR_sim</span>(<span class='no'>model</span>, <span class='no'>n</span>, <span class='no'>init</span>, <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>flag</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
@@ -130,7 +130,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>model from which to simulate, an object inheriting from class <code>mixAR</code>.</p></td>
+      <td><p>model from which to simulate, an object inheriting from class <code>MixAR</code>.</p></td>
     </tr>
     <tr>
       <th>init</th>
@@ -172,7 +172,7 @@
 
 <p><code>mixAR_sim</code> simulates a series of length <code>nskip+n</code> and
   returns the last <code>n</code> values.</p>
-<p><code>mixAny_sim</code> simulates from a mixAR model with GARCH
+<p><code>mixAny_sim</code> simulates from a MixAR model with GARCH
   innovations. <code>mixAny_sim</code> was a quick fix for Shahadat and needs
   consolidation.</p>  
 <p>The vector <code>init</code> provides the initial values for
@@ -194,7 +194,7 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob   shift scale   order ar_1   ar_2   
 #&gt; Comp_1 0.5439   0    4.8227   2   0.6792  0.3208

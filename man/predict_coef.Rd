@@ -1,19 +1,19 @@
 \name{predict_coef}
 \alias{predict_coef}
-\title{Exact predictive parameters for multi-step mixAR prediction}
-\description{Exact predictive parameters for multi-step mixAR prediction.}
+\title{Exact predictive parameters for multi-step MixAR prediction}
+\description{Exact predictive parameters for multi-step MixAR prediction.}
 \usage{
 predict_coef(model, maxh)
 }
 \arguments{
-  \item{model}{a mixAR model.}
+  \item{model}{a MixAR model.}
   \item{maxh}{maximal horizon.}
 }
 \details{
 
   \code{predict_coef()} implements the method of
   \insertCite{boshnakov2009mar;textual}{mixAR} for the h-step prediction
-  of mixAR processes. The h-step predictive distribution has a mixAR
+  of MixAR processes. The h-step predictive distribution has a MixAR
   distribution and this function computes its parameters.
 
   \code{predict_coef()} is mostly a helper function, use
@@ -36,5 +36,5 @@ predict_coef(model, maxh)
 }
 %\examples{
 %}
-\keyword{mixAR}
+\keyword{MixAR}
 \keyword{prediction}

@@ -2,12 +2,12 @@ library(mixAR)
 
 test_that("mixAR and new() for mixAR work", {
 
-    expect_output(show(new("mixARGaussian", order = c(0, 0, 0))))
+    expect_output(show(new("MixARGaussian", order = c(0, 0, 0))))
 
-    new("mixARGaussian", order = c(3, 2, 1))
-    m2 <- new("mixARGaussian", order = c(3, 2, 1),
+    new("MixARGaussian", order = c(3, 2, 1))
+    m2 <- new("MixARGaussian", order = c(3, 2, 1),
               arcoef = matrix(c(1:3, c(1:2, 0), c(1, 0, 0)), nrow = 3, byrow = TRUE))
-    m3 <- new("mixARGaussian", arcoef = list(1:3, 1:2, 1))
+    m3 <- new("MixARGaussian", arcoef = list(1:3, 1:2, 1))
     expect_equal(m2, m3)
 
     as(m2, "list")
@@ -24,53 +24,53 @@ test_that("mixAR and new() for mixAR work", {
     expect_output(show_diff(exampleModels$WL_ibm, exampleModels$WL_At))
     expect_output(show_diff(exampleModels$WL_Bt_1, exampleModels$WL_Bt_2))
 
-    expect_message(new("mixARGaussian", order = c(1, 2, 3), arcoef = list(1:3, 1:2, 1)),
+    expect_message(new("MixARGaussian", order = c(1, 2, 3), arcoef = list(1:3, 1:2, 1)),
                  "Arg's 'arcoef' and 'order' are not consistent, ignoring 'order'")
     
-    new("mixARGaussian", order = c(3, 2, 1), prob = 1)
-    new("mixARGaussian", order = c(3, 2, 1), prob = c(0.5, 0.25, 0.25) )
-    expect_error(new("mixARGaussian", order = c(3, 2, 1), prob = c(0.5, 0.25)),
+    new("MixARGaussian", order = c(3, 2, 1), prob = 1)
+    new("MixARGaussian", order = c(3, 2, 1), prob = c(0.5, 0.25, 0.25) )
+    expect_error(new("MixARGaussian", order = c(3, 2, 1), prob = c(0.5, 0.25)),
                      "length of 'prob' should be 1 or the length of 'order'" )    
 
-    new("mixARGaussian", order = c(3, 2, 1), shift = 1)
-    new("mixARGaussian", order = c(3, 2, 1), shift = c(0.5, 0.25, 0.25) )
-    expect_error(new("mixARGaussian", order = c(3, 2, 1), shift = c(0.5, 0.25)),
+    new("MixARGaussian", order = c(3, 2, 1), shift = 1)
+    new("MixARGaussian", order = c(3, 2, 1), shift = c(0.5, 0.25, 0.25) )
+    expect_error(new("MixARGaussian", order = c(3, 2, 1), shift = c(0.5, 0.25)),
                      "length of 'shift' should be 1 or the length of 'order'" )    
 
-    new("mixARGaussian", order = c(3, 2, 1), scale = 1)
-    new("mixARGaussian", order = c(3, 2, 1), scale = c(0.5, 0.25, 0.25) )
-    expect_error(new("mixARGaussian", order = c(3, 2, 1), scale = c(0.5, 0.25)),
+    new("MixARGaussian", order = c(3, 2, 1), scale = 1)
+    new("MixARGaussian", order = c(3, 2, 1), scale = c(0.5, 0.25, 0.25) )
+    expect_error(new("MixARGaussian", order = c(3, 2, 1), scale = c(0.5, 0.25)),
                      "length of 'scale' should be 1 or the length of 'order'" )    
 
-    new("mixARGaussian", model = exampleModels$WL_At)
-    expect_output(show_diff(new("mixARGaussian", model = exampleModels$WL_At),
+    new("MixARGaussian", model = exampleModels$WL_At)
+    expect_output(show_diff(new("MixARGaussian", model = exampleModels$WL_At),
                             exampleModels$WL_At))
 
-    expect_error(new("mixARGaussian", model = exampleModels$WL_At, order = c(2,1)),
+    expect_error(new("MixARGaussian", model = exampleModels$WL_At, order = c(2,1)),
                  # "Arg. 'order' (if present) must be the same as 'model@order'." )
                  "Arg. 'order' .if present. must be the same as 'model@order'" )
 
-    new("mixARGaussian", model = exampleModels$WL_At, prob = c(0.5, 0.5))
-    new("mixARGaussian", model = exampleModels$WL_At, prob = 1)
-    expect_error(new("mixARGaussian", model = exampleModels$WL_At, prob = c(0.5, 0.25, 0.25)),
+    new("MixARGaussian", model = exampleModels$WL_At, prob = c(0.5, 0.5))
+    new("MixARGaussian", model = exampleModels$WL_At, prob = 1)
+    expect_error(new("MixARGaussian", model = exampleModels$WL_At, prob = c(0.5, 0.25, 0.25)),
                  "Arg. 'prob' .if present. must have the same length as 'model@prob'")
 
-    new("mixARGaussian", model = exampleModels$WL_At, shift = c(0.5, 0.5))
-    new("mixARGaussian", model = exampleModels$WL_At, shift = 1)
-    expect_error(new("mixARGaussian", model = exampleModels$WL_At, shift = c(0.5, 0.25, 0.25)),
+    new("MixARGaussian", model = exampleModels$WL_At, shift = c(0.5, 0.5))
+    new("MixARGaussian", model = exampleModels$WL_At, shift = 1)
+    expect_error(new("MixARGaussian", model = exampleModels$WL_At, shift = c(0.5, 0.25, 0.25)),
                  "Arg. 'shift' .if present. must have the same length as 'model@shift'")
 
-    new("mixARGaussian", model = exampleModels$WL_At, scale = c(0.5, 0.5))
-    new("mixARGaussian", model = exampleModels$WL_At, scale = 1)
-    expect_error(new("mixARGaussian", model = exampleModels$WL_At, scale = c(0.5, 0.25, 0.25)),
+    new("MixARGaussian", model = exampleModels$WL_At, scale = c(0.5, 0.5))
+    new("MixARGaussian", model = exampleModels$WL_At, scale = 1)
+    expect_error(new("MixARGaussian", model = exampleModels$WL_At, scale = c(0.5, 0.25, 0.25)),
                  "Arg. 'scale' .if present. must have the same length as 'model@scale'")
 
-    new("mixARGaussian", model = exampleModels$WL_At, arcoef = list(0.9, 0.4))
-    expect_error(new("mixARGaussian", model = exampleModels$WL_At, arcoef = list(c(0.9,0.3), 0.4)),
+    new("MixARGaussian", model = exampleModels$WL_At, arcoef = list(0.9, 0.4))
+    expect_error(new("MixARGaussian", model = exampleModels$WL_At, arcoef = list(c(0.9,0.3), 0.4)),
                  "Arg. 'arcoef' \\(if present\\) must be consistent with 'model@order'")
     
-    new("mixARGaussian", model = exampleModels$WL_At, arcoef = matrix(c(0.9, 0.4), ncol = 1))
-    new("mixARGaussian", model = exampleModels$WL_At, arcoef = matrix(c(0.9, 0.4), ncol = 1),
+    new("MixARGaussian", model = exampleModels$WL_At, arcoef = matrix(c(0.9, 0.4), ncol = 1))
+    new("MixARGaussian", model = exampleModels$WL_At, arcoef = matrix(c(0.9, 0.4), ncol = 1),
         order = c(1, 1))
     
     ## Test function mixAR
@@ -92,7 +92,7 @@ test_that("mixAR and new() for mixAR work", {
 
     ## exampleModels$WL_Bt_3
     moT_B3 <-
-    new("mixARgen"
+    new("MixARgen"
                , prob = c(0.3, 0.3, 0.4)
                , scale = c(2, 1, 0.5)
                , shift = c(5, -5, 0)
@@ -127,21 +127,21 @@ test_that("mixAR and new() for mixAR work", {
     ## demonstrate reuse of existing models
     exampleModels$WL_Bt_1
     ## moT_C2
-    new("mixARgen"
+    new("MixARgen"
                 , model = exampleModels$WL_Bt_1
                 , dist = distlist(c("stdt", "stdt", "stdnorm"), c(4,7))  # t4, t7, N(0,1)
                   )
     ## moT_C3
-    new("mixARGaussian", model = exampleModels$WL_Bt_1 )
+    new("MixARGaussian", model = exampleModels$WL_Bt_1 )
 
     
-    expect_error(new("mixARgen" , model = exampleModels$WL_Bt_1 ,
+    expect_error(new("MixARgen" , model = exampleModels$WL_Bt_1 ,
                      dist = c("stdt", "stdt", "stdnorm")),
                  "Argument 'dist' must be a list")
     
-    new("mixARgen", model = exampleModels$WL_Bt_1)
+    new("MixARgen", model = exampleModels$WL_Bt_1)
 
-    expect_error(new("mixARgen", model = exampleModels$WL_ibm),
+    expect_error(new("MixARgen", model = exampleModels$WL_ibm),
                  "Cannot set the distribution since argument 'dist' is missing")
 
 
@@ -203,9 +203,9 @@ prob   <- exampleModels$WL_ibm@prob
 scale  <- exampleModels$WL_ibm@scale
 arcoef <- exampleModels$WL_ibm@arcoef@a
 
-mo_WLt3  <- new("mixARgen", prob = prob, scale = scale, arcoef = arcoef,
+mo_WLt3  <- new("MixARgen", prob = prob, scale = scale, arcoef = arcoef,
                 dist = list(fdist_stdt(3)))
-mo_WLt30 <- new("mixARgen", prob = prob, scale = scale, arcoef = arcoef,
+mo_WLt30 <- new("MixARgen", prob = prob, scale = scale, arcoef = arcoef,
                 dist = list(fdist_stdt(30)))
 
 f <- make_fcond_lik(exampleModels$WL_ibm, as.numeric(fma::ibmclose))
@@ -293,37 +293,37 @@ fi0    <- fit_mixAR(fma::ibmclose, exampleModels$WL_ibm, fix = "shift")
 ## fi30   <- fit_mixAR(fma::ibmclose, mo_WLt30, fix = "shift")
 ## 
 stdt3v <- fdist_stdt(3, fixed = FALSE)
-## mo_WLt3v <- new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+## mo_WLt3v <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
 ##                 dist = list(fdist_stdt(3, fixed = FALSE)))
 ## fit3v <- fit_mixAR(fma::ibmclose, mo_WLt3v, fix = "shift")
 ## 
-## fit_mixAR(fma::ibmclose, new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+## fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
 ##                         dist = list(fdist_stdt(10))), fix = "shift")
-## fit_mixAR(fma::ibmclose, new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+## fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
 ##                         dist = list(fdist_stdt(5))), fix = "shift")
-## fit_mixAR(fma::ibmclose, new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+## fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
 ##                         dist = list(fdist_stdt(4))), fix = "shift")
-## fit_mixAR(fma::ibmclose, new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+## fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
 ##                         dist = list(fdist_stdt(3))), fix = "shift")
-## fit_mixAR(fma::ibmclose, new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+## fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
 ##                         dist = list(fdist_stdt(3.5))), fix = "shift")
-## fit_mixAR(fma::ibmclose, new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+## fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
 ##                         dist = list(fdist_stdt(3.8))), fix = "shift")
 ## 
-## mo_WLt30v <- new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+## mo_WLt30v <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
 ##                  dist = list(fdist_stdt(30, fixed = FALSE)))
 ## 
 ## fit30v <- fit_mixAR(fma::ibmclose, mo_WLt30v, fix = "shift")
 ## 
-## mo_WLt20v30v40 <- new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+## mo_WLt20v30v40 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
 ##                       dist = list(fn_stdt(c(20, 30, 40), fixed = FALSE)))
 ## fit20v30v40 <- fit_mixAR(fma::ibmclose, mo_WLt20v30v40, fix = "shift")
 ## 
-## mo_WLt20v30v40 <- new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+## mo_WLt20v30v40 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
 ##                       dist = fn_stdt(c(20, 30, 40), fixed = FALSE))
 ## fit20v30v40 <- fit_mixAR(fma::ibmclose, mo_WLt20v30v40, fix = "shift")
 ## 
-## mo_WLtf <- new("mixARgen", prob = prob, scale = sigma, arcoef = ar, 
+## mo_WLtf <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar, 
 ##                dist = list(generator = function(par) fn_stdt(par, fixed = FALSE), 
 ##                            param = c(20, 30, 40)))
 ## 
@@ -335,7 +335,7 @@ expect_warning(companion_matrix(11:15, ncol = 2)) # ncol < length(v)
 
 isStable(exampleModels$WL_I)
 isStable(exampleModels$WL_II)
-isStable(new("mixARGaussian", order = c(0, 0, 0)))
+isStable(new("MixARGaussian", order = c(0, 0, 0)))
 
 ## missing components are filled with 'filler', extended accordingly
 mixAR:::.canonic_coef(list(order = c(2,3)), filler = NA)
@@ -356,21 +356,21 @@ s <- 12
 
 rag <- new("raggedCoefS", a=ar1, as=ar12, s=s)
 
-modelS <- new("mixARGaussian", prob=probS, scale=sigmaS, arcoef=rag)
+modelS <- new("MixARGaussian", prob=probS, scale=sigmaS, arcoef=rag)
 
 yS <- mixAR_sim(modelS, n=500, init=rep(0,24))
 
-expect_error(new("mixARGaussian", prob=probS, scale=sigmaS, 
+expect_error(new("MixARGaussian", prob=probS, scale=sigmaS, 
                                       arcoef=list(a=ar1, s=s)))
 
-new("mixARGaussian", prob=probS, scale=sigmaS, arcoef=list(ar1, ar12, s=s))
-new("mixARGaussian", prob=probS, scale=sigmaS, arcoef=list(ar1, as=ar12, s=s))
-new("mixARGaussian", prob=probS, scale=sigmaS, arcoef=list(a=ar1, ar12, s=s))
-new("mixARGaussian", prob=probS, scale=sigmaS, 
+new("MixARGaussian", prob=probS, scale=sigmaS, arcoef=list(ar1, ar12, s=s))
+new("MixARGaussian", prob=probS, scale=sigmaS, arcoef=list(ar1, as=ar12, s=s))
+new("MixARGaussian", prob=probS, scale=sigmaS, arcoef=list(a=ar1, ar12, s=s))
+new("MixARGaussian", prob=probS, scale=sigmaS, 
     arcoef=list(a=rbind(c(0.5, -0.5, 0), c(1.1, 0, -0.5)), 
                 as=rbind(c(0,0), c(-0.3, 0.1)) , s=s))
 
-expect_error(new("mixARGaussian", prob=probS, scale=sigmaS, 
+expect_error(new("MixARGaussian", prob=probS, scale=sigmaS, 
                  arcoef=list(a=rbind(c(0.5, -0.5, 0), c(1.1, 0, -0.5)), 
                              as=matrix(c(0,0), nrow=1) , s=s)))
 

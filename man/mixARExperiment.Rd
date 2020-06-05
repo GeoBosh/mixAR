@@ -4,9 +4,9 @@
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 
-\title{Simulation experiments with mixAR models}
+\title{Simulation experiments with MixAR models}
 
-\description{Perform simulation experiments with mixAR models.}
+\description{Perform simulation experiments with MixAR models.}
 
 \usage{
 mixARExperiment(model, imodel = NULL, simargs = NULL, estargs = NULL, fix, ...)
@@ -15,9 +15,9 @@ mixARExperiment(model, imodel = NULL, simargs = NULL, estargs = NULL, fix, ...)
 %- maybe also 'usage' for other objects documented here.
 
 \arguments{
-  \item{model}{the underlying model, an object inheriting from "mixAR",
+  \item{model}{the underlying model, an object inheriting from "MixAR",
   see 'Details'.}
-  \item{imodel}{initial model,  an object inheriting from "mixAR", see 'Details'.}
+  \item{imodel}{initial model,  an object inheriting from "MixAR", see 'Details'.}
   \item{simargs}{additional arguments for the simulation function, a
     list, see 'Details'.}
   \item{estargs}{additional arguments for the estimation function, a
@@ -52,7 +52,7 @@ mixARExperiment(model, imodel = NULL, simargs = NULL, estargs = NULL, fix, ...)
   \code{\dots} passed on to \code{\link{simuExperiment}}.
 
   \item{Summary}{a summary of the experiment, by default sample means
-    and standard deviations of the estimates. This is a list of mixAR models.}
+    and standard deviations of the estimates. This is a list of MixAR models.}
 
   \item{Raw}{A list of the estimated models.}
 }
@@ -103,5 +103,5 @@ mixARExperiment(exampleModels$WL_II, N=10, raw=TRUE, simargs=list(n=500))
 ## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=100),
 ##     estargs=list(init=10,maxniter=500))
 }
-\keyword{mixAR}
+\keyword{MixAR}
 \keyword{simulation}

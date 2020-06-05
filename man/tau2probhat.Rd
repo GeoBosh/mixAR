@@ -2,10 +2,10 @@
 \alias{tau2probhat}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-  Estimate probabilities of a mixAR model from tau.
+  Estimate probabilities of a MixAR model from tau.
 }
 \description{
-  Estimate probabilities of a mixAR model from tau.
+  Estimate probabilities of a MixAR model from tau.
 }
 \usage{
 tau2probhat(tau)

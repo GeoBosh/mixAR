@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Put core mixAR coefficients into a canonical form, internal function — .canonic_coef • mixAR</title>
+<title>Put core MixAR coefficients into a canonical form, internal function — .canonic_coef • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Put core mixAR coefficients into a canonical form, internal function — .canonic_coef" />
-<meta property="og:description" content="Put core mixAR coefficients into a canonical form, internal
+<meta property="og:title" content="Put core MixAR coefficients into a canonical form, internal function — .canonic_coef" />
+<meta property="og:description" content="Put core MixAR coefficients into a canonical form, internal
   function." />
 
 
@@ -112,13 +112,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Put core mixAR coefficients into a canonical form, internal function</h1>
+    <h1>Put core MixAR coefficients into a canonical form, internal function</h1>
     
     <div class="hidden name"><code>xxcanonic_coef.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Put core mixAR coefficients into a canonical form, internal
+    <p>Put core MixAR coefficients into a canonical form, internal
   function.</p>
     </div>
 
@@ -129,7 +129,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>coef</th>
-      <td><p>the core coefficients of a mixAR model, a list.</p></td>
+      <td><p>the core coefficients of a MixAR model, a list.</p></td>
     </tr>
     <tr>
       <th>filler</th>
@@ -140,21 +140,21 @@
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This is an internal function called by <code>mixAR</code> to put mixAR
+    <p>This is an internal function called by <code>mixAR</code> to put MixAR
   parameters into a canonical form. <code>"shift"</code>, <code>"scale"</code> and
   <code>"prob"</code> are normally vectors with one element for each
   component but they may also be given as a single number, in which case
   it is taken to be the common value for all parameters and
   <code>.canonic_coef</code> extends them correspondingly. Also, the AR
   coefficients may be specified in a number of ways and this function
-  converts them to the format used by the mixAR classes.</p>
+  converts them to the format used by the MixAR classes.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a list with the folowing components:</p>
-<dt>order</dt><dd><p>mixAR order, a vector of integers</p></dd>
-  <dt>prob</dt><dd><p>mixAR probabilities, vector of length<code><a href='https://rdrr.io/r/base/length.html'>length(order)</a></code></p></dd>
-  <dt>shift</dt><dd><p>mixAR shift parameters, vector of length<code><a href='https://rdrr.io/r/base/length.html'>length(order)</a></code></p></dd>
-  <dt>scale</dt><dd><p>mixAR scle parameters, vector of length<code><a href='https://rdrr.io/r/base/length.html'>length(order)</a></code></p></dd>
+<dt>order</dt><dd><p>MixAR order, a vector of integers</p></dd>
+  <dt>prob</dt><dd><p>MixAR probabilities, vector of length<code><a href='https://rdrr.io/r/base/length.html'>length(order)</a></code></p></dd>
+  <dt>shift</dt><dd><p>MixAR shift parameters, vector of length<code><a href='https://rdrr.io/r/base/length.html'>length(order)</a></code></p></dd>
+  <dt>scale</dt><dd><p>MixAR scle parameters, vector of length<code><a href='https://rdrr.io/r/base/length.html'>length(order)</a></code></p></dd>
   <dt>arcoef</dt><dd><p>AR coefficients as a <code>"raggedCoef"</code> object</p></dd>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>

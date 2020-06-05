@@ -48,8 +48,7 @@ bx_dx(method = c("Ratio", "Poisson", "NULL"), par, pk)
 %\seealso{
 %  \code{\link{Choose_pk}}
 %}
-\examples{
-## for internal use only
-}
-\keyword{bx }% use one of  RShowDoc("KEYWORDS")
-\keyword{ pk }
+%\examples{
+%## for internal use only
+%}
+\keyword{internal} % use one of  RShowDoc("KEYWORDS")

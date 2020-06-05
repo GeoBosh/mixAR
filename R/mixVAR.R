@@ -1,4 +1,4 @@
-setClass("mixVAR", 
+setClass("MixVAR", 
          representation(prob = "numeric", 
                         order = "numeric", 
                         shift = "matrix", 
@@ -12,7 +12,7 @@ setClass("mixVAR",
 
 
 setMethod("initialize", 
-          signature(.Object = "mixVAR"), 
+          signature(.Object = "MixVAR"), 
           function (.Object, arcoef, order, prob, shift, vcov, model, ...)#2012-10-30 new arg model
           {
             if(missing(model)){    # 2012-10-30 lazy; but do not want to risk breaking this now.
@@ -149,7 +149,7 @@ setMethod("initialize",
 
 
 
-setMethod("show", "mixVAR", # 12-09-2018 "show" method adapted to handle class "raggedCoefS"
+setMethod("show", "MixVAR", # 12-09-2018 "show" method adapted to handle class "raggedCoefS"
           function(object) { #note: previous content has not been changed, only "if" were added
             cl <- class(object)
             g <- length(object@prob)
@@ -196,14 +196,14 @@ setMethod("show", "mixVAR", # 12-09-2018 "show" method adapted to handle class "
           })
 
 
-mixVARGaussian <- setClass("mixVARGaussian", 
+mixVARGaussian <- setClass("MixVARGaussian", 
                           ## representation(), 
                           ## prototype, 
-                          contains="mixVAR"
+                          contains="MixVAR"
                           ## validity, access, where, version, sealed, package, 
 )
 
-setMethod("show", "mixVARGaussian", 
+setMethod("show", "MixVARGaussian", 
           function(object) {
             callNextMethod()
             

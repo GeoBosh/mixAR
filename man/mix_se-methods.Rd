@@ -3,11 +3,11 @@
 \alias{mix_se}
 \alias{mix_se-methods}
 \alias{mix_se,ANY,list-method}
-\alias{mix_se,ANY,mixAR-method}
-\alias{mix_se,ANY,mixARGaussian-method}
-\title{Compute standard errors of estimates of mixAR models}
+\alias{mix_se,ANY,MixAR-method}
+\alias{mix_se,ANY,MixARGaussian-method}
+\title{Compute standard errors of estimates of MixAR models}
 \description{
-  Compute standard errors of estimates of mixAR models.
+  Compute standard errors of estimates of MixAR models.
 }
 \usage{
 mix_se(x, model, fix_shift)
@@ -15,7 +15,7 @@ mix_se(x, model, fix_shift)
 \arguments{
   \item{x}{time series.}
   \item{model}{
-    mixAR model, an object inheriting from class \dQuote{mixAR}.
+    MixAR model, an object inheriting from class \dQuote{MixAR}.
   }
   \item{fix_shift}{
     \code{logical}. Should the shift paramters be fixed? Default is
@@ -24,7 +24,8 @@ mix_se(x, model, fix_shift)
 }
 \details{
 
-  :TODO:
+  For formulas used in the computation, see
+  \insertCite{WongPhD;textual}{mixAR}.
 
 }
 \value{
@@ -42,8 +43,7 @@ mix_se(x, model, fix_shift)
     Missing information matrix.
   }
 }
-\references{For formulas used in the computation, see:
-
+\references{
   \insertRef{WongPhD}{mixAR}
 }
 \author{
@@ -59,11 +59,11 @@ mix_se(x, model, fix_shift)
 %%  ~~describe this method here~~
 }
 
-\item{\code{signature(x = "ANY", model = "mixAR")}}{
+\item{\code{signature(x = "ANY", model = "MixAR")}}{
 %%  ~~describe this method here~~
 }
 
-\item{\code{signature(x = "ANY", model = "mixARGaussian")}}{
+\item{\code{signature(x = "ANY", model = "MixARGaussian")}}{
 %%  ~~describe this method here~~
 }
 }}
@@ -81,10 +81,10 @@ moWLprob <- exampleModels$WL_ibm@prob    # 2019-12-15; was: c(0.5339,0.4176,0.03
 moWLsigma <- exampleModels$WL_ibm@scale  #                  c(4.8227,6.0082,18.1716)
 moWLar <- list(-0.3208, 0.6711,0)        # @Davide - is this from some model?
 
-moWLibm <- new("mixARGaussian", prob = moWLprob, scale = moWLsigma, arcoef = moWLar)
+moWLibm <- new("MixARGaussian", prob = moWLprob, scale = moWLsigma, arcoef = moWLar)
 
 IBM <- diff(fma::ibmclose)
 mix_se(as.numeric(IBM), moWLibm, fix_shift = TRUE)$'standard_errors'
 }
 \keyword{methods}
-\keyword{mixAR}
+\keyword{MixAR}

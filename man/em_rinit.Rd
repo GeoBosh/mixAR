@@ -10,9 +10,9 @@ etk2tau(etk)
 }
 \arguments{
   \item{y}{time series.}
-  \item{order}{mixAR order, vector of length the number of components.}
+  \item{order}{MixAR order, vector of length the number of components.}
   \item{partempl}{ TODO: describe \code{partempl}.}
-  \item{etk}{mixAR component residuals, a matrix.}
+  \item{etk}{MixAR component residuals, a matrix.}
 }
 \details{
 
@@ -28,7 +28,7 @@ etk2tau(etk)
 
 }
 \value{
-  for \code{em_rinit}, an object from class \code{"mixARGaussian"}
+  for \code{em_rinit}, an object from class \code{"MixARGaussian"}
 
   for \code{etk2tau}, a matrix representing \code{tau} (i-th row
   contains probabilities corresponding to the i-th observation) 

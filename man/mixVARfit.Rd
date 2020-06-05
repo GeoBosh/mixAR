@@ -13,7 +13,7 @@ mixVARfit(y, model, fix = FALSE, tol = 10^-6)
 \arguments{
   \item{y}{a data matrix.}
   \item{model}{
-    an object of class \code{"mixVAR"} with initial values of parameter
+    an object of class \code{"MixVAR"} with initial values of parameter
     for EM estimation.
   }
   \item{tol}{
@@ -29,7 +29,7 @@ mixVARfit(y, model, fix = FALSE, tol = 10^-6)
 
 }
 \value{
-  An object of class \code{mixVARGaussian} with EM estimates of model
+  An object of class \code{MixVARGaussian} with EM estimates of model
   parameters.  
 }
 \references{
@@ -57,7 +57,7 @@ Sigma1 <- cbind(c(1,0.5, -0.4), c(0.5,2, 0.8), c(-0.4,0.8,4))
 Sigma2 <- cbind(c(1,0.2, 0), c(0.2,  2, -0.15), c(0,-0.15,4))
 Sigma <- array(c(Sigma1, Sigma2), dim = c(3,3,2))
 
-m <- new("mixVARGaussian", prob = prob, vcov = Sigma, arcoef = AR, shift = shift)
+m <- new("MixVARGaussian", prob = prob, vcov = Sigma, arcoef = AR, shift = shift)
 y <- mixVAR_sim(m, n = 500, init = matrix(rep(0,3), ncol = 3), nskip = 100, flag = FALSE)
 
 mixVARfit(y, m, tol = 10^-6)

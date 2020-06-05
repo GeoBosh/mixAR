@@ -6,14 +6,14 @@ fit_mixARreg <- function(x, y, mixARmodel, EMinit, ...){
 }
 setGeneric("fit_mixARreg")
 
-setMethod("fit_mixARreg", c(x = "ANY", y = "data.frame", mixARmodel = "mixAR",
+setMethod("fit_mixARreg", c(x = "ANY", y = "data.frame", mixARmodel = "MixAR",
                             EMinit = "missing"),
           function(x, y, mixARmodel, EMinit, ...){
               mixARreg(x, y, mixARmodel, ...)
           }
 )
 
-setMethod("fit_mixARreg", c(x = "ANY", y = "matrix", mixARmodel = "mixAR",
+setMethod("fit_mixARreg", c(x = "ANY", y = "matrix", mixARmodel = "MixAR",
                             EMinit = "missing"),
           function(x, y, mixARmodel, EMinit, ...){
               ## y <- as.data.frame(y)
@@ -21,7 +21,7 @@ setMethod("fit_mixARreg", c(x = "ANY", y = "matrix", mixARmodel = "mixAR",
           }
 )
 
-setMethod("fit_mixARreg", c(x = "ANY", y = "numeric", mixARmodel = "mixAR",
+setMethod("fit_mixARreg", c(x = "ANY", y = "numeric", mixARmodel = "MixAR",
                             EMinit = "missing"),
           function(x, y, mixARmodel, EMinit, ...){
               ## y <- as.data.frame(y)
@@ -37,7 +37,7 @@ setMethod("fit_mixARreg", c(x = "ANY", y = "numeric", mixARmodel = "mixAR",
 ##           function(x, y, mixARmodel, EMinit){
 ##               y <- as.data.frame(y)
 ## 
-##               mixARmodel <- new("mixARGaussian", prob = EMinit$prob,
+##               mixARmodel <- new("MixARGaussian", prob = EMinit$prob,
 ##                                 scale = EMinit$scale, arcoef = EMinit$arcoef
 ##                                 )
 ##               mixARreg(x, y, mixARmodel)
@@ -48,7 +48,7 @@ setMethod("fit_mixARreg", c(x = "ANY", y = "numeric", mixARmodel = "mixAR",
 ##                             EMinit = "list"),
 ##           ## EMinit must be a named list (at least prob, scale, arcoef)
 ##           function(x, y, mixARmodel, EMinit){
-##               mixARmodel <- new("mixARGaussian", prob = EMinit$prob,
+##               mixARmodel <- new("MixARGaussian", prob = EMinit$prob,
 ##                                 scale = EMinit$scale, arcoef = EMinit$arcoef)
 ##               mixARreg(x, y, mixARmodel)
 ##           }
@@ -58,7 +58,7 @@ setMethod("fit_mixARreg", c(x = "ANY", y = "numeric", mixARmodel = "mixAR",
 ##                             EMinit = "list"),
 ##           function(x, y, mixARmodel, EMinit){
 ##               y <- as.data.frame(y)
-##               mixARmodel <- new("mixARGaussian", prob = EMinit$prob,
+##               mixARmodel <- new("MixARGaussian", prob = EMinit$prob,
 ##                                 scale = EMinit$scale, arcoef = EMinit$arcoef)
 ##               mixARreg(x, y, mixARmodel)
 ##           }
@@ -68,7 +68,7 @@ setMethod("fit_mixARreg", c(x = "ANY", y = "ANY", mixARmodel = "missing",
                             EMinit = "list"),
           ## EMinit must be a named list (at least prob, scale, arcoef)
           function(x, y, mixARmodel, EMinit, ...){
-              mixARmodel <- new("mixARGaussian", prob = EMinit$prob,
+              mixARmodel <- new("MixARGaussian", prob = EMinit$prob,
                                 scale = EMinit$scale, arcoef = EMinit$arcoef
                                 )
               fit_mixARreg(x, y, mixARmodel, ...)

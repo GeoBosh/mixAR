@@ -2,7 +2,14 @@
 \alias{mixAR-package}
 %\alias{mixAR}
 \docType{package}
+% attaching the package is not necessary for this file but it ensures
+% that Sexpr's using functions from the package will work also in other
+% Rd files, without them needing to attach the package. This is
+% undocumented 'feature' and it doesn't help if a page is rendered on
+% its own. It is best to use 'mixAR::' prefix but for generated examples
+% is not very suitable.
 \title{
+  \Sexpr[stage=build,results=hide]{require("mixAR")}
   \Sexpr[stage=build,results=hide]{pd <- packageDescription("mixAR")}
   \Sexpr[stage=build,results=hide]{lb <- library(help="mixAR", character.only=TRUE)}
   \Sexpr[stage=build,results=hide]{lbinfo <- if(!is.null(lb$info[[2]])) lb$info[[2]] else "No_matches"}
@@ -65,7 +72,7 @@
 %%%% 
 %%%% 
 %%%%   \Sexpr[stage=build,results=hide]{pat <- c(pat, list(mixAR =
-%%%%     c("^mixAR-class", "^mixARGaussian-class", "^mixARgen-class",
+%%%%     c("^mixAR-class", "^MixARGaussian-class", "^mixARgen-class",
 %%%%     "^mixAR-methods", "^show_diff-methods", "^parameters-methods" )))}
 %%%%   \subsection{mixAR classes}{
 %%%%     \Sexpr[stage=build,results=rd]{lbpaste(pat[["mixAR"]])}
@@ -116,13 +123,13 @@
 %%%%   }
 %%%%   
 %%%% 
-%%%%   \Sexpr[stage=build,results=hide]{pat <- c(pat, list(mixComp =
-%%%%     c("^mixComp-class", "^mix_ncomp-methods", "^mix_ek-methods",
+%%%%   \Sexpr[stage=build,results=hide]{pat <- c(pat, list(MixComp =
+%%%%     c("^MixComp-class", "^mix_ncomp-methods", "^mix_ek-methods",
 %%%%     "^mix_hatk-methods", "^\%of\%", "^inner", "^row_lengths"  )))}
-%%%%   \subsection{mixComp}{
+%%%%   \subsection{MixComp}{
 %%%%     Convenient computing with mixAR time series.
 %%%%     
-%%%%     \Sexpr[stage=build,results=rd]{lbpaste(pat[["mixComp"]])}
+%%%%     \Sexpr[stage=build,results=rd]{lbpaste(pat[["MixComp"]])}
 %%%%   }
 %%%% 
 %%%%   
@@ -183,18 +190,18 @@
 
   % An overview of how to use the package, including the most important functions
 
-  Package mixAR provides functions for modelling with mixture
-  autoregressive (mixAR) models. The S4 class \code{"mixARGaussian"} can
+  Package \pkg{mixAR} provides functions for modelling with mixture
+  autoregressive (MixAR) models. The S4 class \code{"MixARGaussian"} can
   be used when the error distributions of the components are standard
-  Gaussian. The class \code{"mixARgen"} admits arbitrary (well, within
+  Gaussian. The class \code{"MixARgen"} admits arbitrary (well, within
   reason) distributions for the error components. Both classes inherit
-  from the virtual class \code{"mixAR"}.
+  from the virtual class \code{"MixAR"}.
 
   Estimation can be done with \code{fit_mixAR}.  Currently, the EM
   algorithm is used for estimation.
 
-  For \code{"mixARGaussian"} the M-step of the EM algorithm reduces to a
-  system of linear equations. For \code{"mixARgen"} the problem is
+  For \code{"MixARGaussian"} the M-step of the EM algorithm reduces to a
+  system of linear equations. For \code{"MixARgen"} the problem is
   substantially non-linear. The implementation is fairly general but
   currently not optimised for efficiency. The specification of the error
   distributions went through several stages and may still be
@@ -242,49 +249,49 @@ mo_WLprob <- c(0.5439, 0.4176, 0.0385)              # model coefficients from Wo
 mo_WLsigma <- c(4.8227, 6.0082, 18.1716)
 mo_WLar <- list(c(0.6792, 0.3208), c(1.6711, -0.6711), 1)
 
-mo_WL <- new("mixARGaussian", prob = mo_WLprob, scale = mo_WLsigma, arcoef = mo_WLar)
+mo_WL <- new("MixARGaussian", prob = mo_WLprob, scale = mo_WLsigma, arcoef = mo_WLar)
                                         
-mo_WL_A <- new("mixARGaussian"                         # WongLi, model A
+mo_WL_A <- new("MixARGaussian"                         # WongLi, model A
               , prob = c(0.5, 0.5)
               , scale = c(5, 1)
               , shift = c(0, 0)
               , arcoef = list(c(0.5), c(1.1))
               )
 
-mo_WL_B <- new("mixARGaussian"                         # WongLi, model B
+mo_WL_B <- new("MixARGaussian"                         # WongLi, model B
               , prob = c(0.75, 0.25)
               , scale = c(5, 1)
               , shift = c(0, 0)
               , arcoef = list(c(0.5), c(1.4))
               )
                                         
-mo_WL_I <- new("mixARGaussian"                          # WongLi, model I
+mo_WL_I <- new("MixARGaussian"                          # WongLi, model I
               , prob = c(0.4, 0.3, 0.3)
               , scale = c(1, 1, 5)
               , shift = c(0, 0, -5)
               , arcoef = list(c(0.9, -0.6), c(-0.5), c(1.50, -0.74, 0.12))
               )
 
-mo_WL_II <- new("mixARGaussian"                         # WongLi, model II
+mo_WL_II <- new("MixARGaussian"                         # WongLi, model II
                , prob = c(0.4, 0.3, 0.3)
                , scale = c(1, 1, 5)
                , shift = c(5, 0, -5)
                , arcoef = list(c(0.9, -0.6), c(-0.7, 0), c( 0, 0.80))
                )
 
-## mixAR models with arbitrary dist. of the components
+## MixAR models with arbitrary dist. of the components
 ## (user interface not finalized)
 
 ## Gaussian
-mo_WLgen <- new("mixARgen", prob = mo_WLprob, scale = mo_WLsigma, arcoef = mo_WLar,
+mo_WLgen <- new("MixARgen", prob = mo_WLprob, scale = mo_WLsigma, arcoef = mo_WLar,
                dist = list(dist_norm))
 
 ## t_3
-mo_WLt3v <- new("mixARgen", prob = mo_WLprob, scale = mo_WLsigma, arcoef = mo_WLar,
+mo_WLt3v <- new("MixARgen", prob = mo_WLprob, scale = mo_WLsigma, arcoef = mo_WLar,
                dist = list(fdist_stdt(3, fixed = FALSE)))
 
 ## t_20, t_30, t_40 (can be used to start estimation)
-mo_WLtf <- new("mixARgen", prob = mo_WLprob, scale = mo_WLsigma, arcoef = mo_WLar,
+mo_WLtf <- new("MixARgen", prob = mo_WLprob, scale = mo_WLsigma, arcoef = mo_WLar,
               dist = list(generator =
                               function(par)
                                   fn_stdt(par, fixed = FALSE), param = c(20, 30, 40)))
@@ -309,14 +316,14 @@ a1b <- fit_mixAR(as.numeric(fma::ibmclose), c(2, 2, 1), 3, fix = "shift")
 }
 
 \dontrun{
-## specify the model using a mixAR model object
+## specify the model using a MixAR model object
 a1c <- fit_mixAR(as.numeric(fma::ibmclose), a1a$model, init = a0a$model, fix = "shift")
 
 ## fit a model like mo_WL using as initial values 3 automatically generated sets.
 a2 <- fit_mixAR(as.numeric(fma::ibmclose), mo_WL, 3, fix = "shift", permute = TRUE)
 }
 
-moT_B3 <- new("mixARgen"
+moT_B3 <- new("MixARgen"
                , prob = c(0.3, 0.3, 0.4)
                , scale = c(2, 1, 0.5)
                , shift = c(5, -5, 0)
@@ -325,7 +332,7 @@ moT_B3 <- new("mixARgen"
                , dist = distlist("stdt", c(4,10), fixed = c(FALSE, TRUE), tr = c(1, 1, 2))
                )
 
-moT_C1 <- new("mixARgen"
+moT_C1 <- new("MixARgen"
               , prob = c(0.3, 0.3, 0.4)
               , scale = c(2, 1, 0.5)
               , shift = c(5, -5, 0)
@@ -336,11 +343,11 @@ moT_C1 <- new("mixARgen"
 
 ## demonstrate reuse of existing models
 exampleModels$WL_Bt_1
-moT_C2 <- new("mixARgen"
+moT_C2 <- new("MixARgen"
               , model = exampleModels$WL_Bt_1
               , dist = distlist(c("stdt", "stdt", "stdnorm"), c(4,7))  # t4, t7, N(0,1)
               )
-moT_C3 <- new("mixARGaussian", model = exampleModels$WL_Bt_1 )
+moT_C3 <- new("MixARGaussian", model = exampleModels$WL_Bt_1 )
 }
 \keyword{package}
 \keyword{ts}

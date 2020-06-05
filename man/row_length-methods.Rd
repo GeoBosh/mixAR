@@ -4,7 +4,7 @@
 \alias{row_lengths}
 
 \alias{row_lengths,ANY-method}
-\alias{row_lengths,mixAR-method}
+\alias{row_lengths,MixAR-method}
 \alias{row_lengths,raggedCoef-method}
 \title{ Methods for function \code{row_lengths} in package \pkg{mixAR}}
 \description{
@@ -26,7 +26,7 @@
   Returns the lengths of the rows of the components, a numeric vector.
 }
 
-\item{\code{signature(x = "mixAR")}}{
+\item{\code{signature(x = "MixAR")}}{
   Returns the AR orders of the model components, a numeric vector.
 }
 

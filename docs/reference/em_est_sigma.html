@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Update the scale parameters of mixAR models — em_est_sigma • mixAR</title>
+<title>Update the scale parameters of MixAR models — em_est_sigma • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Update the scale parameters of mixAR models — em_est_sigma" />
-<meta property="og:description" content="Calculates estimates of scale parameters of mixAR models from
+<meta property="og:title" content="Update the scale parameters of MixAR models — em_est_sigma" />
+<meta property="og:description" content="Calculates estimates of scale parameters of MixAR models from
   conditional probabilities and mixture `residuals'.
   Used in EM algorithm." />
 
@@ -113,13 +113,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Update the scale parameters of mixAR models</h1>
+    <h1>Update the scale parameters of MixAR models</h1>
     
     <div class="hidden name"><code>em_est_sigma.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculates estimates of scale parameters of mixAR models from
+    <p>Calculates estimates of scale parameters of MixAR models from
   conditional probabilities and mixture `residuals'.
   Used in EM algorithm.</p>
     </div>
@@ -134,12 +134,12 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>tau</th>
-      <td><p>the conditional probabilities for the groups, a <code>"mixComp"</code>
+      <td><p>the conditional probabilities for the groups, a <code>"MixComp"</code>
     object.</p></td>
     </tr>
     <tr>
       <th>etk</th>
-      <td><p>component "residuals", mixComp object(?).</p></td>
+      <td><p>component "residuals", MixComp object(?).</p></td>
     </tr>
     <tr>
       <th>Fscore</th>
@@ -164,7 +164,7 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>tauetk2sigmahat</code> calculates estimates of the scale parameters
-  for a mixAR time series with Gaussian components. There is an explicit
+  for a MixAR time series with Gaussian components. There is an explicit
   formula in that case.</p>
 <p><code>em_est_sigma</code> calculates estimates of the scale parameters in
   the general case.  The non-linear equations are solved using functions

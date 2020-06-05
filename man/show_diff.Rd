@@ -2,16 +2,16 @@
 \docType{methods}
 \alias{show_diff}
 \alias{show_diff-methods}
-\alias{show_diff,mixAR,mixAR-method}
-\alias{show_diff,mixARGaussian,mixARgen-method}
-\alias{show_diff,mixARgen,mixARGaussian-method}
-\alias{show_diff,mixARgen,mixARgen-method}
+\alias{show_diff,MixAR,MixAR-method}
+\alias{show_diff,MixARGaussian,MixARgen-method}
+\alias{show_diff,MixARgen,MixARGaussian-method}
+\alias{show_diff,MixARgen,MixARgen-method}
 \title{Show differences between two models}
 \description{
 
-  Show differences between two mixAR models in a way that enables quick
+  Show differences between two MixAR models in a way that enables quick
   comparison between them. This is a generic function, package
-  \pkg{mixAR} defines methods for \code{mixAR} models.
+  \pkg{mixAR} defines methods for \code{MixAR} models.
 
 }
 \usage{
@@ -19,7 +19,7 @@ show_diff(model1, model2)
 }
 \arguments{
   \item{model1,model2}{
-    the mixAR models to be compared.
+    the MixAR models to be compared.
   }
 }
 \details{
@@ -28,7 +28,7 @@ show_diff(model1, model2)
   arguments.
 
   \code{show_diff()} prints the differences between two
-  models in convenient form for comparison. The methods for mixAR models
+  models in convenient form for comparison. The methods for MixAR models
   allow to see differences between similar models at a glance.
   
 }
@@ -53,16 +53,16 @@ show_diff(model1, model2)
 \section{Methods}{
   \describe{
 
-    \item{\code{signature(model1 = "mixAR", model2 = "mixAR")}}{
+    \item{\code{signature(model1 = "MixAR", model2 = "MixAR")}}{
       %%  ~~describe this method here~~
     }
-    \item{\code{signature(model1 = "mixARGaussian", model2 = "mixARgen")}}{
+    \item{\code{signature(model1 = "MixARGaussian", model2 = "MixARgen")}}{
       %%  ~~describe this method here~~
     }
-    \item{\code{signature(model1 = "mixARgen", model2 = "mixARGaussian")}}{
+    \item{\code{signature(model1 = "MixARgen", model2 = "MixARGaussian")}}{
       %%  ~~describe this method here~~
     }
-    \item{\code{signature(model1 = "mixARgen", model2 = "mixARgen")}}{
+    \item{\code{signature(model1 = "MixARgen", model2 = "MixARgen")}}{
       %%  ~~describe this method here~~
     }
 }}
@@ -74,4 +74,4 @@ show_diff(exampleModels$WL_Bt_1, exampleModels$WL_Ct_3)
 show_diff(exampleModels$WL_Ct_2, exampleModels$WL_Bt_3)
 }
 \keyword{methods}
-\keyword{ mixAR }
+\keyword{ MixAR }

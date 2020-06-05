@@ -39,7 +39,7 @@ test_that("functions for 'predict' work", {
     
     #extend_index(rbind(c(1,2),c(3,4)), g = 2)
     
-    m <- new("mixARGaussian", prob = c(.5 ,.5), scale = c(1,2), arcoef = list(-0.5, 1.1))
+    m <- new("MixARGaussian", prob = c(.5 ,.5), scale = c(1,2), arcoef = list(-0.5, 1.1))
     
     predict_coef(m, maxh = 2)
     

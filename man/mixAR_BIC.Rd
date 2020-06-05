@@ -2,7 +2,7 @@
 \alias{mixAR_BIC}
 \alias{BIC_comp}
 \title{
-  BIC based model selection for mixAR models
+  BIC based model selection for MixAR models
 }
 \description{
   BIC calculations for mixture autoregressive models.
@@ -14,7 +14,7 @@ BIC_comp(x, y)
 \arguments{
   \item{y}{a time series.}
   \item{model}{
-    An object of class \code{mixAR}. Alternatively an output list from
+    An object of class \code{MixAR}. Alternatively an output list from
     \code{fit_mixAR}. The model for which to calculate BIC.
   }  \item{fix}{
   If \code{fix = "shift"} shift parameters are not included
@@ -31,13 +31,13 @@ BIC_comp(x, y)
     \code{index} is set to the largest AR order.
   }
   \item{x}{
-    a list containing a combination of \code{mixAR} objects and/or
+    a list containing a combination of \code{MixAR} objects and/or
     output lists from \code{fit_mixAR}.
   }
 }
 \details{
 
-  \code{mixAR_BIC} calculates the BIC criterion of a given \code{mixAR}
+  \code{mixAR_BIC} calculates the BIC criterion of a given \code{MixAR}
   object with respect to a specified time series.
   
   If \code{index} is specified, it has to be at least equal to the
@@ -63,10 +63,10 @@ BIC_comp(x, y)
 %}
 \author{Davide Ravagli}
 \examples{
-model1 <- new("mixARGaussian", prob = c(0.5, 0.5), scale = c(1, 2),
+model1 <- new("MixARGaussian", prob = c(0.5, 0.5), scale = c(1, 2),
               arcoef = list(-0.5, 1.1))
 
-model2 <- new("mixARGaussian", prob = c(0.5, 0.3, 0.2), scale = c(1, 3, 8),
+model2 <- new("MixARGaussian", prob = c(0.5, 0.3, 0.2), scale = c(1, 3, 8),
               arcoef = list(c(-0.5, 0.5), 1, 0.4))
 
 set.seed(123)
@@ -86,4 +86,4 @@ mixAR_BIC(y, model_fit1, index = 20)
 mixAR_BIC(y, model_fit2, index = 20)
 }
 %\keyword{ts}
-\keyword{mixAR}
+\keyword{MixAR}

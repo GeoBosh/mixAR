@@ -92,4 +92,4 @@ stdtabsmoment(5, 1:6)
 ## Student-t
 tabsmoment(5, 1:6)
 }
-\keyword{distributions}
+\keyword{distribution}

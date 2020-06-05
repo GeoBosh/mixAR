@@ -46,8 +46,8 @@ Some models have several several vectors of parameters, possibly of
   different lengths, such that in some circumstances they are thought of
   as lists, in others as matrices after suitable padding with zeroes.
   Class &quot;raggedCoef&quot; represents such ragged lists.  In package
-  &quot;mixAR&quot; it is used to hold the autoregressive coefficients of
-  mixAR models." />
+  &quot;MixAR&quot; it is used to hold the autoregressive coefficients of
+  MixAR models." />
 
 
 
@@ -130,8 +130,8 @@ Some models have several several vectors of parameters, possibly of
   different lengths, such that in some circumstances they are thought of
   as lists, in others as matrices after suitable padding with zeroes.
   Class <code>"raggedCoef"</code> represents such ragged lists.  In package
-  <code>"mixAR"</code> it is used to hold the autoregressive coefficients of
-  mixAR models.</p>
+  <code>"MixAR"</code> it is used to hold the autoregressive coefficients of
+  MixAR models.</p>
     </div>
 
     <pre class="usage"><span class='fu'>raggedCoef</span>(<span class='no'>p</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>NA_real_</span>)</pre>
@@ -179,8 +179,8 @@ Some models have several several vectors of parameters, possibly of
   <code>value</code> is reshaped into a ragged list to match <code>p</code>. This is
   convenient when, for example, the elements of a ragged array are
   obtained from an optimisation routine which expects plain vector.
-  (<strong>TODO:</strong> the description of this case is from cursory glance at
-  the code and guesswork - check.)</p>
+  <!-- % (\strong{TODO:} the description of this case is from cursory glance at -->
+  <!-- % the code and guesswork - check.) --></p>
     <h2 class="hasAnchor" id="objects-from-the-class"><a class="anchor" href="#objects-from-the-class"></a>Objects from the Class</h2>
 
     
@@ -277,7 +277,7 @@ Some models have several several vectors of parameters, possibly of
 
     <dt>mixFilter</dt><dd><p><code>signature(x = "numeric", coef = "raggedCoef", index = "numeric")</code>:
       Apply a mixture filter to a time series.
-      TODO: describe...</p></dd>
+      <!-- % TODO: describe... --></p></dd>
     <dt>row_lengths</dt><dd><p><code>signature(x = "raggedCoef")</code>:
       Gives <code>x@p</code>, which is the same as <code><a href='https://rdrr.io/r/base/lengths.html'>lengths(x@a)</a></code>.</p></dd>
     <dt>length</dt><dd><p><code>signature(x = "raggedCoef")</code>:
@@ -295,11 +295,11 @@ Some models have several several vectors of parameters, possibly of
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Slot <code>p</code> is redundant but convenient.</p>
-<p>todo: allow a matrix as first argument in the initialization
-  function.</p>
+<p><!-- % todo: allow a matrix as first argument in the initialization -->
+  <!-- % function. --></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='mixARGaussian-class.html'>mixARGaussian</a></code>
+    <div class='dont-index'><p><code>MixARGaussian</code>
 <!-- %       \code{\link{initialize,raggedCoef-method}} -->
 <!-- %	~~objects to See Also as \code{\link{~~fun~~}}, ~~~ -->
 <!-- %	or \code{\linkS4class{CLASSNAME}} for links to other classes --></p></div>

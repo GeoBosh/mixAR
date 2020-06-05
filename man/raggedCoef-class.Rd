@@ -47,8 +47,8 @@
   different lengths, such that in some circumstances they are thought of
   as lists, in others as matrices after suitable padding with zeroes.
   Class \code{"raggedCoef"} represents such ragged lists.  In package
-  \code{"mixAR"} it is used to hold the autoregressive coefficients of
-  mixAR models.
+  \code{"MixAR"} it is used to hold the autoregressive coefficients of
+  MixAR models.
 
 }
 \usage{
@@ -90,8 +90,8 @@ raggedCoef(p, value = NA_real_)
   \code{value} is reshaped into a ragged list to match \code{p}. This is
   convenient when, for example, the elements of a ragged array are
   obtained from an optimisation routine which expects plain vector.
-  (\strong{TODO:} the description of this case is from cursory glance at
-  the code and guesswork - check.)
+  % (\strong{TODO:} the description of this case is from cursory glance at
+  % the code and guesswork - check.)
 
 }
 
@@ -201,7 +201,7 @@ raggedCoef(p, value = NA_real_)
 
     \item{mixFilter}{\code{signature(x = "numeric", coef = "raggedCoef", index = "numeric")}:
       Apply a mixture filter to a time series.
-      TODO: describe...
+      % TODO: describe...
     }
     \item{row_lengths}{\code{signature(x = "raggedCoef")}:
       Gives \code{x@p}, which is the same as \code{lengths(x@a)}.
@@ -225,14 +225,14 @@ raggedCoef(p, value = NA_real_)
 \note{
   Slot \code{p} is redundant but convenient.
 
-  todo: allow a matrix as first argument in the initialization
-  function.
+  % todo: allow a matrix as first argument in the initialization
+  % function.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-  \code{\linkS4class{mixARGaussian}}
+  \code{\linkS4class{MixARGaussian}}
 %       \code{\link{initialize,raggedCoef-method}}
 %	~~objects to See Also as \code{\link{~~fun~~}}, ~~~
 %	or \code{\linkS4class{CLASSNAME}} for links to other classes

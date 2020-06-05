@@ -5,10 +5,10 @@
 \alias{mixFilter,ANY,ANY,ANY-method}
 \alias{mixFilter,numeric,raggedCoef,numeric-method}
 \title{
-  Filter time series with mixAR filters
+  Filter time series with MixAR filters
 }
 \description{
-  Filter time series with mixAR filters, a generic function with no
+  Filter time series with MixAR filters, a generic function with no
   default method (currently).
 }
 \usage{
@@ -26,11 +26,11 @@ mixFilter(x, coef, index, shift = 0, residual = FALSE, scale = 1)
   \item{scale}{
     optional scale factor(s), makes sense only when
     \code{residual=TRUE}, corresponds to \code{scale} in the
-    specification of a mixAR model.
+    specification of a MixAR model.
   }
 }
 \value{
-  a \code{mixComp} object
+  a \code{MixComp} object
 }
 \author{Georgi N. Boshnakov}
 \section{Methods}{
@@ -41,7 +41,7 @@ mixFilter(x, coef, index, shift = 0, residual = FALSE, scale = 1)
 }
 
 \item{\code{signature(x = "numeric", coef = "raggedCoef", index = "numeric")}}{
-  Filter \code{x} and return a \code{mixComp} object.
+  Filter \code{x} and return a \code{MixComp} object.
   % See \code{\link{mixFilter}} for a description of the meaning of the
   % arguments.
 }
@@ -52,5 +52,5 @@ mixFilter(x, coef, index, shift = 0, residual = FALSE, scale = 1)
   \code{\link{mix_hatk}}
 }
 \keyword{methods}
-\keyword{mixAR}
+\keyword{MixAR}
 \keyword{ts}

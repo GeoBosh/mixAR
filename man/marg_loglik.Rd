@@ -4,11 +4,14 @@
   Calculate marginal loglikelihood at high density points of a MAR model.
 }
 \description{
-  The function implements the method by \insertCite{Chib1995}{mixAR} and
-  \insertCite{ChibJeliazkov2001}{mixAR} for calculation of the marginal
-  loglikelihood of a mixture autoregressive model. It automatically
-  finds high density values for model parameters, and evaluates the
-  likelihood at such points.
+  
+  The function implements the method by
+  \insertCite{Chib1995;textual}{mixAR} and
+  \insertCite{ChibJeliazkov2001;textual}{mixAR} for calculation of the
+  marginal loglikelihood of a mixture autoregressive model. It
+  automatically finds high density values for model parameters, and
+  evaluates the likelihood at such points.
+
 }
 \usage{
 marg_loglik(y, model, tau, nsim, prob_mod)
@@ -16,8 +19,8 @@ marg_loglik(y, model, tau, nsim, prob_mod)
 \arguments{
   \item{y}{a time series (currently a numeric vector).}
   \item{model}{
-    object of formal class \code{mixAR}, containing initial values for
-    the parameters. Currently available for \code{mixARGaussian} objects
+    object of formal class \code{MixAR}, containing initial values for
+    the parameters. Currently available for \code{MixARGaussian} objects
     only.
   }
   \item{tau}{
@@ -69,11 +72,11 @@ prob <- c(0.5, 0.5)
 sigma <- c(1, 2)
 arco <- list(-0.5, 1)
 
-model <- new("mixARGaussian", prob = prob, scale = sigma, arcoef = arco)
+model <- new("MixARGaussian", prob = prob, scale = sigma, arcoef = arco)
 
 y <- mixAR_sim(model, 250, rep(0, max(model@order)), nskip = 100)  # data
 
 marg_loglik(y, model, tau = c(.15, .25), nsim = 50, 0.5)
 }
-\keyword{ likelihood }
+\keyword{ estimation }
 \keyword{ selection }

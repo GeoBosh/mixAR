@@ -2,10 +2,10 @@
 \alias{mixgenMstep}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-  M-step for models from class mixARgen
+  M-step for models from class MixARgen
 }
 \description{
-  M-step for models from class mixARgen. This function is for use by
+  M-step for models from class MixARgen. This function is for use by
   other functions.
 }
 \usage{
@@ -16,9 +16,9 @@ mixgenMstep(y, tau, model, index, fix = NULL, comp_sigma = FALSE,
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{y}{time series, a numeric vector.}
-  \item{tau}{conditional probabilities, an object of class "mixComp".}
+  \item{tau}{conditional probabilities, an object of class "MixComp".}
   \item{model}{the current model, an object from a subclass of class
-    "mixAR".}
+    "MixAR".}
   \item{index}{indices of observations for which to compute residuals, a
     vector of positive integers, see 'Details'.}
   \item{method}{ optimisation or equation  solving method for package BB}
@@ -41,7 +41,7 @@ mixgenMstep(y, tau, model, index, fix = NULL, comp_sigma = FALSE,
 
   \code{mixgenMstep} is an implementation of the M-step of the EM
   algorithm for mixture autoregressive models specified by objects of
-  class "mixARgen". The function was build and modified incrementally
+  class "MixARgen". The function was build and modified incrementally
   with the main goal of providing flexibility. Speed will be addressed
   later.
 

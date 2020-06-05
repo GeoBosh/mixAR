@@ -1,6 +1,6 @@
 \name{err_k}
 \alias{err_k}
-\title{Utility function for mixAR}
+\title{Utility function for MixAR}
 \description{
   Calculates residuals under a certain component of the mixture.
 }

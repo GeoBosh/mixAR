@@ -20,10 +20,10 @@
 \alias{moT_C3}
 
 \title{
-  mixAR models for examples and testing
+  MixAR models for examples and testing
 }
 \description{
-  mixAR models for examples and testing.
+  MixAR models for examples and testing.
 }
 \usage{
 exampleModels
@@ -33,7 +33,7 @@ exampleModels
   Coefficients of models from the examples in
   \insertCite{WongLi2000;textual}{mixAR}. Variations on these with different
   noise distributions are used throughout the examples in \pkg{mixAR}.
-  The models are from classes inheriting from class \code{"mixAR"}.
+  The models are from classes inheriting from class \code{"MixAR"}.
 
   \code{exampleModels} is a list with the following components:
 
@@ -57,11 +57,11 @@ exampleModels
   %%
   %% TODO: Eventually, each entry needs to be documented.
   \tabular{l}{
-  \Sexpr[stage=build,results=rd]{paste0(names(exampleModels), collapse = " \\\\cr{}")}
+  \Sexpr[stage=build,results=rd]{paste0(names(mixAR::exampleModels), collapse = " \\\\cr{}")}
   }
   
-  Each component is a mixAR model, i.e. an object inheriting from class
-  \code{"mixAR"}. 
+  Each component is a MixAR model, i.e. an object inheriting from class
+  \code{"MixAR"}. 
   
 }
 \source{
@@ -104,11 +104,11 @@ moWLprob <- c(0.5439,0.4176,0.0385)
 moWLsigma <- c(4.8227,6.0082,18.1716)
 moWLar <- list(c(0.6792,0.3208), c(1.6711,-0.6711), 1)
 
-moWL <- new("mixARGaussian", prob = moWLprob, scale = moWLsigma,
+moWL <- new("MixARGaussian", prob = moWLprob, scale = moWLsigma,
             arcoef = moWLar)
-moWLgen <- new("mixARgen", prob = moWLprob, scale = moWLsigma,
+moWLgen <- new("MixARgen", prob = moWLprob, scale = moWLsigma,
                arcoef = moWLar, dist = list(dist_norm))
 ## clean up a bit
 rm(moWLprob, moWLsigma, moWLar, moWL, moWLgen)
 }
-\keyword{mixAR}
+\keyword{MixAR}

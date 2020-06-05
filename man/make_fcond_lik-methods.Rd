@@ -2,14 +2,14 @@
 \docType{methods}
 \alias{make_fcond_lik}
 \alias{make_fcond_lik-methods}
-\alias{make_fcond_lik,mixAR,numeric-method}
+\alias{make_fcond_lik,MixAR,numeric-method}
 \title{
   Create a function for computation of conditional likelihood
 }
 \description{
   
   Create a function for the computation of the conditional likelihood of
-  mixAR models for a given time series.  The methods for this generic
+  MixAR models for a given time series.  The methods for this generic
   function defined in package \pkg{mixAR} are described here.
 
 }
@@ -17,7 +17,7 @@
 make_fcond_lik(model, ts)
 }
 \arguments{
-  \item{model}{a \code{mixAR} model}
+  \item{model}{a \code{MixAR} model}
   \item{ts}{the time series}
 }
 \details{
@@ -27,8 +27,8 @@ make_fcond_lik(model, ts)
   loglikelihood.
   \code{f} can be given to optimisation routines.
 
-  Argument \code{model} is an object inheriting from \code{mixAR} and
-  determines the structure of the mixAR model for the function,
+  Argument \code{model} is an object inheriting from \code{MixAR} and
+  determines the structure of the MixAR model for the function,
   \code{f}, that it creates. So, properties of the model,
   such as number of components, AR order, and distribution of the noise
   components are fixed when \code{f} is created and only the numeric
@@ -37,7 +37,7 @@ make_fcond_lik(model, ts)
 
 }
 \value{
-  a function of one argument, the parameters of a mixAR model as a
+  a function of one argument, the parameters of a MixAR model as a
   numeric vector with the arrangement of \code{\link{lik_params}}, for which
   it computes the conditional loglikelihood
 }
@@ -58,7 +58,7 @@ make_fcond_lik(model, ts)
 \section{Methods}{
 \describe{
 
-\item{\code{signature(model = "mixAR", ts = "numeric")}}{
+\item{\code{signature(model = "MixAR", ts = "numeric")}}{
 %%  ~~describe this method here~~
 }
 }}
@@ -66,5 +66,4 @@ make_fcond_lik(model, ts)
   \code{\link{mix_pdf}},
   \code{\link{mix_cdf}}
 }
-\keyword{fixme}
 \keyword{methods}

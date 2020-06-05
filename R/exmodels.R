@@ -3,34 +3,34 @@
 
 exampleModels <- list(
     ## formerly moWL          
-    WL_ibm = new("mixARGaussian", 
+    WL_ibm = new("MixARGaussian", 
                   prob   = c(0.5439, 0.4176, 0.0385),                     # moWLprob,
                   scale  = c(4.8227, 6.0082, 18.1716),                    # moWLsigma,
                   arcoef = list(c(0.6792, 0.3208), c(1.6711, -0.6711), 1) # moWLar
                   ),
     
-    WL_A = new("mixARGaussian"                         # WongLi, model A
+    WL_A = new("MixARGaussian"                         # WongLi, model A
               , prob = c(0.5, 0.5)
               , scale = c(5, 1)
               , shift = c(0, 0)
               , arcoef = list(c(0.5), c(1.1))
                 ),
 
-    WL_B = new("mixARGaussian"                         # WongLi, model B
+    WL_B = new("MixARGaussian"                         # WongLi, model B
               , prob = c(0.75, 0.25)
               , scale = c(5, 1)
               , shift = c(0, 0)
               , arcoef = list(c(0.5), c(1.4))
                 ),
 
-    WL_I = new("mixARGaussian"                          # WongLi, model I
+    WL_I = new("MixARGaussian"                          # WongLi, model I
               , prob = c(0.4, 0.3, 0.3)
               , scale = c(1, 1, 5)
               , shift = c(0, 0, -5)
               , arcoef = list(c(0.9, -0.6), c(-0.5), c(1.50, -0.74, 0.12))
                 ),
     
-    WL_II = new("mixARGaussian"                         # WongLi, model II
+    WL_II = new("MixARGaussian"                         # WongLi, model II
                , prob = c(0.4, 0.3, 0.3)
                , scale = c(1, 1, 5)
                , shift = c(5, 0, -5)
@@ -40,7 +40,7 @@ exampleModels <- list(
 
 exampleModels$WL_ibm_gen <- 
 ##    moWLgen <-
-    new("mixARgen",
+    new("MixARgen",
         prob=exampleModels$WL_ibm@prob,
         scale=exampleModels$WL_ibm@scale,
         arcoef=exampleModels$WL_ibm@arcoef,
@@ -49,7 +49,7 @@ exampleModels$WL_ibm_gen <-
 
 exampleModels$WL_ibm_t3v <- 
 ##    moWLt3v <-
-    new("mixARgen",
+    new("MixARgen",
         prob=exampleModels$WL_ibm@prob,
         scale=exampleModels$WL_ibm@scale,
         arcoef=exampleModels$WL_ibm@arcoef,
@@ -57,7 +57,7 @@ exampleModels$WL_ibm_t3v <-
 
 exampleModels$WL_ibm_tf <- 
 ##    moWLtf <-
-    new("mixARgen",
+    new("MixARgen",
         prob=exampleModels$WL_ibm@prob,
         scale=exampleModels$WL_ibm@scale,
         arcoef=exampleModels$WL_ibm@arcoef,
@@ -65,7 +65,7 @@ exampleModels$WL_ibm_tf <-
 
 exampleModels$WL_At <-
 ##    moT_A <-
-        new("mixARgen"
+        new("MixARgen"
                , prob = c(0.5,0.5)
                , scale = c(1, 2)
                , shift = c(0, 0)
@@ -76,7 +76,7 @@ exampleModels$WL_At <-
 
 exampleModels$WL_Bt_1 <-
 ##    moT_B <-
-        new("mixARgen"
+        new("MixARgen"
                , prob = c(0.3, 0.3, 0.4)
                , scale = c(2, 1, 0.5)
                , shift = c(5, -5, 0)
@@ -88,7 +88,7 @@ exampleModels$WL_Bt_1 <-
 
 exampleModels$WL_Bt_2 <-
 ##    moT_B2 <-
-        new("mixARgen"
+        new("MixARgen"
                , prob = c(0.3, 0.3, 0.4)
                , scale = c(2, 1, 0.5)
                , shift = c(5, -5, 0)
@@ -103,7 +103,7 @@ exampleModels$WL_Bt_2 <-
 
 exampleModels$WL_Bt_3 <-
 ##    moT_B3 <-
-        new("mixARgen"
+        new("MixARgen"
                , prob = c(0.3, 0.3, 0.4)
                , scale = c(2, 1, 0.5)
                , shift = c(5, -5, 0)
@@ -114,7 +114,7 @@ exampleModels$WL_Bt_3 <-
 
 exampleModels$WL_Ct_1 <-
 ##    moT_C1 <-
-        new("mixARgen"
+        new("MixARgen"
               , prob = c(0.3, 0.3, 0.4)
               , scale = c(2, 1, 0.5)
               , shift = c(5, -5, 0)
@@ -125,14 +125,14 @@ exampleModels$WL_Ct_1 <-
 
 exampleModels$WL_Ct_2 <-
 ##    moT_C2 <-
-        new("mixARgen"
+        new("MixARgen"
               , model = exampleModels$WL_Bt_1
               , dist = distlist(c("stdt", "stdt", "stdnorm"), c(4,7))  # t4, t7, N(0,1)
               )
 
 exampleModels$WL_Ct_3 <-
 ##    moT_C3 <-
-        new("mixARGaussian", model = exampleModels$WL_Bt_1)
+        new("MixARGaussian", model = exampleModels$WL_Bt_1)
 
 
 

@@ -1,11 +1,11 @@
 \name{mixSubsolve}
 \alias{mixSubsolve}
 \title{
-  Support for EM estimation of mixAR models, internal function.
+  Support for EM estimation of MixAR models, internal function.
 }
 \description{
   Solve the linear sub-system arising in the M-step of the EM algorithm
-  for mixAR models with Gaussian noise components. This gives estimates
+  for MixAR models with Gaussian noise components. This gives estimates
   of the parameters of the \eqn{k}{k-}th AR component of the model.
 }
 \usage{
@@ -26,7 +26,7 @@ mixSubsolve(k, pk, Stau, Stauy, Stauyy, shift, tol = 1e-07)
 
   \code{mixSubsolve} forms and solves a linear subsytem to obtain
   estimates of the AR parameters (and the shift, if \code{shift} is
-  \code{TRUE})  for the \code{k}-th mixAR component.
+  \code{TRUE})  for the \code{k}-th MixAR component.
 
   First, \code{solve()} is tried. If it reports that the system is
   (numerically) singular, a solution is computed using SVD with

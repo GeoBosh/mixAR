@@ -14,13 +14,11 @@
   This is a list of functions or names of functions for calculations
   related to the standard normal distribution. Currently it has
   elements with the following names:
-      % otkomentiram ponezhe Rd2pdf dava greshka.
-      \Sexpr[stage=build,results=hide]{require("mixAR")}%
-      \Sexpr[stage=build]{paste("\"", names(dist_norm), "\"", collapse=", ", sep="")}.
+      \Sexpr[stage=build]{paste("\"", names(mixAR::dist_norm), "\"", collapse=", ", sep="")}.
 }
 \details{
   \code{dist_norm} may be used to specify the noise distribution for
-  \code{mixAR} models. It can be used as a template if other
+  \code{MixAR} models. It can be used as a template if other
   distributions are needed, see also \code{fdist_stdnorm}.
 }
 % \source{
@@ -37,4 +35,4 @@ dist_norm
 dist_norm$pdf
 dist_norm$cdf
 }
-\keyword{datasets}
+\keyword{distribution}

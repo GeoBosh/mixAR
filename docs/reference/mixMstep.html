@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Internal functions for estimation of mixAR models with Gaussian components — mixMstep • mixAR</title>
+<title>Internal functions for estimation of MixAR models with Gaussian components — mixMstep • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,10 @@
 
 
 
-<meta property="og:title" content="Internal functions for estimation of mixAR models with Gaussian components — mixMstep" />
-<meta property="og:description" content="Internal functions for EM estimation of mixAR models with Gaussian components:
+<meta property="og:title" content="Internal functions for estimation of MixAR models with Gaussian components — mixMstep" />
+<meta property="og:description" content="Internal functions for EM estimation of MixAR models with Gaussian components:
     sums of products and crossproducts;
-    M-step for mixAR estimation;
+    M-step for MixAR estimation;
     estimation of autoregressive part of the model." />
 
 
@@ -114,15 +114,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Internal functions for estimation of mixAR models with Gaussian components</h1>
+    <h1>Internal functions for estimation of MixAR models with Gaussian components</h1>
     
     <div class="hidden name"><code>mixMstep.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Internal functions for EM estimation of mixAR models with Gaussian components:
+    <p>Internal functions for EM estimation of MixAR models with Gaussian components:
     sums of products and crossproducts;
-    M-step for mixAR estimation;
+    M-step for MixAR estimation;
     estimation of autoregressive part of the model.</p>
     </div>
 
@@ -140,11 +140,11 @@
     <tr>
       <th>tau</th>
       <td><p>conditional probabilties for the observations to belong to each of
-    the components, a <code>mixComp</code> object.</p></td>
+    the components, a <code>MixComp</code> object.</p></td>
     </tr>
     <tr>
       <th>order</th>
-      <td><p>order of the mixAR model, numeric vector of length the number of
+      <td><p>order of the MixAR model, numeric vector of length the number of
     mixture components.</p></td>
     </tr>
     <tr>
@@ -164,15 +164,15 @@
 
     
 
-<p><code>mixMstep</code> performs an M-step for estimation of mixAR models with
+<p><code>mixMstep</code> performs an M-step for estimation of MixAR models with
   Gaussian components.</p>
 <p><code>tauCorrelate</code> computes crossproducts needed for EM estimation
-  of mixAR models with Gaussian components.</p>
+  of MixAR models with Gaussian components.</p>
 <p><code>tau2arcoef</code> computes the AR coefficients by solving
   Yule-Walker-type equations for each component.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>For <code>mixMstep</code>, a mixAR model, an object of class <code>mixARGaussian</code>.</p>
+    <p>For <code>mixMstep</code>, a MixAR model, an object of class <code>MixARGaussian</code>.</p>
 <p>For <code>tauCorrelate</code>, a named list with the following components:</p>
 <dt>Stau</dt><dd><p>Todo: describe this item.</p></dd>
   <dt>Stauy</dt><dd><p>Todo: describe this item.</p></dd>

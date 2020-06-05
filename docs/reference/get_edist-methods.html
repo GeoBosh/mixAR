@@ -124,7 +124,7 @@
 
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
-    <p><code>get_edist</code> gives the error (or noise) distribution of mixAR
+    <p><code>get_edist</code> gives the error (or noise) distribution of MixAR
   objects.</p>
 <p>Currently the distribution is returned as a list of functions. The
   list contains one element for each component. If the error
@@ -132,24 +132,24 @@
   contain a single element representing the common error distribution.</p>
 <p>Note that the distribution is not necessarily stored in slot
   <code>dist</code> in this format, see the description of this slot in class
-  <code><a href='mixARgen-class.html'>mixARgen</a></code>.
+  <code>MixARgen</code>.
   Such a slot may even not exist if the distribution of the error
-  components is fixed as is the case for class <code>mixARGaussian</code>.</p>
-<p>Each subclass of <code>mixAR</code> needs to define a method for
+  components is fixed as is the case for class <code>MixARGaussian</code>.</p>
+<p>Each subclass of <code>MixAR</code> needs to define a method for
   <code>get_edist</code>.</p>
 
 <p></p><dl'>
 
-    <dt><code>signature(model = "mixAR")</code></dt><dd><p>Issue an error message and stop.      This method is invoked for subclasses of <code>mixAR</code> that have
+    <dt><code>signature(model = "MixAR")</code></dt><dd><p>Issue an error message and stop.      This method is invoked for subclasses of <code>MixAR</code> that have
       not defined their own method for <code>get_edist</code>. This is an
       error.</p></dd>
 
-    <dt><code>signature(model = "mixARGaussian")</code></dt><dd><p>Return an object representing the fact that the error
-      distributions of the components of <code>mixARGaussian</code> objects
+    <dt><code>signature(model = "MixARGaussian")</code></dt><dd><p>Return an object representing the fact that the error
+      distributions of the components of <code>MixARGaussian</code> objects
       are standard normal.</p></dd>
 
-    <dt><code>signature(model = "mixARgen")</code></dt><dd><p>Return an object representing the error distributions of the
-      components of <code>mixARgen</code> objects. The distributions are not
+    <dt><code>signature(model = "MixARgen")</code></dt><dd><p>Return an object representing the error distributions of the
+      components of <code>MixARgen</code> objects. The distributions are not
       necessarilly the same for such objects.</p></dd>
 
 </dl>

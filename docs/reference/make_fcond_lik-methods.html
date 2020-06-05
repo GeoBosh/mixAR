@@ -43,7 +43,7 @@
 <meta property="og:description" content="
   
 Create a function for the computation of the conditional likelihood of
-  mixAR models for a given time series.  The methods for this generic
+  MixAR models for a given time series.  The methods for this generic
   function defined in package mixAR are described here." />
 
 
@@ -124,7 +124,7 @@ Create a function for the computation of the conditional likelihood of
     
   
 <p>Create a function for the computation of the conditional likelihood of
-  mixAR models for a given time series.  The methods for this generic
+  MixAR models for a given time series.  The methods for this generic
   function defined in package <span class="pkg">mixAR</span> are described here.</p>
     </div>
 
@@ -135,7 +135,7 @@ Create a function for the computation of the conditional likelihood of
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>a <code>mixAR</code> model</p></td>
+      <td><p>a <code>MixAR</code> model</p></td>
     </tr>
     <tr>
       <th>ts</th>
@@ -150,8 +150,8 @@ Create a function for the computation of the conditional likelihood of
   <code><a href='lik_params.html'>lik_params</a></code>, for which it computes the conditional
   loglikelihood.
   <code>f</code> can be given to optimisation routines.</p>
-<p>Argument <code>model</code> is an object inheriting from <code>mixAR</code> and
-  determines the structure of the mixAR model for the function,
+<p>Argument <code>model</code> is an object inheriting from <code>MixAR</code> and
+  determines the structure of the MixAR model for the function,
   <code>f</code>, that it creates. So, properties of the model,
   such as number of components, AR order, and distribution of the noise
   components are fixed when <code>f</code> is created and only the numeric
@@ -160,7 +160,7 @@ Create a function for the computation of the conditional likelihood of
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a function of one argument, the parameters of a mixAR model as a
+    <p>a function of one argument, the parameters of a MixAR model as a
   numeric vector with the arrangement of <code><a href='lik_params.html'>lik_params</a></code>, for which
   it computes the conditional loglikelihood</p>
     <h2 class="hasAnchor" id="todo"><a class="anchor" href="#todo"></a>Todo</h2>
@@ -175,7 +175,7 @@ Create a function for the computation of the conditional likelihood of
     
 <dl'>
 
-<dt><code>signature(model = "mixAR", ts = "numeric")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
+<dt><code>signature(model = "MixAR", ts = "numeric")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
 
 </dl>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>

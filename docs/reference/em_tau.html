@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="Compute probabilities for the observations to belong to each of the components — em_tau" />
 <meta property="og:description" content="Supporting function for EM algorithm. Update the conditional
-  probabilities of the components of the mixAR model
+  probabilities of the components of the MixAR model
   (for E-step of EM algorithm)." />
 
 
@@ -120,7 +120,7 @@
 
     <div class="ref-description">
     <p>Supporting function for EM algorithm. Update the conditional
-  probabilities of the components of the mixAR model
+  probabilities of the components of the MixAR model
   (for E-step of EM algorithm).</p>
     </div>
 
@@ -133,7 +133,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>stdetk</th>
-      <td><p>standardised component residuals, a <code>mixComp</code> object.</p></td>
+      <td><p>standardised component residuals, a <code>MixComp</code> object.</p></td>
     </tr>
     <tr>
       <th>prob</th>
@@ -156,7 +156,7 @@
     
 
 <p><code>em_tau</code> and <code>em_tau_safe</code> compute the conditional
-  probabilities of the components of the mixAR model (for the E-step of
+  probabilities of the components of the MixAR model (for the E-step of
   the EM algorithm). The two functions do the same computations but
   <code>em_tau_safe</code>, in addition, protects agains <code>NaN</code>'s and
   infinite values in argument <code>stdetk</code> or obtained during

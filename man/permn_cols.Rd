@@ -47,4 +47,4 @@ pm[[2]]
 
 % R documentation directory.
 
-\keyword{matrix}
+\keyword{array}

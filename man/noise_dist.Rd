@@ -7,7 +7,7 @@
 
 \title{Internal mixAR functions}
 \description{
-  Functions for the distributions of the components of mixAR models
+  Functions for the distributions of the components of MixAR models
 }
 \usage{
 get_edist(model)
@@ -38,9 +38,10 @@ set_noise_params(model, nu)
   \code{expand = TRUE}.
 
   \code{noise_params} gives the parameters of the model as a numeric
-  vector. (todo: currently returns \code{list{}} when there are no such
-  parameters (e.g. if the components are standard normal) but shouldn't
-  this be \code{numeric(0)}?)
+  vector.
+  %(todo: currently returns \code{list{}} when there are no such
+  %parameters (e.g. if the components are standard normal) but shouldn't
+  %this be \code{numeric(0)}?)
 
   The distribution is specified as a list. Element "dist" contain the
   distribution. Element "generator" is a function that generates a
@@ -51,11 +52,11 @@ set_noise_params(model, nu)
   compatibility with old code using that format, this is still
   supported.
 
-  todo: this needs consolidation.
+  % TODO: this needs consolidation.
 }
 \seealso{
   \code{\link{fdist_stdnorm}},
   \code{\link{fdist_stdt}},
   \code{\link{fn_stdt}}.
 }
-\keyword{mixAR}
+\keyword{MixAR}

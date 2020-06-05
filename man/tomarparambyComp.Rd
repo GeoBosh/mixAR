@@ -3,10 +3,10 @@
 \alias{tomarparambyType}
 \alias{permuteArpar}
 \title{
-Translations of my old mixAR Mathematica functions
+Translations of my old MixAR Mathematica functions
 }
 \description{
-  Translations of some of my mixAR Mathematica functions.
+  Translations of some of my MixAR Mathematica functions.
   Not sure if these are still used.
 }
 \usage{
@@ -15,7 +15,7 @@ tomarparambyType(params)
 permuteArpar(params)
 }
 \arguments{
-  \item{params}{the parameters of the mixAR model, a list, see Details.}
+  \item{params}{the parameters of the MixAR model, a list, see Details.}
 }
 \details{
 
@@ -29,8 +29,8 @@ permuteArpar(params)
   \code{tomarparambyComp} is for completeness, my Mathematica programs
   do not have this currently.
   
-  The arrangement of the parameters of mixAR models in package
-  \code{"mixAR"} is ``by type'': slot \code{prob} contains the mixture
+  The arrangement of the parameters of MixAR models in package
+  \code{"MixAR"} is ``by type'': slot \code{prob} contains the mixture
   probabilities (weights), \code{shift} contains intercepts, and so on.
 
   An alternative representation is ``by component'': a list whose k-th
@@ -45,7 +45,7 @@ permuteArpar(params)
   to ``by component''.
 
   \code{permuteArpar} creates all permutaions of the components of a
-  mixAR model. It takes a ``by component'' argument. The autoregressive
+  MixAR model. It takes a ``by component'' argument. The autoregressive
   orders are not permuted, in that if the input model has AR orders
   \code{c(2, 1, 3)}, all permuted models are also \code{c(2, 1, 3)}.
   The AR coefficients of shorter or longer components are padded with
@@ -82,4 +82,4 @@ identical(bycomp, tomarparambyComp(bytype)) # TRUE
                
 permuteArpar(bycomp)
 }
-\keyword{mixAR}
+\keyword{MixAR}

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function and methods to compute component residuals for mixAR models — mix_ek • mixAR</title>
+<title>Function and methods to compute component residuals for MixAR models — mix_ek • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Function and methods to compute component residuals for mixAR models — mix_ek" />
-<meta property="og:description" content="Compute component residuals for mixAR models." />
+<meta property="og:title" content="Function and methods to compute component residuals for MixAR models — mix_ek" />
+<meta property="og:description" content="Compute component residuals for MixAR models." />
 
 
 
@@ -111,13 +111,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function and methods to compute component residuals for mixAR models</h1>
+    <h1>Function and methods to compute component residuals for MixAR models</h1>
     
     <div class="hidden name"><code>mix_ek.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Compute component residuals for mixAR models.</p>
+    <p>Compute component residuals for MixAR models.</p>
     </div>
 
     <pre class="usage"><span class='fu'>mix_ek</span>(<span class='no'>model</span>, <span class='no'>x</span>, <span class='no'>index</span>, <span class='no'>xcond</span>, <span class='no'>scale</span>)</pre>
@@ -152,7 +152,7 @@
 
     
   
-<p><code>mix_ek</code> computes component residuals from mixAR models.</p>
+<p><code>mix_ek</code> computes component residuals from MixAR models.</p>
 <p>It is highly desirable to use it along with <code><a href='mix_hatk.html'>mix_hatk</a></code> and
   the underlying function <code><a href='mixFilter.html'>mixFilter</a></code>. Doing this ensures
   transparent code and easy maintenance. Also, more efficient
@@ -162,26 +162,26 @@
     <p></p><dl'>
   % don't indent 'xcond = ' below, it is in verbatim mode, so the spaces
   % are kept! 
-    <dt></dt><dd><p><code>signature(model = "mixAR", x = "numeric", index = "missing",
+    <dt></dt><dd><p><code>signature(model = "MixAR", x = "numeric", index = "missing",
  xcond = "numeric", scale = "logical")</code>: ~~describe this method here</p></dd>
 
-    <dt></dt><dd><p><code>signature(model = "mixAR", x = "numeric", index = "missing",
+    <dt></dt><dd><p><code>signature(model = "MixAR", x = "numeric", index = "missing",
  xcond = "numeric", scale = "missing")</code>: ~~describe this method here</p></dd>
 
-    <dt></dt><dd><p><code>signature(model = "mixAR", x = "numeric", index = "numeric",
+    <dt></dt><dd><p><code>signature(model = "MixAR", x = "numeric", index = "numeric",
  xcond = "missing", scale = "logical")</code>: ~~describe this method here</p></dd>
 
-    <dt></dt><dd><p><code>signature(model = "mixAR", x = "numeric", index = "numeric",
+    <dt></dt><dd><p><code>signature(model = "MixAR", x = "numeric", index = "numeric",
  xcond = "missing", scale = "missing")</code>: ~~describe this method here</p></dd>
 
 </dl>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='mixFilter.html'>mixFilter</a></code> which is used by <code>mix_ek</code> to do the job,
-  <code><a href='mixComp-class.html'>mixComp-class</a></code> for easy manipulation of the returned
+  <code>MixComp-class</code> for easy manipulation of the returned
   object.</p>  
-<p><!-- % \code{\linkS4class{mixAR}}, -->
-  <code><a href='mixAR-class.html'>mixAR-class</a></code></p></div>
+<p><!-- % \code{\linkS4class{MixAR}}, -->
+  <code>MixAR-class</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

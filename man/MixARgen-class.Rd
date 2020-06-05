@@ -1,37 +1,37 @@
-\name{mixARgen-class}
+\name{MixARgen-class}
 \Rdversion{1.1}
 \docType{class}
-\alias{mixARgen-class}
+\alias{MixARgen-class}
 \alias{mixARgen}
-%\alias{initialize,mixARgen-method}
-% \alias{lik_params,mixARgen-method}
-%\alias{mix_cdf,mixARgen,missing,missing,numeric-method}
-%\alias{mix_cdf,mixARgen,numeric,missing,numeric-method}
-%\alias{mix_cdf,mixARgen,numeric,numeric,missing-method}
-%\alias{mix_pdf,mixARgen,missing,missing,numeric-method}
-%\alias{mix_pdf,mixARgen,numeric,missing,numeric-method}
-%\alias{mix_pdf,mixARgen,numeric,numeric,missing-method}
-% \alias{noise_dist,mixARgen-method}
-% \alias{noise_params,mixARgen-method}
-% \alias{noise_rand,mixARgen-method}
+%\alias{initialize,MixARgen-method}
+% \alias{lik_params,MixARgen-method}
+%\alias{mix_cdf,MixARgen,missing,missing,numeric-method}
+%\alias{mix_cdf,MixARgen,numeric,missing,numeric-method}
+%\alias{mix_cdf,MixARgen,numeric,numeric,missing-method}
+%\alias{mix_pdf,MixARgen,missing,missing,numeric-method}
+%\alias{mix_pdf,MixARgen,numeric,missing,numeric-method}
+%\alias{mix_pdf,MixARgen,numeric,numeric,missing-method}
+% \alias{noise_dist,MixARgen-method}
+% \alias{noise_params,MixARgen-method}
+% \alias{noise_rand,MixARgen-method}
 
-\title{Class \code{"mixARgen"}}
+\title{Class \code{"MixARgen"}}
 \description{
-  A class for mixAR models with arbitrary noise distributions. \code{"mixARgen"}
-  inherits from \code{"mixAR"}.
+  A class for MixAR models with arbitrary noise distributions. \code{"MixARgen"}
+  inherits from \code{"MixAR"}.
 }
 \section{Objects from the Class}{
-  Objects can be created by calls of the form \code{new("mixARgen",
+  Objects can be created by calls of the form \code{new("MixARgen",
   dist, ...)}  or \code{mixARgen(...)}. The two forms are completely
   equivalent. The latter is available from version 0.19-15 of package
-  mixAR.
+  MixAR.
 %%  ~~ describe objects here ~~
 }
 \section{Slots}{
   \describe{
     \item{\code{dist}:}{Object of class \code{"list"}, representing the
       noise distributions. The list contains one element for each
-      component of the mixAR model or a single element if the
+      component of the MixAR model or a single element if the
       noise distribution is the same for all components.
 
       If the distributions do not contain parameters (e.g. Gaussian or
@@ -54,36 +54,36 @@
   }
 }
 \section{Extends}{
-Class \code{"\linkS4class{mixAR}"}, directly.
+Class \code{"\linkS4class{MixAR}"}, directly.
 }
 \section{Methods}{
   \describe{
     
-    \item{get_edist}{\code{signature(model = "mixARgen")}: ... }
-    \item{initialize}{\code{signature(.Object = "mixARgen")}: ... }
-    \item{lik_params}{\code{signature(model = "mixARgen")}: ... }
+    \item{get_edist}{\code{signature(model = "MixARgen")}: ... }
+    \item{initialize}{\code{signature(.Object = "MixARgen")}: ... }
+    \item{lik_params}{\code{signature(model = "MixARgen")}: ... }
     
-    \item{mix_cdf}{\code{signature(model = "mixARgen", x = "missing", index = "missing", xcond = "numeric")}: ... } 
+    \item{mix_cdf}{\code{signature(model = "MixARgen", x = "missing", index = "missing", xcond = "numeric")}: ... } 
 
-    \item{mix_cdf}{\code{signature(model = "mixARgen", x = "numeric", index = "missing", xcond = "numeric")}: ... }
+    \item{mix_cdf}{\code{signature(model = "MixARgen", x = "numeric", index = "missing", xcond = "numeric")}: ... }
 
-    \item{mix_cdf}{\code{signature(model = "mixARgen", x = "numeric", index = "numeric", xcond = "missing")}: ... }
+    \item{mix_cdf}{\code{signature(model = "MixARgen", x = "numeric", index = "numeric", xcond = "missing")}: ... }
 
-    \item{mix_pdf}{\code{signature(model = "mixARgen", x = "missing", index = "missing", xcond = "numeric")}: ... }
+    \item{mix_pdf}{\code{signature(model = "MixARgen", x = "missing", index = "missing", xcond = "numeric")}: ... }
 
-    \item{mix_pdf}{\code{signature(model = "mixARgen", x = "numeric", index = "missing", xcond = "numeric")}: ... }
+    \item{mix_pdf}{\code{signature(model = "MixARgen", x = "numeric", index = "missing", xcond = "numeric")}: ... }
 
-    \item{mix_pdf}{\code{signature(model = "mixARgen", x = "numeric", index = "numeric", xcond = "missing")}: ... }
+    \item{mix_pdf}{\code{signature(model = "MixARgen", x = "numeric", index = "numeric", xcond = "missing")}: ... }
 
-    \item{noise_dist}{\code{signature(model = "mixARgen")}: ... }
-    \item{noise_params}{\code{signature(model = "mixARgen")}: ... }
-    \item{noise_rand}{\code{signature(model = "mixARgen")}: ... }}
+    \item{noise_dist}{\code{signature(model = "MixARgen")}: ... }
+    \item{noise_params}{\code{signature(model = "MixARgen")}: ... }
+    \item{noise_rand}{\code{signature(model = "MixARgen")}: ... }}
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \examples{
-showClass("mixARgen")
+showClass("MixARgen")
 
 exampleModels$WL_ibm_gen@dist
 noise_dist(exampleModels$WL_ibm_gen, "cdf")
@@ -132,9 +132,9 @@ prob   <- exampleModels$WL_ibm@prob
 scale  <- exampleModels$WL_ibm@scale
 arcoef <- exampleModels$WL_ibm@arcoef@a
 
-mo_WLt3  <- new("mixARgen", prob = prob, scale = scale, arcoef = arcoef,
+mo_WLt3  <- new("MixARgen", prob = prob, scale = scale, arcoef = arcoef,
                 dist = list(fdist_stdt(3)))
-mo_WLt30 <- new("mixARgen", prob = prob, scale = scale, arcoef = arcoef,
+mo_WLt30 <- new("MixARgen", prob = prob, scale = scale, arcoef = arcoef,
                 dist = list(fdist_stdt(30)))
 }
 \keyword{classes}

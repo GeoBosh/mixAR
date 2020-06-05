@@ -110,12 +110,12 @@ setGeneric("multiStep_dist",
            function(model, maxh, N, xcond, ...) standardGeneric("multiStep_dist"))
 
 setMethod("multiStep_dist",
-          c(model = "mixARGaussian", maxh = "numeric", N = "missing", xcond = "missing"),
+          c(model = "MixARGaussian", maxh = "numeric", N = "missing", xcond = "missing"),
           function(model, maxh){
               co <- predict_coef(model, maxh)
               
               f <- function(h, xcond, what){
-                  hmo <- new("mixARGaussian",
+                  hmo <- new("MixARGaussian",
                              prob = co$probs[[h]],
                              scale = co$sStable[[h]],
                                                                  # todo: more carefully!
@@ -133,14 +133,14 @@ setMethod("multiStep_dist",
           })
 
 setMethod("multiStep_dist",
-          c(model = "mixARGaussian", maxh = "numeric", N = "missing", xcond = "ANY"),
+          c(model = "MixARGaussian", maxh = "numeric", N = "missing", xcond = "ANY"),
                             # TODO: more computations can be done here when xcond is available
           function(model, maxh, ...){
               xcond <- xcond
               co <- predict_coef(model, maxh)
 
               f <- function(h, what){
-                  hmo <- new("mixARGaussian",
+                  hmo <- new("MixARGaussian",
                              prob = co$probs[[h]],
                              scale = co$sStable[[h]],
                                                                         #todo: more carefully!
@@ -159,7 +159,7 @@ setMethod("multiStep_dist",
 
                     # todo: drop unnecessary values from xcond (if there are more than needed?
 setMethod("multiStep_dist",
-          c(model = "mixAR", maxh = "numeric", N = "numeric", xcond = "numeric"),
+          c(model = "MixAR", maxh = "numeric", N = "numeric", xcond = "numeric"),
           function(model, maxh, N, xcond){
               sampled <- replicate(N, mixAR_sim(model, n = maxh, init = xcond, nskip = 0))
               sampled <- apply(sampled, 1, sort)
@@ -195,7 +195,7 @@ setMethod("multiStep_dist",
 # TODO: unfinished!
 #
 # setMethod("mix_se",
-#           signature(model="mixAR"),
+#           signature(model="MixAR"),
 #           function(model, orig, N, ...){
 #               pmax <- max(model@order)
 #

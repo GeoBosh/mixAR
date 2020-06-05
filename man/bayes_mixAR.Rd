@@ -11,16 +11,16 @@ bayes_mixAR(y, model, fix_shift = FALSE, a = .2, c = 2, tau, nsim, burnin)
 \arguments{
   \item{y}{a time series (currently a numeric vector).}
   \item{model}{
-    an object of class \code{mixAR}. Currently only handles
-    \code{mixARGaussian} objects.
+    an object of class \code{MixAR}. Currently only handles
+    \code{MixARGaussian} objects.
   }
   \item{fix_shift}{
-    Should \code{shift} be kept as fixed? If \code{FALSE} (default),
+    should \code{shift} be kept fixed? If \code{FALSE} (default)
     \code{shift} is sampled.
   }
   \item{a, c}{
-    numeric hyperparameters,  default values are taken from
-    Richardson and Green (1997).
+    numeric hyperparameters, default values are from
+    \insertCite{RichardsonGreen1997;textual}{mixAR}.
   }
   \item{tau}{
     \code{numeric} vector of length g, the number of components in the
@@ -38,7 +38,7 @@ bayes_mixAR(y, model, fix_shift = FALSE, a = .2, c = 2, tau, nsim, burnin)
 
 \details{
   
-  For details see Ravagli and Boshnakov (2019).
+  For details see \insertCite{Ravagliboshnakov2019bayesmar;textual}{mixAR}.
 
 }
 \value{
@@ -105,7 +105,7 @@ prob <- c(0.5, 0.5)
 sigma <- c(1, 2)
 ar <- list(-0.5, 1)
 
-model <- new("mixARGaussian", prob = prob, scale = sigma, arcoef = ar)
+model <- new("MixARGaussian", prob = prob, scale = sigma, arcoef = ar)
 
 ## MAR(1,1) model
 y <- mixAR_sim(model, 300, rep(0, max(model@order)))
@@ -114,5 +114,4 @@ bayes_mixAR(y, model, fix_shift = FALSE, tau = c(.15,.25), nsim = 20, burnin = 1
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ bSim }% use one of  RShowDoc("KEYWORDS")
-\keyword{ samp }
+%\keyword{ samp }% use one of  RShowDoc("KEYWORDS")

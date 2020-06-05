@@ -85,7 +85,7 @@ mixSARfit <- function(y, model, est_shift = FALSE, tol = 10^-14){
             nck <- nck_all[k] 
             yy <- numeric(nck) 
             ## @Davide: is it guaranteed that pk[k] > 0 here?
-            ## @Georgi: I assumed "mixAR" objects by default have minimum pk[k] = 1
+            ## @Georgi: I assumed "MixAR" objects by default have minimum pk[k] = 1
             ##          I can rewrite this if needs to handle pk[k] = 0  
             ##
             ## @Davide: if your code assume this, raise an error - otherwise the program may
@@ -145,7 +145,7 @@ mixSARfit <- function(y, model, est_shift = FALSE, tol = 10^-14){
             phimat[k, ] <- phi
         }
 
-        ## Formatting results into "mixAR" object
+        ## Formatting results into "MixAR" object
         ar1 <- ar2 <- vector(mode = "list", g) # list()
         for(k in 1:g){
             ar1[[k]] <- phimat[k, (1 + one_or_zero):(pk[k] + one_or_zero)]
@@ -155,10 +155,10 @@ mixSARfit <- function(y, model, est_shift = FALSE, tol = 10^-14){
         ar <- new("raggedCoefS", a = ar1, as = ar2, s = s)
 
         newmod <- if(one_or_zero == 1)
-                      new("mixARGaussian", prob = pi, scale = sigma, arcoef = ar,
+                      new("MixARGaussian", prob = pi, scale = sigma, arcoef = ar,
                           shift = phimat[, 1])
                   else
-                      new("mixARGaussian", prob = pi, scale = sigma, arcoef = ar)
+                      new("MixARGaussian", prob = pi, scale = sigma, arcoef = ar)
 
         newlik <- cond_loglikS(newmod, y, index)
 

@@ -40,8 +40,9 @@
 
 
 <meta property="og:title" content="Fit mixture vector autoregressive models — fit_mixVAR-methods" />
-<meta property="og:description" content="Estimate a mixVAR model for a multivariate time series. This is a generic function.
-  The methods defined in package mixAR are described here." />
+<meta property="og:description" content="Estimate a MixVAR model for a multivariate time series. This is a
+  generic function.  The methods defined in package MixAR are
+  described here." />
 
 
 
@@ -118,8 +119,9 @@
     </div>
 
     <div class="ref-description">
-    <p>Estimate a mixVAR model for a multivariate time series. This is a generic function.
-  The methods defined in package mixAR are described here.</p>
+    <p>Estimate a MixVAR model for a multivariate time series. This is a
+  generic function.  The methods defined in package <span class="pkg">MixAR</span> are
+  described here.</p>
     </div>
 
     <pre class="usage"><span class='fu'>fit_mixVAR</span>(<span class='no'>x</span>, <span class='no'>model</span>, <span class='no'>fix</span>, <span class='no'>...</span>)</pre>
@@ -133,7 +135,7 @@
     </tr>
     <tr>
       <th>model</th>
-      <td><p>model, object inheriting from mixVAR class.</p></td>
+      <td><p>model, object inheriting from MixVAR class.</p></td>
     </tr>
     <tr>
       <th>fix</th>
@@ -147,27 +149,27 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a mixVAR model.</p>
+    <p>a MixVAR model.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     
 
 <p><code>model</code> specifies the model to fit. If <code>model</code> inherits from
-  <code>"mixVAR"</code>, it is used as a template.  Estimation is done via
+  <code>"MixVAR"</code>, it is used as a template.  Estimation is done via
   EM-Algorithm, using the function <code>mixVARfit</code>.</p>
 <p>Currently the default method for <code>fit_mixAR</code> just throws error,
   since there seems no suitable default task to do.</p>  
-<p><b>TODO:</b> Define more methods to handle different cases (<code>fix
-    = "shift"</code>, etc..)</p>
+<p><!-- % \bold{TODO:} Define more methods to handle different cases (\code{fix -->
+  <!-- %   = "shift"}, etc..) --></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
 <dl'>
 
-  <dt><code>signature(x = "ANY", model = "mixVAR")</code></dt><dd><p>This is currently the only available method for <code>fit_mixVAR</code></p></dd>.
-  <dt><code>signature(x = "ANY", model = "ANY")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
-</dl>
+  <dt><code>signature(x = "ANY", model = "MixVAR")</code></dt><dd><p>... <!-- % This is currently the only available method for \code{fit_mixVAR} --></p></dd>
+  <dt><code>signature(x = "ANY", model = "ANY")</code></dt><dd><p>...</p></dd>
 
+</dl>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='mixVARfit.html'>mixVARfit</a></code></p></div>
@@ -184,36 +186,36 @@
 <span class='no'>Sigma2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0.2</span>, <span class='fl'>0</span>),<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.2</span>,  <span class='fl'>2</span>, -<span class='fl'>0.15</span>),<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,-<span class='fl'>0.15</span>,<span class='fl'>4</span>))
 <span class='no'>Sigma</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>Sigma1</span>, <span class='no'>Sigma2</span>), <span class='kw'>dim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>2</span>))
 
-<span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixVARGaussian"</span>, <span class='kw'>prob</span><span class='kw'>=</span><span class='no'>prob</span>, <span class='kw'>vcov</span><span class='kw'>=</span><span class='no'>Sigma</span>, <span class='kw'>arcoef</span><span class='kw'>=</span><span class='no'>AR</span>, <span class='kw'>shift</span><span class='kw'>=</span><span class='no'>shift</span>)
+<span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixVARGaussian"</span>, <span class='kw'>prob</span><span class='kw'>=</span><span class='no'>prob</span>, <span class='kw'>vcov</span><span class='kw'>=</span><span class='no'>Sigma</span>, <span class='kw'>arcoef</span><span class='kw'>=</span><span class='no'>AR</span>, <span class='kw'>shift</span><span class='kw'>=</span><span class='no'>shift</span>)
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixVAR_sim.html'>mixVAR_sim</a></span>(<span class='no'>m</span>, <span class='kw'>n</span><span class='kw'>=</span><span class='fl'>500</span>, <span class='kw'>init</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>,<span class='fl'>3</span>), <span class='kw'>ncol</span><span class='kw'>=</span><span class='fl'>3</span>), <span class='kw'>nskip</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>flag</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
 
-<span class='fu'>fit_mixVAR</span>(<span class='no'>y</span>, <span class='no'>m</span>)</div><div class='output co'>#&gt; niter: 25 	vallogf: -2146.711 </div><div class='output co'>#&gt; $model
+<span class='fu'>fit_mixVAR</span>(<span class='no'>y</span>, <span class='no'>m</span>)</div><div class='output co'>#&gt; niter: 25 	vallogf: -2554.606 </div><div class='output co'>#&gt; $model
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixVARGaussian"
+#&gt; An object of class "MixVARGaussian"
 #&gt; Number of components: 2 
 #&gt; Number of series: 3 
-#&gt;             prob        shift order       ar_1                       
-#&gt; Comp_1 0.7879972 -0.013037900     1  0.5544802 -0.04024179  0.3944199
-#&gt;                   0.097016118       -0.2517435 -0.05989595  0.4629539
-#&gt;                  -0.010446198       -0.7203757  0.59554529 -0.3457813
-#&gt; Comp_2 0.2120028 -0.060551429     1 -0.5387120  1.00546448 -0.4048044
-#&gt;                   0.008486125        0.1116701  0.05059122 -0.2351755
-#&gt;                   0.151919121       -0.1976764 -0.52200687  0.6025687
-#&gt;              vcov                     
-#&gt; Comp_1  0.9103361 0.4801007 -0.3273280
-#&gt;         0.4801007 1.9504200  0.9809687
-#&gt;        -0.3273280 0.9809687  3.7752622
-#&gt; Comp_2  0.9139160 0.1732964  0.6322547
-#&gt;         0.1732964 1.8190884  0.1691766
-#&gt;         0.6322547 0.1691766  5.0361521
+#&gt;             prob       shift order        ar_1                        
+#&gt; Comp_1 0.7018105  0.10730410     1  0.51246643  0.008764416  0.4249752
+#&gt;                   0.04271996       -0.25519130 -0.001056835  0.5796486
+#&gt;                  -0.04055816       -0.69480497  0.480078193 -0.3019409
+#&gt; Comp_2 0.2981895 -0.06199085     1 -0.47955582  1.059437823 -0.3970795
+#&gt;                   0.07311614        0.33439985  0.003667193 -0.2163129
+#&gt;                  -0.17166048       -0.03672008 -0.438708195  0.5353506
+#&gt;               vcov                       
+#&gt; Comp_1  0.94802171  0.5769052 -0.26533845
+#&gt;         0.57690519  2.2034803  0.94600064
+#&gt;        -0.26533845  0.9460006  3.65084876
+#&gt; Comp_2  1.11366720  0.5013025 -0.07250881
+#&gt;         0.50130254  1.8347667 -0.11426517
+#&gt;        -0.07250881 -0.1142652  3.24257337
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	Multivariate standard Gaussian
 #&gt; 
 #&gt; 
 #&gt; $vallogf
-#&gt; [1] -2146.709
+#&gt; [1] -2554.607
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

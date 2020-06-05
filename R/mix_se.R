@@ -14,19 +14,19 @@ setGeneric("mix_se",
 	   useAsDefault = FALSE
 	   )
 
-setMethod("mix_se", signature(x = "ANY", model = "mixAR"),
+setMethod("mix_se", signature(x = "ANY", model = "MixAR"),
           function(x, model, fix_shift = FALSE){
               std_err_mixar(x, model, fix_shift)
           })
 
-setMethod("mix_se", signature(x = "ANY", model = "mixARGaussian"),
+setMethod("mix_se", signature(x = "ANY", model = "MixARGaussian"),
           function(x, model, fix_shift = FALSE){
               std_err_mixar(x, model, fix_shift)
           })
 
 setMethod("mix_se", signature(x = "ANY", model = "list"),
           function(x, model, fix_shift = FALSE){
-              if(is(model$model, "mixARGaussian")) model <- model$model
+              if(is(model$model, "MixARGaussian")) model <- model$model
               else stop("Invalid input list. Must be output list from fit_mixAR()")
               std_err_mixar(x, model, fix_shift)
           })

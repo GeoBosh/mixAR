@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create mixAR objects — mixAR-methods • mixAR</title>
+<title>Create MixAR objects — mixAR-methods • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Create mixAR objects — mixAR-methods" />
-<meta property="og:description" content="Generic function with methods for creating mixAR objects." />
+<meta property="og:title" content="Create MixAR objects — mixAR-methods" />
+<meta property="og:description" content="Generic function with methods for creating MixAR objects." />
 
 
 
@@ -111,13 +111,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create mixAR objects</h1>
+    <h1>Create MixAR objects</h1>
     
     <div class="hidden name"><code>mixAR-methods.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Generic function with methods for creating mixAR objects.</p>
+    <p>Generic function with methods for creating MixAR objects.</p>
     </div>
 
     <pre class="usage"><span class='fu'>mixAR</span>(<span class='no'>template</span>, <span class='no'>coef</span>, <span class='no'>...</span>, <span class='kw'>filler</span> <span class='kw'>=</span> <span class='fl'>NA_real_</span>)</pre>
@@ -130,8 +130,8 @@
       <td>
     
 <p>an object to be used as a template for the new object, typically
-    inheriting from <code>"mixAR"</code>. Alternatively, missing or a numeric
-    vector specifying the order of the mixAR model, see Details.</p>
+    inheriting from <code>"MixAR"</code>. Alternatively, missing or a numeric
+    vector specifying the order of the MixAR model, see Details.</p>
 <p></p></td>
     </tr>
     <tr>
@@ -158,21 +158,21 @@
     
 
 <p><code>mixAR</code> provides an alternative to the function <code>new</code> for
-  specifying mixAR models.</p>
+  specifying MixAR models.</p>
 <p>If <code>template</code> is numeric vector, it is taken to specify the AR order
-  of the model and the number of mixture components. A Gaussian mixAR
+  of the model and the number of mixture components. A Gaussian MixAR
   model is created with parameters filled initially with NA's and then
   updated with values given by <code>coef</code>. <code>coef</code> does not need to
   have values for all parameters and may be missing altogether. If NA's
   are not suitable for initialisation, a suitable value can be specified
   with <code>filler</code>.</p>
-<p>If <code>template</code> is a mixAR object, then the new object will
+<p>If <code>template</code> is a MixAR object, then the new object will
   have the class of <code>template</code>. The new object is set
   initially to a copy of <code>template</code> and then updated with
   parameters specified by <code>coef</code> (and maybe others for some
   methods).</p>
 <p>In principle, the numeric parameters are vectors of length the number of
-  components of the mixAR model. For convenience, single values are
+  components of the MixAR model. For convenience, single values are
   replicated to the number of components. For this to work, at least one
   component must be specified completely, for example the order. It is
   an error for the parameters to imply conflicting number of components.</p>  
@@ -186,19 +186,19 @@
 
 <dt><code>signature(template = "ANY")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
 
-<dt><code>signature(template = "mixAR")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
+<dt><code>signature(template = "MixAR")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
 
 </dl>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>class <code><a href='mixARGaussian-class.html'>mixARGaussian</a></code>,
-	class <code><a href='mixARgen-class.html'>mixARgen</a></code></p></div>
+    <div class='dont-index'><p>class <code>MixARGaussian</code>,
+	class <code>MixARgen</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>mixAR</span>(<span class='kw'>coef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.5</span>,<span class='fl'>.5</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>),
                   <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>.5</span>, <span class='fl'>1.1</span>), <span class='kw'>shift</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>0</span>), <span class='kw'>order</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>1</span>)))</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1 0.5    0     1     1   0.5 
@@ -209,7 +209,7 @@
 #&gt; </div><div class='input'>
 <span class='fu'>mixAR</span>(<span class='kw'>template</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>1</span>))</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1  NA   NA    NA     1    NA 
@@ -219,7 +219,7 @@
 #&gt; 	standard Gaussian
 #&gt; </div><div class='input'><span class='fu'>mixAR</span>(<span class='kw'>coef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>order</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>1</span>))) <span class='co'># same</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1  NA   NA    NA     1    NA 
@@ -228,7 +228,7 @@
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
 #&gt; </div><div class='input'>
-<span class='no'>m2</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>1</span>),
+<span class='no'>m2</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>1</span>),
           <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>, <span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>)), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
 <span class='no'>m2a</span> <span class='kw'>&lt;-</span> <span class='fu'>mixAR</span>(<span class='no'>m2</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>0.25</span>, <span class='fl'>0.25</span>)))
 <span class='fu'><a href='show_diff.html'>show_diff</a></span>(<span class='no'>m2</span>, <span class='no'>m2a</span>)</div><div class='output co'>#&gt;        prob shift scale order ar_1 ar_2 ar_3

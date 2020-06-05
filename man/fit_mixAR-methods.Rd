@@ -3,26 +3,26 @@
 \alias{fit_mixAR}
 \alias{fit_mixAR-methods}
 \alias{fit_mixAR,ANY,ANY,ANY-method}
-\alias{fit_mixAR,ANY,mixAR,list-method}
-\alias{fit_mixAR,ANY,mixAR,missing-method}
-\alias{fit_mixAR,ANY,mixAR,mixAR-method}
-\alias{fit_mixAR,ANY,mixAR,numeric-method}
-\alias{fit_mixAR,ANY,mixARGaussian,mixAR-method}
+\alias{fit_mixAR,ANY,MixAR,list-method}
+\alias{fit_mixAR,ANY,MixAR,missing-method}
+\alias{fit_mixAR,ANY,MixAR,MixAR-method}
+\alias{fit_mixAR,ANY,MixAR,numeric-method}
+\alias{fit_mixAR,ANY,MixARGaussian,MixAR-method}
 \alias{fit_mixAR,ANY,numeric,missing-method}
 \alias{fit_mixAR,ANY,numeric,numeric-method}
 \title{
   Fit mixture autoregressive models
 }
 \description{
-  Estimate a mixAR model for a time series. This is a generic function.
-  The methods defined in package mixAR are described here.
+  Estimate a MixAR model for a time series. This is a generic function.
+  The methods defined in package \pkg{mixAR} are described here.
 }
 \usage{
 fit_mixAR(x, model, init, fix, ...)
 }
 \arguments{
   \item{x}{a time series.}
-  \item{model}{model, object inheriting from mixAR class.}
+  \item{model}{model, object inheriting from MixAR class.}
   \item{init}{what initializations to do, see Details.}
   \item{fix}{which parameters to fix, see Details.}
   \item{\dots}{additional arguments for the methods.}
@@ -33,15 +33,15 @@ fit_mixAR(x, model, init, fix, ...)
   \code{x}, \code{model} and \code{init}.
 
   \code{model} specifies the model to fit. If \code{model} inherits from
-  \code{"mixAR"}, it is used as a template.  If \code{init} is missing,
+  \code{"MixAR"}, it is used as a template.  If \code{init} is missing,
   the parameters of \code{model} are also used as initial values. 
   \code{model} can also be a numeric vector specifying the order of a
-  mixAR model with Gaussian components. 
+  MixAR model with Gaussian components. 
 
   Argument \code{init} can be used to give initial values in  variety of
-  ways. If it is a mixAR object it doesn't need to be of the same class
+  ways. If it is a MixAR object it doesn't need to be of the same class
   as \code{model}, to allow using as initial values common parameters
-  of different mixAR models. A positive integer value of \code{init}
+  of different MixAR models. A positive integer value of \code{init}
   asks to run the fitting procedure \code{init} times, each time
   generating random initial values.  
 
@@ -57,10 +57,10 @@ fit_mixAR(x, model, init, fix, ...)
 
   See individual methods for further details.
   
-  TODO: This is work in progress, things may change.
+  % TODO: This is work in progress, things may change.
 }
 \value{
-  a mixAR model or a list of mixAR models, depending on the arguments.
+  a MixAR model or a list of MixAR models, depending on the arguments.
 }
 \section{Methods}{
 \describe{
@@ -69,11 +69,11 @@ fit_mixAR(x, model, init, fix, ...)
     The default method throws error.
   }
 
-  \item{\code{signature(x = "ANY", model = "mixAR", init = "missing")}}{
+  \item{\code{signature(x = "ANY", model = "MixAR", init = "missing")}}{
     This is equivalent to setting \code{init = model}.
   }
 
-  \item{\code{signature(x = "ANY", model = "mixAR", init = "mixAR")}}{
+  \item{\code{signature(x = "ANY", model = "MixAR", init = "MixAR")}}{
     \code{model} is a template for the result, \code{init} specifies
     initial values for the parameters. In principle, \code{model} and
     \code{init} may be from different classes, to allow for example
@@ -84,7 +84,7 @@ fit_mixAR(x, model, init, fix, ...)
 
   }
 
-  \item{\code{signature(x = "ANY", model = "mixAR", init = "numeric")}}{
+  \item{\code{signature(x = "ANY", model = "MixAR", init = "numeric")}}{
  
     \code{init} must be a single positive integer here. The model is
     fitted \code{init} times, each time starting with a new set of
@@ -95,7 +95,7 @@ fit_mixAR(x, model, init, fix, ...)
 
   }
 
-  \item{\code{signature(x = "ANY", model = "mixAR", init = "list")}}{
+  \item{\code{signature(x = "ANY", model = "MixAR", init = "list")}}{
     
     Each element of the list \code{init} should be an acceptable value
     for \code{init}. The model is fitted with the initial value  set to each
@@ -104,7 +104,7 @@ fit_mixAR(x, model, init, fix, ...)
     
   }
 
-  \item{\code{signature(x = "ANY", model = "mixARGaussian", init = "mixAR")}}{
+  \item{\code{signature(x = "ANY", model = "MixARGaussian", init = "MixAR")}}{
       %%  ~~describe this method here~~
   }
   \item{\code{signature(x = "ANY", model = "numeric", init = "missing")}}{
@@ -113,7 +113,7 @@ fit_mixAR(x, model, init, fix, ...)
   \item{\code{signature(x = "ANY", model = "numeric", init = "numeric")}}{
 
       A numeric \code{model} should be a vector of non-negative integers
-      specifying the order of the mixAR model. The distribution of the
+      specifying the order of the MixAR model. The distribution of the
       components is assumed Gaussian.
 
   }
@@ -126,9 +126,9 @@ ar    <- exampleModels$WL_ibm@arcoef@a # list(c(0.6792, 0.3208), c(1.6711, -0.67
 
 ## data(ibmclose, package = "fma")  # `ibmclose'
 
-mo_WLt3 <- new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+mo_WLt3 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                dist = list(fdist_stdt(3)))
-mo_WLt30 <- new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+mo_WLt30 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                 dist = list(fdist_stdt(30)))
 
 \dontrun{
@@ -139,37 +139,37 @@ fit3   <- fit_mixAR(fma::ibmclose, mo_WLt3,  fix = "shift")
 fi30   <- fit_mixAR(fma::ibmclose, mo_WLt30, fix = "shift")
 
 stdt3v <- fdist_stdt(3, fixed = FALSE)
-mo_WLt3v <- new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+mo_WLt3v <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                 dist = list(fdist_stdt(3, fixed = FALSE)))
 fit3v <- fit_mixAR(fma::ibmclose, mo_WLt3v, fix = "shift")
 
-fit_mixAR(fma::ibmclose, new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                         dist = list(fdist_stdt(10))), fix = "shift")
-fit_mixAR(fma::ibmclose, new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                         dist = list(fdist_stdt(5))), fix = "shift")
-fit_mixAR(fma::ibmclose, new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                         dist = list(fdist_stdt(4))), fix = "shift")
-fit_mixAR(fma::ibmclose, new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                         dist = list(fdist_stdt(3))), fix = "shift")
-fit_mixAR(fma::ibmclose, new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                         dist = list(fdist_stdt(3.5))), fix = "shift")
-fit_mixAR(fma::ibmclose, new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                         dist = list(fdist_stdt(3.8))), fix = "shift")
 
-mo_WLt30v <- new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+mo_WLt30v <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                  dist = list(fdist_stdt(30, fixed = FALSE)))
 
 fit30v <- fit_mixAR(fma::ibmclose, mo_WLt30v, fix = "shift")
 
-mo_WLt20v30v40 <- new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+mo_WLt20v30v40 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                       dist = list(fn_stdt(c(20, 30, 40), fixed = FALSE)))
 fit20v30v40 <- fit_mixAR(fma::ibmclose, mo_WLt20v30v40, fix = "shift")
 
-mo_WLt20v30v40 <- new("mixARgen", prob = prob, scale = sigma, arcoef = ar,
+mo_WLt20v30v40 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                       dist = fn_stdt(c(20, 30, 40), fixed = FALSE))
 fit20v30v40 <- fit_mixAR(fma::ibmclose, mo_WLt20v30v40, fix = "shift")
 
-mo_WLtf <- new("mixARgen", prob = prob, scale = sigma, arcoef = ar, 
+mo_WLtf <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar, 
                dist = list(generator = function(par) fn_stdt(par, fixed = FALSE), 
                            param = c(20, 30, 40)))
 
@@ -177,5 +177,5 @@ fitmo_WLtf <- fit_mixAR(fma::ibmclose, mo_WLtf, fix = "shift")
 }
 }
 \keyword{methods}
-\keyword{mixAR}
+\keyword{MixAR}
 \keyword{estimation}

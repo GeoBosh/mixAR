@@ -16,7 +16,7 @@ mixVARfit <- function(y, model, fix = FALSE, tol = 10^-6){
   count <- 0
   while(diff>tol){
     count <- count +1; if(count%%25 == 0) {
-        loglik <- cond_loglikV(new("mixVARGaussian", prob=prob, vcov=Scale, arcoef=arcoef,
+        loglik <- cond_loglikV(new("MixVARGaussian", prob=prob, vcov=Scale, arcoef=arcoef,
                                       shift=shift), y)
         cat("niter:", count, "\tvallogf:", loglik, "\n")
     }
@@ -76,7 +76,7 @@ mixVARfit <- function(y, model, fix = FALSE, tol = 10^-6){
     prob   <- prob_new
     if(count == 200) break
   }
-  mod <- new("mixVARGaussian", prob=prob, shift=shift, vcov=Scale, arcoef=arcoef)
+  mod <- new("MixVARGaussian", prob=prob, shift=shift, vcov=Scale, arcoef=arcoef)
   list(model = mod, vallogf = cond_loglikV(mod, y))
 }
 
@@ -87,7 +87,7 @@ fit_mixVAR <- function(x, model, fix, ...){
 
 setGeneric("fit_mixVAR")
 
-setMethod("fit_mixVAR", signature(x = "ANY", model = "mixVAR"), 
+setMethod("fit_mixVAR", signature(x = "ANY", model = "MixVAR"), 
           function(x, model, fix, ...){
               if(missing(fix)) fix = FALSE
             mixVARfit(x, model, fix)
@@ -97,7 +97,7 @@ setMethod("fit_mixVAR", signature(x = "ANY", model = "mixVAR"),
 
 #setMethod("fit_mixAR", signature(x = "ANY", model = "numeric", init = "numeric"), 
 #          function(x, model, init, fix, ...){
-#            model <- new("mixARGaussian", order = model)
+#            model <- new("MixARGaussian", order = model)
 #            fit_mixAR(x, model, init = init, fix = fix, ...)
 #          })
 

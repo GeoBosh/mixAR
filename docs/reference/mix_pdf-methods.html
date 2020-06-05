@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Conditional pdf's and cdf's of mixAR models — mix_pdf-methods • mixAR</title>
+<title>Conditional pdf's and cdf's of MixAR models — mix_pdf-methods • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Conditional pdf's and cdf's of mixAR models — mix_pdf-methods" />
+<meta property="og:title" content="Conditional pdf's and cdf's of MixAR models — mix_pdf-methods" />
 <meta property="og:description" content="Gives conditional probability densities and distribution functions of
  mixture autoregressive models." />
 
@@ -112,7 +112,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Conditional pdf's and cdf's of mixAR models</h1>
+    <h1>Conditional pdf's and cdf's of MixAR models</h1>
     
     <div class="hidden name"><code>mix_pdf-methods.Rd</code></div>
     </div>
@@ -137,22 +137,22 @@
 <p><code>mix_pdf</code> and <code>mix_cdf</code> have methods with the following
   signatures.</p>
 <p></p><dl'>
-    <dt><code>signature(model = "mixARGaussian", x = "missing", index = "missing", xcond = "numeric")</code></dt><dd><p>Return (as a function of one argument) the conditional density
+    <dt><code>signature(model = "MixARGaussian", x = "missing", index = "missing", xcond = "numeric")</code></dt><dd><p>Return (as a function of one argument) the conditional density
       (respectively cdf), \(f(x|xcond)\), of \(X_{t+1}\) given
       the past values <code>xcond</code>. The values in <code>xcond</code> are in
       natural time order, e.g. the last value in <code>xcond</code> is
       \(x_{t}\). <code>xcond</code> must contain enough values for the
       computation of the conditional density (cdf) but if more are given,
       only the necessary ones are used.</p></dd>
-    <dt><code>signature(model = "mixARGaussian", x = "numeric", index = "missing", xcond = "numeric")</code></dt><dd><p>Compute the conditional density (respectively cdf) at the values given
+    <dt><code>signature(model = "MixARGaussian", x = "numeric", index = "missing", xcond = "numeric")</code></dt><dd><p>Compute the conditional density (respectively cdf) at the values given
       by <code>x</code>.</p></dd>
-    <dt><code>signature(model = "mixARGaussian", x = "numeric", index = "numeric", xcond = "missing")</code></dt><dd><p>Compute conditional densities (respectively cdf) for times
+    <dt><code>signature(model = "MixARGaussian", x = "numeric", index = "numeric", xcond = "missing")</code></dt><dd><p>Compute conditional densities (respectively cdf) for times
       specified in <code>index</code>. For each \(t\in{}\)<code>index</code> the
       past values needed for the computation of the pdf (cdf) are
       <code>...,x[t-2],x[t-1]</code>.</p></dd>
-  <dt><code>signature(model = "mixARgen", x = "missing", index = "missing",
-          xcond = "numeric")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd><dt><code>signature(model = "mixARgen", x = "numeric", index = "missing",
-          xcond = "numeric")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd><dt><code>signature(model = "mixARgen", x = "numeric", index = "numeric",
+  <dt><code>signature(model = "MixARgen", x = "missing", index = "missing",
+          xcond = "numeric")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd><dt><code>signature(model = "MixARgen", x = "numeric", index = "missing",
+          xcond = "numeric")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd><dt><code>signature(model = "MixARgen", x = "numeric", index = "numeric",
           xcond = "missing")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
 </dl>
 

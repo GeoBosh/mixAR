@@ -3,10 +3,10 @@
 \alias{tauetk2sigmahat}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-  Update the scale parameters of mixAR models
+  Update the scale parameters of MixAR models
 }
 \description{
-  Calculates estimates of scale parameters of mixAR models from
+  Calculates estimates of scale parameters of MixAR models from
   conditional probabilities and mixture `residuals'.
   Used in EM algorithm.
 }
@@ -18,10 +18,10 @@ em_est_sigma(tau, etk, Fscore, sigma,
 }
 \arguments{
   \item{tau}{
-    the conditional probabilities for the groups, a \code{"mixComp"}
+    the conditional probabilities for the groups, a \code{"MixComp"}
     object.
   }
-  \item{etk}{component "residuals", mixComp object(?).}
+  \item{etk}{component "residuals", MixComp object(?).}
   \item{Fscore}{the score function(s) of the noise distributions.}
   \item{sigma}{current values of the scale parameters.}
   \item{compwise}{if \code{TRUE} solve the equations component-wise, see
@@ -31,7 +31,7 @@ em_est_sigma(tau, etk, Fscore, sigma,
 }
 \details{
   \code{tauetk2sigmahat} calculates estimates of the scale parameters
-  for a mixAR time series with Gaussian components. There is an explicit
+  for a MixAR time series with Gaussian components. There is an explicit
   formula in that case.
 
   \code{em_est_sigma} calculates estimates of the scale parameters in

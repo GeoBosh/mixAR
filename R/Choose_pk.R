@@ -38,7 +38,7 @@ Choose_pk <- function(y, model, fix_shift = FALSE, tau, pmax, method,
         mod <- if(i == 1)
                    model
                else
-                   new("mixARGaussian", prob = pi, scale = sigma, arcoef = AR, shift = int)
+                   new("MixARGaussian", prob = pi, scale = sigma, arcoef = AR, shift = int)
 
         pk    <- mod@arcoef@p
         p     <- max(pk)
@@ -74,7 +74,7 @@ Choose_pk <- function(y, model, fix_shift = FALSE, tau, pmax, method,
         if(pkstar > pk[comp]) {
             phistar <- c(AR[[comp]], runif(1,-1.5, 1.5))
             ARcheck <- AR ; ARcheck[[comp]] <- phistar
-            Acheck  <- new("mixARGaussian", prob = pi, scale = sigma, arcoef = ARcheck)
+            Acheck  <- new("MixARGaussian", prob = pi, scale = sigma, arcoef = ARcheck)
             if(isStable(Acheck)){
                 ## Required step to increase p to p+1 when new pk > p
                 ratio <-
@@ -95,7 +95,7 @@ Choose_pk <- function(y, model, fix_shift = FALSE, tau, pmax, method,
             phistar <- AR[[comp]][-pk[comp]]
             ARcheck <- AR
             ARcheck[[comp]] <- phistar
-            Acheck  <- new("mixARGaussian", prob = pi, scale = sigma, arcoef = ARcheck)
+            Acheck  <- new("MixARGaussian", prob = pi, scale = sigma, arcoef = ARcheck)
             if(isStable(Acheck)){
                 ratio <- exp(- prec[comp]/2 *
                              sum(- err_k(AR[[comp]], mu[comp], y,

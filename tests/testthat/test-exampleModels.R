@@ -7,30 +7,30 @@ test_that("exampleModels is consistent with the old moWL objects", {
     moWLsigma <- c(4.8227, 6.0082, 18.1716)
     moWLar <- list(c(0.6792, 0.3208), c(1.6711, -0.6711), 1)
 
-    moWL <- new("mixARGaussian", prob = moWLprob, scale = moWLsigma, arcoef = moWLar)
+    moWL <- new("MixARGaussian", prob = moWLprob, scale = moWLsigma, arcoef = moWLar)
 
-    moWL_A <- new("mixARGaussian"                         # WongLi, model A
+    moWL_A <- new("MixARGaussian"                         # WongLi, model A
                 , prob = c(0.5, 0.5)
                 , scale = c(5, 1)
                 , shift = c(0, 0)
                 , arcoef = list(c(0.5), c(1.1))
                   )
 
-    moWL_B <- new("mixARGaussian"                         # WongLi, model B
+    moWL_B <- new("MixARGaussian"                         # WongLi, model B
                 , prob = c(0.75, 0.25)
                 , scale = c(5, 1)
                 , shift = c(0, 0)
                 , arcoef = list(c(0.5), c(1.4))
                   )
 
-    moWL_I <- new("mixARGaussian"                          # WongLi, model I
+    moWL_I <- new("MixARGaussian"                          # WongLi, model I
                 , prob = c(0.4, 0.3, 0.3)
                 , scale = c(1, 1, 5)
                 , shift = c(0, 0, -5)
                 , arcoef = list(c(0.9, -0.6), c(-0.5), c(1.50, -0.74, 0.12))
                   )
 
-    moWL_II <- new("mixARGaussian"                         # WongLi, model II
+    moWL_II <- new("MixARGaussian"                         # WongLi, model II
                  , prob = c(0.4, 0.3, 0.3)
                  , scale = c(1, 1, 5)
                  , shift = c(5, 0, -5)
@@ -38,19 +38,19 @@ test_that("exampleModels is consistent with the old moWL objects", {
                    )
 
     moWLgen <-
-        new("mixARgen", prob=moWLprob, scale=moWLsigma, arcoef=moWLar,
+        new("MixARgen", prob=moWLprob, scale=moWLsigma, arcoef=moWLar,
                dist=list(dist_norm))
 
     moWLt3v <-
-        new("mixARgen", prob=moWLprob, scale=moWLsigma, arcoef=moWLar,
+        new("MixARgen", prob=moWLprob, scale=moWLsigma, arcoef=moWLar,
                dist=list(fdist_stdt(3,fixed=FALSE)))
 
     moWLtf <-
-        new("mixARgen", prob=moWLprob, scale=moWLsigma, arcoef=moWLar,
+        new("MixARgen", prob=moWLprob, scale=moWLsigma, arcoef=moWLar,
               dist=list(generator=function(par) fn_stdt(par,fixed=FALSE),param=c(20,30,40)))
 
     moT_A <-
-        new("mixARgen"
+        new("MixARgen"
                , prob = c(0.5,0.5)
                , scale = c(1, 2)
                , shift = c(0, 0)
@@ -60,7 +60,7 @@ test_that("exampleModels is consistent with the old moWL objects", {
                )
 
     moT_B <-
-        new("mixARgen"
+        new("MixARgen"
                , prob = c(0.3, 0.3, 0.4)
                , scale = c(2, 1, 0.5)
                , shift = c(5, -5, 0)
@@ -71,7 +71,7 @@ test_that("exampleModels is consistent with the old moWL objects", {
                )
 
     moT_B2 <-
-        new("mixARgen"
+        new("MixARgen"
                , prob = c(0.3, 0.3, 0.4)
                , scale = c(2, 1, 0.5)
                , shift = c(5, -5, 0)
@@ -85,7 +85,7 @@ test_that("exampleModels is consistent with the old moWL objects", {
                )
 
     moT_B3 <-
-        new("mixARgen"
+        new("MixARgen"
                , prob = c(0.3, 0.3, 0.4)
                , scale = c(2, 1, 0.5)
                , shift = c(5, -5, 0)
@@ -95,7 +95,7 @@ test_that("exampleModels is consistent with the old moWL objects", {
                )
 
     moT_C1 <-
-        new("mixARgen"
+        new("MixARgen"
               , prob = c(0.3, 0.3, 0.4)
               , scale = c(2, 1, 0.5)
               , shift = c(5, -5, 0)
@@ -105,13 +105,13 @@ test_that("exampleModels is consistent with the old moWL objects", {
               )
 
     moT_C2 <-
-        new("mixARgen"
+        new("MixARgen"
               , model = exampleModels$WL_Bt_1
               , dist = distlist(c("stdt", "stdt", "stdnorm"), c(4,7))  # t4, t7, N(0,1)
               )
 
     moT_C3 <-
-        new("mixARGaussian", model = exampleModels$WL_Bt_1)
+        new("MixARGaussian", model = exampleModels$WL_Bt_1)
 
     
     ## these tests show equivalence to old example objects

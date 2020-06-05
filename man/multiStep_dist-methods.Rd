@@ -2,16 +2,16 @@
 \docType{methods}
 \alias{multiStep_dist}
 \alias{multiStep_dist-methods}
-\alias{multiStep_dist,mixAR,numeric,numeric,numeric-method}
-\alias{multiStep_dist,mixARGaussian,numeric,missing,missing-method}
-\alias{multiStep_dist,mixARGaussian,numeric,missing,ANY-method}
-\title{Multi-step predictions for mixAR models}
-\description{Multi-step predictions for mixAR models.}
+\alias{multiStep_dist,MixAR,numeric,numeric,numeric-method}
+\alias{multiStep_dist,MixARGaussian,numeric,missing,missing-method}
+\alias{multiStep_dist,MixARGaussian,numeric,missing,ANY-method}
+\title{Multi-step predictions for MixAR models}
+\description{Multi-step predictions for MixAR models.}
 \usage{
 multiStep_dist(model, maxh, N, xcond, ...)
 }
 \arguments{
-  \item{model}{a mixAR model.}
+  \item{model}{a MixAR model.}
   \item{maxh}{maximal horizon, a positive integer.}
   \item{N}{
     an integer specifying the number of simulation samples to use, see
@@ -30,12 +30,12 @@ multiStep_dist(model, maxh, N, xcond, ...)
 
   The function currently implements two methods: the exact method due to
   \insertCite{boshnakov2009mar;textual}{mixAR} and a simulation
-  method described by \insertCite{WongLi2000}{mixAR} for Gaussian mixAR
+  method described by \insertCite{WongLi2000}{mixAR} for Gaussian MixAR
   models but valid more generally.
   
-  The simulation method is available for any mixAR model, while
+  The simulation method is available for any MixAR model, while
   the exact method is currently implemented only for models with
-  Gaussian components ("mixARGaussian" class).
+  Gaussian components ("MixARGaussian" class).
 
   \code{multiStep_dist} returns a function which can be used to obtain
   various properties of the predictive distribution for lags up to
@@ -102,7 +102,7 @@ multiStep_dist(model, maxh, N, xcond, ...)
   
   \describe{
 
-    \item{\code{signature(model = "mixAR", maxh = "numeric", N = "numeric",
+    \item{\code{signature(model = "MixAR", maxh = "numeric", N = "numeric",
 	xcond = "numeric")}}{ 
       Non-missing \code{N} requests the simulation method. The
       predictive distribution is approximated by simulating \code{N}
@@ -111,13 +111,13 @@ multiStep_dist(model, maxh, N, xcond, ...)
       \code{density} to allow finer control.
     }
 
-    \item{\code{signature(model = "mixARGaussian", maxh = "numeric", N = "missing", 
+    \item{\code{signature(model = "MixARGaussian", maxh = "numeric", N = "missing", 
 	xcond = "missing")}}{
       Computes the predictive distribution using the exact method.
       Returns a function with arguments \code{h}, \code{what} and \code{xcond}.
     }
 
-    \item{\code{signature(model = "mixARGaussian", maxh = "numeric", N = "missing",
+    \item{\code{signature(model = "MixARGaussian", maxh = "numeric", N = "missing",
 	xcond = "ANY")}}{
       Computes the predictive distribution using the exact method.
       Returns a function with arguments \code{h} and \code{what}.
@@ -187,5 +187,5 @@ mix_kurtosis(exampleModels$WL_ibm, xcond = c(359, 200))
 mix_kurtosis(exampleModels$WL_ibm, xcond = c(359, 400))
 }
 \keyword{methods}
-\keyword{mixAR}
+\keyword{MixAR}
 \keyword{prediction}

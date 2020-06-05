@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute standard errors of estimates of mixAR models — mix_se-methods • mixAR</title>
+<title>Compute standard errors of estimates of MixAR models — mix_se-methods • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Compute standard errors of estimates of mixAR models — mix_se-methods" />
-<meta property="og:description" content="Compute standard errors of estimates of mixAR models." />
+<meta property="og:title" content="Compute standard errors of estimates of MixAR models — mix_se-methods" />
+<meta property="og:description" content="Compute standard errors of estimates of MixAR models." />
 
 
 
@@ -111,13 +111,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute standard errors of estimates of mixAR models</h1>
+    <h1>Compute standard errors of estimates of MixAR models</h1>
     
     <div class="hidden name"><code>mix_se-methods.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Compute standard errors of estimates of mixAR models.</p>
+    <p>Compute standard errors of estimates of MixAR models.</p>
     </div>
 
     <pre class="usage"><span class='fu'>mix_se</span>(<span class='no'>x</span>, <span class='no'>model</span>, <span class='no'>fix_shift</span>)</pre>
@@ -131,7 +131,7 @@
     </tr>
     <tr>
       <th>model</th>
-      <td><p>mixAR model, an object inheriting from class &#8220;mixAR&#8221;.</p></td>
+      <td><p>MixAR model, an object inheriting from class &#8220;MixAR&#8221;.</p></td>
     </tr>
     <tr>
       <th>fix_shift</th>
@@ -144,7 +144,9 @@
 
     
 
-<p>:TODO:</p>
+<p>For formulas used in the computation, see
+  Wong (1998)
+.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a list with components:</p>
@@ -155,8 +157,7 @@
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>For formulas used in the computation, see:</p>
-<p>Wong CS (1998).
+    <p>Wong CS (1998).
 <em>Statistical inference for some nonlinear time series models</em>.
 Ph.D. thesis, University of Hong Kong, Hong Kong .</p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
@@ -166,9 +167,9 @@ Ph.D. thesis, University of Hong Kong, Hong Kong .</p>
 
 <dt><code>signature(x = "ANY", model = "list")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
 
-<dt><code>signature(x = "ANY", model = "mixAR")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
+<dt><code>signature(x = "ANY", model = "MixAR")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
 
-<dt><code>signature(x = "ANY", model = "mixARGaussian")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
+<dt><code>signature(x = "ANY", model = "MixARGaussian")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
 
 </dl>
 
@@ -186,7 +187,7 @@ Ph.D. thesis, University of Hong Kong, Hong Kong .</p>
 <span class='no'>moWLsigma</span> <span class='kw'>&lt;-</span> <span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>@<span class='kw'>scale</span>  <span class='co'>#                  c(4.8227,6.0082,18.1716)</span>
 <span class='no'>moWLar</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(-<span class='fl'>0.3208</span>, <span class='fl'>0.6711</span>,<span class='fl'>0</span>)        <span class='co'># @Davide - is this from some model?</span>
 
-<span class='no'>moWLibm</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>moWLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>moWLsigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>moWLar</span>)
+<span class='no'>moWLibm</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>moWLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>moWLsigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>moWLar</span>)
 
 <span class='no'>IBM</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/diff.html'>diff</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>)
 <span class='fu'>mix_se</span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='no'>IBM</span>), <span class='no'>moWLibm</span>, <span class='kw'>fix_shift</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)$<span class='st'>'standard_errors'</span></div><div class='output co'>#&gt; $Component_1

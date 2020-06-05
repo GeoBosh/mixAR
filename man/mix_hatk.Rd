@@ -3,12 +3,12 @@
 \alias{mix_hatk}
 \alias{mix_hatk-methods}
 
-\alias{mix_hatk,mixAR,numeric,numeric,missing-method}
-\title{Compute component predictions for mixAR models}
+\alias{mix_hatk,MixAR,numeric,numeric,missing-method}
+\title{Compute component predictions for MixAR models}
 \description{
 
-  Function and methods to compute component predictions for mixAR models
-  % ~~ Methods for function \code{mix_hatk} in Package `mixAR' ~~
+  Function and methods to compute component predictions for MixAR models
+  % ~~ Methods for function \code{mix_hatk} in Package `MixAR' ~~
 }
 \usage{
 mix_hatk(model, x, index, xcond)
@@ -29,13 +29,13 @@ mix_hatk(model, x, index, xcond)
 \section{Methods}{
 \describe{
 
-  \item{}{\code{signature(model = "mixAR", x = "numeric", index = "numeric",
+  \item{}{\code{signature(model = "MixAR", x = "numeric", index = "numeric",
  xcond = "missing")}%}{
     : ~~describe this method here 
   }
 }}
 \seealso{
-  \code{\linkS4class{mixAR}}
+  \code{\linkS4class{MixAR}}
 }
 \keyword{methods}
-\keyword{mixAR}
+\keyword{MixAR}

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Log-likelihood of mixAR models — cond_loglik • mixAR</title>
+<title>Log-likelihood of MixAR models — cond_loglik • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Log-likelihood of mixAR models — cond_loglik" />
-<meta property="og:description" content="Compute the log-likelihood of a mixAR model for a univariate time
+<meta property="og:title" content="Log-likelihood of MixAR models — cond_loglik" />
+<meta property="og:description" content="Compute the log-likelihood of a MixAR model for a univariate time
   series." />
 
 
@@ -112,13 +112,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Log-likelihood of mixAR models</h1>
+    <h1>Log-likelihood of MixAR models</h1>
     
     <div class="hidden name"><code>cond_loglik.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Compute the log-likelihood of a mixAR model for a univariate time
+    <p>Compute the log-likelihood of a MixAR model for a univariate time
   series.</p>
     </div>
 
@@ -130,7 +130,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>a mixAR model.</p></td>
+      <td><p>a MixAR model.</p></td>
     </tr>
     <tr>
       <th>x</th>
@@ -151,7 +151,7 @@
 
     
 
-<p><code>cond_loglik</code> computes the conditional log-likelihood of a mixAR
+<p><code>cond_loglik</code> computes the conditional log-likelihood of a MixAR
   model. Conditional here means conditional on the first <code>p</code> values
   being fixed, where <code>p</code> is the maximum AR order of the components
   of the model.</p>
@@ -165,15 +165,13 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## data(ibmclose, package = "fma")  # for `ibmclose'</span>
-<span class='fu'>cond_loglik</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>,     <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'quantmod':</span>
-#&gt; <span class='message'>  method            from</span>
-#&gt; <span class='message'>  as.zoo.data.frame zoo </span></div><div class='output co'>#&gt; [1] -1212.188</div><div class='input'><span class='fu'>cond_loglik</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; [1] -1212.188</div><div class='input'>
+<span class='fu'>cond_loglik</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>,     <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; [1] -1212.188</div><div class='input'><span class='fu'>cond_loglik</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; [1] -1212.188</div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>lynx</span>)  <span class='co'># for 'lynx' data</span>
 <span class='no'>sar</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"raggedCoefS"</span>, <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.1022</span>, -<span class='fl'>0.2835</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.5279</span>, -<span class='fl'>0.8871</span>)),
                           <span class='kw'>as</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>), <span class='fl'>0</span>), <span class='kw'>s</span> <span class='kw'>=</span> <span class='fl'>10</span>)
 
 <span class='co'>## SMAR(2; 2, 2)(2, 1)_10</span>
-<span class='no'>model_s10</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.3</span>, <span class='fl'>.7</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.08</span>, <span class='fl'>.202</span>),
+<span class='no'>model_s10</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.3</span>, <span class='fl'>.7</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.08</span>, <span class='fl'>.202</span>),
                                   <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>sar</span>, <span class='kw'>shift</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.7</span>,<span class='fl'>1</span>))
 <span class='fu'>cond_loglikS</span>(<span class='no'>model_s10</span>, <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='no'>lynx</span>))</div><div class='output co'>#&gt; [1] -2036.966</div><div class='input'><span class='fu'>cond_loglikS</span>(<span class='no'>model_s10</span>, <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='no'>lynx</span>), <span class='kw'>index</span> <span class='kw'>=</span> <span class='fl'>45</span>:<span class='fl'>114</span>) <span class='co'># on reduced dataset</span></div><div class='output co'>#&gt; [1] -1593.132</div></pre>
   </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Choose the autoregressive order of mixAR components — Choose_pk • mixAR</title>
+<title>Choose the autoregressive order of MixAR components — Choose_pk • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Choose the autoregressive order of mixAR components — Choose_pk" />
-<meta property="og:description" content="Implement a Reversible Jump MCMC algorithm to choose the optimal
+<meta property="og:title" content="Choose the autoregressive order of MixAR components — Choose_pk" />
+<meta property="og:description" content="Reversible Jump MCMC algorithm to choose the optimal
   autoregressive order of each component of a mixture autoregressive
   model." />
 
@@ -113,13 +113,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Choose the autoregressive order of mixAR components</h1>
+    <h1>Choose the autoregressive order of MixAR components</h1>
     
     <div class="hidden name"><code>Choose_pk.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Implement a Reversible Jump MCMC algorithm to choose the optimal
+    <p>Reversible Jump MCMC algorithm to choose the optimal
   autoregressive order of each component of a mixture autoregressive
   model.</p>
     </div>
@@ -135,8 +135,8 @@
     </tr>
     <tr>
       <th>model</th>
-      <td><p>an object inheriting from class <code>"mixAR"</code> (currenlty only
-    supports class <code>"mixARGaussian"</code>.)</p></td>
+      <td><p>an object inheriting from class <code>"MixAR"</code> (currenlty only
+    supports class <code>"MixARGaussian"</code>.)</p></td>
     </tr>
     <tr>
       <th>fix_shift</th>
@@ -186,10 +186,10 @@
 <em>(in preparation)</em>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='bx_dx.html'>bx_dx</a></code> for more details on <code>method</code></p></div>
+    <div class='dont-index'><p><code><a href='bx_dx.html'>bx_dx</a></code> for more details on the <code>method</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>,
+    <pre class="examples"><div class='input'><span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>,
              <span class='kw'>prob</span>   <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>prob</span>,      <span class='co'># c(0.5, 0.5)</span>
              <span class='kw'>scale</span>  <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>scale</span>,     <span class='co'># c(1, 2)        </span>
              <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(-<span class='fl'>0.5</span>, <span class='fl'>1</span>) ) <span class='co'># != list(-0.5, 1.1) == exampleModels$WL_At@arcoef@a</span>

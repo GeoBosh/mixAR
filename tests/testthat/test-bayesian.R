@@ -3,8 +3,8 @@
 
 test_that("Functions for Bayesian mixAR work", {
     
-    model <- new("mixARGaussian", prob = c(.7,.3), scale = c(1, 2), arcoef = list(-0.5, 1.1))
-    model2 <- new("mixARGaussian", prob = c(.5,.3, .2), scale = c(1, 2, 3), 
+    model <- new("MixARGaussian", prob = c(.7,.3), scale = c(1, 2), arcoef = list(-0.5, 1.1))
+    model2 <- new("MixARGaussian", prob = c(.5,.3, .2), scale = c(1, 2, 3), 
                   arcoef = list(c(-0.5,0.1), 1.1,0.5))
     
     nsim = 20

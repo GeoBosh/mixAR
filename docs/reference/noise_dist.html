@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Internal mixAR functions — noise_dist" />
-<meta property="og:description" content="Functions for the distributions of the components of mixAR models" />
+<meta property="og:description" content="Functions for the distributions of the components of MixAR models" />
 
 
 
@@ -117,7 +117,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Functions for the distributions of the components of mixAR models</p>
+    <p>Functions for the distributions of the components of MixAR models</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_edist</span>(<span class='no'>model</span>)
@@ -163,9 +163,10 @@
   components.  To force a complete list even in this case, use
   <code>expand = TRUE</code>.</p>
 <p><code>noise_params</code> gives the parameters of the model as a numeric
-  vector. (todo: currently returns <code>list{}</code> when there are no such
-  parameters (e.g. if the components are standard normal) but shouldn't
-  this be <code><a href='https://rdrr.io/r/base/numeric.html'>numeric(0)</a></code>?)</p>
+  vector.
+  <!-- %(todo: currently returns \code{list{}} when there are no such -->
+  <!-- %parameters (e.g. if the components are standard normal) but shouldn't -->
+  <!-- %this be \code{numeric(0)}?) --></p>
 <p>The distribution is specified as a list. Element "dist" contain the
   distribution. Element "generator" is a function that generates a
   distribution like the one specified. If "dist" is absent or NULL, the
@@ -173,7 +174,7 @@
 <p>Initially the distribution itself was used for slot <code>dist</code>. For
   compatibility with old code using that format, this is still
   supported.</p>
-<p>todo: this needs consolidation.</p>
+<p><!-- % TODO: this needs consolidation. --></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='fnoise.html'>fdist_stdnorm</a></code>,

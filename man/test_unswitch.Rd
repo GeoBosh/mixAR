@@ -15,8 +15,8 @@ test_unswitch(models, true_model, allperm, ...)
 %- maybe also 'usage' for other objects documented here.
 
 \arguments{
-  \item{models}{a list of mixAR models to process.}
-  \item{true_model}{the mixAR model used in the experiment.}
+  \item{models}{a list of MixAR models to process.}
+  \item{true_model}{the MixAR model used in the experiment.}
   \item{allperm}{which permutations to try.}
   \item{\dots}{additional arguments to pass on to \code{\link{unswitch}}.}
 }
@@ -104,5 +104,5 @@ aII10a
 
 % R documentation directory.
 
-\keyword{mixAR}
+\keyword{MixAR}
 \keyword{simulation}

@@ -1,20 +1,20 @@
-\name{mixVAR-class}
+\name{MixVAR-class}
 \Rdversion{1.1}
 \docType{class}
-\alias{mixVAR-class}
-% \alias{mix_ek,mixAR,numeric,numeric,missing,missing-method}
-% \alias{mix_ek,mixAR,numeric,numeric,missing,logical-method}
-% \alias{mix_ek,mixAR,numeric,missing,numeric,missing-method}
-% \alias{mix_ek,mixAR,numeric,missing,numeric,logical-method}
-% \alias{mix_hatk,mixAR,numeric,numeric,missing-method}
+\alias{MixVAR-class}
+% \alias{mix_ek,MixAR,numeric,numeric,missing,missing-method}
+% \alias{mix_ek,MixAR,numeric,numeric,missing,logical-method}
+% \alias{mix_ek,MixAR,numeric,missing,numeric,missing-method}
+% \alias{mix_ek,MixAR,numeric,missing,numeric,logical-method}
+% \alias{mix_hatk,MixAR,numeric,numeric,missing-method}
 
-\title{Class \code{"mixVAR"} --- mixture vector autoregressive models }
+\title{Class \code{"MixVAR"} --- mixture vector autoregressive models }
 \description{Mixture vector autoregressive models}
 \section{Objects from the Class}{
   A virtual Class: No objects may be created from it.
 
   Derived classes add distribution properties, e.g. use
-  \code{\linkS4class{mixVARGaussian}} for MixVAR models with Gaussian
+  \code{\linkS4class{MixVARGaussian}} for MixVAR models with Gaussian
   error components.
 }
 \section{Slots}{
@@ -31,7 +31,7 @@
 }
 \section{Methods}{
   \describe{
-    \item{fit_mixVAR}{\code{signature(x = "ANY", model = "mixAR")}: ... }
+    \item{fit_mixVAR}{\code{signature(x = "ANY", model = "MixAR")}: ... }
   }
 }
 %\references{ ~put references to the literature/web site here ~ }
@@ -42,11 +42,11 @@
 
 \seealso{
 	% ~~objects to See Also as \code{\link{}}, ~~~
-	\code{\linkS4class{mixVARGaussian}}
+	\code{\linkS4class{MixVARGaussian}}
 }
 %\examples{
-%showClass("mixAR")
+%showClass("MixAR")
 %}
 \keyword{classes}
-\keyword{mixVAR}
+\keyword{MixVAR}
 

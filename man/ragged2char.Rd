@@ -19,7 +19,7 @@ ragged2char(raglist, filler = NA_character_)
   missing entries with the values of argument \code{filler}. The latter
   defaults to \code{NA}.
 
-  In mixAR context the \code{i}-th row represents the AR coefficients
+  In MixAR context the \code{i}-th row represents the AR coefficients
   for the \code{i}-th component.
 
 }

@@ -3,11 +3,11 @@
 \alias{mixAR}
 \alias{mixAR-methods}
 \alias{mixAR,ANY-method}
-\alias{mixAR,mixAR-method}
+\alias{mixAR,MixAR-method}
 
-\title{Create mixAR objects}
+\title{Create MixAR objects}
 \description{
-  Generic function with methods for creating mixAR objects.
+  Generic function with methods for creating MixAR objects.
 }
 \usage{
 mixAR(template, coef, ..., filler = NA_real_)
@@ -17,8 +17,8 @@ mixAR(template, coef, ..., filler = NA_real_)
   \item{template}{
     
     an object to be used as a template for the new object, typically
-    inheriting from \code{"mixAR"}. Alternatively, missing or a numeric
-    vector specifying the order of the mixAR model, see Details.
+    inheriting from \code{"MixAR"}. Alternatively, missing or a numeric
+    vector specifying the order of the MixAR model, see Details.
 
   }
   \item{coef}{
@@ -36,24 +36,24 @@ mixAR(template, coef, ..., filler = NA_real_)
 \details{
 
   \code{mixAR} provides an alternative to the function \code{new} for
-  specifying mixAR models.
+  specifying MixAR models.
 
   If \code{template} is numeric vector, it is taken to specify the AR order
-  of the model and the number of mixture components. A Gaussian mixAR
+  of the model and the number of mixture components. A Gaussian MixAR
   model is created with parameters filled initially with NA's and then
   updated with values given by \code{coef}. \code{coef} does not need to
   have values for all parameters and may be missing altogether. If NA's
   are not suitable for initialisation, a suitable value can be specified
   with \code{filler}.
 
-  If \code{template} is a mixAR object, then the new object will
+  If \code{template} is a MixAR object, then the new object will
   have the class of \code{template}. The new object is set
   initially to a copy of \code{template} and then updated with
   parameters specified by \code{coef} (and maybe others for some
   methods). 
 
   In principle, the numeric parameters are vectors of length the number of
-  components of the mixAR model. For convenience, single values are
+  components of the MixAR model. For convenience, single values are
   replicated to the number of components. For this to work, at least one
   component must be specified completely, for example the order. It is
   an error for the parameters to imply conflicting number of components.  
@@ -69,13 +69,13 @@ mixAR(template, coef, ..., filler = NA_real_)
 %%  ~~describe this method here~~
 }
 
-\item{\code{signature(template = "mixAR")}}{
+\item{\code{signature(template = "MixAR")}}{
 %%  ~~describe this method here~~
 }
 }}
 \seealso{
-	class \code{\linkS4class{mixARGaussian}},
-	class \code{\linkS4class{mixARgen}}
+	class \code{\linkS4class{MixARGaussian}},
+	class \code{\linkS4class{MixARgen}}
 }
 \examples{
 mixAR(coef = list(prob = c(.5,.5), scale = c(1,2), 
@@ -84,10 +84,10 @@ mixAR(coef = list(prob = c(.5,.5), scale = c(1,2),
 mixAR(template = c(1,1))
 mixAR(coef = list(order = c(1,1))) # same
 
-m2 <- new("mixARGaussian", order = c(3, 2, 1),
+m2 <- new("MixARGaussian", order = c(3, 2, 1),
           arcoef = matrix(c(1:3, c(1:2, 0), c(1, 0, 0)), nrow = 3, byrow = TRUE))
 m2a <- mixAR(m2, list(prob = c(0.5, 0.25, 0.25)))
 show_diff(m2, m2a)
 }
 \keyword{methods}
-\keyword{mixAR}
+\keyword{MixAR}

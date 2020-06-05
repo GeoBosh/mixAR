@@ -248,7 +248,7 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>,
+    <pre class="examples"><div class='input'><span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>,
              <span class='kw'>prob</span>   <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>prob</span>,      <span class='co'># c(0.5, 0.5)</span>
              <span class='kw'>scale</span>  <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>scale</span>,     <span class='co'># c(1, 2)        </span>
              <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>arcoef</span>@<span class='kw'>a</span> ) <span class='co'># list(-0.5, 1.1)</span>
@@ -266,7 +266,7 @@
 
 <span class='no'>model</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1 0.5    0     1     1   -0.5

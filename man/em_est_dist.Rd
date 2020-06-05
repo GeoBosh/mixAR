@@ -1,9 +1,9 @@
 \name{em_est_dist}
 \alias{em_est_dist}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Optimise scale parameters in mixARgen models }
+\title{ Optimise scale parameters in MixARgen models }
 \description{
-  Optimise the scale parameters in mixAR models from class mixARgen.
+  Optimise the scale parameters in MixAR models from class MixARgen.
   Internal function.
 }
 \usage{
@@ -11,7 +11,7 @@ em_est_dist(tau, etk, parscore, sigma, nu, logpdf)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{tau}{conditional probabilities, an object of class "mixComp",
+  \item{tau}{conditional probabilities, an object of class "MixComp",
     see 'Details'.}
   \item{etk}{component residuals, see 'Details'.}
   \item{parscore}{the score function(s), see 'Details'.}
@@ -22,22 +22,22 @@ em_est_dist(tau, etk, parscore, sigma, nu, logpdf)
 }
 \details{
 
-  One or more of the error distributions of a mixAR model may have
+  One or more of the error distributions of a MixAR model may have
   parameters that are considered unknown. In that \code{em_est_dist} can
   be used to optimise to them.
 
-  The representation of the error distributions in "mixARgen" models
+  The representation of the error distributions in "MixARgen" models
   carries all the necessary information about
   parameters. \code{em_est_dist} works by extracting their current
   values from \code{logpdf}, passes them to the optimisation function
   (or equation solver) and stores the result back into \code{logpdf}.
   \code{em_est_dist} is quite general, as long as \code{logpdf} is
   prepared according to the conventions it expects (this is so if they
-  arevalid elements of the \code{dist} slot of "mixARgen" objects).
+  arevalid elements of the \code{dist} slot of "MixARgen" objects).
 
 }
 \value{
-  the new values of the parameters.
+  the new values of the parameters
 }
 % \references{
 % %% ~put references to the literature/web site here ~
@@ -54,9 +54,8 @@ em_est_dist(tau, etk, parscore, sigma, nu, logpdf)
 % \seealso{
 % %% ~~objects to See Also as \code{\link{help}}, ~~~
 % }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-}
+%\examples{
+%}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ em }% __ONLY ONE__ keyword per line

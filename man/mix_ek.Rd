@@ -3,15 +3,15 @@
 \alias{mix_ek}
 \alias{mix_ek-methods}
 
-\alias{mix_ek,mixAR,numeric,missing,numeric,logical-method}
-\alias{mix_ek,mixAR,numeric,missing,numeric,missing-method}
-\alias{mix_ek,mixAR,numeric,numeric,missing,logical-method}
-\alias{mix_ek,mixAR,numeric,numeric,missing,missing-method}
+\alias{mix_ek,MixAR,numeric,missing,numeric,logical-method}
+\alias{mix_ek,MixAR,numeric,missing,numeric,missing-method}
+\alias{mix_ek,MixAR,numeric,numeric,missing,logical-method}
+\alias{mix_ek,MixAR,numeric,numeric,missing,missing-method}
 \title{
-  Function and methods to compute component residuals for mixAR models
+  Function and methods to compute component residuals for MixAR models
 }
 \description{
-  Compute component residuals for mixAR models. 
+  Compute component residuals for MixAR models. 
 }
 \usage{
 mix_ek(model, x, index, xcond, scale)
@@ -30,7 +30,7 @@ mix_ek(model, x, index, xcond, scale)
 }
 \details{
   
-  \code{mix_ek} computes component residuals from mixAR models.
+  \code{mix_ek} computes component residuals from MixAR models.
 
   It is highly desirable to use it along with \code{\link{mix_hatk}} and
   the underlying function \code{\link{mixFilter}}. Doing this ensures
@@ -43,25 +43,25 @@ mix_ek(model, x, index, xcond, scale)
   \describe{
   % don't indent 'xcond = ' below, it is in verbatim mode, so the spaces
   % are kept! 
-    \item{}{\code{signature(model = "mixAR", x = "numeric", index = "missing",
+    \item{}{\code{signature(model = "MixAR", x = "numeric", index = "missing",
  xcond = "numeric", scale = "logical")}: ~~describe this method here }
 
-    \item{}{\code{signature(model = "mixAR", x = "numeric", index = "missing",
+    \item{}{\code{signature(model = "MixAR", x = "numeric", index = "missing",
  xcond = "numeric", scale = "missing")}: ~~describe this method here }
 
-    \item{}{\code{signature(model = "mixAR", x = "numeric", index = "numeric",
+    \item{}{\code{signature(model = "MixAR", x = "numeric", index = "numeric",
  xcond = "missing", scale = "logical")}: ~~describe this method here }
 
-    \item{}{\code{signature(model = "mixAR", x = "numeric", index = "numeric",
+    \item{}{\code{signature(model = "MixAR", x = "numeric", index = "numeric",
  xcond = "missing", scale = "missing")}: ~~describe this method here }
 }}
 \seealso{
   \code{\link{mixFilter}} which is used by \code{mix_ek} to do the job,
-  \code{\link{mixComp-class}} for easy manipulation of the returned
+  \code{\link{MixComp-class}} for easy manipulation of the returned
   object.
   
-  % \code{\linkS4class{mixAR}},
-  \code{\link{mixAR-class}}
+  % \code{\linkS4class{MixAR}},
+  \code{\link{MixAR-class}}
 }
 \keyword{methods}
-\keyword{mixAR}
+\keyword{MixAR}

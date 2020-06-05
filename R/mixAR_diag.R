@@ -32,7 +32,7 @@ BIC_comp <- function(x, y){ ### Returns best selected model (as text only) and
 
 
 
-tsdiag.mixARGaussian <- function(object, gof.lag = NULL, y, ask = interactive(), ...){
+tsdiag.MixARGaussian <- function(object, gof.lag = NULL, y, ask = interactive(), ...){
     old.par <- par(no.readonly = TRUE)
     on.exit(par(old.par))     # restore graphics parameters before exiting.
 

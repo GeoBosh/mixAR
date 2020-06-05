@@ -140,7 +140,7 @@ sampSigmaTau(y, pk, prec, nk, AR, mu, z, a, c, nsim)
 %%% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
 \examples{
-model <- new("mixARGaussian",
+model <- new("MixARGaussian",
              prob   = exampleModels$WL_At@prob,      # c(0.5, 0.5)
              scale  = exampleModels$WL_At@scale,     # c(1, 2)        
              arcoef = exampleModels$WL_At@arcoef@a ) # list(-0.5, 1.1)
@@ -164,9 +164,9 @@ x1 <- sampMuShift(y, pk, prec, nk = x$nk, shift, z = x$latentZ, AR, nsim = 100)
 x2 <- sampSigmaTau(y, pk, prec, nk = x$nk, AR, mu = x1$mu, z = x$latentZ,
                    a = 0.2, c = 2, nsim = 100)
 }
-\keyword{ samp }% use one of  RShowDoc("KEYWORDS")
-\keyword{ weights }
-\keyword{ tau }% use one of  RShowDoc("KEYWORDS")
-\keyword{ sigma }
-\keyword{ mean }% use one of  RShowDoc("KEYWORDS")
-\keyword{ shift }
+%\keyword{ samp }% use one of  RShowDoc("KEYWORDS")
+%\keyword{ weights }
+%\keyword{ tau }% use one of  RShowDoc("KEYWORDS")
+%\keyword{ sigma }
+%\keyword{ mean }% use one of  RShowDoc("KEYWORDS")
+%\keyword{ shift }

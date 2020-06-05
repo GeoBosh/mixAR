@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Simulation experiments with mixAR models — mixARExperiment • mixAR</title>
+<title>Simulation experiments with MixAR models — mixARExperiment • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Simulation experiments with mixAR models — mixARExperiment" />
-<meta property="og:description" content="Perform simulation experiments with mixAR models." />
+<meta property="og:title" content="Simulation experiments with MixAR models — mixARExperiment" />
+<meta property="og:description" content="Perform simulation experiments with MixAR models." />
 
 
 
@@ -111,13 +111,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Simulation experiments with mixAR models</h1>
+    <h1>Simulation experiments with MixAR models</h1>
     
     <div class="hidden name"><code>mixARExperiment.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Perform simulation experiments with mixAR models.</p>
+    <p>Perform simulation experiments with MixAR models.</p>
     </div>
 
     <pre class="usage"><span class='fu'>mixARExperiment</span>(<span class='no'>model</span>, <span class='kw'>imodel</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>simargs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>estargs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>fix</span>, <span class='no'>...</span>)</pre>
@@ -127,12 +127,12 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>the underlying model, an object inheriting from "mixAR",
+      <td><p>the underlying model, an object inheriting from "MixAR",
   see 'Details'.</p></td>
     </tr>
     <tr>
       <th>imodel</th>
-      <td><p>initial model,  an object inheriting from "mixAR", see 'Details'.</p></td>
+      <td><p>initial model,  an object inheriting from "MixAR", see 'Details'.</p></td>
     </tr>
     <tr>
       <th>simargs</th>
@@ -177,7 +177,7 @@
   <code>...</code> passed on to <code><a href='simuExperiment.html'>simuExperiment</a></code>.</p>
 <p></p>
 <dt>Summary</dt><dd><p>a summary of the experiment, by default sample means
-    and standard deviations of the estimates. This is a list of mixAR models.</p></dd>
+    and standard deviations of the estimates. This is a list of MixAR models.</p></dd>
 
   <dt>Raw</dt><dd><p>A list of the estimated models.</p></dd>
 
@@ -193,7 +193,7 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_II</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2
 #&gt; Comp_1 0.4    5     1     2    0.9 -0.6
@@ -242,7 +242,7 @@
 #&gt; $Summary$mean
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale    order ar_1        ar_2      
 #&gt; Comp_1 0.3863061  4.97365098 0.994058   2    0.90196708 -0.5999090
@@ -256,7 +256,7 @@
 #&gt; $Summary$sd
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob       shift     scale      order ar_1       ar_2      
 #&gt; Comp_1 0.04551702 0.1255297 0.08789779   2   0.02123861 0.01576425
@@ -270,7 +270,7 @@
 #&gt; $Summary$meanUnswitched
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale    order ar_1        ar_2      
 #&gt; Comp_1 0.3067055 -0.02257295 1.021391   2   -0.71204858  0.0077286
@@ -284,7 +284,7 @@
 #&gt; $Summary$sdUnswitched
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob       shift     scale      order ar_1       ar_2      
 #&gt; Comp_1 0.03780447 0.2024097 0.11423832   2   0.01645179 0.02720160
@@ -329,7 +329,7 @@
 #&gt; $Summary$mean
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1        ar_2        
 #&gt; Comp_1 0.3787856  5.03208009 0.9493346   2    0.90744122 -0.607663556
@@ -343,7 +343,7 @@
 #&gt; $Summary$sd
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob       shift     scale     order ar_1        ar_2      
 #&gt; Comp_1 0.03317187 0.1533820 0.1023591   2   0.006878745 0.01096513
@@ -357,7 +357,7 @@
 #&gt; $Summary$meanUnswitched
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1        ar_2        
 #&gt; Comp_1 0.2913316 -0.06428409 0.9819901   2   -0.69686899 -0.005645078
@@ -371,7 +371,7 @@
 #&gt; $Summary$sdUnswitched
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob       shift     scale     order ar_1        ar_2      
 #&gt; Comp_1 0.02219037 0.1417895 0.1053999   2   0.020845090 0.01963965
@@ -387,7 +387,7 @@
 #&gt; $Raw[[1]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale    order ar_1        ar_2        
 #&gt; Comp_1 0.4405257  4.8667357 1.089210   2    0.92215036 -0.608349180
@@ -401,7 +401,7 @@
 #&gt; $Raw[[2]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1        ar_2       
 #&gt; Comp_1 0.3437826  4.98809328 1.0442099   2    0.90917379 -0.59893019
@@ -415,7 +415,7 @@
 #&gt; $Raw[[3]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1         ar_2        
 #&gt; Comp_1 0.3374142  4.97523342 0.8370702   2    0.904970380 -0.599461987
@@ -429,7 +429,7 @@
 #&gt; $Raw[[4]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift        scale     order ar_1        ar_2        
 #&gt; Comp_1 0.3440990  4.913594384 0.8981187   2    0.90405711 -0.630729940
@@ -443,7 +443,7 @@
 #&gt; $Raw[[5]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1        ar_2       
 #&gt; Comp_1 0.3996076  5.1912035 0.8569677   2    0.90513993 -0.60282359
@@ -457,7 +457,7 @@
 #&gt; $Raw[[6]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1        ar_2       
 #&gt; Comp_1 0.3984618  5.06468883 1.0944019   2    0.90443546 -0.61002085
@@ -471,7 +471,7 @@
 #&gt; $Raw[[7]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1        ar_2        
 #&gt; Comp_1 0.4074589  5.11492417 0.9858900   2    0.91459344 -0.590260590
@@ -485,7 +485,7 @@
 #&gt; $Raw[[8]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1       ar_2        
 #&gt; Comp_1 0.3729066  5.00821578 0.9543599   2    0.9024640 -0.612078226
@@ -499,7 +499,7 @@
 #&gt; $Raw[[9]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1       ar_2        
 #&gt; Comp_1 0.3624051  4.85166715 0.9206978   2    0.8977602 -0.609052782
@@ -513,7 +513,7 @@
 #&gt; $Raw[[10]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1        ar_2       
 #&gt; Comp_1 0.3811939  5.3464447 0.8124193   2    0.90966755 -0.61492823
@@ -558,7 +558,7 @@
 #&gt; $Summary$mean
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1        ar_2         
 #&gt; Comp_1 0.3994682  4.96264835 0.9993621   2    0.89674554 -0.5932192210
@@ -572,7 +572,7 @@
 #&gt; $Summary$sd
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob       shift      scale      order ar_1       ar_2       
 #&gt; Comp_1 0.03098521 0.10604208 0.04181184   2   0.01002798 0.008176764
@@ -586,7 +586,7 @@
 #&gt; $Summary$meanUnswitched
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1        ar_2         
 #&gt; Comp_1 0.2988788 -0.02267166 0.9768700   2   -0.69941079  0.0002912064
@@ -600,7 +600,7 @@
 #&gt; $Summary$sdUnswitched
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob       shift      scale      order ar_1       ar_2       
 #&gt; Comp_1 0.02333766 0.08751707 0.06768380   2   0.01161332 0.007753148
@@ -616,7 +616,7 @@
 #&gt; $Raw[[1]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1        ar_2        
 #&gt; Comp_1 0.4072060  4.85467651 1.0437560   2    0.90505966 -0.598065549
@@ -630,7 +630,7 @@
 #&gt; $Raw[[2]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1        ar_2        
 #&gt; Comp_1 0.3764546  4.96534512 0.9640374   2    0.87817212 -0.598693832
@@ -644,7 +644,7 @@
 #&gt; $Raw[[3]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1         ar_2       
 #&gt; Comp_1 0.3580831  5.0538053 1.0459224   2    0.896764150 -0.59725362
@@ -658,7 +658,7 @@
 #&gt; $Raw[[4]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1       ar_2       
 #&gt; Comp_1 0.3995995  4.86087160 0.9401739   2    0.8995680 -0.59814705
@@ -672,7 +672,7 @@
 #&gt; $Raw[[5]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1        ar_2        
 #&gt; Comp_1 0.3902260  5.1279034 0.9450239   2    0.88616908 -0.601424345
@@ -686,7 +686,7 @@
 #&gt; $Raw[[6]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1       ar_2        
 #&gt; Comp_1 0.3787557  4.97342212 0.9744767   2    0.9017796 -0.583605610
@@ -700,7 +700,7 @@
 #&gt; $Raw[[7]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale     order ar_1        ar_2        
 #&gt; Comp_1 0.4729701  4.8833735 1.0135978   2    0.89529576 -0.584369615
@@ -714,7 +714,7 @@
 #&gt; $Raw[[8]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale    order ar_1        ar_2       
 #&gt; Comp_1 0.4091667  4.84697392 1.002041   2    0.91286510 -0.59781174
@@ -728,7 +728,7 @@
 #&gt; $Raw[[9]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift       scale     order ar_1        ar_2        
 #&gt; Comp_1 0.4138008  4.94434420 1.0534299   2    0.88947325 -0.577583042
@@ -742,7 +742,7 @@
 #&gt; $Raw[[10]]
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob      shift      scale    order ar_1        ar_2        
 #&gt; Comp_1 0.3884196  5.1157679 1.011162   2    0.90230866 -0.595237798

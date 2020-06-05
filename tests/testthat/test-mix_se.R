@@ -17,7 +17,7 @@ test_that("mix_se works", {
     moWLprob  <- c(0.5439, 0.4176, 0.0385)
     moWLsigma <- c(4.8227, 6.0082, 18.1716)
 
-    moWLibm   <- new("mixARGaussian", prob = moWLprob, scale = moWLsigma, order = c(1, 1, 0))
+    moWLibm   <- new("MixARGaussian", prob = moWLprob, scale = moWLsigma, order = c(1, 1, 0))
     
     moWLibm@arcoef@a[[1]] <- -0.3208 ; moWLibm@arcoef@a[[2]] <- 0.6711
     
@@ -69,7 +69,7 @@ lynxscale <- c(0.2043, 0.4899)
 lynxshift <- c(1.6364, 2.2529)
 lynxar    <- list(c(1.1022, -0.2835), c(1.5279, -0.8871))
 
-lynxmodel <- new("mixARGaussian", prob = lynxprob, scale = lynxscale, shift = lynxshift,
+lynxmodel <- new("MixARGaussian", prob = lynxprob, scale = lynxscale, shift = lynxshift,
                  arcoef = lynxar)
 
 expect_equal_to_reference(mix_se(loglynx, lynxmodel, fix_shift=FALSE)$'standard_errors',
@@ -91,7 +91,7 @@ lynxWLscale <- c(0.0887, 0.2020)
 lynxWLshift <- c(0.7107, 0.9784)
 lynxWLar    <- list(c(1.1022, -0.2835), c(1.5279, -0.8871))
 
-lynxWLmodel <- new("mixARGaussian", prob = lynxWLprob, scale = lynxWLscale, 
+lynxWLmodel <- new("MixARGaussian", prob = lynxWLprob, scale = lynxWLscale, 
                    shift = lynxWLshift, arcoef = lynxWLar)
 
 expect_warning(mix_se(loglynx, lynxWLmodel))
@@ -107,7 +107,7 @@ s <- 12
 
 rag <- new("raggedCoefS", a=ar1, as=ar12, s=s)
 
-modelS <- new("mixARGaussian", prob=probS, scale=sigmaS, arcoef=rag)
+modelS <- new("MixARGaussian", prob=probS, scale=sigmaS, arcoef=rag)
 yS <- mixAR_sim(modelS, n=200, init=rep(0,24))
 
 fitS <- fit_mixAR(yS, modelS)

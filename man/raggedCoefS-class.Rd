@@ -19,10 +19,14 @@
 Class \code{"raggedCoefS"} --- ragged list
 }
 \description{
-Ragged list used to hold coefficients of mixAR models with seasonal AR parameters.
+Ragged list used to hold coefficients of MixAR models with seasonal AR parameters.
 }
 \section{Objects from the Class}{
-Objects are created by calls of the form \code{new("raggedCoefS",a=list(v1, v2 , ...),as=list(vs1, vs2, ...), s)}. If orders \code{p} and \code{ps} are specified, a consistency check is made.
+  Objects are created by calls of the form
+
+  \code{new("raggedCoefS", a = list(v1, v2 , ...), as = list(vs1, vs2, ...), s)}. 
+
+  If orders \code{p} and \code{ps} are specified, a consistency check is made.
 }
 %- maybe also 'usage' for other objects documented here.
 \section{Slots}{

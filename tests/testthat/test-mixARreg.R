@@ -8,7 +8,7 @@ test_that("mixARreg and fit_mixARreg work", {
     sigmaReg <- c(1, 5)
     arReg <- list(c(-0.5, 0.5), 1.1)
     
-    modelReg <- new("mixARGaussian", prob=probReg, scale=sigmaReg, arcoef=arReg)
+    modelReg <- new("MixARGaussian", prob=probReg, scale=sigmaReg, arcoef=arReg)
     
     ##Simulate from mixAR part
     uReg <- mixAR_sim(modelReg, 200, c(0,0))
@@ -28,7 +28,7 @@ test_that("mixARreg and fit_mixARreg work", {
     expect_identical(class(fit1), "list")
     expect_length(fit1, 4)
     expect_s3_class(fit1$reg, "lm")
-    expect_true(inherits(fit1$mixARmodel, "mixAR"))
+    expect_true(inherits(fit1$mixARmodel, "MixAR"))
     
     fit3 <- fit_mixARreg(yReg, xReg, modelReg)
     fit4 <- fit_mixARreg(yReg, as.matrix(xReg), modelReg)

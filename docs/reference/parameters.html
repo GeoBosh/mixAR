@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set or extract the parameters of mixAR objects — parameters • mixAR</title>
+<title>Set or extract the parameters of MixAR objects — parameters • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Set or extract the parameters of mixAR objects — parameters" />
-<meta property="og:description" content="Set or extract the parameters of mixAR objects." />
+<meta property="og:title" content="Set or extract the parameters of MixAR objects — parameters" />
+<meta property="og:description" content="Set or extract the parameters of MixAR objects." />
 
 
 
@@ -111,19 +111,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set or extract the parameters of mixAR objects</h1>
+    <h1>Set or extract the parameters of MixAR objects</h1>
     
     <div class="hidden name"><code>parameters.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Set or extract the parameters of mixAR objects.</p>
+    <p>Set or extract the parameters of MixAR objects.</p>
     </div>
 
     <pre class="usage"><span class='fu'>parameters</span>(<span class='no'>model</span>, <span class='kw'>namesflag</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(<span class='fl'>0</span>))
 
 <span class='fu'>parameters</span>(<span class='no'>model</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-<span class='co'># S4 method for mixAR</span>
+<span class='co'># S4 method for MixAR</span>
 <span class='fu'>parameters</span>(<span class='no'>model</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 <span class='co'># S4 method for ANY</span>
 <span class='fu'>parameters</span>(<span class='no'>model</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
@@ -155,7 +155,7 @@
 
     <p>This is a generic function. The dispatch is on argument <code>model</code>.
   The default calls <code>coef</code>.</p>
-<p><code>parameters</code> extracts the parameters of a mixAR object. It
+<p><code>parameters</code> extracts the parameters of a MixAR object. It
   returns a numeric vector. If <code>namesflag</code> is <code>TRUE</code> the
   returned vector is named, so that the parameters can be referred to by
   names. Argument <code>drop</code> is a character vector giving names of
@@ -166,7 +166,7 @@
   use <code>parameters(model) &lt;- value</code> instead.</p>  
   
 
-<p>todo: (1) currently there is no specific method for class <code>"mixARgen"</code>.</p>
+<p>todo: (1) currently there is no specific method for class <code>"MixARgen"</code>.</p>
 <p>(2) related to (1) above - what is the intention? are parameters
         of the noise distributions parameters in the sense of this
         function?</p>
@@ -182,7 +182,7 @@
 
     <dt><code>signature(model = "ANY")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
 
-    <dt><code>signature(model = "mixAR")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
+    <dt><code>signature(model = "MixAR")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
 
 </dl>
 

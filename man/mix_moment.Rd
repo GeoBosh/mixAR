@@ -5,8 +5,8 @@
 \alias{mix_moment}
 \alias{mix_kurtosis}
 \alias{mix_ekurtosis}
-\title{Conditional moments of mixAR models}
-\description{Conditional moments of mixAR models.}
+\title{Conditional moments of MixAR models}
+\description{Conditional moments of MixAR models.}
 \usage{
 mix_location(model, x, index, xcond)
 mix_variance(model, x, index, xcond)
@@ -16,7 +16,7 @@ mix_kurtosis(...)
 mix_ekurtosis(...)
 }
 \arguments{
-  \item{model}{a mixAR object.}
+  \item{model}{a MixAR object.}
   \item{x}{a time series.}
   \item{index}{
     a vector of indices in \code{x} for which to compute the requested
@@ -117,4 +117,6 @@ mix_central_moment(moWL,xcond = c(500,450), k=2)
 sqrt(mix_variance(moWL,xcond = c(500,450)))
 sqrt(mix_central_moment(moWL,xcond = c(500,450), k=2))
 }
-\keyword{mixAR}
+\keyword{MixAR}
+\keyword{prediction}
+

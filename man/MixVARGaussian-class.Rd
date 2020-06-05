@@ -1,26 +1,26 @@
-\name{mixVARGaussian-class}
+\name{MixVARGaussian-class}
 \Rdversion{1.1}
 \docType{class}
-\alias{mixVARGaussian-class}
-\alias{mixVARGaussian}
-% \alias{mix_cdf,mixARGaussian,numeric,numeric,missing-method}
-% \alias{mix_cdf,mixARGaussian,numeric,missing,numeric-method}
-% \alias{mix_cdf,mixARGaussian,missing,missing,numeric-method}
-% \alias{mix_pdf,mixARGaussian,numeric,numeric,missing-method}
-% \alias{mix_pdf,mixARGaussian,numeric,missing,numeric-method}
-% \alias{mix_pdf,mixARGaussian,missing,missing,numeric-method}
+\alias{MixVARGaussian-class}
+\alias{MixVARGaussian}
+% \alias{mix_cdf,MixARGaussian,numeric,numeric,missing-method}
+% \alias{mix_cdf,MixARGaussian,numeric,missing,numeric-method}
+% \alias{mix_cdf,MixARGaussian,missing,missing,numeric-method}
+% \alias{mix_pdf,MixARGaussian,numeric,numeric,missing-method}
+% \alias{mix_pdf,MixARGaussian,numeric,missing,numeric-method}
+% \alias{mix_pdf,MixARGaussian,missing,missing,numeric-method}
 
 \title{
-  mixVAR models with multivariate Gaussian noise components
+  MixVAR models with multivariate Gaussian noise components
 }
 \description{
-  Class mixVARGaussian represents mixAR models with multivariate
+  Class MixVARGaussian represents MixAR models with multivariate
   Gaussian noise components.
 }
 \section{Objects from the Class}{
 
   Objects can be created by calls of the form
-  \code{new("mixVARGaussian", ...)}, giving the elements of the model as
+  \code{new("MixVARGaussian", ...)}, giving the elements of the model as
   named arguments, see the examples below.
 
   \code{arcoef} contains the AR coefficients, one numeric array for
@@ -60,12 +60,12 @@
   }
 }
 \section{Extends}{
-Class \code{"\linkS4class{mixAR}"}, directly.
+Class \code{"\linkS4class{MixAR}"}, directly.
 }
 \section{Methods}{
   \describe{
 
-    \item{fit_mixAR}{\code{signature(x = "ANY", model =	"mixARGaussian")}:
+    \item{fit_mixAR}{\code{signature(x = "ANY", model =	"MixARGaussian")}:
       ... 
     }
   }
@@ -80,10 +80,10 @@ Class \code{"\linkS4class{mixAR}"}, directly.
 
 \seealso{
   %	~~objects to See Also as \code{\link{~~fun~~}}, ~~~
-  \code{\linkS4class{mixAR}}
+  \code{\linkS4class{MixAR}}
 }
 \examples{
-showClass("mixVARGaussian")
+showClass("MixVARGaussian")
 
 ## Create array of covariance matrices
 Sigma1 <- cbind(c(0.0013, 0.0011), c(0.0011, 0.0012))
@@ -106,8 +106,8 @@ prob <- c(0.6376, 0.3624)
 ## Create matrix of shift parameters
 shift <- cbind(c(0.0044, 0.0020), c(-0.0039, -0.0014))
 
-## Build "mixVARGaussian" model
-new("mixVARGaussian", prob=prob, vcov=Sigma, arcoef=AR, shift=shift)
+## Build "MixVARGaussian" model
+new("MixVARGaussian", prob=prob, vcov=Sigma, arcoef=AR, shift=shift)
 }
 \keyword{classes}
-\keyword{mixVAR}
+\keyword{MixVAR}

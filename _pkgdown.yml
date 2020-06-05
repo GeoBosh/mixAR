@@ -28,9 +28,9 @@ reference:
       - "mixAR_sim"
   - title: "mixAR models"
     contents:
-      - "mixARGaussian-class"
-      - "mixARgen-class"
-      - "mixAR-class"
+      - "MixARGaussian-class"
+      - "MixARgen-class"
+      - "MixAR-class"
       - "mixAR"
       - "exampleModels"
       - "show_diff"
@@ -42,8 +42,8 @@ reference:
     contents:
       - "mixVAR_sim"
       - "mixVARfit"
-      - "mixVAR-class"
-      - "mixVARGaussian-class"
+      - "MixVAR-class"
+      - "MixVARGaussian-class"
       - "fit_mixVAR-methods"
       - "raggedCoefV-class"
   - title: "Bayesian utilities for mixAR models"
@@ -89,7 +89,7 @@ reference:
     desc: >
       Computations involving components of mixAR models.
     contents:
-      - "mixComp-class"
+      - "MixComp-class"
       - "mix_ek"
       - "mix_hatk"
       - "raghat1"
@@ -142,5 +142,6 @@ reference:
       - "err"
       - "initialize-methods"
       - "lastn"
+      - "permn_cols"
       - "ui"
 

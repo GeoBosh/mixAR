@@ -26,7 +26,7 @@ importFrom(Rdpack, reprompt)
 
 importFrom(mvtnorm, dmvnorm, rmvnorm)
 
-S3method(tsdiag, "mixARGaussian")
+S3method(tsdiag, "MixARGaussian")
 
 exportMethods(
     "-",
@@ -50,14 +50,14 @@ exportMethods(
     "fit_mixVAR"
 )
 exportClasses(
-    "mixAR",
-     "mixARGaussian",
-     "mixComp",
-     "raggedCoef",
+    "MixAR",
+    "MixARGaussian",
+    "MixComp",
+    "raggedCoef",
     "raggedCoefS",##new class
     "raggedCoefV",
-    "mixVAR",
-    "mixVARGaussian"
+    "MixVAR",
+    "MixVARGaussian"
 )
 
 ## exportPattern("^[[:alpha:]]+")
@@ -117,7 +117,7 @@ mixAR_permute,
 mixAR_sim,
 mixAR_switch,
 mixARemFixedPoint,
-mixARGaussian,
+MixARGaussian,
 mixARgen,
 mixARgenemFixedPoint,
 mixARnoise_sim,

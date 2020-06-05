@@ -4,8 +4,8 @@ test_that("diagnostics for mixAR work",{
     sigma <- c(1, 5)
     arco <- list(c(-0.5, 0.5), 1)
     
-    model <- new("mixARGaussian", prob = prob, scale = sigma, arcoef = arco)
-    model2 <- new("mixARGaussian", prob = prob, scale = sigma, arcoef = list(-0.5, 1))
+    model <- new("MixARGaussian", prob = prob, scale = sigma, arcoef = arco)
+    model2 <- new("MixARGaussian", prob = prob, scale = sigma, arcoef = list(-0.5, 1))
     
     y <- mixAR_sim(model, 400, init = c(0, 0))
     

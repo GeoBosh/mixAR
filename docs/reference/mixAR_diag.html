@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Diagnostic checks for mixture autoregressive models — mixAR_diag" />
-<meta property="og:description" content="Perform diagnostic checks and tests on given mixARGaussian
+<meta property="og:description" content="Perform diagnostic checks and tests on given MixARGaussian
   object with respect to a given time series." />
 
 
@@ -118,11 +118,11 @@
     </div>
 
     <div class="ref-description">
-    <p>Perform diagnostic checks and tests on given <code>mixARGaussian</code>
+    <p>Perform diagnostic checks and tests on given <code>MixARGaussian</code>
   object with respect to a given time series.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for mixARGaussian</span>
+    <pre class="usage"><span class='co'># S3 method for MixARGaussian</span>
 <span class='fu'>tsdiag</span>(<span class='no'>object</span>, <span class='no'>gof.lag</span>, <span class='no'>y</span>, <span class='kw'>ask</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>(), <span class='no'>...</span>)
 
 <span class='fu'>mixAR_diag</span>(<span class='no'>model</span>, <span class='no'>y</span>, <span class='kw'>ask</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>())</pre>
@@ -133,7 +133,7 @@
     <tr>
       <th>model,object</th>
       <td><p>the model on which to perform the checks, an object from class
-    <code>mixAR</code>. <code>model</code> can also be the output list from
+    <code>MixAR</code>. <code>model</code> can also be the output list from
     <code>fit_mixAR</code>.</p></td>
     </tr>
     <tr>
@@ -212,14 +212,14 @@ doi: <a href='https://doi.org/10.1002/for.3980040305'>10.1002/for.3980040305</a>
 <em>J. R. Stat. Soc., Ser. B, Stat. Methodol. </em>, <b>62</b>(1), 95-115.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>This function should be used for diagnostic checking of <code>mixARGaussian</code>
+    <p>This function should be used for diagnostic checking of <code>MixARGaussian</code>
   objects only.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='mixAR_BIC.html'>mixAR_BIC</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>model1</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>0.5</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>),
+    <pre class="examples"><div class='input'><span class='no'>model1</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>0.5</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>),
               <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(-<span class='fl'>0.5</span>, <span class='fl'>1.1</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>model1</span>, <span class='fl'>400</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='fl'>0</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>100</span>)

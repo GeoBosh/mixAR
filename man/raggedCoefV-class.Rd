@@ -19,24 +19,24 @@
 Class \code{"raggedCoefV"} --- ragged list
 }
 \description{
-Ragged list used to hold coefficients of mixVAR models.
+Ragged list used to hold coefficients of MixVAR models.
 }
 \section{Objects from the Class}{
-Objects are created by calls of the form \code{new("raggedCoefV",a=list(v1, v2 ,...)
-}
+  Objects are created by calls of the form
+  \code{new("raggedCoefV", a = list(v1, v2 ,...)}.
 }
 %- maybe also 'usage' for other objects documented here.
 \section{Slots}{
 \describe{
   \item{\code{a}:}{
 
-    Object of class "\code{list}" containing AR values. Each element of
-    the list must be "\code{array}"
+    Object of class \code{"list"} containing AR values. Each element of
+    the list must be \code{"array"}.
 
   }
   \item{\code{p}:}{
 
-    Object of class "\code{numeric}" containing the length of arrays in
+    Object of class \code{"numeric"} containing the length of arrays in
     \code{a} (AR orders). If missing, it is generated based on lengths
     of elements of \code{a}.
 
@@ -69,7 +69,7 @@ Objects are created by calls of the form \code{new("raggedCoefV",a=list(v1, v2 ,
 \author{Davide Ravagli}
 
 \seealso{
-        \code{\linkS4class{mixVAR}}
+        \code{\linkS4class{MixVAR}}
 %	~~objects to See Also as \code{\link{~~fun~~}}, ~~~
 %	or \code{\linkS4class{CLASSNAME}} for links to other classes
 }

@@ -3,7 +3,7 @@
 \alias{randomMarParametersKernel}
 \alias{randomMarResiduals}
 \alias{tsDesignMatrixExtended}
-\title{Random initial values for mixAR estimation}
+\title{Random initial values for MixAR estimation}
 \description{
 
   Translations of functions from my Mathematica sources. Not used currently?
@@ -47,7 +47,7 @@ tsDesignMatrixExtended(ts, p, ind, partempl)
     \code{pmax + 1}.
   }
   \item{...}{arguments to pass on to \code{randomArCoefficients()}.}
-  \item{p}{a vector of non-negative integers, the mixAR order.}
+  \item{p}{a vector of non-negative integers, the MixAR order.}
   \item{ind}{
     a vector of positive integers specifying the indices of the
     observations to use for the \dQuote{response} variable.
@@ -74,4 +74,4 @@ tsDesignMatrixExtended(ts, p, ind, partempl)
 \seealso{
   \code{\link{tomarparambyComp}}
 }
-\keyword{ mixAR }
+\keyword{ MixAR }

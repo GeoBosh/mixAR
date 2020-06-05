@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Class <code>"mixAR"</code> --- mixture autoregressive models — mixAR-class • mixAR</title>
+<title>Class <code>"MixVAR"</code> --- mixture vector autoregressive models — MixVAR-class • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Class <code>"mixAR"</code> --- mixture autoregressive models — mixAR-class" />
-<meta property="og:description" content="Mixture autoregressive models" />
+<meta property="og:title" content="Class <code>"MixVAR"</code> --- mixture vector autoregressive models — MixVAR-class" />
+<meta property="og:description" content="Mixture vector autoregressive models" />
 
 
 
@@ -111,22 +111,22 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Class <code>"mixAR"</code> --- mixture autoregressive models</h1>
+    <h1>Class <code>"MixVAR"</code> --- mixture vector autoregressive models</h1>
     
-    <div class="hidden name"><code>mixAR-class.Rd</code></div>
+    <div class="hidden name"><code>MixVAR-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Mixture autoregressive models</p>
+    <p>Mixture vector autoregressive models</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="objects-from-the-class"><a class="anchor" href="#objects-from-the-class"></a>Objects from the Class</h2>
 
-    <p>A virtual Class: No objects can be created from it.</p>
+    <p>A virtual Class: No objects may be created from it.</p>
 <p>Derived classes add distribution properties, e.g. use
-  <code><a href='mixARGaussian-class.html'>mixARGaussian</a></code> for mixAR models with Gaussian
+  <code>MixVARGaussian</code> for MixVAR models with Gaussian
   error components.</p>
     <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
 
@@ -134,43 +134,23 @@
     <dt><code>prob</code>:</dt><dd><p>the mixing probabilities,
       an object of class <code>"numeric"</code></p></dd>
     <dt><code>order</code>:</dt><dd><p>Object of class <code>"numeric"</code> ~~</p></dd>
-    <dt><code>shift</code>:</dt><dd><p>Object of class <code>"numeric"</code> ~~</p></dd>
-    <dt><code>scale</code>:</dt><dd><p>Object of class <code>"numeric"</code> ~~</p></dd>
-    <dt><code>arcoef</code>:</dt><dd><p>Object of class <code>"raggedCoef"</code> ~~</p></dd>
+    <dt><code>shift</code>:</dt><dd><p>Object of class <code>"matrix"</code> ~~</p></dd>
+    <dt><code>vcov</code>:</dt><dd><p>Object of class <code>"array"</code> ~~</p></dd>
+    <dt><code>arcoef</code>:</dt><dd><p>Object of class <code>"raggedCoefV"</code> ~~</p></dd>
   
 </dl>
 
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     <p></p><dl'>
-    <dt>fit_mixAR</dt><dd><p><code>signature(x = "ANY", model = "mixAR", init = "list")</code>: ...</p></dd>
-    <dt>fit_mixAR</dt><dd><p><code>signature(x = "ANY", model = "mixAR", init = "missing")</code>: ...</p></dd>
-    <dt>fit_mixAR</dt><dd><p><code>signature(x = "ANY", model = "mixAR", init = "mixAR")</code>: ...</p></dd>
-    <dt>fit_mixAR</dt><dd><p><code>signature(x = "ANY", model = "mixAR", init = "numeric")</code>: ...</p></dd>
-    <dt>fit_mixAR</dt><dd><p><code>signature(x = "ANY", model = "mixARGaussian", init = "mixAR")</code>: ...</p></dd>
-    <dt>get_edist</dt><dd><p><code>signature(model = "mixAR")</code>: ...</p></dd>
-    <dt>initialize</dt><dd><p><code>signature(.Object = "mixAR")</code>: ...</p></dd>
-    <dt>lik_params</dt><dd><p><code>signature(model = "mixAR")</code>: ...</p></dd>
-    <dt>make_fcond_lik</dt><dd><p><code>signature(model = "mixAR", ts = "numeric")</code>: ...</p></dd>
-    <dt>mix_ek</dt><dd><p><code>signature(model = "mixAR", x = "numeric", index = "numeric", xcond = "missing", scale = "missing")</code>: ...</p></dd>
-    <dt>mix_ek</dt><dd><p><code>signature(model = "mixAR", x = "numeric", index = "numeric", xcond = "missing", scale = "logical")</code>: ...</p></dd>
-    <dt>mix_ek</dt><dd><p><code>signature(model = "mixAR", x = "numeric", index = "missing", xcond = "numeric", scale = "missing")</code>: ...</p></dd>
-    <dt>mix_ek</dt><dd><p><code>signature(model = "mixAR", x = "numeric", index = "missing", xcond = "numeric", scale = "logical")</code>: ...</p></dd>
-    <dt>mix_hatk</dt><dd><p><code>signature(model = "mixAR", x = "numeric", index = "numeric", xcond = "missing")</code>: ...</p></dd>
-    <dt>mix_ncomp</dt><dd><p><code>signature(x = "mixAR")</code>: ...</p></dd>
-    <dt>mixAR</dt><dd><p><code>signature(template = "mixAR")</code>: ...</p></dd>
-    <dt>noise_dist</dt><dd><p><code>signature(model = "mixAR")</code>: ...</p></dd>
-    <dt>noise_params</dt><dd><p><code>signature(model = "mixAR")</code>: ...</p></dd>
-    <dt>noise_rand</dt><dd><p><code>signature(model = "mixAR")</code>: ...</p></dd>
-    <dt>parameters</dt><dd><p><code>signature(model = "mixAR")</code>: ...</p></dd>
-    <dt>row_lengths</dt><dd><p><code>signature(x = "mixAR")</code>: ...</p></dd>
+    <dt>fit_mixVAR</dt><dd><p><code>signature(x = "ANY", model = "MixAR")</code>: ...</p></dd>
   
 </dl>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><!-- % ~~objects to See Also as \code{\link{}}, ~~~ -->
-	<code><a href='mixARGaussian-class.html'>mixARGaussian</a></code></p></div>
+	<code>MixVARGaussian</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

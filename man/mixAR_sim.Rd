@@ -1,8 +1,8 @@
 \name{mixAR_sim}
 \alias{mixAR_sim}
 \alias{mixAny_sim}
-\title{Simulate from mixAR models}
-\description{Simulate from mixAR models}
+\title{Simulate from MixAR models}
+\description{Simulate from MixAR models}
 \usage{
 mixAR_sim(model, n, init, nskip = 100, flag = FALSE)
 
@@ -11,7 +11,7 @@ mixAny_sim(model, n, init, nskip=100, flag = FALSE,
 
 }
 \arguments{
-  \item{model}{model from which to simulate, an object inheriting from class \code{mixAR}.}
+  \item{model}{model from which to simulate, an object inheriting from class \code{MixAR}.}
   \item{init}{initial values, numeric vector.}
   \item{n}{size of the simulated series.}
   \item{nskip}{number of burn-in values, see Details.}
@@ -26,7 +26,7 @@ mixAny_sim(model, n, init, nskip=100, flag = FALSE,
   \code{mixAR_sim} simulates a series of length \code{nskip+n} and
   returns the last \code{n} values.
 
-  \code{mixAny_sim} simulates from a mixAR model with GARCH
+  \code{mixAny_sim} simulates from a MixAR model with GARCH
   innovations. \code{mixAny_sim} was a quick fix for Shahadat and needs
   consolidation. 
   

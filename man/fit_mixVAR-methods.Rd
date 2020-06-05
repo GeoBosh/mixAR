@@ -3,13 +3,14 @@
 
 \alias{fit_mixVAR}
 \alias{fit_mixVAR-methods}
-\alias{fit_mixVAR,ANY,mixVAR-method}
+\alias{fit_mixVAR,ANY,MixVAR-method}
 \alias{fit_mixVAR,ANY,ANY-method}
 
 \title{Fit mixture vector autoregressive models}
 \description{
-  Estimate a mixVAR model for a multivariate time series. This is a generic function.
-  The methods defined in package mixAR are described here.
+  Estimate a MixVAR model for a multivariate time series. This is a
+  generic function.  The methods defined in package \pkg{MixAR} are
+  described here.
 }
 
 \usage{
@@ -21,7 +22,7 @@ fit_mixVAR(x, model, fix, \dots)
     a multivariate time series (currently a numeric matrix).
   }
   \item{model}{
-    model, object inheriting from mixVAR class.
+    model, object inheriting from MixVAR class.
   }
   \item{fix}{~~ TODO: describe this argument. ~~}
   \item{\dots}{
@@ -30,33 +31,33 @@ fit_mixVAR(x, model, fix, \dots)
 }
 
 \value{
-  a mixVAR model.
+  a MixVAR model.
 }
 
 \details{
 
   \code{model} specifies the model to fit. If \code{model} inherits from
-  \code{"mixVAR"}, it is used as a template.  Estimation is done via
+  \code{"MixVAR"}, it is used as a template.  Estimation is done via
   EM-Algorithm, using the function \code{mixVARfit}.
 
   Currently the default method for \code{fit_mixAR} just throws error,
   since there seems no suitable default task to do. 
   
-  \bold{TODO:} Define more methods to handle different cases (\code{fix
-    = "shift"}, etc..)
+  % \bold{TODO:} Define more methods to handle different cases (\code{fix
+  %   = "shift"}, etc..)
 
 }
 
 \section{Methods}{
 \describe{
 
-  \item{\code{signature(x = "ANY", model = "mixVAR")}}{
-    This is currently the only available method for \code{fit_mixVAR}}.
-  \item{\code{signature(x = "ANY", model = "ANY")}}{{
-%%  ~~describe this method here~~
-}
+  \item{\code{signature(x = "ANY", model = "MixVAR")}}{
+    ... % This is currently the only available method for \code{fit_mixVAR}
+  }
+  \item{\code{signature(x = "ANY", model = "ANY")}}{
+    ... 
+  }
 }}
-}
 
 \seealso{
   \code{\link{mixVARfit}}
@@ -73,7 +74,7 @@ Sigma1 <- cbind(c(1,0.5, -0.4),c(0.5,2, 0.8),c(-0.4,0.8,4))
 Sigma2 <- cbind(c(1,0.2, 0),c(0.2,  2, -0.15),c(0,-0.15,4))
 Sigma <- array(c(Sigma1, Sigma2), dim=c(3,3,2))
 
-m <- new("mixVARGaussian", prob=prob, vcov=Sigma, arcoef=AR, shift=shift)
+m <- new("MixVARGaussian", prob=prob, vcov=Sigma, arcoef=AR, shift=shift)
 y <- mixVAR_sim(m, n=500, init=matrix(rep(0,3), ncol=3), nskip=100, flag=FALSE)
 
 fit_mixVAR(y, m)

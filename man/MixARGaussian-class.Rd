@@ -1,27 +1,27 @@
-\name{mixARGaussian-class}
+\name{MixARGaussian-class}
 \Rdversion{1.1}
 \docType{class}
-\alias{mixARGaussian-class}
-\alias{mixARGaussian}
-% \alias{mix_cdf,mixARGaussian,numeric,numeric,missing-method}
-% \alias{mix_cdf,mixARGaussian,numeric,missing,numeric-method}
-% \alias{mix_cdf,mixARGaussian,missing,missing,numeric-method}
-% \alias{mix_pdf,mixARGaussian,numeric,numeric,missing-method}
-% \alias{mix_pdf,mixARGaussian,numeric,missing,numeric-method}
-% \alias{mix_pdf,mixARGaussian,missing,missing,numeric-method}
+\alias{MixARGaussian-class}
+\alias{MixARGaussian}
+% \alias{mix_cdf,MixARGaussian,numeric,numeric,missing-method}
+% \alias{mix_cdf,MixARGaussian,numeric,missing,numeric-method}
+% \alias{mix_cdf,MixARGaussian,missing,missing,numeric-method}
+% \alias{mix_pdf,MixARGaussian,numeric,numeric,missing-method}
+% \alias{mix_pdf,MixARGaussian,numeric,missing,numeric-method}
+% \alias{mix_pdf,MixARGaussian,missing,missing,numeric-method}
 
 \title{mixAR models with Gaussian noise components}
 \description{
-  Class \code{"mixARGaussian"} represents mixAR models with Gaussian
+  Class \code{"MixARGaussian"} represents MixAR models with Gaussian
   noise components.
 }
 \section{Objects from the Class}{
 
-  Objects can be created by calls of the form \code{new("mixARGaussian",
+  Objects can be created by calls of the form \code{new("MixARGaussian",
   ...)}, giving the elements of the model as named arguments, see the
   examples below. All elements of the model, except \code{arcoef}, are
-  simple numeric vectors. From version 0.19-15 of package mixAR it is
-  possible to create objects using \code{mixARGaussian(...)}. The two
+  simple numeric vectors. From version 0.19-15 of package MixAR it is
+  possible to create objects using \code{MixARGaussian(...)}. The two
   forms are completely equivalent.
 
   \code{arcoef} contains the AR coefficients, one numeric vector for
@@ -53,25 +53,25 @@
   }
 }
 \section{Extends}{
-Class \code{"\linkS4class{mixAR}"}, directly.
+Class \code{"\linkS4class{MixAR}"}, directly.
 }
 \section{Methods}{
   \describe{
     \item{mix_cdf}{%
-      \code{signature(model = "mixARGaussian", x = "numeric", index = "numeric", xcond = "missing")}:
+      \code{signature(model = "MixARGaussian", x = "numeric", index = "numeric", xcond = "missing")}:
       ... }
     \item{mix_cdf}{%
-      \code{signature(model = "mixARGaussian", x = "numeric", index = "missing", xcond = "numeric")}:
+      \code{signature(model = "MixARGaussian", x = "numeric", index = "missing", xcond = "numeric")}:
       ... }
 
-    \item{fit_mixAR}{\code{signature(x = "ANY", model = "mixARGaussian", init = "mixAR")}: ... }
-    \item{get_edist}{\code{signature(model = "mixARGaussian")}: ... }
-    \item{mix_cdf}{\code{signature(model = "mixARGaussian", x = "missing", index = "missing", xcond = "numeric")}: ... }
-    \item{mix_pdf}{\code{signature(model = "mixARGaussian", x = "missing", index = "missing", xcond = "numeric")}: ... }
-    \item{mix_pdf}{\code{signature(model = "mixARGaussian", x = "numeric", index = "missing", xcond = "numeric")}: ... }
-    \item{mix_pdf}{\code{signature(model = "mixARGaussian", x = "numeric", index = "numeric", xcond = "missing")}: ... }
-    \item{noise_dist}{\code{signature(model = "mixARGaussian")}: ... }
-    \item{noise_rand}{\code{signature(model = "mixARGaussian")}: ... }}
+    \item{fit_mixAR}{\code{signature(x = "ANY", model = "MixARGaussian", init = "MixAR")}: ... }
+    \item{get_edist}{\code{signature(model = "MixARGaussian")}: ... }
+    \item{mix_cdf}{\code{signature(model = "MixARGaussian", x = "missing", index = "missing", xcond = "numeric")}: ... }
+    \item{mix_pdf}{\code{signature(model = "MixARGaussian", x = "missing", index = "missing", xcond = "numeric")}: ... }
+    \item{mix_pdf}{\code{signature(model = "MixARGaussian", x = "numeric", index = "missing", xcond = "numeric")}: ... }
+    \item{mix_pdf}{\code{signature(model = "MixARGaussian", x = "numeric", index = "numeric", xcond = "missing")}: ... }
+    \item{noise_dist}{\code{signature(model = "MixARGaussian")}: ... }
+    \item{noise_rand}{\code{signature(model = "MixARGaussian")}: ... }}
 }
 
 \author{Georgi N. Boshnakov}
@@ -81,11 +81,11 @@ Class \code{"\linkS4class{mixAR}"}, directly.
 %%  ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-  %	~~objects to See Also as \code{\link{~~fun~~}}, ~~~
-  \code{\linkS4class{mixAR}}
+  \code{\linkS4class{MixARgen}},
+  \code{\linkS4class{MixAR}}
 }
 \examples{
-showClass("mixARGaussian")
+showClass("MixARGaussian")
 
 ## load ibm data from BJ
 ## data(ibmclose, package = "fma")
@@ -100,5 +100,4 @@ cdf1 <- mix_cdf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
 gbutils::plotpdf(pdf1, cdf = cdf1, lq = 0.001, uq = 0.999)
 }
 \keyword{classes}
-\keyword{mixAR}
-\keyword{fixme}
+\keyword{MixAR}

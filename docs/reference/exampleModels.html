@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>mixAR models for examples and testing — exampleModels • mixAR</title>
+<title>MixAR models for examples and testing — exampleModels • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="mixAR models for examples and testing — exampleModels" />
-<meta property="og:description" content="mixAR models for examples and testing." />
+<meta property="og:title" content="MixAR models for examples and testing — exampleModels" />
+<meta property="og:description" content="MixAR models for examples and testing." />
 
 
 
@@ -111,13 +111,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>mixAR models for examples and testing</h1>
+    <h1>MixAR models for examples and testing</h1>
     
     <div class="hidden name"><code>exampleModels.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>mixAR models for examples and testing.</p>
+    <p>MixAR models for examples and testing.</p>
     </div>
 
     <pre class="usage"><span class='no'>exampleModels</span></pre>
@@ -131,7 +131,7 @@
   Wong and Li (2000)
 . Variations on these with different
   noise distributions are used throughout the examples in <span class="pkg">mixAR</span>.
-  The models are from classes inheriting from class <code>"mixAR"</code>.</p>
+  The models are from classes inheriting from class <code>"MixAR"</code>.</p>
 <p><code>exampleModels</code> is a list with the following components:</p>
 <p><!-- %% TODO: Initially replaced this since pkgdown::build_site() gives error -->
   <!-- %%       (at the time of trying this) when 'results=verbatim' -->
@@ -156,8 +156,8 @@
 </table>
 
   
-<p>Each component is a mixAR model, i.e. an object inheriting from class
-  <code>"mixAR"</code>.</p>
+<p>Each component is a MixAR model, i.e. an object inheriting from class
+  <code>"MixAR"</code>.</p>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p>Wong CS, Li WK (2000).
@@ -168,7 +168,7 @@
     <pre class="examples"><div class='input'><span class='co'>## use these instead of moWL, moWL_A, moWL_B, etc.</span>
 <span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob   shift scale   order ar_1   ar_2   
 #&gt; Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
@@ -180,7 +180,7 @@
 #&gt; </div><div class='input'>
 <span class='no'>exampleModels</span>$<span class='no'>WL_A</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1 0.5    0     5     1   0.5 
@@ -190,7 +190,7 @@
 #&gt; 	standard Gaussian
 #&gt; </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_B</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1 0.75   0     5     1   0.5 
@@ -204,7 +204,7 @@
 #&gt; Comp_2  0.25   0     0     1   -0.3</div><div class='input'>
 <span class='no'>exampleModels</span>$<span class='no'>WL_I</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.4    0     1     2    0.9 -0.60     
@@ -215,7 +215,7 @@
 #&gt; 	standard Gaussian
 #&gt; </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_II</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2
 #&gt; Comp_1 0.4    5     1     2    0.9 -0.6
@@ -228,7 +228,7 @@
 
 <span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARgen"
+#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob   shift scale   order ar_1   ar_2   
 #&gt; Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
@@ -249,49 +249,49 @@
 #&gt; [[1]]$logpdf
 #&gt; function (x) 
 #&gt; log(dnorm(x))
-#&gt; &lt;bytecode: 0x558a80ca5978&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2b9598&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; [[1]]$Fscore
 #&gt; function (x) 
 #&gt; -x
-#&gt; &lt;bytecode: 0x558a80ca52e8&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2b8f08&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; [[1]]$xFscore
 #&gt; function (x) 
 #&gt; -x^2
-#&gt; &lt;bytecode: 0x558a80caa3b8&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2b8958&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; [[1]]$Parscore
 #&gt; function () 
 #&gt; 0
-#&gt; &lt;bytecode: 0x558a80ca9d98&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2bd6a8&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; [[1]]$get_param
 #&gt; function () 
 #&gt; numeric()
-#&gt; &lt;bytecode: 0x558a80ca9890&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2bd1a0&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; [[1]]$set_param
 #&gt; function () 
 #&gt; stop("Standard normal has no parameters to set.")
-#&gt; &lt;bytecode: 0x558a80ca9350&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2bcc60&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; [[1]]$any_param
 #&gt; function () 
 #&gt; param_flag
-#&gt; &lt;bytecode: 0x558a80ca8dd8&gt;
-#&gt; &lt;environment: 0x558a80c9c7d8&gt;
+#&gt; &lt;bytecode: 0x55711d2bc6e8&gt;
+#&gt; &lt;environment: 0x55711d2ae968&gt;
 #&gt; 
 #&gt; 
 #&gt; </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_ibm_t3v</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARgen"
+#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob   shift scale   order ar_1   ar_2   
 #&gt; Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
@@ -303,67 +303,67 @@
 #&gt; [[1]]$pdf
 #&gt; function (x) 
 #&gt; dstd(x, nu = nu)
-#&gt; &lt;bytecode: 0x558a80cb3810&gt;
-#&gt; &lt;environment: 0x558a80ca8518&gt;
+#&gt; &lt;bytecode: 0x55711d2c6e40&gt;
+#&gt; &lt;environment: 0x55711d2bbe28&gt;
 #&gt; 
 #&gt; [[1]]$cdf
 #&gt; function (x) 
 #&gt; pstd(x, nu = nu)
-#&gt; &lt;bytecode: 0x558a80cb3148&gt;
-#&gt; &lt;environment: 0x558a80ca8518&gt;
+#&gt; &lt;bytecode: 0x55711d2c6778&gt;
+#&gt; &lt;environment: 0x55711d2bbe28&gt;
 #&gt; 
 #&gt; [[1]]$rand
 #&gt; function (n) 
 #&gt; rstd(n, nu = nu)
-#&gt; &lt;bytecode: 0x558a80cb2a80&gt;
-#&gt; &lt;environment: 0x558a80ca8518&gt;
+#&gt; &lt;bytecode: 0x55711d2c60b0&gt;
+#&gt; &lt;environment: 0x55711d2bbe28&gt;
 #&gt; 
 #&gt; [[1]]$logpdf
 #&gt; function (x) 
 #&gt; log(dstd(x, nu = nu))
-#&gt; &lt;bytecode: 0x558a80cb23b8&gt;
-#&gt; &lt;environment: 0x558a80ca8518&gt;
+#&gt; &lt;bytecode: 0x55711d2c59e8&gt;
+#&gt; &lt;environment: 0x55711d2bbe28&gt;
 #&gt; 
 #&gt; [[1]]$Fscore
 #&gt; function (x) 
 #&gt; -x * (1 + nu)/(x^2 + nu - 2)
-#&gt; &lt;bytecode: 0x558a80cb1c80&gt;
-#&gt; &lt;environment: 0x558a80ca8518&gt;
+#&gt; &lt;bytecode: 0x55711d2c52b0&gt;
+#&gt; &lt;environment: 0x55711d2bbe28&gt;
 #&gt; 
 #&gt; [[1]]$xFscore
 #&gt; function (x) 
 #&gt; -x^2 * (1 + nu)/(x^2 + nu - 2)
-#&gt; &lt;bytecode: 0x558a80cb80d0&gt;
-#&gt; &lt;environment: 0x558a80ca8518&gt;
+#&gt; &lt;bytecode: 0x55711d2c9a00&gt;
+#&gt; &lt;environment: 0x55711d2bbe28&gt;
 #&gt; 
 #&gt; [[1]]$Parscore
 #&gt; function (x) 
 #&gt; param_score_stdt(x, nu)
-#&gt; &lt;bytecode: 0x558a80cb75a8&gt;
-#&gt; &lt;environment: 0x558a80ca8518&gt;
+#&gt; &lt;bytecode: 0x55711d2c8ed8&gt;
+#&gt; &lt;environment: 0x55711d2bbe28&gt;
 #&gt; 
 #&gt; [[1]]$get_param
 #&gt; function () 
 #&gt; nu
-#&gt; &lt;bytecode: 0x558a80cb6f18&gt;
-#&gt; &lt;environment: 0x558a80ca8518&gt;
+#&gt; &lt;bytecode: 0x55711d2c8848&gt;
+#&gt; &lt;environment: 0x55711d2bbe28&gt;
 #&gt; 
 #&gt; [[1]]$set_param
 #&gt; function (x) 
 #&gt; nu &lt;&lt;- x
-#&gt; &lt;bytecode: 0x558a80cbbc28&gt;
-#&gt; &lt;environment: 0x558a80ca8518&gt;
+#&gt; &lt;bytecode: 0x55711d2cf3c8&gt;
+#&gt; &lt;environment: 0x55711d2bbe28&gt;
 #&gt; 
 #&gt; [[1]]$any_param
 #&gt; function () 
 #&gt; param_flag
-#&gt; &lt;bytecode: 0x558a80cbb678&gt;
-#&gt; &lt;environment: 0x558a80ca8518&gt;
+#&gt; &lt;bytecode: 0x55711d2cee18&gt;
+#&gt; &lt;environment: 0x55711d2bbe28&gt;
 #&gt; 
 #&gt; 
 #&gt; </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_ibm_tf</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARgen"
+#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob   shift scale   order ar_1   ar_2   
 #&gt; Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
@@ -378,7 +378,7 @@
 
 <span class='no'>exampleModels</span>$<span class='no'>WL_At</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARgen"
+#&gt; An object of class "MixARgen"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1 0.5    0     1     1   -0.5
@@ -390,7 +390,7 @@
 #&gt; </div><div class='input'>
 <span class='no'>exampleModels</span>$<span class='no'>WL_Bt_1</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARgen"
+#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
@@ -403,7 +403,7 @@
 #&gt; 	Component 3: Student t with 10 df
 #&gt; </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_Bt_2</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARgen"
+#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
@@ -416,7 +416,7 @@
 #&gt; 	Component 3: Student t with 10 df
 #&gt; </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_Bt_3</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARgen"
+#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
@@ -446,7 +446,7 @@
 #&gt; 	Component 3: Student t with 10 df</div><div class='input'>
 <span class='no'>exampleModels</span>$<span class='no'>WL_Ct_1</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARgen"
+#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
@@ -459,7 +459,7 @@
 #&gt; 	Component 3: Standard normal distribution
 #&gt; </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_Ct_2</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARgen"
+#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
@@ -472,7 +472,7 @@
 #&gt; 	Component 3: Standard normal distribution
 #&gt; </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_Ct_3</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
@@ -487,9 +487,9 @@
 <span class='no'>moWLsigma</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4.8227</span>,<span class='fl'>6.0082</span>,<span class='fl'>18.1716</span>)
 <span class='no'>moWLar</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.6792</span>,<span class='fl'>0.3208</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.6711</span>,-<span class='fl'>0.6711</span>), <span class='fl'>1</span>)
 
-<span class='no'>moWL</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>moWLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>moWLsigma</span>,
+<span class='no'>moWL</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>moWLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>moWLsigma</span>,
             <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>moWLar</span>)
-<span class='no'>moWLgen</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARgen"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>moWLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>moWLsigma</span>,
+<span class='no'>moWLgen</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARgen"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>moWLprob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>moWLsigma</span>,
                <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>moWLar</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>dist_norm</span>))
 <span class='co'>## clean up a bit</span>
 <span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span>(<span class='no'>moWLprob</span>, <span class='no'>moWLsigma</span>, <span class='no'>moWLar</span>, <span class='no'>moWL</span>, <span class='no'>moWLgen</span>)</div></pre>

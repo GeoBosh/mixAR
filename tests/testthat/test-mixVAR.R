@@ -56,43 +56,43 @@ test_that("mixVAR and new() for mixVAR work", {
     
     Scale <- array(c(Sigma1, Sigma2,Sigma3), dim=c(4,4,3))
     
-    model <- new("mixVARGaussian", prob=prob, shift=shift, vcov=Scale, arcoef=AR)
+    model <- new("MixVARGaussian", prob=prob, shift=shift, vcov=Scale, arcoef=AR)
     
     ### Test missing inputs
     
-    expect_error(new("mixVARGaussian", prob = prob, shift = shift, vcov = Scale))
-    new("mixVARGaussian", shift = shift, vcov = Scale, arcoef = AR)
-    new("mixVARGaussian", prob = 1/3, shift = shift, vcov = Scale, arcoef = AR)
-    new("mixVARGaussian", prob = 1/3, vcov = Scale, arcoef = AR)
-    new("mixVARGaussian", prob = 1/3, shift = matrix(rep(0, 4), ncol = 1), vcov = Scale, arcoef = AR)
-    new("mixVARGaussian", prob = 1/3, shift = shift, arcoef = AR)
-    new("mixVARGaussian", prob = 1/3, shift = shift, vcov = diag(rep(1, 4)), arcoef = AR)
+    expect_error(new("MixVARGaussian", prob = prob, shift = shift, vcov = Scale))
+    new("MixVARGaussian", shift = shift, vcov = Scale, arcoef = AR)
+    new("MixVARGaussian", prob = 1/3, shift = shift, vcov = Scale, arcoef = AR)
+    new("MixVARGaussian", prob = 1/3, vcov = Scale, arcoef = AR)
+    new("MixVARGaussian", prob = 1/3, shift = matrix(rep(0, 4), ncol = 1), vcov = Scale, arcoef = AR)
+    new("MixVARGaussian", prob = 1/3, shift = shift, arcoef = AR)
+    new("MixVARGaussian", prob = 1/3, shift = shift, vcov = diag(rep(1, 4)), arcoef = AR)
     
-    new("mixVARGaussian", model = model)
-    expect_error(new("mixVARGaussian", model = model, order=c(1, 2)))
-    expect_error(new("mixVARGaussian", model = model, order=c(2, 1, 1)))
-    new("mixVARGaussian", model = model, prob = 1/3)
-    expect_error(new("mixVARGaussian", model = model, prob = c(1,2)))
-    new("mixVARGaussian", model = model, shift = matrix(rep(0, 4), ncol=1))
-    expect_error(new("mixVARGaussian", model = model, shift = matrix(rep(0, 4), ncol=2)))
-    new("mixVARGaussian", model = model, arcoef = AR)
-    expect_error(new("mixVARGaussian", model = model, arcoef = AR, p=c(1,2)))
+    new("MixVARGaussian", model = model)
+    expect_error(new("MixVARGaussian", model = model, order=c(1, 2)))
+    expect_error(new("MixVARGaussian", model = model, order=c(2, 1, 1)))
+    new("MixVARGaussian", model = model, prob = 1/3)
+    expect_error(new("MixVARGaussian", model = model, prob = c(1,2)))
+    new("MixVARGaussian", model = model, shift = matrix(rep(0, 4), ncol=1))
+    expect_error(new("MixVARGaussian", model = model, shift = matrix(rep(0, 4), ncol=2)))
+    new("MixVARGaussian", model = model, arcoef = AR)
+    expect_error(new("MixVARGaussian", model = model, arcoef = AR, p=c(1,2)))
     
     ###################################
     
 
     expect_output(show(model))
     
-    expect_error(new("mixVARGaussian", prob=c(1,0), shift=shift, vcov=Scale, arcoef=AR))#,
+    expect_error(new("MixVARGaussian", prob=c(1,0), shift=shift, vcov=Scale, arcoef=AR))#,
     # "Arg. `prob' has wrong length (should be 1 or the length of `order')." ) 
-    expect_error(new("mixVARGaussian", prob=prob, shift=matrix(0,ncol=2, nrow=4), 
+    expect_error(new("MixVARGaussian", prob=prob, shift=matrix(0,ncol=2, nrow=4), 
                      vcov=Scale, arcoef=AR))#,
     # "Arg. `shift' has wrong length (should be a matrix with 
     #     colums equal to 1 or the length of `order')." ) 
-    expect_error(new("mixVARGaussian", prob=prob, shift=shift, vcov=Scale[,,1:2], arcoef=AR))#,
+    expect_error(new("MixVARGaussian", prob=prob, shift=shift, vcov=Scale[,,1:2], arcoef=AR))#,
     #   "Arg. `vcov' has wrong dimensions (should be an array of dim. 1 or
     #     the length of `order').")
-    expect_message(new("mixVARGaussian", prob=prob, shift=shift, vcov=Scale, arcoef=AR, order=c(1,2)))
+    expect_message(new("MixVARGaussian", prob=prob, shift=shift, vcov=Scale, arcoef=AR, order=c(1,2)))
     
     
     companion_matrix(model@arcoef[1], 12)

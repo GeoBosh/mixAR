@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Multi-step predictions for mixAR models — multiStep_dist-methods • mixAR</title>
+<title>Multi-step predictions for MixAR models — multiStep_dist-methods • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Multi-step predictions for mixAR models — multiStep_dist-methods" />
-<meta property="og:description" content="Multi-step predictions for mixAR models." />
+<meta property="og:title" content="Multi-step predictions for MixAR models — multiStep_dist-methods" />
+<meta property="og:description" content="Multi-step predictions for MixAR models." />
 
 
 
@@ -111,13 +111,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Multi-step predictions for mixAR models</h1>
+    <h1>Multi-step predictions for MixAR models</h1>
     
     <div class="hidden name"><code>multiStep_dist-methods.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Multi-step predictions for mixAR models.</p>
+    <p>Multi-step predictions for MixAR models.</p>
     </div>
 
     <pre class="usage"><span class='fu'>multiStep_dist</span>(<span class='no'>model</span>, <span class='no'>maxh</span>, <span class='no'>N</span>, <span class='no'>xcond</span>, <span class='no'>...</span>)</pre>
@@ -127,7 +127,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>a mixAR model.</p></td>
+      <td><p>a MixAR model.</p></td>
     </tr>
     <tr>
       <th>maxh</th>
@@ -158,11 +158,11 @@
   Boshnakov (2009)
  and a simulation
   method described by (Wong and Li 2000)
- for Gaussian mixAR
+ for Gaussian MixAR
   models but valid more generally.</p>  
-<p>The simulation method is available for any mixAR model, while
+<p>The simulation method is available for any MixAR model, while
   the exact method is currently implemented only for models with
-  Gaussian components ("mixARGaussian" class).</p>
+  Gaussian components ("MixARGaussian" class).</p>
 <p><code>multiStep_dist</code> returns a function which can be used to obtain
   various properties of the predictive distribution for lags up to
   <code>maxh</code>.</p>
@@ -220,18 +220,18 @@
   function, so the descriptions below are brief.</p>  
 <p></p><dl'>
 
-    <dt><code>signature(model = "mixAR", maxh = "numeric", N = "numeric",
+    <dt><code>signature(model = "MixAR", maxh = "numeric", N = "numeric",
 	xcond = "numeric")</code></dt><dd><p>Non-missing <code>N</code> requests the simulation method. The
       predictive distribution is approximated by simulating <code>N</code>
       of future paths up to horizon <code>maxh</code> and using a
       non-parametric estimate. Arguments <code>"..."</code> are passed to
       <code>density</code> to allow finer control.</p></dd>
 
-    <dt><code>signature(model = "mixARGaussian", maxh = "numeric", N = "missing", 
+    <dt><code>signature(model = "MixARGaussian", maxh = "numeric", N = "missing", 
 	xcond = "missing")</code></dt><dd><p>Computes the predictive distribution using the exact method.
       Returns a function with arguments <code>h</code>, <code>what</code> and <code>xcond</code>.</p></dd>
 
-    <dt><code>signature(model = "mixARGaussian", maxh = "numeric", N = "missing",
+    <dt><code>signature(model = "MixARGaussian", maxh = "numeric", N = "missing",
 	xcond = "ANY")</code></dt><dd><p>Computes the predictive distribution using the exact method.
       Returns a function with arguments <code>h</code> and <code>what</code>.
       (i.e., <code>xcond</code> is fixed to the supplied argument <code>xcond</code>).</p></dd>
@@ -267,8 +267,8 @@ doi: <a href='https://doi.org/10.1016/j.spl.2009.04.009'>10.1016/j.spl.2009.04.0
 #&gt;     wrk &lt;- inner(wrk, model@prob/model@scale)
 #&gt;     wrk
 #&gt; }
-#&gt; &lt;bytecode: 0x558a7fb66ca0&gt;
-#&gt; &lt;environment: 0x558a8877b228&gt;</div><div class='input'>
+#&gt; &lt;bytecode: 0x55711c1840a8&gt;
+#&gt; &lt;environment: 0x55711aab96d0&gt;</div><div class='input'>
 <span class='co'>## use a simulation method with N = 1000</span>
 <span class='no'>tf</span>  <span class='kw'>&lt;-</span> <span class='fu'>multiStep_dist</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>maxh</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>560</span>, <span class='fl'>600</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/args.html'>args</a></span>(<span class='no'>tf</span>) <span class='co'># (h, what, ...)</span></div><div class='output co'>#&gt; function (h, what, ...) 
@@ -281,11 +281,11 @@ doi: <a href='https://doi.org/10.1016/j.spl.2009.04.009'>10.1016/j.spl.2009.04.0
 <span class='no'>tfecdf</span> <span class='kw'>&lt;-</span> <span class='fu'>tfe</span>(<span class='fl'>3</span>, <span class='st'>"cdf"</span>)
 <span class='co'>## plot the pdf</span>
 <span class='kw pkg'>gbutils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gbutils/man/plotpdf.html'>plotpdf</a></span>(<span class='no'>tfepdf</span>, <span class='kw'>cdf</span> <span class='kw'>=</span> <span class='no'>tfecdf</span>)</div><div class='img'><img src='multiStep_dist-methods-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'>tf</span>(<span class='fl'>3</span>, <span class='st'>"location"</span>)</div><div class='output co'>#&gt; [1] 605.3504</div><div class='input'>
-<span class='fu'>tf</span>(<span class='fl'>1</span>, <span class='st'>"location"</span>)</div><div class='output co'>#&gt; [1] 604.9721</div><div class='input'><span class='fu'><a href='mix_moment.html'>mix_location</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>560</span>, <span class='fl'>600</span>))</div><div class='output co'>#&gt; [1] 604.2307</div><div class='input'>
+<span class='fu'>tf</span>(<span class='fl'>3</span>, <span class='st'>"location"</span>)</div><div class='output co'>#&gt; [1] 605.8232</div><div class='input'>
+<span class='fu'>tf</span>(<span class='fl'>1</span>, <span class='st'>"location"</span>)</div><div class='output co'>#&gt; [1] 605.3289</div><div class='input'><span class='fu'><a href='mix_moment.html'>mix_location</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>560</span>, <span class='fl'>600</span>))</div><div class='output co'>#&gt; [1] 604.2307</div><div class='input'>
 <span class='co'>## larger simulation gives better approximation, in general</span>
 <span class='no'>tf</span> <span class='kw'>&lt;-</span> <span class='fu'>multiStep_dist</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>maxh</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='fl'>10000</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>560</span>, <span class='fl'>600</span>))
-<span class='fu'>tf</span>(<span class='fl'>1</span>, <span class='st'>"location"</span>)</div><div class='output co'>#&gt; [1] 604.1332</div><div class='input'>
+<span class='fu'>tf</span>(<span class='fl'>1</span>, <span class='st'>"location"</span>)</div><div class='output co'>#&gt; [1] 604.1654</div><div class='input'>
 <span class='no'>tf1000pdf</span> <span class='kw'>&lt;-</span> <span class='fu'>tf</span>(<span class='fl'>3</span>, <span class='st'>"pdf"</span>)
 <span class='no'>tf1000cdf</span> <span class='kw'>&lt;-</span> <span class='fu'>tf</span>(<span class='fl'>3</span>, <span class='st'>"cdf"</span>)
 <span class='kw pkg'>gbutils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gbutils/man/plotpdf.html'>plotpdf</a></span>(<span class='no'>tf1000pdf</span>, <span class='kw'>cdf</span> <span class='kw'>=</span> <span class='no'>tf1000cdf</span>)</div><div class='img'><img src='multiStep_dist-methods-2.png' alt='' width='700' height='433' /></div><div class='input'>
@@ -293,8 +293,8 @@ doi: <a href='https://doi.org/10.1016/j.spl.2009.04.009'>10.1016/j.spl.2009.04.0
 <span class='kw pkg'>gbutils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gbutils/man/plotpdf.html'>plotpdf</a></span>(<span class='no'>tfepdf</span>, <span class='kw'>cdf</span> <span class='kw'>=</span> <span class='no'>tfecdf</span>)</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/curve.html'>curve</a></span>(<span class='no'>tf1000pdf</span>, <span class='kw'>add</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"red"</span>)</div><div class='img'><img src='multiStep_dist-methods-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## get the raw data</span>
 <span class='no'>tfs</span> <span class='kw'>&lt;-</span> <span class='fu'>tf</span>(<span class='fl'>1</span>, <span class='st'>"sampled"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span>(<span class='no'>tfs</span>, <span class='fl'>2</span>, <span class='no'>mean</span>) <span class='co'># location for lags from 1 to maxh (here 3)</span></div><div class='output co'>#&gt; [1] 604.1332 604.4238 604.6676</div><div class='input'>
-<span class='fu'>tf</span>(<span class='fl'>1</span>, <span class='st'>"location"</span>)</div><div class='output co'>#&gt; [1] 604.1332</div><div class='input'><span class='fu'>tf</span>(<span class='fl'>1</span>, <span class='st'>"variance"</span>)</div><div class='output co'>#&gt; [1] 412.4805</div><div class='input'><span class='fu'>tf</span>(<span class='fl'>1</span>, <span class='st'>"sd"</span>)</div><div class='output co'>#&gt; [1] 20.30962</div><div class='input'><span class='fu'><a href='mix_moment.html'>mix_variance</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>560</span>, <span class='fl'>600</span>))</div><div class='output co'>#&gt; [1] 413.0203</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fu'><a href='mix_moment.html'>mix_variance</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>560</span>, <span class='fl'>600</span>)))</div><div class='output co'>#&gt; [1] 20.3229</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span>(<span class='no'>tfs</span>, <span class='fl'>2</span>, <span class='no'>mean</span>) <span class='co'># location for lags from 1 to maxh (here 3)</span></div><div class='output co'>#&gt; [1] 604.1654 604.3448 604.3050</div><div class='input'>
+<span class='fu'>tf</span>(<span class='fl'>1</span>, <span class='st'>"location"</span>)</div><div class='output co'>#&gt; [1] 604.1654</div><div class='input'><span class='fu'>tf</span>(<span class='fl'>1</span>, <span class='st'>"variance"</span>)</div><div class='output co'>#&gt; [1] 415.7041</div><div class='input'><span class='fu'>tf</span>(<span class='fl'>1</span>, <span class='st'>"sd"</span>)</div><div class='output co'>#&gt; [1] 20.38882</div><div class='input'><span class='fu'><a href='mix_moment.html'>mix_variance</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>560</span>, <span class='fl'>600</span>))</div><div class='output co'>#&gt; [1] 413.0203</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fu'><a href='mix_moment.html'>mix_variance</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>560</span>, <span class='fl'>600</span>)))</div><div class='output co'>#&gt; [1] 20.3229</div><div class='input'>
 <span class='fu'><a href='mix_moment.html'>mix_kurtosis</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>359</span>, <span class='fl'>200</span>))</div><div class='output co'>#&gt; [1] 1.135385</div><div class='input'><span class='fu'><a href='mix_moment.html'>mix_kurtosis</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>359</span>, <span class='fl'>400</span>))</div><div class='output co'>#&gt; [1] 1.392797</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

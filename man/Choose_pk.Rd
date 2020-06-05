@@ -1,8 +1,8 @@
 \name{Choose_pk}
 \alias{Choose_pk}
-\title{Choose the autoregressive order of mixAR components}
+\title{Choose the autoregressive order of MixAR components}
 \description{
-  Implement a Reversible Jump MCMC algorithm to choose the optimal
+  Reversible Jump MCMC algorithm to choose the optimal
   autoregressive order of each component of a mixture autoregressive
   model.
 }
@@ -14,8 +14,8 @@ Choose_pk(y, model, fix_shift = FALSE, tau, pmax, method, par = NULL, nsim)
     a time series. Currently a \code{numeric} vector.
   }
   \item{model}{
-    an object inheriting from class \code{"mixAR"} (currenlty only
-    supports class \code{"mixARGaussian"}.)
+    an object inheriting from class \code{"MixAR"} (currenlty only
+    supports class \code{"MixARGaussian"}.)
   }
   \item{fix_shift}{
     whether the shift/mean parameter should be kept fixed to its
@@ -67,10 +67,10 @@ Choose_pk(y, model, fix_shift = FALSE, tau, pmax, method, par = NULL, nsim)
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-  \code{\link{bx_dx}} for more details on \code{method}
+  \code{\link{bx_dx}} for more details on the \code{method}
 }
 \examples{
-model <- new("mixARGaussian", 
+model <- new("MixARGaussian", 
              prob   = exampleModels$WL_At@prob,      # c(0.5, 0.5)
              scale  = exampleModels$WL_At@scale,     # c(1, 2)        
              arcoef = list(-0.5, 1) ) # != list(-0.5, 1.1) == exampleModels$WL_At@arcoef@a
@@ -80,5 +80,5 @@ y <- mixAR_sim(model, n, rep(0, max(model@order)), nskip = 100)
 
 pk_star <- Choose_pk(y, model, tau = c(.15, .25), pmax = 5, method = "NULL", nsim = 100)
 }
-\keyword{choose}% use one of  RShowDoc("KEYWORDS")
-\keyword{mixAR}
+% use one of  RShowDoc("KEYWORDS")
+\keyword{MixAR}

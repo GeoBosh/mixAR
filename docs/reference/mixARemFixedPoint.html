@@ -137,7 +137,7 @@
     </tr>
     <tr>
       <th>model</th>
-      <td><p>an object of class mixAR, a mixture autoregressive model providing the model
+      <td><p>an object of class MixAR, a mixture autoregressive model providing the model
     specifications and initial values for the parameters.</p></td>
     </tr>
     <tr>
@@ -175,10 +175,10 @@
     
 
 <p><code>mixARemFixedPoint</code> and <code>mixARgenemFixedPoint</code> estimate
-  mixAR models with the EM algorithm.  For <code>mixARemFixedPoint</code>, the
-  distribution of the components are Gaussian. For
-  <code>mixARgenemFixedPoint</code>, the distributions are arbitrary (well, to
-  a point).</p>
+  MixAR models with the EM algorithm.  For <code>mixARemFixedPoint</code>, the
+  distribution of the components are fixed to be Gaussian. For
+  <code>mixARgenemFixedPoint</code>, the distributions can, in principle be
+  arbitrary (well, to a point).</p>
 <p>Starting with <code>model</code>, the expectation and maximisation steps of
   the EM algorithm are repeated until convergence is detected or the
   maximum number of iterations, <code>maxniter</code> is exceeded.</p>
@@ -190,18 +190,17 @@
   use the returned value in another call of this function.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>the fitted model as an object inheriting from "mixAR".</p>
+    <p>the fitted model as an object inheriting from "MixAR".</p>
     <h2 class="hasAnchor" id="todo"><a class="anchor" href="#todo"></a>Todo</h2>
 
     <p>This function was not intended to be called directly by the user
   (hence the inconvenient name).</p>
-<p>The examples are not complete!!!</p>
-<p>The examples section below is mostly for testing.</p>
+<p><!-- % The examples are not complete. --></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='fit_mixAR-methods.html'>fit_mixAR</a></code> which uses these functions for estimation,
-  <code><a href='mixARGaussian-class.html'>mixARGaussian</a></code>,
-  <code><a href='mixARgen-class.html'>mixARgen</a></code></p></div>
+  <code>MixARGaussian</code>,
+  <code>MixARgen</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## data(ibmclose, package = "fma") # ibm data from BJ</span>
@@ -230,7 +229,7 @@
 #&gt; Final niter:  133 	vallogf:  -1209.927 </div><div class='output co'>#&gt; $model
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
-#&gt; An object of class "mixARGaussian"
+#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob       shift scale     order ar_1      ar_2      
 #&gt; Comp_1 0.54399212   0    4.801666   2   0.6827977  0.3182769

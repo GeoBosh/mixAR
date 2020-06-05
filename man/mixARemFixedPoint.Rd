@@ -17,7 +17,7 @@ mixARgenemFixedPoint(y, model, crit = 1e-14, maxniter = 200,
 }
 \arguments{
   \item{y}{a univariate time series.}
-  \item{model}{an object of class mixAR, a mixture autoregressive model providing the model
+  \item{model}{an object of class MixAR, a mixture autoregressive model providing the model
     specifications and initial values for the parameters.
   }
   \item{est_shift}{if TRUE optimise also w.r.t. the shift (constant) terms of the AR
@@ -36,10 +36,10 @@ mixARgenemFixedPoint(y, model, crit = 1e-14, maxniter = 200,
 \details{
 
   \code{mixARemFixedPoint} and \code{mixARgenemFixedPoint} estimate
-  mixAR models with the EM algorithm.  For \code{mixARemFixedPoint}, the
-  distribution of the components are Gaussian. For
-  \code{mixARgenemFixedPoint}, the distributions are arbitrary (well, to
-  a point).
+  MixAR models with the EM algorithm.  For \code{mixARemFixedPoint}, the
+  distribution of the components are fixed to be Gaussian. For
+  \code{mixARgenemFixedPoint}, the distributions can, in principle be
+  arbitrary (well, to a point).
 
   Starting with \code{model}, the expectation and maximisation steps of
   the EM algorithm are repeated until convergence is detected or the
@@ -55,7 +55,7 @@ mixARgenemFixedPoint(y, model, crit = 1e-14, maxniter = 200,
 
 }
 \value{
-  the fitted model as an object inheriting from "mixAR".
+  the fitted model as an object inheriting from "MixAR".
 }
 
 \author{Georgi N. Boshnakov}
@@ -67,14 +67,12 @@ mixARgenemFixedPoint(y, model, crit = 1e-14, maxniter = 200,
   This function was not intended to be called directly by the user
   (hence the inconvenient name).
 
-  The examples are not complete!!!
-
-  The examples section below is mostly for testing.
+  % The examples are not complete.
 }
 \seealso{
   \code{\link{fit_mixAR}} which uses these functions for estimation,
-  \code{\linkS4class{mixARGaussian}},
-  \code{\linkS4class{mixARgen}}
+  \code{\linkS4class{MixARGaussian}},
+  \code{\linkS4class{MixARgen}}
 }
 \examples{
 ## data(ibmclose, package = "fma") # ibm data from BJ
@@ -95,5 +93,5 @@ m2b <- mixARemFixedPoint(diff(ts1), m0, est_shift = FALSE)$model
 }
 }
 \keyword{optimize}
-\keyword{mixAR}
+\keyword{MixAR}
 \keyword{em}

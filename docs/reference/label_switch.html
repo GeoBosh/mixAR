@@ -171,7 +171,7 @@ Payne R., Green P. (eds) COMPSTAT. Physica, Heidelberg.</p>
 <!-- %% ~~objects to See Also as \code{\link{help}}, ~~~ --></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>,
+    <pre class="examples"><div class='input'><span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>,
              <span class='kw'>prob</span>   <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>prob</span>,      <span class='co'># c(0.5, 0.5)</span>
              <span class='kw'>scale</span>  <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>scale</span>,     <span class='co'># c(1, 2)        </span>
              <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>arcoef</span>@<span class='kw'>a</span> ) <span class='co'># list(-0.5, 1.1)</span>
@@ -186,26 +186,26 @@ Payne R., Green P. (eds) COMPSTAT. Physica, Heidelberg.</p>
 
 <span class='fu'>label_switch</span>(<span class='no'>x</span>$<span class='no'>mix_weights</span>, <span class='kw'>m</span> <span class='kw'>=</span> <span class='fl'>5</span>)</div><div class='output co'>#&gt; $x
 #&gt;            [,1]      [,2]
-#&gt;  [1,] 0.5476954 0.4523046
-#&gt;  [2,] 0.5395222 0.4604778
-#&gt;  [3,] 0.5730514 0.4269486
-#&gt;  [4,] 0.6110079 0.3889921
-#&gt;  [5,] 0.5771588 0.4228412
-#&gt;  [6,] 0.5515905 0.4484095
-#&gt;  [7,] 0.5116267 0.4883733
-#&gt;  [8,] 0.5180564 0.4819436
-#&gt;  [9,] 0.5686049 0.4313951
-#&gt; [10,] 0.5590577 0.4409423
-#&gt; [11,] 0.5669298 0.4330702
-#&gt; [12,] 0.6118508 0.3881492
-#&gt; [13,] 0.5704141 0.4295859
-#&gt; [14,] 0.5977270 0.4022730
-#&gt; [15,] 0.6357773 0.3642227
-#&gt; [16,] 0.6169200 0.3830800
-#&gt; [17,] 0.5838272 0.4161728
-#&gt; [18,] 0.5678565 0.4321435
-#&gt; [19,] 0.6333747 0.3666253
-#&gt; [20,] 0.6100989 0.3899011
+#&gt;  [1,] 0.3840002 0.6159998
+#&gt;  [2,] 0.3878427 0.6121573
+#&gt;  [3,] 0.4526472 0.5473528
+#&gt;  [4,] 0.4023388 0.5976612
+#&gt;  [5,] 0.4515958 0.5484042
+#&gt;  [6,] 0.4095133 0.5904867
+#&gt;  [7,] 0.4955273 0.5044727
+#&gt;  [8,] 0.4929660 0.5070340
+#&gt;  [9,] 0.4693955 0.5306045
+#&gt; [10,] 0.4734032 0.5265968
+#&gt; [11,] 0.3712098 0.6287902
+#&gt; [12,] 0.3656195 0.6343805
+#&gt; [13,] 0.3789003 0.6210997
+#&gt; [14,] 0.4461685 0.5538315
+#&gt; [15,] 0.4409884 0.5590116
+#&gt; [16,] 0.4647830 0.5352170
+#&gt; [17,] 0.4763755 0.5236245
+#&gt; [18,] 0.4526394 0.5473606
+#&gt; [19,] 0.4372181 0.5627819
+#&gt; [20,] 0.4665436 0.5334564
 #&gt; 
 #&gt; $true_perm
 #&gt;       [,1] [,2]

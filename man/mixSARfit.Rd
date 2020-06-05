@@ -13,7 +13,7 @@ mixSARfit(y, model, est_shift = FALSE, tol = 10^-14)
 \arguments{
   \item{y}{a time series (currently a numeric vector).}
   \item{model}{
-    an object of class \code{"mixAR"} including seasonal components.
+    an object of class \code{"MixAR"} including seasonal components.
   }
   \item{est_shift}{
     if missing or \code{FALSE}, fix the intercepts to zero, otherwise
@@ -23,12 +23,12 @@ mixSARfit(y, model, est_shift = FALSE, tol = 10^-14)
 }
 \details{
 
-  This function only works for \code{"mixAR"} objects in which slot
+  This function only works for \code{"MixAR"} objects in which slot
   \code{arcoef} is of class \code{"raggedCoefS"}.
 
 }
 \value{A list of 2:
-  \item{model}{an object of class \code{"mixAR"}. The estimated model.}
+  \item{model}{an object of class \code{"MixAR"}. The estimated model.}
   \item{vallogf}{
     the value of the loglikelihood function for the returned model.
   }
@@ -53,7 +53,7 @@ s = 12
 
 rag <- new("raggedCoefS", a = ar1, as = ar12, s = s)
 
-model <- new("mixARGaussian", prob = exampleModels$WL_A@prob, # c(0.5, 0.5)
+model <- new("MixARGaussian", prob = exampleModels$WL_A@prob, # c(0.5, 0.5)
              scale = exampleModels$WL_A@scale,                # c(5, 1)
              arcoef = rag)
 

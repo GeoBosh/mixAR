@@ -1,17 +1,17 @@
 \name{lik_params_bounds}
 \alias{lik_params_bounds}
 \title{
-  Give natural limits for parameters of a mixAR model.
+  Give natural limits for parameters of a MixAR model.
 }
 \description{
-  Give the natural lower and upper limits for the parameters of a mixAR
+  Give the natural lower and upper limits for the parameters of a MixAR
   model.
 }
 \usage{
 lik_params_bounds(model)
 }
 \arguments{
-  \item{model}{a \code{mixAR} model
+  \item{model}{a \code{MixAR} model
 }
 }
 \details{
@@ -51,5 +51,5 @@ lik_params_bounds(model)
 %\examples{
 %##
 %}
-\keyword{mixAR}
+\keyword{MixAR}
 \keyword{internal}

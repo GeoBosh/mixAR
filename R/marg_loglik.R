@@ -80,7 +80,7 @@ marg_loglik <- function(y, model, tau, nsim, prob_mod){
             }
         }
 
-        A <- new("mixARGaussian", prob = as.numeric(xx$mix_weights),
+        A <- new("MixARGaussian", prob = as.numeric(xx$mix_weights),
                  scale = as.numeric(xx3$scale), arcoef = phi_k,
                  shift = as.numeric(xx2$shift))
         if(isStable(A)){
@@ -158,7 +158,7 @@ marg_loglik <- function(y, model, tau, nsim, prob_mod){
                 for(k in 1:(g - kk + 1)){
                     if(u[k] > ratio1[k]) phi_k[[k + 1]] <- AR[[k + 1]]
                 }
-                A <- new("mixARGaussian", prob = as.numeric(xx$mix_weights),
+                A <- new("MixARGaussian", prob = as.numeric(xx$mix_weights),
                          scale = as.numeric(xx3$scale), arcoef = phi_k,
                          shift = as.numeric(xx2$shift))
                 if(isStable(A)){
@@ -224,7 +224,7 @@ marg_loglik <- function(y, model, tau, nsim, prob_mod){
                     if(u > ratio1){
                         phi_k[[g]] <- AR[[g]]
                     }
-                    A <- new("mixARGaussian", prob = as.numeric(xx$mix_weights),
+                    A <- new("MixARGaussian", prob = as.numeric(xx$mix_weights),
                              scale = as.numeric(xx3$scale), arcoef = phi_k,
                              shift = as.numeric(xx2$shift))
                     if(isStable(A)){

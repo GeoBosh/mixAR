@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Translations of my old mixAR Mathematica functions — tomarparambyComp • mixAR</title>
+<title>Translations of my old MixAR Mathematica functions — tomarparambyComp • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Translations of my old mixAR Mathematica functions — tomarparambyComp" />
-<meta property="og:description" content="Translations of some of my mixAR Mathematica functions.
+<meta property="og:title" content="Translations of my old MixAR Mathematica functions — tomarparambyComp" />
+<meta property="og:description" content="Translations of some of my MixAR Mathematica functions.
   Not sure if these are still used." />
 
 
@@ -112,13 +112,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Translations of my old mixAR Mathematica functions</h1>
+    <h1>Translations of my old MixAR Mathematica functions</h1>
     
     <div class="hidden name"><code>tomarparambyComp.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Translations of some of my mixAR Mathematica functions.
+    <p>Translations of some of my MixAR Mathematica functions.
   Not sure if these are still used.</p>
     </div>
 
@@ -131,7 +131,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>params</th>
-      <td><p>the parameters of the mixAR model, a list, see Details.</p></td>
+      <td><p>the parameters of the MixAR model, a list, see Details.</p></td>
     </tr>
     </table>
 
@@ -147,8 +147,8 @@
   <!-- % Mathematica programs do not have this currently. --></p>
 <p><code>tomarparambyComp</code> is for completeness, my Mathematica programs
   do not have this currently.</p>  
-<p>The arrangement of the parameters of mixAR models in package
-  <code>"mixAR"</code> is ``by type'': slot <code>prob</code> contains the mixture
+<p>The arrangement of the parameters of MixAR models in package
+  <code>"MixAR"</code> is ``by type'': slot <code>prob</code> contains the mixture
   probabilities (weights), <code>shift</code> contains intercepts, and so on.</p>
 <p>An alternative representation is ``by component'': a list whose k-th
   elements contains all parameters associated with the k-th mixture
@@ -160,7 +160,7 @@
   <code>tomarparambyComp</code> does the inverse operation, from ``by type''
   to ``by component''.</p>
 <p><code>permuteArpar</code> creates all permutaions of the components of a
-  mixAR model. It takes a ``by component'' argument. The autoregressive
+  MixAR model. It takes a ``by component'' argument. The autoregressive
   orders are not permuted, in that if the input model has AR orders
   <code><a href='https://rdrr.io/r/base/c.html'>c(2, 1, 3)</a></code>, all permuted models are also <code><a href='https://rdrr.io/r/base/c.html'>c(2, 1, 3)</a></code>.
   The AR coefficients of shorter or longer components are padded with

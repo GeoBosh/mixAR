@@ -127,7 +127,7 @@ bayes_mixAR <- function(y, model, fix_shift = FALSE, a = 0.2, c = 2, tau, nsim, 
             }
         }## does not count acceptance rate over burnin period
 
-        A <- new("mixARGaussian", prob = as.numeric(prob), scale = as.numeric(sigma),
+        A <- new("MixARGaussian", prob = as.numeric(prob), scale = as.numeric(sigma),
                  arcoef = phi_k, shift = as.numeric(shift))
         if(isStable(A)){  ## check for stability
             for(k in 1:g){

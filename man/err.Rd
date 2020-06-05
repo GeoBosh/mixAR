@@ -1,7 +1,7 @@
 \name{err}
 \alias{err}
 \title{
-  Calculate component specific error terms under mixAR model
+  Calculate component specific error terms under MixAR model
 }
 \description{
   Returns a matrix which columns correspond to the error terms. Each
