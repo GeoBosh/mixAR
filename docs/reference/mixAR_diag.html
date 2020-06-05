@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Diagnostic checks for Mixture Autoregressive Models — mixAR_diag • mixAR</title>
+<title>Diagnostic checks for mixture autoregressive models — mixAR_diag • mixAR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Diagnostic checks for Mixture Autoregressive Models — mixAR_diag" />
+<meta property="og:title" content="Diagnostic checks for mixture autoregressive models — mixAR_diag" />
 <meta property="og:description" content="Perform diagnostic checks and tests on given mixARGaussian
   object with respect to a given time series." />
 
@@ -112,7 +112,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Diagnostic checks for Mixture Autoregressive Models</h1>
+    <h1>Diagnostic checks for mixture autoregressive models</h1>
     
     <div class="hidden name"><code>mixAR_diag.Rd</code></div>
     </div>
@@ -122,17 +122,19 @@
   object with respect to a given time series.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mixAR_diag</span>(<span class='no'>model</span>, <span class='no'>y</span>, <span class='kw'>ask</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>())
-<span class='co'># S3 method for mixARGaussian</span>
-<span class='fu'>tsdiag</span>(<span class='no'>object</span>, <span class='no'>gof.lag</span>, <span class='no'>y</span>, <span class='kw'>ask</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>(), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for mixARGaussian</span>
+<span class='fu'>tsdiag</span>(<span class='no'>object</span>, <span class='no'>gof.lag</span>, <span class='no'>y</span>, <span class='kw'>ask</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>(), <span class='no'>...</span>)
+
+<span class='fu'>mixAR_diag</span>(<span class='no'>model</span>, <span class='no'>y</span>, <span class='kw'>ask</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model,object</th>
-      <td><p>An object of class <code>mixAR</code>. Alternatively an output list from
-    <code>fit_mixAR</code>. The model on which to perform the checks.</p></td>
+      <td><p>the model on which to perform the checks, an object from class
+    <code>mixAR</code>. <code>model</code> can also be the output list from
+    <code>fit_mixAR</code>.</p></td>
     </tr>
     <tr>
       <th>gof.lag</th>
@@ -157,18 +159,32 @@
 
     
 
+<p>It is recommended to use <code>tsdiag</code>.  <code>mixAR_diag</code> is
+  essentially deprecated and is still here for compatibility with old
+  code. Moreover, the <code>tsdiag</code> method is more flexible. The only
+  advantage of <code>mixAR_diag</code> is that it accepts also a list for
+  argument <code>model</code> but this is equivalent to calling <code>tsdiag</code>
+  with <code>object = model$model</code>.</p>
 <p>The function calculates two types of residuals. The first set
   calculates residuals as of canonical definition.  ACF and Partial ACF
   plots are given.</p>
 <p>Transformations on the data are performed, as described in Smith
   (1985).</p>
-<p>List of tests is as follows:</p>
-<p>- Ljung-Box test is applied to <code>residuals</code>, checking for residual
-  correlation up to lag 20.</p>
-<p>- Kolmogorov-Smirnov test is applied to <code>U</code> to assess the hypothesis 
-  of uniform distribution.</p>
-<p>- Shapiro-Wilk test of Normality is applied to <code>V</code>,
-  where <code>V = qnorm(U)</code></p>
+<p>The following tests are available:</p>
+<p></p><dl'>
+
+    <dt>Ljung-Box test</dt><dd><p>is applied to <code>residuals</code>, checking for residual correlation
+      up to lag 20.</p></dd>
+
+    <dt>Kolmogorov-Smirnov test</dt><dd><p>is applied to <code>U</code> to assess the hypothesis of uniform
+      distribution.</p></dd>
+
+    <dt>
+      Shapiro-Wilk test of Normality</dt><dd><p>is applied to <code>V</code>, where
+      <code>V = qnorm(U)</code>.</p></dd>
+  
+</dl>
+
 <p>The second set is calculated as the component specific residual
   <code>e_tk</code> divided by its corresponding scale <code>sigma_k</code>,
   according to under which component y_t has largest density.  Under

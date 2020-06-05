@@ -36,7 +36,7 @@
 
 %\alias{mix_ncomp,mixComp-method}
 
-\title{Class "mixComp" - manipulation of mixAR time series}
+\title{Class \code{"mixComp"} --- manipulation of mixAR time series}
 \description{
   
   Class \code{"mixComp"} represents components of mixture autoregressive

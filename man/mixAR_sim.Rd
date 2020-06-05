@@ -43,7 +43,7 @@ mixAny_sim(model, n, init, nskip=100, flag = FALSE,
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 \section{Todo}{
-  Todo: Curently \code{init} has no default value but I am thinking
+  Todo: Currently \code{init} has no default value but I am thinking
   about introducing such.
 
   Todo:

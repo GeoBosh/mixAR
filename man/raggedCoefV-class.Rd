@@ -16,7 +16,7 @@
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Class "raggedCoefV" --- ragged list
+Class \code{"raggedCoefV"} --- ragged list
 }
 \description{
 Ragged list used to hold coefficients of mixVAR models.

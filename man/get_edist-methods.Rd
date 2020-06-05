@@ -4,9 +4,9 @@
 \alias{get_edist,mixAR-method}
 \alias{get_edist,mixARGaussian-method}
 \alias{get_edist,mixARgen-method}
-\title{ ~~ Methods for Function \code{get_edist} in Package \pkg{mixAR} ~~}
+\title{ Methods for function \code{get_edist} in package \pkg{mixAR} }
 \description{
- ~~ Methods for function \code{get_edist} in package \pkg{mixAR} ~~
+  Methods for function \code{get_edist} in package \pkg{mixAR}
 }
 \section{Methods}{
   \code{get_edist} gives the error (or noise) distribution of mixAR

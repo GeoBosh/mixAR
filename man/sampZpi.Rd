@@ -3,7 +3,7 @@
 \alias{sampMuShift}
 \alias{sampSigmaTau}
 \title{
-  Sampling functions for Bayesian analysis of Mixture autoregressive
+  Sampling functions for Bayesian analysis of mixture autoregressive
   models
 }
 \description{

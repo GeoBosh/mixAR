@@ -44,8 +44,8 @@ mixARreg(x, y, mixARmodel, tol = 1e-6, niter = 200)
   \item{tol}{
     threshold for convergence criterion.
   }
-  \item{...}{~~ TODO: describe this argument. ~~}
-  \item{niter}{~~ TODO: describe this argument. ~~}
+  \item{...}{passed on to \code{mixARreg}.}
+  \item{niter}{maximal number of iterations.}
 }
 \details{
 
@@ -53,8 +53,6 @@ mixARreg(x, y, mixARmodel, tol = 1e-6, niter = 200)
   Currently there is no default method for \code{fit_mixARreg}.
   Arguments \code{y}, \code{mixARmodel}, \code{EMinit} can be given in a
   number of ways, see individual methods for details. 
-  (\strong{... but TODO: @Davide:}
-  The individal methods below have empty descriptions!)
 
   Argument \code{mixARmodel} gives the details of the the mixAR part of
   the model and initial values for the parameters. For
@@ -70,7 +68,7 @@ mixARreg(x, y, mixARmodel, tol = 1e-6, niter = 200)
 \value{  
   \item{reg}{The summary output of the regression part of the model.}
   \item{mixARmodel}{
-    Estimates of the Mixture Autoregressive part of the model. 
+    Estimates of the mixture autoregressive part of the model. 
   }
   \item{niter}{The number of iterations until convergence.}
 }

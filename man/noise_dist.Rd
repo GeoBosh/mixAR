@@ -5,7 +5,7 @@
 \alias{noise_params}
 \alias{set_noise_params}
 
-\title{Internal mixAR Functions}
+\title{Internal mixAR functions}
 \description{
   Functions for the distributions of the components of mixAR models
 }

@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Conditional pdf's and cdf's of mixAR models — mix_pdf-methods" />
-<meta property="og:description" content="Return conditional probability densities and distribution functions of
+<meta property="og:description" content="Gives conditional probability densities and distribution functions of
  mixture autoregressive models." />
 
 
@@ -118,7 +118,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Return conditional probability densities and distribution functions of
+    <p>Gives conditional probability densities and distribution functions of
  mixture autoregressive models.</p>
     </div>
 
@@ -126,9 +126,16 @@
 
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
-    <p><code>mix_pdf</code> and <code>mix_cdf</code> have methods with the following
-  signatures. <code>mix_pdf</code> returns a probability density,
-  <code>mix_cdf</code> a distribution function.</p>
+    
+
+<p><code>mix_pdf</code> gives a probability density, <code>mix_cdf</code> a
+  distribution function. If argument <code>x</code> is supplied, the functions
+  are evaluated for the specified values of <code>x</code>, otherwise function
+  objects are returned and can be used for further computations, eg for
+  graphs.</p>  
+  
+<p><code>mix_pdf</code> and <code>mix_cdf</code> have methods with the following
+  signatures.</p>
 <p></p><dl'>
     <dt><code>signature(model = "mixARGaussian", x = "missing", index = "missing", xcond = "numeric")</code></dt><dd><p>Return (as a function of one argument) the conditional density
       (respectively cdf), \(f(x|xcond)\), of \(X_{t+1}\) given
@@ -149,6 +156,10 @@
           xcond = "missing")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
 </dl>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='mix_moment.html'>mix_moment</a></code> for examples and computation of summary statistics of the
+  predictive distributions</p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -79,7 +79,8 @@ test_that("mixAR and new() for mixAR work", {
                       arcoef=list(.5, 1.1), shift=c(0,0), order=c(1,1)))
     expect_equal(mixAR(template=c(1,1)), mixAR(coef=list(order=c(1,1))))
     mixAR(m2)
-    
+    mixAR(m2, list(prob = c(0.5, 0.25, 0.25)))
+
 
     parameters(lm(6:10 ~ 1 + I(1:5))) # equivalent to coef() for non-mixAR objects
 

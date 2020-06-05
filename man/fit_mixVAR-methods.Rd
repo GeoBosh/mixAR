@@ -6,7 +6,7 @@
 \alias{fit_mixVAR,ANY,mixVAR-method}
 \alias{fit_mixVAR,ANY,ANY-method}
 
-\title{Fit Mixture Vector Autoregressive Models}
+\title{Fit mixture vector autoregressive models}
 \description{
   Estimate a mixVAR model for a multivariate time series. This is a generic function.
   The methods defined in package mixAR are described here.

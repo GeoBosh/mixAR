@@ -1,7 +1,7 @@
 \name{bx_dx}
 \alias{bx_dx}
 \title{
-  RJMCMC move for AR order selection of Mixture autoregressive models
+  RJMCMC move for AR order selection of mixture autoregressive models
 }
 \description{
   Computes probabilities for deciding whether the AR order should be

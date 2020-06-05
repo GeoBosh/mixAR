@@ -66,7 +66,8 @@ length(ibmclose) # 369
 max(exampleModels$WL_ibm@order) # 2
 
 ## compute point predictions for t = 3,...,369
-mix_location(exampleModels$WL_ibm, ibmclose)
+pred <- mix_location(exampleModels$WL_ibm, ibmclose)
+plot(pred)
 ## compute one-step point predictions for t = 360,...369
 mix_location(exampleModels$WL_ibm, ibmclose, index = 369 - 9:0 )
 

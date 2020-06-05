@@ -4,9 +4,9 @@
 \alias{noise_rand,mixAR-method}
 \alias{noise_rand,mixARGaussian-method}
 \alias{noise_rand,mixARgen-method}
-\title{ ~~ Methods for Function \code{noise_rand} in Package \pkg{mixAR} ~~}
+\title{ Methods for function \code{noise_rand} in package \pkg{mixAR} }
 \description{
- ~~ Methods for function \code{noise_rand} in package \pkg{mixAR} ~~
+  Methods for function \code{noise_rand} in package \pkg{mixAR}
 }
 \section{Methods}{
 \describe{

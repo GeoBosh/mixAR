@@ -5,8 +5,10 @@
 \alias{mix_variance,mixAR,missing,missing,missing-method}
 \alias{mix_variance,mixAR,missing,missing,numeric-method}
 \alias{mix_variance,mixAR,numeric,numeric,missing-method}
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+
+\title{Methods for mix_variance}
+\description{Methods for \code{mix_variance} in package \dQuote{pcts}}
+
 \section{Methods}{
 \describe{
 

@@ -17,8 +17,8 @@ mixAR(template, coef, ..., filler = NA_real_)
   \item{template}{
     
     an object to be used as a template for the new object, typically
-    inheriting from "mixAR". Altenatively, missing or a numeric vector
-    specifying the order of the mixAR model, see Details.
+    inheriting from \code{"mixAR"}. Alternatively, missing or a numeric
+    vector specifying the order of the mixAR model, see Details.
 
   }
   \item{coef}{
@@ -73,7 +73,21 @@ mixAR(template, coef, ..., filler = NA_real_)
 %%  ~~describe this method here~~
 }
 }}
-%\examples{
-%}
+\seealso{
+	class \code{\linkS4class{mixARGaussian}},
+	class \code{\linkS4class{mixARgen}}
+}
+\examples{
+mixAR(coef = list(prob = c(.5,.5), scale = c(1,2), 
+                  arcoef = list(.5, 1.1), shift = c(0,0), order = c(1,1)))
+
+mixAR(template = c(1,1))
+mixAR(coef = list(order = c(1,1))) # same
+
+m2 <- new("mixARGaussian", order = c(3, 2, 1),
+          arcoef = matrix(c(1:3, c(1:2, 0), c(1, 0, 0)), nrow = 3, byrow = TRUE))
+m2a <- mixAR(m2, list(prob = c(0.5, 0.25, 0.25)))
+show_diff(m2, m2a)
+}
 \keyword{methods}
 \keyword{mixAR}

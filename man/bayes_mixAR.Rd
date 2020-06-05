@@ -1,6 +1,6 @@
 \name{bayes_mixAR}
 \alias{bayes_mixAR}
-\title{Bayesian Sampling of Mixture Autoregressive Models}
+\title{Bayesian sampling of mixture autoregressive models}
 \description{
   Samples parameters of a mixture autoregressive model from respective
   posterior distributions.

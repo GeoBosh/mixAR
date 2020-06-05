@@ -5,19 +5,14 @@
 \alias{noise_moment,ANY,ANY-method}
 \alias{noise_moment,mixARGaussian,numeric-method}
 \alias{noise_moment,mixARgen,numeric-method}
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+\title{Compute moments of the noise components}
+\description{Compute moments of the noise components.}
 \usage{
 noise_moment(model, k)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{model}{
-%%     ~~Describe \code{model} here~~
-}
-  \item{k}{
-%%     ~~Describe \code{k} here~~
-}
+  \item{model}{a mixAR model.}
+  \item{k}{which moment to compute?}
 }
 %\details{
 %%%  ~~ If necessary, more details than the description above ~~
@@ -44,8 +39,9 @@ noise_moment(model, k)
 %%  ~~describe this method here~~
 }
 }}
-\examples{
-# todo:
-}
+%\examples{
+%# todo:
+%}
 \keyword{methods}
-\keyword{ mixAR }
+\keyword{mixAR}
+\keyword{internal}

@@ -2,8 +2,10 @@
 \docType{methods}
 \alias{mix_central_moment-methods}
 \alias{mix_central_moment,mixAR,missing,missing,numeric-method}
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+
+\title{Methods for mix_central_moment}
+\description{Methods for \code{mix_central_moment} in package \dQuote{pcts}}
+
 \section{Methods}{
 \describe{
 

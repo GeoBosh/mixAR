@@ -28,14 +28,13 @@ mixARnoise_sim(rdist, z)
 \value{
   a numeric vector
 }
-
-
-
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-
-
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+\seealso{
+  \code{\link{mixAR_sim}}
+}
+\examples{
+## mixAR with 2 components: N(0,1) and t_5
+set.seed = 1234
+z <- sample(2, size = 5, replace = TRUE)
+mixARnoise_sim(list(rnorm, function(n) rt(n, 5)), z)
+}
 \keyword{simulation}

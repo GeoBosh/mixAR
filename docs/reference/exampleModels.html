@@ -249,44 +249,44 @@
 #&gt; [[1]]$logpdf
 #&gt; function (x) 
 #&gt; log(dnorm(x))
-#&gt; &lt;bytecode: 0x55b56de80000&gt;
-#&gt; &lt;environment: 0x55b56de7b820&gt;
+#&gt; &lt;bytecode: 0x558a80ca5978&gt;
+#&gt; &lt;environment: 0x558a80c9c7d8&gt;
 #&gt; 
 #&gt; [[1]]$Fscore
 #&gt; function (x) 
 #&gt; -x
-#&gt; &lt;bytecode: 0x55b56de7f970&gt;
-#&gt; &lt;environment: 0x55b56de7b820&gt;
+#&gt; &lt;bytecode: 0x558a80ca52e8&gt;
+#&gt; &lt;environment: 0x558a80c9c7d8&gt;
 #&gt; 
 #&gt; [[1]]$xFscore
 #&gt; function (x) 
 #&gt; -x^2
-#&gt; &lt;bytecode: 0x55b56de7f3c0&gt;
-#&gt; &lt;environment: 0x55b56de7b820&gt;
+#&gt; &lt;bytecode: 0x558a80caa3b8&gt;
+#&gt; &lt;environment: 0x558a80c9c7d8&gt;
 #&gt; 
 #&gt; [[1]]$Parscore
 #&gt; function () 
 #&gt; 0
-#&gt; &lt;bytecode: 0x55b56de82bd0&gt;
-#&gt; &lt;environment: 0x55b56de7b820&gt;
+#&gt; &lt;bytecode: 0x558a80ca9d98&gt;
+#&gt; &lt;environment: 0x558a80c9c7d8&gt;
 #&gt; 
 #&gt; [[1]]$get_param
 #&gt; function () 
 #&gt; numeric()
-#&gt; &lt;bytecode: 0x55b56de826c8&gt;
-#&gt; &lt;environment: 0x55b56de7b820&gt;
+#&gt; &lt;bytecode: 0x558a80ca9890&gt;
+#&gt; &lt;environment: 0x558a80c9c7d8&gt;
 #&gt; 
 #&gt; [[1]]$set_param
 #&gt; function () 
 #&gt; stop("Standard normal has no parameters to set.")
-#&gt; &lt;bytecode: 0x55b56de82188&gt;
-#&gt; &lt;environment: 0x55b56de7b820&gt;
+#&gt; &lt;bytecode: 0x558a80ca9350&gt;
+#&gt; &lt;environment: 0x558a80c9c7d8&gt;
 #&gt; 
 #&gt; [[1]]$any_param
 #&gt; function () 
 #&gt; param_flag
-#&gt; &lt;bytecode: 0x55b56de81c10&gt;
-#&gt; &lt;environment: 0x55b56de7b820&gt;
+#&gt; &lt;bytecode: 0x558a80ca8dd8&gt;
+#&gt; &lt;environment: 0x558a80c9c7d8&gt;
 #&gt; 
 #&gt; 
 #&gt; </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_ibm_t3v</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
@@ -303,62 +303,62 @@
 #&gt; [[1]]$pdf
 #&gt; function (x) 
 #&gt; dstd(x, nu = nu)
-#&gt; &lt;bytecode: 0x55b56de84e10&gt;
-#&gt; &lt;environment: 0x55b56de81350&gt;
+#&gt; &lt;bytecode: 0x558a80cb3810&gt;
+#&gt; &lt;environment: 0x558a80ca8518&gt;
 #&gt; 
 #&gt; [[1]]$cdf
 #&gt; function (x) 
 #&gt; pstd(x, nu = nu)
-#&gt; &lt;bytecode: 0x55b56de88578&gt;
-#&gt; &lt;environment: 0x55b56de81350&gt;
+#&gt; &lt;bytecode: 0x558a80cb3148&gt;
+#&gt; &lt;environment: 0x558a80ca8518&gt;
 #&gt; 
 #&gt; [[1]]$rand
 #&gt; function (n) 
 #&gt; rstd(n, nu = nu)
-#&gt; &lt;bytecode: 0x55b56de87eb0&gt;
-#&gt; &lt;environment: 0x55b56de81350&gt;
+#&gt; &lt;bytecode: 0x558a80cb2a80&gt;
+#&gt; &lt;environment: 0x558a80ca8518&gt;
 #&gt; 
 #&gt; [[1]]$logpdf
 #&gt; function (x) 
 #&gt; log(dstd(x, nu = nu))
-#&gt; &lt;bytecode: 0x55b56de877e8&gt;
-#&gt; &lt;environment: 0x55b56de81350&gt;
+#&gt; &lt;bytecode: 0x558a80cb23b8&gt;
+#&gt; &lt;environment: 0x558a80ca8518&gt;
 #&gt; 
 #&gt; [[1]]$Fscore
 #&gt; function (x) 
 #&gt; -x * (1 + nu)/(x^2 + nu - 2)
-#&gt; &lt;bytecode: 0x55b56de870b0&gt;
-#&gt; &lt;environment: 0x55b56de81350&gt;
+#&gt; &lt;bytecode: 0x558a80cb1c80&gt;
+#&gt; &lt;environment: 0x558a80ca8518&gt;
 #&gt; 
 #&gt; [[1]]$xFscore
 #&gt; function (x) 
 #&gt; -x^2 * (1 + nu)/(x^2 + nu - 2)
-#&gt; &lt;bytecode: 0x55b56de8a460&gt;
-#&gt; &lt;environment: 0x55b56de81350&gt;
+#&gt; &lt;bytecode: 0x558a80cb80d0&gt;
+#&gt; &lt;environment: 0x558a80ca8518&gt;
 #&gt; 
 #&gt; [[1]]$Parscore
 #&gt; function (x) 
 #&gt; param_score_stdt(x, nu)
-#&gt; &lt;bytecode: 0x55b56de89820&gt;
-#&gt; &lt;environment: 0x55b56de81350&gt;
+#&gt; &lt;bytecode: 0x558a80cb75a8&gt;
+#&gt; &lt;environment: 0x558a80ca8518&gt;
 #&gt; 
 #&gt; [[1]]$get_param
 #&gt; function () 
 #&gt; nu
-#&gt; &lt;bytecode: 0x55b56de89190&gt;
-#&gt; &lt;environment: 0x55b56de81350&gt;
+#&gt; &lt;bytecode: 0x558a80cb6f18&gt;
+#&gt; &lt;environment: 0x558a80ca8518&gt;
 #&gt; 
 #&gt; [[1]]$set_param
 #&gt; function (x) 
 #&gt; nu &lt;&lt;- x
-#&gt; &lt;bytecode: 0x55b56de88c50&gt;
-#&gt; &lt;environment: 0x55b56de81350&gt;
+#&gt; &lt;bytecode: 0x558a80cbbc28&gt;
+#&gt; &lt;environment: 0x558a80ca8518&gt;
 #&gt; 
 #&gt; [[1]]$any_param
 #&gt; function () 
 #&gt; param_flag
-#&gt; &lt;bytecode: 0x55b56de8c4d0&gt;
-#&gt; &lt;environment: 0x55b56de81350&gt;
+#&gt; &lt;bytecode: 0x558a80cbb678&gt;
+#&gt; &lt;environment: 0x558a80ca8518&gt;
 #&gt; 
 #&gt; 
 #&gt; </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_ibm_tf</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)

@@ -179,33 +179,33 @@ ISSN 03195724, doi: <a href='https://doi.org/10.1002/cjs.5550350112'>10.1002/cjs
 <span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixVARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>prob</span>, <span class='kw'>vcov</span> <span class='kw'>=</span> <span class='no'>Sigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>AR</span>, <span class='kw'>shift</span> <span class='kw'>=</span> <span class='no'>shift</span>)
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixVAR_sim.html'>mixVAR_sim</a></span>(<span class='no'>m</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>,<span class='fl'>3</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>flag</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>mixVARfit</span>(<span class='no'>y</span>, <span class='no'>m</span>, <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fl'>10</span>^-<span class='fl'>6</span>)</div><div class='output co'>#&gt; niter: 25 	vallogf: -2380.11 </div><div class='output co'>#&gt; $model
+<span class='fu'>mixVARfit</span>(<span class='no'>y</span>, <span class='no'>m</span>, <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fl'>10</span>^-<span class='fl'>6</span>)</div><div class='output co'>#&gt; niter: 25 	vallogf: -2148.617 </div><div class='output co'>#&gt; $model
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
 #&gt; An object of class "mixVARGaussian"
 #&gt; Number of components: 2 
 #&gt; Number of series: 3 
-#&gt;           prob       shift order        ar_1                               vcov
-#&gt; Comp_1 0.71608 -0.09353062     1  0.51561572 -0.014725061  0.3707659  1.0615840
-#&gt;                -0.05341461       -0.25757624 -0.005136189  0.5002469  0.5007775
-#&gt;                 0.19589391       -0.62323339  0.517398132 -0.2976830 -0.3258831
-#&gt; Comp_2 0.28392  0.09728988     1 -0.51037371  0.959050944 -0.4377638  1.1701149
-#&gt;                -0.06480032        0.34178938  0.011680350 -0.1672338  0.2820055
-#&gt;                -0.10351943        0.07106622 -0.518795562  0.5807097  0.1609566
+#&gt;             prob       shift order       ar_1                              vcov
+#&gt; Comp_1 0.7204684 -0.08234852     1  0.4609491  0.02249415  0.3803267  0.9724553
+#&gt;                  -0.16881478       -0.2794184 -0.02215998  0.5193247  0.3666657
+#&gt;                  -0.04249775       -0.6679030  0.43693055 -0.2654318 -0.2306374
+#&gt; Comp_2 0.2795316  0.27758745     1 -0.5337581  1.03939893 -0.3615233  1.0874426
+#&gt;                  -0.15550857        0.2321784  0.10205583 -0.1650359  0.2613481
+#&gt;                  -0.24863931        0.1871764 -0.51304535  0.6399729 -0.2175176
 #&gt;                             
-#&gt; Comp_1  0.5007775 -0.3258831
-#&gt;         1.6306777  0.7720903
-#&gt;         0.7720903  3.8258741
-#&gt; Comp_2  0.2820055  0.1609566
-#&gt;         2.1170483 -0.3208873
-#&gt;        -0.3208873  3.3933158
+#&gt; Comp_1  0.3666657 -0.2306374
+#&gt;         1.6958397  0.8282436
+#&gt;         0.8282436  3.4805781
+#&gt; Comp_2  0.2613481 -0.2175176
+#&gt;         2.0796654 -0.1338421
+#&gt;        -0.1338421  3.3419313
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	Multivariate standard Gaussian
 #&gt; 
 #&gt; 
 #&gt; $vallogf
-#&gt; [1] -2380.198
+#&gt; [1] -2148.644
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -1,6 +1,6 @@
 \name{label_switch}
 \alias{label_switch}
-\title{A posteriori relabelling of a Markov Chain}
+\title{A posteriori relabelling of a Markov chain}
 \description{
   Takes the output from a MCMC simulation of parameters of a mixture,
   and detects whether labels switch has occured while sampling, using

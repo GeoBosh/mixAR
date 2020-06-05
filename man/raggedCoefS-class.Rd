@@ -16,7 +16,7 @@
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Class "raggedCoefS" --- ragged list
+Class \code{"raggedCoefS"} --- ragged list
 }
 \description{
 Ragged list used to hold coefficients of mixAR models with seasonal AR parameters.

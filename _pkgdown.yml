@@ -3,9 +3,7 @@ reference:
   - title: "mixAR overview"
     contents:
       - "mixAR-package"
-      - "exampleModels"
-      - "show_diff"
-  - title: "EM and Bayesian estimation of Mixture autoregressive models"
+  - title: "EM and Bayesian estimation of mixture autoregressive models"
     desc: >
       Fit mixture autoregressive models using the EM algorithm or MCMC.
     contents:
@@ -16,13 +14,39 @@ reference:
       - "mixAR_diag"
       - "mixAR_BIC"
       - "bayes_mixAR"
-  - title: "Simulation of mixAR time series"
+      - "mix_se-methods"
+  - title: "Prediction"
     desc: >
-      mixAR simulation 
+      Predictive distributions and their summary statistics
+    contents:
+      - "mix_pdf-methods"
+      - "mix_moment"
+      - "multiStep_dist-methods"
+  - title: "Simulation of mixAR time series"
     contents:
       - "mixARnoise_sim"
       - "mixAR_sim"
-  - title: "Bayesian utilities for MixAR models"
+  - title: "mixAR models"
+    contents:
+      - "mixARGaussian-class"
+      - "mixARgen-class"
+      - "mixAR-class"
+      - "mixAR"
+      - "exampleModels"
+      - "show_diff"
+      - "make_fcond_lik-methods"
+      - "get_edist-methods"
+      - "mix_ncomp-methods"
+      - "row_lengths-methods"
+  - title: "Multivariate mixAR (mixVAR) models"
+    contents:
+      - "mixVAR_sim"
+      - "mixVARfit"
+      - "mixVAR-class"
+      - "mixVARGaussian-class"
+      - "fit_mixVAR-methods"
+      - "raggedCoefV-class"
+  - title: "Bayesian utilities for mixAR models"
     contents:
       - "Choose_pk"
       - "sampZpi"
@@ -34,7 +58,6 @@ reference:
     contents:
       - "dist_norm"
       - "fnoise"
-      - "mix_moment"
       - "noise_dist"
       - "stdnormmoment"
   - title: "mixAR parameters"
@@ -48,25 +71,6 @@ reference:
       - mixAR_switch
       - predict_coef
       - tomarparambyComp
-  - title: "mixAR models"
-    desc: >
-      mixAR models.
-    contents:
-      - "make_fcond_lik-methods"
-      - "get_edist-methods"
-      - mixAR
-      - "mixAR-class"
-      - "mixARGaussian-class"
-      - "mixARgen-class"
-      - "mix_central_moment-methods"
-      - "mix_location-methods"
-      - "mix_moment-methods"
-      - "mix_ncomp-methods"
-      - "mix_pdf-methods"
-      - "mix_se-methods"
-      - "mix_variance-methods"
-      - "multiStep_dist-methods"
-      - "row_lengths-methods"
   - title: "Operators and functions"
     desc: >
       Operators and functions for computations with components of mixAR models.
@@ -90,15 +94,6 @@ reference:
       - "mix_hatk"
       - "raghat1"
       
-  - title: "multivariate mixAR (mixVAR)"
-    contents:
-      - "mixVAR_sim"
-      - "mixVARfit"
-      - "mixVAR-class"
-      - "mixVARGaussian-class"
-      - "fit_mixVAR-methods"
-      - "raggedCoefV-class"
-
   - title: "EM and other utilities for mixAR models"
     desc: >
       EM and other utilities for mixAR models. 
@@ -132,6 +127,12 @@ reference:
   - title: "Datasets"
     contents:
       - "PortfolioData1"
+  - title: "Other methods"
+    contents:
+      - "mix_location-methods"
+      - "mix_moment-methods"
+      - "mix_central_moment-methods"
+      - "mix_variance-methods"
   - title: "Internal utility functions"
     contents:
       - "adjustLengths"

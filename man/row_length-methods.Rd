@@ -6,7 +6,7 @@
 \alias{row_lengths,ANY-method}
 \alias{row_lengths,mixAR-method}
 \alias{row_lengths,raggedCoef-method}
-\title{ Methods for Function row_lengths in Package `mixAR'}
+\title{ Methods for function \code{row_lengths} in package \pkg{mixAR}}
 \description{
   Determine the lengths of the `rows' of a ragged object.
 }

@@ -8,13 +8,13 @@
 % \alias{mix_ek,mixAR,numeric,missing,numeric,logical-method}
 % \alias{mix_hatk,mixAR,numeric,numeric,missing-method}
 
-\title{Class "mixAR" --- mixture autoregressive models }
+\title{Class \code{"mixAR"} --- mixture autoregressive models }
 \description{Mixture autoregressive models}
 \section{Objects from the Class}{
   A virtual Class: No objects can be created from it.
 
   Derived classes add distribution properties, e.g. use
-  \code{\linkS4class{mixARGaussian}} for MixAR models with Gaussian
+  \code{\linkS4class{mixARGaussian}} for mixAR models with Gaussian
   error components.
 }
 \section{Slots}{

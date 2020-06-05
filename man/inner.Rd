@@ -9,7 +9,7 @@
 \alias{inner,mixComp,numeric,ANY,ANY-method}
 \alias{inner,mixComp,numeric,ANY,missing-method}
 \title{
-  Generalised inner product and methods for class mixComp
+  Generalised inner product and methods for class \code{"mixComp"}
 }
 \description{
   Generalised inner product and methods for class mixComp. The methods

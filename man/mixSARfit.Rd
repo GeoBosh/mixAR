@@ -4,33 +4,33 @@
   Fit mixture autoregressive models with seasonal AR parameters
 }
 \description{
-  Provides estimation via EM-Algorithm for Mixture Autoregressive Models
+  Provides estimation via EM-Algorithm for mixture autoregressive models
   including seasonal AR parameters.
 }
 \usage{
 mixSARfit(y, model, est_shift = FALSE, tol = 10^-14)
 }
 \arguments{
-  \item{y}{A time series (currently a numeric vector).}
+  \item{y}{a time series (currently a numeric vector).}
   \item{model}{
-    An object of class "mixAR" including seasonality components.
+    an object of class \code{"mixAR"} including seasonal components.
   }
   \item{est_shift}{
-    If missing of \code{FALSE}, fix the intercepts to zero, estimate
-    them otherwise.
+    if missing or \code{FALSE}, fix the intercepts to zero, otherwise
+    estimate them.
   }
-  \item{tol}{Threshold for stopping criterion.}
+  \item{tol}{threshold for stopping criterion.}
 }
 \details{
 
-  This function only works for "mixAR" objects in which slot
-  \code{arcoef} is of class \code{raggedCoefS}.
+  This function only works for \code{"mixAR"} objects in which slot
+  \code{arcoef} is of class \code{"raggedCoefS"}.
 
 }
 \value{A list of 2:
-  \item{model}{An object of class "mixAR". The estimated model.}
+  \item{model}{an object of class \code{"mixAR"}. The estimated model.}
   \item{vallogf}{
-    The value of the loglikelihood function for the returned model.
+    the value of the loglikelihood function for the returned model.
   }
 }
 %\references{

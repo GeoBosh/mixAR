@@ -136,6 +136,10 @@ test_that("exampleModels is consistent with the old moWL objects", {
     expect_equal(moWLtf,  exampleModels$WL_ibm_tf)
 
     expect_equal(moT_A , exampleModels$WL_At  )
+    # TODO: could do (see covr issues #423 and #436):
+    #     testthat::skip_if(in_covr())
+    # instead of commenting out.
+    #
     # expect_equal(moT_B , exampleModels$WL_Bt_1) #139 (see below for the reasons of commenting out these))
     expect_equal(moT_B2, exampleModels$WL_Bt_2)
     expect_equal(moT_B3, exampleModels$WL_Bt_3)

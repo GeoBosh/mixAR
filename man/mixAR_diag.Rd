@@ -4,20 +4,22 @@
 \alias{tsdiag.mixARGaussian}
 
 \title{
-  Diagnostic checks for Mixture Autoregressive Models
+  Diagnostic checks for mixture autoregressive models
 }
 \description{
   Perform diagnostic checks and tests on given \code{mixARGaussian}
   object with respect to a given time series.
 }
 \usage{
-mixAR_diag(model, y, ask = interactive())
 \method{tsdiag}{mixARGaussian}(object, gof.lag, y, ask = interactive(), ...)
+
+mixAR_diag(model, y, ask = interactive())
 }
 \arguments{
   \item{model,object}{
-    An object of class \code{mixAR}. Alternatively an output list from
-    \code{fit_mixAR}. The model on which to perform the checks.
+    the model on which to perform the checks, an object from class
+    \code{mixAR}. \code{model} can also be the output list from
+    \code{fit_mixAR}.
   }
   \item{gof.lag}{
     how many lags to compute for acf and pacf? The default is as that of
@@ -29,6 +31,13 @@ mixAR_diag(model, y, ask = interactive())
 }
 \details{
 
+  It is recommended to use \code{tsdiag}.  \code{mixAR_diag} is
+  essentially deprecated and is still here for compatibility with old
+  code. Moreover, the \code{tsdiag} method is more flexible. The only
+  advantage of \code{mixAR_diag} is that it accepts also a list for
+  argument \code{model} but this is equivalent to calling \code{tsdiag}
+  with \code{object = model$model}.
+
   The function calculates two types of residuals. The first set
   calculates residuals as of canonical definition.  ACF and Partial ACF
   plots are given.
@@ -36,16 +45,25 @@ mixAR_diag(model, y, ask = interactive())
   Transformations on the data are performed, as described in Smith
   (1985).
 
-  List of tests is as follows:
+  The following tests are available:
 
-  - Ljung-Box test is applied to \code{residuals}, checking for residual
-  correlation up to lag 20.
+  \describe{
 
-  - Kolmogorov-Smirnov test is applied to \code{U} to assess the hypothesis 
-  of uniform distribution.
+    \item{Ljung-Box test}{
+      is applied to \code{residuals}, checking for residual correlation
+      up to lag 20.
+    }
 
-  - Shapiro-Wilk test of Normality is applied to \code{V},
-  where \code{V = qnorm(U)}
+    \item{Kolmogorov-Smirnov test}{
+      is applied to \code{U} to assess the hypothesis of uniform
+      distribution.
+    }
+
+    \item{
+      Shapiro-Wilk test of Normality}{ is applied to \code{V}, where
+      \code{V = qnorm(U)}.
+    }
+  }
 
   The second set is calculated as the component specific residual
   \code{e_tk} divided by its corresponding scale \code{sigma_k},

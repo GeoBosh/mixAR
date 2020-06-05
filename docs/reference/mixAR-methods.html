@@ -130,8 +130,8 @@
       <td>
     
 <p>an object to be used as a template for the new object, typically
-    inheriting from "mixAR". Altenatively, missing or a numeric vector
-    specifying the order of the mixAR model, see Details.</p>
+    inheriting from <code>"mixAR"</code>. Alternatively, missing or a numeric
+    vector specifying the order of the mixAR model, see Details.</p>
 <p></p></td>
     </tr>
     <tr>
@@ -189,7 +189,52 @@
 <dt><code>signature(template = "mixAR")</code></dt><dd><p><!-- %%  ~~describe this method here~~ --></p></dd>
 
 </dl>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
+    <div class='dont-index'><p>class <code><a href='mixARGaussian-class.html'>mixARGaussian</a></code>,
+	class <code><a href='mixARgen-class.html'>mixARgen</a></code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>mixAR</span>(<span class='kw'>coef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.5</span>,<span class='fl'>.5</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>),
+                  <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>.5</span>, <span class='fl'>1.1</span>), <span class='kw'>shift</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>0</span>), <span class='kw'>order</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>1</span>)))</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
+#&gt; 
+#&gt; An object of class "mixARGaussian"
+#&gt; Number of components: 2 
+#&gt;        prob shift scale order ar_1
+#&gt; Comp_1 0.5    0     1     1   0.5 
+#&gt; Comp_2 0.5    0     2     1   1.1 
+#&gt; 
+#&gt; Distributions of the error components:
+#&gt; 	standard Gaussian
+#&gt; </div><div class='input'>
+<span class='fu'>mixAR</span>(<span class='kw'>template</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>1</span>))</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
+#&gt; 
+#&gt; An object of class "mixARGaussian"
+#&gt; Number of components: 2 
+#&gt;        prob shift scale order ar_1
+#&gt; Comp_1  NA   NA    NA     1    NA 
+#&gt; Comp_2  NA   NA    NA     1    NA 
+#&gt; 
+#&gt; Distributions of the error components:
+#&gt; 	standard Gaussian
+#&gt; </div><div class='input'><span class='fu'>mixAR</span>(<span class='kw'>coef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>order</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>1</span>))) <span class='co'># same</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
+#&gt; 
+#&gt; An object of class "mixARGaussian"
+#&gt; Number of components: 2 
+#&gt;        prob shift scale order ar_1
+#&gt; Comp_1  NA   NA    NA     1    NA 
+#&gt; Comp_2  NA   NA    NA     1    NA 
+#&gt; 
+#&gt; Distributions of the error components:
+#&gt; 	standard Gaussian
+#&gt; </div><div class='input'>
+<span class='no'>m2</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"mixARGaussian"</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>1</span>),
+          <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>, <span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>)), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
+<span class='no'>m2a</span> <span class='kw'>&lt;-</span> <span class='fu'>mixAR</span>(<span class='no'>m2</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>0.25</span>, <span class='fl'>0.25</span>)))
+<span class='fu'><a href='show_diff.html'>show_diff</a></span>(<span class='no'>m2</span>, <span class='no'>m2a</span>)</div><div class='output co'>#&gt;        prob shift scale order ar_1 ar_2 ar_3
+#&gt; Comp_1  NA    0     0     3     0    0    0 
+#&gt; Comp_2  NA    0     0     2     0    0      
+#&gt; Comp_3  NA    0     0     1     0           </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

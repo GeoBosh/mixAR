@@ -8,7 +8,7 @@
 % \alias{mix_ek,mixAR,numeric,missing,numeric,logical-method}
 % \alias{mix_hatk,mixAR,numeric,numeric,missing-method}
 
-\title{Class "mixVAR" --- mixture vector autoregressive models }
+\title{Class \code{"mixVAR"} --- mixture vector autoregressive models }
 \description{Mixture vector autoregressive models}
 \section{Objects from the Class}{
   A virtual Class: No objects may be created from it.

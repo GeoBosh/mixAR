@@ -3,8 +3,10 @@
 %\alias{mix_moment}
 \alias{mix_moment-methods}
 \alias{mix_moment,mixAR,missing,missing,numeric-method}
-\title{~~ Dummy title ~~}
-\description{~~ Dummy description ~~}
+
+\title{Methods for mix_moment}
+\description{Methods for \code{mix_moment} in package \pkg{pcts}}
+
 \section{Methods}{
 \describe{
 

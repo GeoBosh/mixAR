@@ -39,7 +39,7 @@
 \alias{length,raggedCoef-method}
 
 \title{
-  Class "raggedCoef" --- ragged list objects
+  Class \code{"raggedCoef"} --- ragged list objects
 }
 \description{
 

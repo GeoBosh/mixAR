@@ -4,9 +4,9 @@
 \alias{noise_dist,mixAR-method}
 \alias{noise_dist,mixARGaussian-method}
 \alias{noise_dist,mixARgen-method}
-\title{ ~~ Methods for Function \code{noise_dist} in Package \pkg{mixAR} ~~}
+\title{ Methods for function \code{noise_dist} in package \pkg{mixAR} }
 \description{
- ~~ Methods for function \code{noise_dist} in package \pkg{mixAR} ~~
+  Methods for function \code{noise_dist} in package \pkg{mixAR}
 }
 \section{Methods}{
 \describe{

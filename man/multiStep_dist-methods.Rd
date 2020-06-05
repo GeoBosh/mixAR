@@ -5,7 +5,7 @@
 \alias{multiStep_dist,mixAR,numeric,numeric,numeric-method}
 \alias{multiStep_dist,mixARGaussian,numeric,missing,missing-method}
 \alias{multiStep_dist,mixARGaussian,numeric,missing,ANY-method}
-\title{Multi-step predcitions for mixAR models}
+\title{Multi-step predictions for mixAR models}
 \description{Multi-step predictions for mixAR models.}
 \usage{
 multiStep_dist(model, maxh, N, xcond, ...)
@@ -138,13 +138,14 @@ dist <- multiStep_dist(exampleModels$WL_ibm, maxh = 3)
 
 tfpdf <- dist(3, "pdf", xcond = c(560, 600)) # xcond is argument to 'dist' here
 tfcdf <- dist(3, "cdf", xcond = c(560, 600))
-## plot the pdf
+## plot the pdf (gbutils::plotpdf determines suitable range automatically)
 gbutils::plotpdf(tfpdf, cdf = tfcdf)
 
 dist(3, "pdf", xcond = c(500, 400))
 
 ## use a simulation method with N = 1000
 tf  <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, N = 1000, xcond = c(560, 600))
+args(tf) # (h, what, ...)
 
 ## the exact method may also be used with fixed xcond:
 tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(560, 600))
@@ -174,7 +175,7 @@ curve(tf1000pdf, add = TRUE, col = "red")
 
 ## get the raw data
 tfs <- tf(1, "sampled")
-apply(tfs, 1, mean) # location for lags from 1 to maxh (here 3)
+apply(tfs, 2, mean) # location for lags from 1 to maxh (here 3)
 
 tf(1, "location")
 tf(1, "variance")

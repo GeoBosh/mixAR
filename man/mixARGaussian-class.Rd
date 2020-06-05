@@ -11,7 +11,8 @@
 % \alias{mix_pdf,mixARGaussian,missing,missing,numeric-method}
 
 \title{mixAR models with Gaussian noise components}
-\description{Class mixARGaussian represents mixAR models with Gaussian
+\description{
+  Class \code{"mixARGaussian"} represents mixAR models with Gaussian
   noise components.
 }
 \section{Objects from the Class}{

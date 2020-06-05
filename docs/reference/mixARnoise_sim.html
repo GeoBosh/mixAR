@@ -149,7 +149,15 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a numeric vector</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
+    <div class='dont-index'><p><code><a href='mixAR_sim.html'>mixAR_sim</a></code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>## mixAR with 2 components: N(0,1) and t_5</span>
+<span class='no'>set.seed</span> <span class='kw'>=</span> <span class='fl'>1234</span>
+<span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>2</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>mixARnoise_sim</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>rnorm</span>, <span class='kw'>function</span>(<span class='no'>n</span>) <span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>rt</a></span>(<span class='no'>n</span>, <span class='fl'>5</span>)), <span class='no'>z</span>)</div><div class='output co'>#&gt; [1] -0.21463623 -0.81492512 -0.04607015  0.82883573 -0.64352543</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

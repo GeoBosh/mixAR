@@ -3,9 +3,9 @@
 \alias{noise_params-methods}
 \alias{noise_params,mixAR-method}
 \alias{noise_params,mixARgen-method}
-\title{ ~~ Methods for Function \code{noise_params} in Package \pkg{mixAR} ~~}
+\title{ Methods for function \code{noise_params} in package \pkg{mixAR} }
 \description{
- ~~ Methods for function \code{noise_params} in package \pkg{mixAR} ~~
+  Methods for function \code{noise_params} in package \pkg{mixAR}
 }
 \section{Methods}{
 \describe{
