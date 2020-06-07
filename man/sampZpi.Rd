@@ -78,52 +78,55 @@ sampSigmaTau(y, pk, prec, nk, AR, mu, z, a, c, nsim)
   
 }
 \value{
-    
-    \strong{TODO: \code{@Davide}:}
-    Please give the full dimensions of the matrices. If more explanation
-    is needed, do it in Details section. Running the examples below I get:
-    \preformatted{
-        > sapply(x, dim)
-        $mix_weights
-        [1] 100   2
-        
-        $latentZ
-        [1] 499   2
-        
-        $nk
-        NULL
-    }
-
 
   for \code{sampZpi}, a list containing the following elements:
+  
   \item{mix_weights}{
-    \code{g} column matrix with sampled mixing weights.
+   \code{matrix} with \code{nrow = nsim} and \code{ncol = g}: 
+   sampled mixing weights.
   }
+  
   \item{latentZ}{
-    a matrix containing the simulated latent variables (functional).
+    \code{matrix} with \code{nrow = n - p} and \code{ncol = g}, \code{n} equal to
+    \code{length(y)} and \code{p} equal to \code{max(pk}: 
+    the simulated latent variables \code{Z_t} at the last of \code{nsim} iterations 
+    (functional). Specifically, each row contains \code{1} for exactly 
+    one component, and is filled with \code{0}. 
+    
   }
+  
   \item{nk}{
-    vector of length \code{g}. Component sum of latent variables \code{Z_t}.
+    Vector of length \code{g}. Column sums of \code{latentZ}.
   }
 
   for \code{sampMuShift}, a list containing the following elements:
+  
   \item{shift}{
-    \code{g} column matrix of shifts, obtained by transformation of the
+    \code{matrix} with \code{nrow = nsim} and \code{ncol = g}: 
+    simulated shift parameters, obtained by transformation of the
     means.
   }
-  \item{mu}{\code{g} column matrix of means.}
+  
+  \item{mu}{
+  \code{matrix} with \code{nrow = nsim} and \code{ncol = g}:
+  simulated mean parameters.}
 
   for \code{sampSigmaTau}, a list containing the following elements:
+  
   \item{scale}{
-    \code{g} column matrix of scale parameters, obtained by transformation
+    \code{matrix} with \code{nrow = nsim} and \code{ncol = g}: 
+    scale parameters, obtained by transformation
     of precisions.
   }
+  
   \item{precision}{
-    \code{g} column matrix of precision parameters.
+    \code{matrix} with \code{nrow = nsim} and \code{ncol = g}: 
+    precision parameters.
   }
+  
   \item{lambda}{
-    a vector of simulated values of hyperparameter lambda, due to
-    hierarchical setup.
+    \code{numeric} vector of length \code{nsim} simulated values 
+    of hyperparameter lambda, due to hierarchical setup.
   }
 }
 %\references{

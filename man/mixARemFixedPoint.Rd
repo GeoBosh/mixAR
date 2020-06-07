@@ -63,7 +63,7 @@ mixARgenemFixedPoint(y, model, crit = 1e-14, maxniter = 200,
 % %%  ~~further notes~~
 % }
 %% ~Make other sections like Warning with \section{Warning }{....} ~
-\section{Todo}{
+\section{Note}{
   This function was not intended to be called directly by the user
   (hence the inconvenient name).
 
@@ -71,8 +71,9 @@ mixARgenemFixedPoint(y, model, crit = 1e-14, maxniter = 200,
 }
 \seealso{
   \code{\link{fit_mixAR}} which uses these functions for estimation,
-  \code{\linkS4class{MixARGaussian}},
-  \code{\linkS4class{MixARgen}}
+  classes
+  \code{"\linkS4class{MixARGaussian}"},
+  \code{"\linkS4class{MixARgen}"}
 }
 \examples{
 ## data(ibmclose, package = "fma") # ibm data from BJ

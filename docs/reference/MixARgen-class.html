@@ -127,7 +127,7 @@
     <h2 class="hasAnchor" id="objects-from-the-class"><a class="anchor" href="#objects-from-the-class"></a>Objects from the Class</h2>
 
     <p>Objects can be created by calls of the form <code>new("MixARgen",
-  dist, ...)</code>  or <code><a href='mixARgen-class.html'>mixARgen(...)</a></code>. The two forms are completely
+  dist, ...)</code>  or <code>mixARgen(...)</code>. The two forms are completely
   equivalent. The latter is available from version 0.19-15 of package
   MixAR.
 <!-- %%  ~~ describe objects here ~~ --></p>
@@ -142,7 +142,7 @@
       element <code>dist</code> of the list.      If the distributions do contain parameters the recommended
       arrangement is to give a list with components <code>generator</code> and
       <code>param</code>, such that a call <code>generator(param)</code> should
-      produce the required list of distributions.      todo: this is not finalised but if changed, backward compatibility
+      produce the required list of distributions.      This is not finalised but if changed, backward compatibility
       with existing objects will be maintained.</p></dd>
     <dt><code>prob</code>:</dt><dd><p>Object of class <code>"numeric"</code> ~~</p></dd>
     <dt><code>order</code>:</dt><dd><p>Object of class <code>"numeric"</code> ~~</p></dd>
@@ -154,7 +154,7 @@
 
     <h2 class="hasAnchor" id="extends"><a class="anchor" href="#extends"></a>Extends</h2>
 
-    <p>Class <code>"MixAR"</code>, directly.</p>
+    <p>Class <code>"<a href='MixAR-class.html'>MixAR</a>"</code>, directly.</p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     <p></p><dl'>
@@ -203,44 +203,44 @@
 #&gt; [[1]]$logpdf
 #&gt; function (x) 
 #&gt; log(dnorm(x))
-#&gt; &lt;bytecode: 0x55711d2b9598&gt;
-#&gt; &lt;environment: 0x55711d2ae968&gt;
+#&gt; &lt;bytecode: 0x55f2d5da3de0&gt;
+#&gt; &lt;environment: 0x55f2d5d9d590&gt;
 #&gt; 
 #&gt; [[1]]$Fscore
 #&gt; function (x) 
 #&gt; -x
-#&gt; &lt;bytecode: 0x55711d2b8f08&gt;
-#&gt; &lt;environment: 0x55711d2ae968&gt;
+#&gt; &lt;bytecode: 0x55f2d5da3750&gt;
+#&gt; &lt;environment: 0x55f2d5d9d590&gt;
 #&gt; 
 #&gt; [[1]]$xFscore
 #&gt; function (x) 
 #&gt; -x^2
-#&gt; &lt;bytecode: 0x55711d2b8958&gt;
-#&gt; &lt;environment: 0x55711d2ae968&gt;
+#&gt; &lt;bytecode: 0x55f2d5da31a0&gt;
+#&gt; &lt;environment: 0x55f2d5d9d590&gt;
 #&gt; 
 #&gt; [[1]]$Parscore
 #&gt; function () 
 #&gt; 0
-#&gt; &lt;bytecode: 0x55711d2bd6a8&gt;
-#&gt; &lt;environment: 0x55711d2ae968&gt;
+#&gt; &lt;bytecode: 0x55f2d5da6b70&gt;
+#&gt; &lt;environment: 0x55f2d5d9d590&gt;
 #&gt; 
 #&gt; [[1]]$get_param
 #&gt; function () 
 #&gt; numeric()
-#&gt; &lt;bytecode: 0x55711d2bd1a0&gt;
-#&gt; &lt;environment: 0x55711d2ae968&gt;
+#&gt; &lt;bytecode: 0x55f2d5da6668&gt;
+#&gt; &lt;environment: 0x55f2d5d9d590&gt;
 #&gt; 
 #&gt; [[1]]$set_param
 #&gt; function () 
 #&gt; stop("Standard normal has no parameters to set.")
-#&gt; &lt;bytecode: 0x55711d2bcc60&gt;
-#&gt; &lt;environment: 0x55711d2ae968&gt;
+#&gt; &lt;bytecode: 0x55f2d5da6128&gt;
+#&gt; &lt;environment: 0x55f2d5d9d590&gt;
 #&gt; 
 #&gt; [[1]]$any_param
 #&gt; function () 
 #&gt; param_flag
-#&gt; &lt;bytecode: 0x55711d2bc6e8&gt;
-#&gt; &lt;environment: 0x55711d2ae968&gt;
+#&gt; &lt;bytecode: 0x55f2d5da5bb0&gt;
+#&gt; &lt;environment: 0x55f2d5d9d590&gt;
 #&gt; 
 #&gt; </div><div class='input'><span class='fu'><a href='noise_dist.html'>noise_dist</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='st'>"cdf"</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "pnorm"
@@ -288,8 +288,8 @@
 <span class='fu'><a href='noise_dist.html'>noise_dist</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='st'>"Fscore"</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; function (x) 
 #&gt; -x
-#&gt; &lt;bytecode: 0x55711d2b8f08&gt;
-#&gt; &lt;environment: 0x55711d2ae968&gt;
+#&gt; &lt;bytecode: 0x55f2d5da3750&gt;
+#&gt; &lt;environment: 0x55f2d5d9d590&gt;
 #&gt; </div><div class='input'>
 <span class='no'>prob</span>   <span class='kw'>&lt;-</span> <span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>@<span class='kw'>prob</span>
 <span class='no'>scale</span>  <span class='kw'>&lt;-</span> <span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>@<span class='kw'>scale</span>

@@ -25,7 +25,7 @@
 
   \code{arcoef} contains the AR coefficients, one numeric array for
   each mixture component. It can be given as a
-  \code{\linkS4class{raggedCoefV}} object or as a list of numeric
+  \code{"\linkS4class{raggedCoefV}"} object or as a list of numeric
   arrays.
 
   The AR order of the model is inferred from \code{arcoef}
@@ -80,7 +80,7 @@ Class \code{"\linkS4class{MixAR}"}, directly.
 
 \seealso{
   %	~~objects to See Also as \code{\link{~~fun~~}}, ~~~
-  \code{\linkS4class{MixAR}}
+  class \code{"\linkS4class{MixAR}"}
 }
 \examples{
 showClass("MixVARGaussian")

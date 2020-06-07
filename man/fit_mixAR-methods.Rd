@@ -79,8 +79,8 @@ fit_mixAR(x, model, init, fix, ...)
     \code{init} may be from different classes, to allow for example
     using AR coefficients from a Gaussian fit for other distributions.
 
-    TODO: this method is not finished, see the source code for further
-    comments. 
+    % TODO: this method is not finished, see the source code for further
+    % comments. 
 
   }
 

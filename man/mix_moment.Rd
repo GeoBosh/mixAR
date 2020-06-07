@@ -51,8 +51,9 @@ mix_ekurtosis(...)
 }
 \author{Georgi N. Boshnakov}
 \note{
-  \strong{TODO:} verify the above description. I wrote it recently
-  from reading six years old code. 
+  % \strong{TODO:}
+  I wrote the above description recently from reading six years old
+  code, it may need further verification. 
 }
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

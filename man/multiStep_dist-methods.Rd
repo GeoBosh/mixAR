@@ -56,9 +56,9 @@ multiStep_dist(model, maxh, N, xcond, ...)
   call \code{multiStep_dist} again.
 
   If \code{xcond} is missing \code{multiStep_dist} returns a function
-  with arguments \code{h}, \code{what} and \code{xcond}. (todo:) This
-  case is currently available only for the exact method.  If
-  \code{xcond} is supplied, then it is fixed to that value and the
+  with arguments \code{h}, \code{what} and \code{xcond}.
+  % (todo:) This case is currently available only for the exact method.
+  If \code{xcond} is supplied, then it is fixed to that value and the
   arguments of the returned function are \code{h}, \code{what} and
   \code{'...'}. The dots argument is currently used in the case of the
   simulation method, see below.
@@ -68,7 +68,8 @@ multiStep_dist(model, maxh, N, xcond, ...)
   number in the interval \eqn{[1,maxh]}. Argument \code{what} is the
   required property of the predictive distribution for lag
   \code{h}. If \code{what} is a function, it is applied to the simulated
-  sample for the requested horizon (todo: currently available only for
+  sample for the requested horizon (% todo:
+  currently available only for
   the simulation method). If \code{what} is a character string, the
   corresponding property of the predictive distribution for horizon
   \code{h} is returned.

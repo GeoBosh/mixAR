@@ -178,11 +178,6 @@ Ph.D. thesis, University of Hong Kong, Hong Kong .</p>
 
 <span class='co'>## data(ibmclose, package = "fma")</span>
 
-<span class='co'>## Wong&amp;Li estimates as starting values</span>
-<span class='co'>## TODO: @Davide - can you give exact reference (paper, page)</span>
-<span class='co'>##                 To me 0.5339 below seems different from WongLi; 0.5439?.</span>
-<span class='co'>##                 Apparently this is a different model.</span>
-<span class='co'>##</span>
 <span class='no'>moWLprob</span> <span class='kw'>&lt;-</span> <span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>@<span class='kw'>prob</span>    <span class='co'># 2019-12-15; was: c(0.5339,0.4176,0.0385)     </span>
 <span class='no'>moWLsigma</span> <span class='kw'>&lt;-</span> <span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>@<span class='kw'>scale</span>  <span class='co'>#                  c(4.8227,6.0082,18.1716)</span>
 <span class='no'>moWLar</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(-<span class='fl'>0.3208</span>, <span class='fl'>0.6711</span>,<span class='fl'>0</span>)        <span class='co'># @Davide - is this from some model?</span>

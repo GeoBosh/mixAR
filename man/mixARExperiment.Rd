@@ -80,28 +80,29 @@ mixARExperiment(model, imodel = NULL, simargs = NULL, estargs = NULL, fix, ...)
 \examples{
 exampleModels$WL_II
 
-# todo: N of course is not realistic here but unswitch() sometimes drops
-#       all as unsuccessful (see fsummary()) and error pops up. Need to guard against
-#       this.
-#
+## N of course is not realistic here but unswitch() sometimes drops all
+## as unsuccessful (see fsummary()) and error pops up. Need to guard
+## against this.
 set.seed(1234)
 mixARExperiment(exampleModels$WL_II, N = 10)
-mixARExperiment(exampleModels$WL_II, N=10, raw=TRUE)
-mixARExperiment(exampleModels$WL_II, N=10, raw=TRUE, simargs=list(n=500))
+mixARExperiment(exampleModels$WL_II, N = 10, raw = TRUE)
+mixARExperiment(exampleModels$WL_II, N = 10, raw = TRUE, simargs = list(n = 500))
 
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=500))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=50))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=50))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=50),
-##     estargs=list(maxniter=500))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=50),
-##     estargs=list(init=1,maxniter=500))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=100),
-##     estargs=list(init=1,maxniter=500))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=100),
-##     estargs=list(init=5,maxniter=500))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=100),
-##     estargs=list(init=10,maxniter=500))
+## the following take more time.
+##
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 500))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 50))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 50))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 50),
+##     estargs = list(maxniter = 500))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 50),
+##     estargs = list(init = 1, maxniter = 500))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 100),
+##     estargs = list(init = 1, maxniter = 500))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 100),
+##     estargs = list(init = 5, maxniter = 500))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 100),
+##     estargs = list(init = 10, maxniter = 500))
 }
 \keyword{MixAR}
 \keyword{simulation}

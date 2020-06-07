@@ -17,7 +17,8 @@ em_est_dist(tau, etk, parscore, sigma, nu, logpdf)
   \item{parscore}{the score function(s), see 'Details'.}
   \item{sigma}{current values of the scale parameters, a numeric vector.}
   \item{nu}{current values of the parameters. w.r.t. which optimisation
-    is done. (todo: check if this is used)}
+    is done. % (todo: check if this is used)
+  }
   \item{logpdf}{the log of pdf as a function of the parameters.}
 }
 \details{

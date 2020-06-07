@@ -25,7 +25,7 @@ mixgenMstep(y, tau, model, index, fix = NULL, comp_sigma = FALSE,
   \item{\dots}{arguments to pass on to optimisation functions, not
     thought over yet. Do not use until this notice is removed.}
   \item{comp_sigma}{If TRUE optimise the scale parameters using
-    univariate optimisation. (todo: does not work with argument 'fix'
+    univariate optimisation. (note: does not work with argument 'fix'
     yet.)}
   \item{fix}{specify parameters to be held fixed during optimisation,
     see 'Details'.}
@@ -58,10 +58,10 @@ mixgenMstep(y, tau, model, index, fix = NULL, comp_sigma = FALSE,
 
   The parameters (if any) of the distributions of the error components
   are estimated by default. Currently the above method cannot be used to
-  fix some of them (todo:?). This can be achieved however by modifying
-  the distribution part of the model since that incorporates information
-  about the parameters and whether they are fixed or not, see (todo: put
-  a cross-reference here).
+  fix some of them. % (todo:?)
+  This can be achieved however by modifying the distribution part of the
+  model since that incorporates information about the parameters and
+  whether they are fixed or not. % , see (todo: put a cross-reference here).
 
 }
 

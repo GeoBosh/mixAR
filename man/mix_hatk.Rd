@@ -35,7 +35,7 @@ mix_hatk(model, x, index, xcond)
   }
 }}
 \seealso{
-  \code{\linkS4class{MixAR}}
+  \code{"\linkS4class{MixAR}"}
 }
 \keyword{methods}
 \keyword{MixAR}

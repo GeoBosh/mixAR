@@ -72,7 +72,7 @@ lik_params(model)
   optimisation though it is not likely to give useful results since
   there are other restrictions on the probabilities.
 
-  todo: add parameter \code{omit_last=TRUE}?
+  % todo: add parameter \code{omit_last=TRUE}?
 }
 
 \section{Methods}{

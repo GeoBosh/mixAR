@@ -46,5 +46,7 @@ test_that("mixARreg and fit_mixARreg work", {
     expect_error(fit_mixARreg(yReg[1:100], xReg[1:150,], modelReg))
     expect_error(fit_mixARreg(yReg, xReg, EMinit = list(c(1,2), c(3,4), list(5, 6))))
     
+    expect_message(fit_mixARreg(yReg, xReg, mixARmodel = modelReg, EMinit = EMinit))
+    
     
 })

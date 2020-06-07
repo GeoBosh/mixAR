@@ -83,9 +83,7 @@ determining the seasonality in the model(monthly, quarterly, etc..).}
 \author{Davide Ravagli}
 
 \seealso{
-        \code{\linkS4class{raggedCoef}}
-%	~~objects to See Also as \code{\link{~~fun~~}}, ~~~
-%	or \code{\linkS4class{CLASSNAME}} for links to other classes
+        class \code{"\linkS4class{raggedCoef}"}
 }
 %%  ~Describe the value returned
 %%  If it is a LIST, use

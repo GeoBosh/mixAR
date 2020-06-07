@@ -27,7 +27,7 @@
 }
 
 \item{\code{signature(.Object = "raggedCoef")}}{
-  Creates objects from class \code{\linkS4class{raggedCoef}}.
+  Creates objects from class \code{"\linkS4class{raggedCoef}"}.
 }
 \item{\code{signature(.Object = "MixARgen")}}{{
   Creates objects from class \code{MixARgen}.

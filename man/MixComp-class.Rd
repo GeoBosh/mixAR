@@ -68,7 +68,7 @@
 \section{Methods}{
     Arithmetic operations involving \code{MixComp} objects are defined
     to allow for convenient execution of computations for mixture
-    autoregressive models, see \code{\linkS4class{MixComp}}.
+    autoregressive models, see class \code{"\linkS4class{MixComp}"}.
 
   \describe{
     \item{-}{\code{signature(e1 = "MixComp", e2 = "missing")}:
@@ -123,15 +123,16 @@
     \item{*}{\code{signature(e1 = "function", e2 = "MixComp")}:
       Multiplying a function by  a \code{MixComp} object actually
       applies the function to each element of the object.
-      \bold{TODO:} This is a misuse of methods, see operator
+      This is a misuse of methods, prefer operator
       \code{\%of\%} which does the same.
     }
     \item{*}{\code{signature(e1 = "character", e2 = "MixComp")}:
       The first argument is a name of a function which is
       applied to each element of the \code{MixComp} object. This is a
-      misuse of methods, see operator \code{\%of\%} which does the same.
-      (\bold{TODO:} but the latter does not have a method with this
-      signature.) 
+      misuse of methods, see operator \code{\link[=percent_of]{\%of\%}}
+      which does the same.  
+      % (\bold{TODO:} but the latter does not have a method with this
+      % signature.) 
     }
     \item{/}{\code{signature(e1 = "MixComp", e2 = "numeric")}:
     }
@@ -143,10 +144,11 @@
       If \code{k} is a scalar, raise each element of \code{e1@m} to
       power \code{k}.
 
-      \bold{TODO:} for consistency this operation should have the
+      % \bold{TODO:}
+      (For consistency this operation should have the
       semantics of "*" and "/" but this operator probably makes sense
       only for scalar 'e2', where the semantics doesn't matter. So,
-      don't bother for now.
+      don't bother for now.)
     }
 
 
@@ -167,8 +169,8 @@
       The number of elements of the numeric argument should be equal to
       the number of rows of the \code{MixComp} object. Effectively,
       computes the inner product of the two arguments. The order of the
-        arguments does not matter. (\bold{TODO:} \bold{FIXME:} make sure that this
-        is true!)
+      arguments does not matter.
+      % (\bold{TODO:} \bold{FIXME:} make sure that this is true!)
 
       Returns a numeric vector.
     }
@@ -216,7 +218,7 @@
 %
 % \seealso{
 % %	~~objects to See Also as \code{\link{~~fun~~}}, ~~~
-% %	or \code{\linkS4class{CLASSNAME}} for links to other classes
+% %	or \code{"\linkS4class{CLASSNAME}"} for links to other classes
 % }
 %\examples{
 %showClass("MixComp")

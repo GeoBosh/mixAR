@@ -60,8 +60,7 @@ mix_ek(model, x, index, xcond, scale)
   \code{\link{MixComp-class}} for easy manipulation of the returned
   object.
   
-  % \code{\linkS4class{MixAR}},
-  \code{\link{MixAR-class}}
+  class \code{"\linkS4class{MixAR}"}
 }
 \keyword{methods}
 \keyword{MixAR}

@@ -232,10 +232,10 @@ raggedCoef(p, value = NA_real_)
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-  \code{\linkS4class{MixARGaussian}}
+  class \code{"\linkS4class{MixARGaussian}"}
 %       \code{\link{initialize,raggedCoef-method}}
 %	~~objects to See Also as \code{\link{~~fun~~}}, ~~~
-%	or \code{\linkS4class{CLASSNAME}} for links to other classes
+%	or \code{"\linkS4class{CLASSNAME}"} for links to other classes
 }
 \examples{
 ragged1 <- list(1, 2:3, 4:6)

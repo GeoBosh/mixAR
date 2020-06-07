@@ -10,7 +10,8 @@
 \alias{fit_mixARreg,ANY,matrix,missing,list-method}
 \alias{fit_mixARreg,ANY,numeric,MixAR,missing-method}
 \alias{fit_mixARreg,ANY,numeric,missing,list-method}
-\alias{fit_mixARreg,ANY,ANY,ANY,ANY-method}
+\alias{fit_mixARreg,ANY,ANY,MixAR,list-method}
+%\alias{fit_mixARreg,ANY,ANY,ANY,ANY-method}
 \alias{fit_mixARreg,ANY,ANY,missing,list-method}
 
 \title{
@@ -59,7 +60,8 @@ mixARreg(x, y, mixARmodel, tol = 1e-6, niter = 200)
   Argument \code{mixARmodel} gives the details of the the MixAR part of
   the model and initial values for the parameters. For
   \code{fit_mixARreg} this can alternatively be done with a list using 
-  argument \code{EMinit}.
+  argument \code{EMinit}. Currently, at least one of the two must be
+  supplied, and if both are present \code{EMinit} is ignored.
 
 
   \code{mixARreg} performs a two-step estimation of a linear regression
@@ -78,19 +80,29 @@ mixARreg(x, y, mixARmodel, tol = 1e-6, niter = 200)
   \describe{
     \item{\code{signature(x = "ANY", y = "data.frame", mixARmodel =
 	"MixAR", EMinit = "missing")
-    }}{}
+    }}{Covariates \code{y} are supplied as \code{data.frame}: each column
+    corresponds to one covariate. Initialization of \code{MixAR} paramters is
+    done using input \code{mixARmodel}}
+    
     \item{\code{signature(x = "ANY", y = "matrix",
         mixARmodel = "MixAR", EMinit = "missing")}
-    }{}
-    \item{\code{signature(x = "ANY", y = "numeric",
-        mixARmodel = "MixAR", EMinit = "missing")}
-    }{}
-    \item{\code{signature(x = "ANY", y = "ANY", mixARmodel = "ANY", EMinit = "ANY")}}{
-	%%  ~~describe this method here~~
-    }
+    }{Covariates \code{y} are supplied as \code{matrix}: each column
+    corresponds to one covariate. Initialization of \code{MixAR} paramters is
+    done using input \code{mixARmodel}}
+    
+    \item{\code{signature(x = "ANY", y = "numeric", mixARmodel = "MixAR", EMinit = "missing")}
+    }{Covariates \code{y} is supplied as \code{numeric}: this method handles the
+    simple regression case with a single covairate. 
+    Initialization of \code{MixAR} paramters is done using input \code{mixARmodel}}
+    
+    %\item{\code{signature(x = "ANY", y = "ANY", mixARmodel = "ANY", EMinit = "ANY")}}{}
+    
     \item{\code{signature(x = "ANY", y = "ANY", mixARmodel = "missing", EMinit = "list")}}{
+    \code{EMinit} must be a named list (see 'Arguments').
       %%  ~~describe this method here~~
     }
+    \item{\code{signature(x = "ANY", y = "ANY", mixARmodel = "MixAR", EMinit = "list")}}{
+    When both \code{mixARmodel} and \code{EMinit} are supplied, the second is ignored.}
   }
 }
 %\references{

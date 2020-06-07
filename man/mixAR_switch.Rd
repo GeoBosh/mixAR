@@ -27,9 +27,9 @@ mixAR_permute(model, perm)
   \code{perm}.  Basically, \code{perm} is used as index,
   e.g. \code{prob[perm]}, etc.
 
-  TODO: There is something strange here---is \code{mixAR_switch} an
-  older (and wrong, it does not permute \code{order}) variant and
-  \code{mixAR_permute} the real thing?
+  % TODO: There is something strange here---is \code{mixAR_switch} an
+  % older (and wrong, it does not permute \code{order}) variant and
+  % \code{mixAR_permute} the real thing?
 
 }
 

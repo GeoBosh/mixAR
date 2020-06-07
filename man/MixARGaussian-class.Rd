@@ -26,7 +26,7 @@
 
   \code{arcoef} contains the AR coefficients, one numeric vector for
   each mixture component. It can be given as a
-  \code{\linkS4class{raggedCoef}} object or as a list of numeric
+  \code{"\linkS4class{raggedCoef}"} object or as a list of numeric
   vectors.
 
   To input a model with seasonal AR coefficients, argument passed to \code{arcoef} can be passed as a \code{raggedCoefS} object, or as a \code{list} of three elements.
@@ -81,8 +81,9 @@ Class \code{"\linkS4class{MixAR}"}, directly.
 %%  ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-  \code{\linkS4class{MixARgen}},
-  \code{\linkS4class{MixAR}}
+  classes
+  \code{"\linkS4class{MixARgen}"},
+  \code{"\linkS4class{MixAR}"}
 }
 \examples{
 showClass("MixARGaussian")

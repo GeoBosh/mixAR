@@ -77,7 +77,7 @@ ft_stdt
   \code{fn_stdt} is also for the t-distribution but the degrees of
   freedom, \code{df}, may be a vector. The value is a list of
   distributions. Although the list can be obtained by repeated calls of
-  \code{fdist_stdt}   ... (todo: unfinished sentence!)
+  \code{fdist_stdt} %  ... (todo: unfinished sentence!)
 
   The support is incomplete.  In particular, if parameter \code{fixed}
   is TRUE, changes to the parameter(s) should probably not be allowed

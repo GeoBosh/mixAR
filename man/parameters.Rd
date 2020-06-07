@@ -54,15 +54,15 @@ parameters(model) <- value
   
   
 
-  todo: (1) currently there is no specific method for class \code{"MixARgen"}.
-
-        (2) related to (1) above - what is the intention? are parameters
-        of the noise distributions parameters in the sense of this
-        function?
-
-        (3) clarify the difference with \code{lik_params}. Is it only in
-        that one of the component probabilities is omitted in
-        \code{lik_params}?
+%  todo: (1) currently there is no specific method for class \code{"MixARgen"}.
+%
+%        (2) related to (1) above - what is the intention? are parameters
+%        of the noise distributions parameters in the sense of this
+%        function?
+%
+%        (3) clarify the difference with \code{lik_params}. Is it only in
+%        that one of the component probabilities is omitted in
+%        \code{lik_params}?
 }
 
 \value{

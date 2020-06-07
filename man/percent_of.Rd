@@ -1,5 +1,6 @@
 \name{percent_of}
 \docType{methods}
+\alias{percent_of}
 \alias{\%of\%}
 \alias{\%of\%-methods}
 \alias{\%of\%,ANY,ANY-method}
@@ -81,8 +82,8 @@ e1 \%of\% e2
 
       Create (and return) a \code{MixComp} object with its slot \code{m}
       replaced by the result of applying the function \code{e1} to each
-      element of the \code{MixComp} object \code{e2}, see
-      \code{\linkS4class{MixComp}}.
+      element of the \code{MixComp} object \code{e2}, see class
+      \code{"\linkS4class{MixComp}"}.
 
     }
     \item{\code{signature(e1 = "character", e2 = "MixComp")}}{
@@ -118,7 +119,7 @@ e1 \%of\% e2
 %
 %%% ~Make other sections like Warning with \section{Warning }{....} ~
 %
-\section{Todo}{
+\section{Note}{
   The code is rather inefficient for some of the methods. 
 
   Maybe should require that the functions in the first argument are

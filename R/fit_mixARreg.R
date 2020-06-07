@@ -74,3 +74,13 @@ setMethod("fit_mixARreg", c(x = "ANY", y = "ANY", mixARmodel = "missing",
               fit_mixARreg(x, y, mixARmodel, ...)
           }
 )
+
+setMethod("fit_mixARreg", c(x = "ANY", y = "ANY", mixARmodel = "MixAR",
+                            EMinit = "list"),
+          ## EMinit must be a named list (at least prob, scale, arcoef)
+          function(x, y, mixARmodel, EMinit, ...){
+              m <- fit_mixARreg(x, y, mixARmodel, ...)
+              message("Argument mixARmodel supplied, EMinit is ignored")
+              m
+          }
+)

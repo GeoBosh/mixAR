@@ -67,30 +67,30 @@ inner(x, y, star = "*", plus = .mplus)
     }
 
     \item{\code{signature(x = "MixComp", y = "missing", star = "missing", plus = "missing")}}{
-      see \code{\linkS4class{MixComp}}.
+      see \code{"\linkS4class{MixComp}"}.
     }
 
     \item{\code{signature(x = "MixComp", y = "numeric", star = "missing", plus = "missing")}}{
-      see \code{\linkS4class{MixComp}}.
+      see \code{"\linkS4class{MixComp}"}.
     }
 
     \item{\code{signature(x = "numeric", y = "MixComp", star = "missing", plus = "missing")}}{
-      see \code{\linkS4class{MixComp}}.
+      see \code{"\linkS4class{MixComp}"}.
     }
     
     \item{\code{signature(x = "MixComp", y = "numeric", star = "ANY", plus = "ANY")}}{{
-	see \code{\linkS4class{MixComp}}.
+	see \code{"\linkS4class{MixComp}"}.
       }
     }
 
     \item{\code{signature(x = "MixComp", y = "numeric", star = "ANY", plus = "missing")}}{
-	see \code{\linkS4class{MixComp}}.
+	see \code{"\linkS4class{MixComp}"}.
     }
     
   }
 }
 \seealso{
-  \code{\linkS4class{MixComp}}
+  \code{"\linkS4class{MixComp}"}
 }
 \examples{
 inner(1:3, 2:4) # [1] 20

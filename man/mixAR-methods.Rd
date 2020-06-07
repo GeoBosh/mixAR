@@ -74,8 +74,8 @@ mixAR(template, coef, ..., filler = NA_real_)
 }
 }}
 \seealso{
-	class \code{\linkS4class{MixARGaussian}},
-	class \code{\linkS4class{MixARgen}}
+	class \code{"\linkS4class{MixARGaussian}"},
+	class \code{"\linkS4class{MixARgen}"}
 }
 \examples{
 mixAR(coef = list(prob = c(.5,.5), scale = c(1,2), 

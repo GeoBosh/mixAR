@@ -43,7 +43,7 @@
       \code{param}, such that a call \code{generator(param)} should
       produce the required list of distributions.
 
-      todo: this is not finalised but if changed, backward compatibility
+      This is not finalised but if changed, backward compatibility
       with existing objects will be maintained.
     }
     \item{\code{prob}:}{Object of class \code{"numeric"} ~~ }

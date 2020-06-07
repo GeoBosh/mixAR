@@ -2,7 +2,7 @@ Package: mixAR
 Type: Package
 Title: Mixture Autoregressive Models
 Version: 0.22.0
-Date: 2020-06-05
+Date: 2020-06-07
 Authors@R: c( person(given = c("Georgi", "N."), 
                      family = "Boshnakov", 
                      role = c("aut", "cre"), 
@@ -45,3 +45,5 @@ Collate: raggedCoef.R raggedCoefS.R
 	 mixARsim.R
 Encoding: UTF-8
 RoxygenNote: 7.1.0
+
+

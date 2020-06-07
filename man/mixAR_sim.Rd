@@ -42,17 +42,17 @@ mixAny_sim(model, n, init, nskip=100, flag = FALSE,
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
-\section{Todo}{
-  Todo: Currently \code{init} has no default value but I am thinking
-  about introducing such.
-
-  Todo:
-
-  (1) The default value of \code{nskip} may be better if set to zero.
-
-  (2) Work with and/or return \code{ts} objects.
-
-}
+% \section{Todo}{
+%   Todo: Currently \code{init} has no default value but I am thinking
+%   about introducing such.
+% 
+%   Todo:
+% 
+%   (1) The default value of \code{nskip} may be better if set to zero.
+% 
+%   (2) Work with and/or return \code{ts} objects.
+% 
+% }
 \examples{
 exampleModels$WL_ibm
 ## simulate a continuation of BJ ibm data

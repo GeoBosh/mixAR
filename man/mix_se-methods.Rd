@@ -72,11 +72,6 @@ mix_se(x, model, fix_shift)
 
 ## data(ibmclose, package = "fma")
 
-## Wong&Li estimates as starting values
-## TODO: @Davide - can you give exact reference (paper, page)
-##                 To me 0.5339 below seems different from WongLi; 0.5439?.
-##                 Apparently this is a different model.
-##
 moWLprob <- exampleModels$WL_ibm@prob    # 2019-12-15; was: c(0.5339,0.4176,0.0385)     
 moWLsigma <- exampleModels$WL_ibm@scale  #                  c(4.8227,6.0082,18.1716)
 moWLar <- list(-0.3208, 0.6711,0)        # @Davide - is this from some model?

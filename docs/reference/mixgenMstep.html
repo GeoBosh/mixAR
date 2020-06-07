@@ -159,7 +159,7 @@
     <tr>
       <th>comp_sigma</th>
       <td><p>If TRUE optimise the scale parameters using
-    univariate optimisation. (todo: does not work with argument 'fix'
+    univariate optimisation. (note: does not work with argument 'fix'
     yet.)</p></td>
     </tr>
     <tr>
@@ -205,10 +205,10 @@
   equivalent to <code>fix = list(shift = rep(TRUE,g))</code>.</p>
 <p>The parameters (if any) of the distributions of the error components
   are estimated by default. Currently the above method cannot be used to
-  fix some of them (todo:?). This can be achieved however by modifying
-  the distribution part of the model since that incorporates information
-  about the parameters and whether they are fixed or not, see (todo: put
-  a cross-reference here).</p>
+  fix some of them. <!-- % (todo:?) -->
+  This can be achieved however by modifying the distribution part of the
+  model since that incorporates information about the parameters and
+  whether they are fixed or not. <!-- % , see (todo: put a cross-reference here). --></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='fit_mixAR-methods.html'>fit_mixAR</a></code> and

@@ -13,8 +13,8 @@
 \section{Objects from the Class}{
   A virtual Class: No objects can be created from it.
 
-  Derived classes add distribution properties, e.g. use
-  \code{\linkS4class{MixARGaussian}} for MixAR models with Gaussian
+  Derived classes add distribution properties, e.g. use class
+  \code{"\linkS4class{MixARGaussian}"} for MixAR models with Gaussian
   error components.
 }
 \section{Slots}{
@@ -61,8 +61,9 @@
 %%  ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-  \code{\linkS4class{MixARGaussian}},
-  \code{\linkS4class{MixARgen}}
+  classes
+  \code{"\linkS4class{MixARGaussian}"},
+  \code{"\linkS4class{MixARgen}"}
 }
 %\examples{
 %showClass("MixAR")

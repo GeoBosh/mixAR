@@ -17,8 +17,8 @@ etk2tau(etk)
 \details{
 
   \code{em_rinit} generates random MAR residuals, performs a non-distributional
-  E-step, and a Gaussian M-step. todo: Can this be generalised to
-  non-Gaussian models?
+  E-step, and a Gaussian M-step.
+  % todo: Can this be generalised to non-Gaussian models?
 
   \code{etk2tau} estimates \code{tau} from component residuals
   only. Note that this is unlike \code{\link{em_tau}}, which also needs

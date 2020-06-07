@@ -203,10 +203,9 @@
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
 #&gt; </div><div class='input'>
-<span class='co'># todo: N of course is not realistic here but unswitch() sometimes drops</span>
-<span class='co'>#       all as unsuccessful (see fsummary()) and error pops up. Need to guard against</span>
-<span class='co'>#       this.</span>
-<span class='co'>#</span>
+<span class='co'>## N of course is not realistic here but unswitch() sometimes drops all</span>
+<span class='co'>## as unsuccessful (see fsummary()) and error pops up. Need to guard</span>
+<span class='co'>## against this.</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1234</span>)
 <span class='fu'>mixARExperiment</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_II</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt; sa$init is:  0 0 
 #&gt; Initial vallogf:  -555.8538 
@@ -295,7 +294,7 @@
 #&gt; 	standard Gaussian
 #&gt; 
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'>mixARExperiment</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_II</span>, <span class='kw'>N</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>raw</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; sa$init is:  0 0 
+#&gt; </div><div class='input'><span class='fu'>mixARExperiment</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_II</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; sa$init is:  0 0 
 #&gt; Initial vallogf:  -535.4214 
 #&gt; Final niter:  11 	vallogf:  -526.6723 
 #&gt; Initial vallogf:  -568.5251 
@@ -524,7 +523,7 @@
 #&gt; 	standard Gaussian
 #&gt; 
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'>mixARExperiment</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_II</span>, <span class='kw'>N</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>raw</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>simargs</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span><span class='kw'>=</span><span class='fl'>500</span>))</div><div class='output co'>#&gt; sa$init is:  0 0 
+#&gt; </div><div class='input'><span class='fu'>mixARExperiment</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_II</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>simargs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>500</span>))</div><div class='output co'>#&gt; sa$init is:  0 0 
 #&gt; Initial vallogf:  -1396.229 
 #&gt; Final niter:  11 	vallogf:  -1389.046 
 #&gt; Initial vallogf:  -1334.934 
@@ -754,19 +753,21 @@
 #&gt; 
 #&gt; 
 #&gt; </div><div class='input'>
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=500))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=50))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=50))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=50),
-##     estargs=list(maxniter=500))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=50),
-##     estargs=list(init=1,maxniter=500))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=100),
-##     estargs=list(init=1,maxniter=500))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=100),
-##     estargs=list(init=5,maxniter=500))
-## mixARExperiment(exampleModels$WL_II, N=1000, raw=TRUE, simargs=list(n=100),
-##     estargs=list(init=10,maxniter=500))
+## the following take more time.
+##
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 500))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 50))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 50))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 50),
+##     estargs = list(maxniter = 500))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 50),
+##     estargs = list(init = 1, maxniter = 500))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 100),
+##     estargs = list(init = 1, maxniter = 500))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 100),
+##     estargs = list(init = 5, maxniter = 500))
+## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 100),
+##     estargs = list(init = 10, maxniter = 500))
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

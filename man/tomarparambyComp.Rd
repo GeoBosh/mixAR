@@ -66,8 +66,8 @@ permuteArpar(params)
   \item{s2}{noise variances, a numeric vector.}
 
   For \code{permuteArpar}, a list with one element (arranged ``by
-  type'') for each possible permutation of the AR parameters. (todo:
-  make clear!)
+  type'') for each possible permutation of the AR parameters.
+  % (todo: make clear!)
 }
 \author{Georgi N. Boshnakov}
 \seealso{

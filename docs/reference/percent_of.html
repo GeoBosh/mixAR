@@ -184,8 +184,8 @@ The infix operator %of% is a generic function which applies
       <code>e2</code> is a matrix or array.</p></dd>
     <dt><code>signature(e1 = "function", e2 = "MixComp")</code></dt><dd><p>Create (and return) a <code>MixComp</code> object with its slot <code>m</code>
       replaced by the result of applying the function <code>e1</code> to each
-      element of the <code>MixComp</code> object <code>e2</code>, see
-      <code>MixComp</code>.</p></dd>
+      element of the <code>MixComp</code> object <code>e2</code>, see class
+      <code>"<a href='MixComp-class.html'>MixComp</a>"</code>.</p></dd>
     <dt><code>signature(e1 = "character", e2 = "MixComp")</code></dt><dd><p>Here <code>e1</code> contains the names of one or more functions.  If
       <code>length(e1) = 1</code>, this is equivalent to the method for
       <code>e1</code> of class <code>"function"</code>.      If <code>length(e1) &gt; 1</code>, then for each <code>i</code> the function
@@ -200,14 +200,14 @@ The infix operator %of% is a generic function which applies
       <code>e1[[i]]</code> is applied to the <code>i</code>th column of <code>e2@m</code>.</p></dd>
 
 </dl>
-    <h2 class="hasAnchor" id="todo"><a class="anchor" href="#todo"></a>Todo</h2>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>The code is rather inefficient for some of the methods.</p>
 <p>Maybe should require that the functions in the first argument are
   vectorised. (Some methods effectively assume it.)</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>class <code>"MixComp"</code></p></div>
+    <div class='dont-index'><p>class <code>"<a href='MixComp-class.html'>MixComp</a>"</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>18</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>)

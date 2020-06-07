@@ -11,7 +11,7 @@ test_that("raggedCoefS creates expected object", {
     expect_warning(new("raggedCoefS", list(1, 2:3, 4:6),
                        list(7, 8:9, 10:12), c(1,2,3), s=12))
     
-    show(ragA)
+    expect_output(show(ragA))
     
     expect_s4_class(ragA, "raggedCoefS")
     expect_equal(slotNames(ragA), c("as", "ps", "s", "a", "p"))

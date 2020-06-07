@@ -69,9 +69,9 @@ Ragged list used to hold coefficients of MixVAR models.
 \author{Davide Ravagli}
 
 \seealso{
-        \code{\linkS4class{MixVAR}}
+        class \code{"\linkS4class{MixVAR}"}
 %	~~objects to See Also as \code{\link{~~fun~~}}, ~~~
-%	or \code{\linkS4class{CLASSNAME}} for links to other classes
+%	or \code{"\linkS4class{CLASSNAME}"} for links to other classes
 }
 %%  ~Describe the value returned
 %%  If it is a LIST, use

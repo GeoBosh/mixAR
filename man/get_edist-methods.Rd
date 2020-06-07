@@ -19,7 +19,7 @@
 
   Note that the distribution is not necessarily stored in slot
   \code{dist} in this format, see the description of this slot in class
-  \code{\linkS4class{MixARgen}}.
+  \code{"\linkS4class{MixARgen}"}.
   Such a slot may even not exist if the distribution of the error
   components is fixed as is the case for class \code{MixARGaussian}.
 
