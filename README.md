@@ -19,7 +19,9 @@ You can install the [development version](https://github.com/GeoBosh/mixAR) of
   Package `mixAR` provides functions for modelling with mixture
   autoregressive (MAR/mixAR) models.
 
-  See, for example, the [overview of mixAR](./reference/mixAR-package.html) and
-  model fitting functions such as [fit_mixAR](./reference/fit_mixAR-methods.html) and
-  [bayes_mixAR](./reference/bayes_mixAR.html).
+  See, for example, the [overview of
+  mixAR](https://geobosh.github.io/mixAR/reference/mixAR-package.html) and model
+  fitting functions such as
+  [fit_mixAR](https://geobosh.github.io/mixAR/reference/fit_mixAR-methods.html)
+  and [bayes_mixAR](https://geobosh.github.io/mixAR/reference/bayes_mixAR.html).
 
