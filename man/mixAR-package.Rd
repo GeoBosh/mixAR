@@ -222,8 +222,10 @@ Maintainer: \Sexpr[stage=build]{pd$Maintainer}
 
   \insertRef{FongEtAl2007vecmar}{mixAR}
 
-  \insertRef{ravagli2020portfolio}{mixAR}
+  \insertRef{ravagli2020bayesian}{mixAR}
   
+  \insertRef{ravagli2020portfolio}{mixAR}
+
   \insertRef{shahadat2012}{mixAR}
 
   \insertRef{WongPhD}{mixAR}

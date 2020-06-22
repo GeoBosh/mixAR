@@ -38,7 +38,7 @@ bayes_mixAR(y, model, fix_shift = FALSE, a = .2, c = 2, tau, nsim, burnin)
 
 \details{
   
-  For details see \insertCite{Ravagliboshnakov2019bayesmar;textual}{mixAR}.
+  For details see \insertCite{ravagli2020bayesian;textual}{mixAR}.
 
 }
 \value{
@@ -86,7 +86,7 @@ bayes_mixAR(y, model, fix_shift = FALSE, a = .2, c = 2, tau, nsim, burnin)
 \references{
   \insertRef{RichardsonGreen1997}{mixAR}
 
-  \insertRef{Ravagliboshnakov2019bayesmar}{mixAR}
+  \insertRef{ravagli2020bayesian}{mixAR}
 }
 \author{
   Davide Ravagli

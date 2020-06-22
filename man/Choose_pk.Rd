@@ -56,7 +56,7 @@ Choose_pk(y, model, fix_shift = FALSE, tau, pmax, method, par = NULL, nsim)
   \item{method}{the method used to increase/decrease AR orders.}
 }
 \references{
-  \insertRef{Ravagliboshnakov2019bayesmar}{mixAR}
+  \insertRef{ravagli2020bayesian}{mixAR}
 }
 \author{Davide Ravagli}
 \note{

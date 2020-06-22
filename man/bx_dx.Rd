@@ -36,7 +36,7 @@ bx_dx(method = c("Ratio", "Poisson", "NULL"), par, pk)
   }
 }
 \references{
-  \insertRef{Ravagliboshnakov2019bayesmar}{mixAR}
+  \insertRef{ravagli2020bayesian}{mixAR}
 }
 \author{Davide Ravagli}
 \note{
