@@ -20,7 +20,12 @@ mix_hatk(model, x, index, xcond)
     a vector of positive integer specifying the indices for which to
     compute the residuals, has a natural default.
   }
-  \item{xcond}{~~ TODO: describe this argument. ~~}
+  \item{xcond}{
+
+    the past values needed for the conditional distribution, a numeric
+    vector of length at least the maximal AR order of the components.
+
+  }
 }
 %\details{
 %  
@@ -31,11 +36,11 @@ mix_hatk(model, x, index, xcond)
 
   \item{}{\code{signature(model = "MixAR", x = "numeric", index = "numeric",
  xcond = "missing")}%}{
-    : ~~describe this method here 
+    %: ~~describe this method here 
   }
 }}
 \seealso{
-  \code{"\linkS4class{MixAR}"}
+  class \code{"\linkS4class{MixAR}"}
 }
 \keyword{methods}
 \keyword{MixAR}

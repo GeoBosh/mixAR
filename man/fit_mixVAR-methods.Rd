@@ -24,7 +24,7 @@ fit_mixVAR(x, model, fix, \dots)
   \item{model}{
     model, object inheriting from MixVAR class.
   }
-  \item{fix}{~~ TODO: describe this argument. ~~}
+  \item{fix}{if TRUE, fix the shift parameters.}
   \item{\dots}{
     additional arguments for the methods (not currently used).
   }
@@ -52,10 +52,10 @@ fit_mixVAR(x, model, fix, \dots)
 \describe{
 
   \item{\code{signature(x = "ANY", model = "MixVAR")}}{
-    ... % This is currently the only available method for \code{fit_mixVAR}
+    % This is currently the only available method for \code{fit_mixVAR}
   }
   \item{\code{signature(x = "ANY", model = "ANY")}}{
-    ... 
+     
   }
 }}
 
@@ -64,18 +64,21 @@ fit_mixVAR(x, model, fix, \dots)
 }
 \examples{
 AR <- list()
-AR[[1]] <- array(c(0.5,-0.3,-0.6,0,0,0.5,0.4,0.5,-0.3),dim=c(3,3,1))
-AR[[2]] <- array(c(-0.5,0.3,0,1,0,-0.5,-0.4,-0.2, 0.5),dim=c(3,3,1))
+AR[[1]] <- array(c(0.5, -0.3, -0.6, 0, 0, 0.5, 0.4, 0.5, -0.3), dim = c(3, 3, 1))
+AR[[2]] <- array(c(-0.5, 0.3, 0, 1, 0, -0.5, -0.4, -0.2, 0.5), dim = c(3, 3, 1))
 
-prob <- c(0.75,0.25)
-shift <- cbind(c(0,0,0),c(0,0,0))
+prob <- c(0.75, 0.25)
+shift <- cbind(c(0, 0, 0), c(0, 0, 0))
 
-Sigma1 <- cbind(c(1,0.5, -0.4),c(0.5,2, 0.8),c(-0.4,0.8,4))
-Sigma2 <- cbind(c(1,0.2, 0),c(0.2,  2, -0.15),c(0,-0.15,4))
-Sigma <- array(c(Sigma1, Sigma2), dim=c(3,3,2))
+Sigma1 <- cbind(c(1, 0.5, -0.4), c(0.5, 2, 0.8), c(-0.4, 0.8, 4))
+Sigma2 <- cbind(c(1, 0.2, 0), c(0.2,  2, -0.15), c(0, -0.15, 4))
+Sigma <- array(c(Sigma1, Sigma2), dim = c(3, 3, 2))
 
-m <- new("MixVARGaussian", prob=prob, vcov=Sigma, arcoef=AR, shift=shift)
-y <- mixVAR_sim(m, n=500, init=matrix(rep(0,3), ncol=3), nskip=100, flag=FALSE)
+m <- new("MixVARGaussian", prob = prob, vcov = Sigma, arcoef = AR, shift = shift)
 
-fit_mixVAR(y, m)
+set.seed(1234)
+y <- mixVAR_sim(m, n = 100, init = matrix(0, ncol = 3), nskip = 50, flag = FALSE)
+
+fit_mixVAR(y, m, tol = 1e-3)
+mixVARfit(y, m, tol = 1e-3)
 }

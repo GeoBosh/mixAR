@@ -42,7 +42,7 @@ cond_loglikS(model, x, index)
 }
 \author{Georgi N. Boshnakov and Davide Ravagli}
 \examples{
-## data(ibmclose, package = "fma")  # for `ibmclose'
+## data(ibmclose, package = "fma") # doesn't work with fma v2.4, using '::'
 cond_loglik(exampleModels$WL_ibm,     as.numeric(fma::ibmclose))
 cond_loglik(exampleModels$WL_ibm_gen, as.numeric(fma::ibmclose))
 

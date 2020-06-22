@@ -21,32 +21,34 @@ test_that("mixARreg and fit_mixARreg work", {
     
     yReg <- xReg[,1] + 3 * xReg[,2] + 2 * xReg[,3] + uReg
     yReg2 <- 10 + xReg2 + uReg
-    
-    fit1 <- mixARreg(yReg, xReg, modelReg)
-    fit2 <- mixARreg(yReg2, xReg2, modelReg)
-    
-    expect_identical(class(fit1), "list")
-    expect_length(fit1, 4)
-    expect_s3_class(fit1$reg, "lm")
-    expect_true(inherits(fit1$mixARmodel, "MixAR"))
-    
-    fit3 <- fit_mixARreg(yReg, xReg, modelReg)
-    fit4 <- fit_mixARreg(yReg, as.matrix(xReg), modelReg)
-    
-    expect_equal(fit1, fit3)
-    expect_equal(fit3, fit4)
-    
-    EMinit <- list(prob = probReg, scale = sigmaReg, arcoef = arReg)
-    
-    fit5 <- fit_mixARreg(yReg, xReg, EMinit = EMinit)
-    
-    expect_equal(fit1, fit5)
-    
-    expect_error(fit_mixARreg())
-    expect_error(fit_mixARreg(yReg[1:100], xReg[1:150,], modelReg))
-    expect_error(fit_mixARreg(yReg, xReg, EMinit = list(c(1,2), c(3,4), list(5, 6))))
-    
-    expect_message(fit_mixARreg(yReg, xReg, mixARmodel = modelReg, EMinit = EMinit))
+
+    ## skip_on_cran()
+    ## 
+    ## fit1 <- mixARreg(yReg, xReg, modelReg)
+    ## fit2 <- mixARreg(yReg2, xReg2, modelReg)
+    ## 
+    ## expect_identical(class(fit1), "list")
+    ## expect_length(fit1, 4)
+    ## expect_s3_class(fit1$reg, "lm")
+    ## expect_true(inherits(fit1$mixARmodel, "MixAR"))
+    ## 
+    ## fit3 <- fit_mixARreg(yReg, xReg, modelReg)
+    ## fit4 <- fit_mixARreg(yReg, as.matrix(xReg), modelReg)
+    ## 
+    ## expect_equal(fit1, fit3)
+    ## expect_equal(fit3, fit4)
+    ## 
+    ## EMinit <- list(prob = probReg, scale = sigmaReg, arcoef = arReg)
+    ## 
+    ## fit5 <- fit_mixARreg(yReg, xReg, EMinit = EMinit)
+    ## 
+    ## expect_equal(fit1, fit5)
+    ## 
+    ## expect_error(fit_mixARreg())
+    ## expect_error(fit_mixARreg(yReg[1:100], xReg[1:150,], modelReg))
+    ## expect_error(fit_mixARreg(yReg, xReg, EMinit = list(c(1,2), c(3,4), list(5, 6))))
+    ## 
+    ## expect_message(fit_mixARreg(yReg, xReg, mixARmodel = modelReg, EMinit = EMinit))
     
     
 })

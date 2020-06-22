@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -126,7 +126,7 @@
                   <span class='kw'>maxniter</span> <span class='kw'>=</span> <span class='fl'>200</span>, <span class='kw'>minniter</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>mixARgenemFixedPoint</span>(<span class='no'>y</span>, <span class='no'>model</span>, <span class='kw'>crit</span> <span class='kw'>=</span> <span class='fl'>1e-14</span>, <span class='kw'>maxniter</span> <span class='kw'>=</span> <span class='fl'>200</span>,
-                     <span class='kw'>minniter</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='no'>...</span>)</pre>
+                     <span class='kw'>minniter</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -207,13 +207,9 @@
     <pre class="examples"><div class='input'><span class='co'>## data(ibmclose, package = "fma") # ibm data from BJ</span>
 
 <span class='no'>m0</span> <span class='kw'>&lt;-</span> <span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>
-<span class='no'>m1</span> <span class='kw'>&lt;-</span> <span class='fu'>mixARemFixedPoint</span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>, <span class='no'>m0</span>)</div><div class='output co'>#&gt; Initial vallogf:  -1212.188 
-#&gt; niter:  25 	vallogf:  -1199.796 
-#&gt; niter:  50 	vallogf:  -1199.786 
-#&gt; niter:  75 	vallogf:  -1199.786 
-#&gt; niter:  100 	vallogf:  -1199.786 
-#&gt; Final niter:  124 	vallogf:  -1199.786 </div><div class='input'><span class='no'>m1a</span> <span class='kw'>&lt;-</span> <span class='fu'>mixARemFixedPoint</span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>, <span class='no'>m1</span>$<span class='no'>model</span>)</div><div class='output co'>#&gt; Initial vallogf:  -1199.786 
-#&gt; Final niter:  11 	vallogf:  -1199.786 </div><div class='input'><span class='fu'><a href='show_diff.html'>show_diff</a></span>(<span class='no'>m1</span>$<span class='no'>model</span>, <span class='no'>m1a</span>$<span class='no'>model</span>)</div><div class='output co'>#&gt;        prob          shift         scale         order ar_1         
+<span class='no'>m1</span> <span class='kw'>&lt;-</span> <span class='fu'>mixARemFixedPoint</span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>, <span class='no'>m0</span>)
+<span class='no'>m1a</span> <span class='kw'>&lt;-</span> <span class='fu'>mixARemFixedPoint</span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>, <span class='no'>m1</span>$<span class='no'>model</span>)
+<span class='fu'><a href='show_diff.html'>show_diff</a></span>(<span class='no'>m1</span>$<span class='no'>model</span>, <span class='no'>m1a</span>$<span class='no'>model</span>)</div><div class='output co'>#&gt;        prob          shift         scale         order ar_1         
 #&gt; Comp_1  3.837971e-07 -4.495386e-07  2.519267e-06   2    3.163565e-07
 #&gt; Comp_2 -3.149384e-07 -1.540680e-05 -5.260467e-07   2    4.774798e-08
 #&gt; Comp_3 -6.885865e-08  9.676023e-06  1.097473e-05   1   -3.288289e-08
@@ -221,13 +217,7 @@
 #&gt; Comp_1 -3.151401e-07
 #&gt; Comp_2 -2.032666e-08
 #&gt; Comp_3              </div><div class='input'>
-<span class='fu'>mixARemFixedPoint</span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>, <span class='no'>m0</span>, <span class='kw'>est_shift</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Initial vallogf:  -1212.188 
-#&gt; niter:  25 	vallogf:  -1209.927 
-#&gt; niter:  50 	vallogf:  -1209.927 
-#&gt; niter:  75 	vallogf:  -1209.927 
-#&gt; niter:  100 	vallogf:  -1209.927 
-#&gt; niter:  125 	vallogf:  -1209.927 
-#&gt; Final niter:  133 	vallogf:  -1209.927 </div><div class='output co'>#&gt; $model
+<span class='fu'>mixARemFixedPoint</span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>, <span class='no'>m0</span>, <span class='kw'>est_shift</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $model
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
 #&gt; An object of class "MixARGaussian"
@@ -244,13 +234,12 @@
 #&gt; $vallogf
 #&gt; [1] -1209.927
 #&gt; </div><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='co'>## (not run to maybe safe a couple of seconds on CRAN)    </span>
+<span class='co'># \donttest{</span>
 <span class='co'>## simulate a continuation of ibmclose, assuming m0</span>
-<span class='no'>ts1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>m0</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>346</span>, <span class='fl'>352</span>, <span class='fl'>357</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>0</span>)
+<span class='no'>ts1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>m0</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>346</span>, <span class='fl'>352</span>, <span class='fl'>357</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>0</span>)
 <span class='no'>m2a</span> <span class='kw'>&lt;-</span> <span class='fu'>mixARemFixedPoint</span>(<span class='no'>ts1</span>,       <span class='no'>m0</span>, <span class='kw'>est_shift</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)$<span class='no'>model</span>
 <span class='no'>m2b</span> <span class='kw'>&lt;-</span> <span class='fu'>mixARemFixedPoint</span>(<span class='fu'><a href='https://rdrr.io/r/base/diff.html'>diff</a></span>(<span class='no'>ts1</span>), <span class='no'>m0</span>, <span class='kw'>est_shift</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)$<span class='no'>model</span>
-}</div></pre>
+<span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

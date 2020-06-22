@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -413,51 +413,31 @@ doi: <a href='https://doi.org/10.1198/016214501753208645'>10.1198/01621450175320
 <span class='co'>## data(ibmclose, package = "fma")  # for `ibmclose'</span>
 
 <span class='co'>## The examples below are quick but some of them are marked as 'not run'</span>
-<span class='co'>## to avoid cummulative time of more than 5s on CRAN.</span>
+<span class='co'>## to avoid cumulative time of more than 5s on CRAN.</span>
 
 <span class='co'>## fit a MAR(2,2,1) model</span>
-<span class='no'>a0a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>))</div><div class='output co'>#&gt; cond:  37844644 
-#&gt; cond:  49346768 
-#&gt; cond:  44205436 
-#&gt; Initial vallogf:  -1244.823 
-#&gt; niter:  25 	vallogf:  -1201.216 
-#&gt; niter:  50 	vallogf:  -1201.118 
-#&gt; niter:  75 	vallogf:  -1200.91 
-#&gt; niter:  100 	vallogf:  -1200.281 
-#&gt; niter:  125 	vallogf:  -1200.037 
-#&gt; niter:  150 	vallogf:  -1200.02 
-#&gt; niter:  175 	vallogf:  -1200.019 
-#&gt; niter:  200 	vallogf:  -1200.019 
-#&gt; Final niter:  200 	vallogf:  -1200.019 </div><div class='input'><span class='co'>## same with 2 sets of automatically generated initial values.</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>a0b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='fl'>2</span>)
-}
+<span class='no'>a0a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='kw'>crit</span> <span class='kw'>=</span> <span class='fl'>1e-4</span>)
+<span class='co'>## same with 2 sets of automatically generated initial values.</span>
+<span class='co'># \donttest{</span>
+<span class='no'>a0b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='fl'>2</span>, <span class='kw'>crit</span> <span class='kw'>=</span> <span class='fl'>1e-4</span>)
+<span class='co'># }</span>
 
 <span class='co'>## fix the shift parameters:</span>
-<span class='no'>a1a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='kw'>fix</span> <span class='kw'>=</span> <span class='st'>"shift"</span>)</div><div class='output co'>#&gt; cond:  67949.37 
-#&gt; cond:  1709713 
-#&gt; cond:  7424.067 
-#&gt; Initial vallogf:  -1241.973 
-#&gt; niter:  25 	vallogf:  -1213.723 
-#&gt; niter:  50 	vallogf:  -1213.478 
-#&gt; niter:  75 	vallogf:  -1213.429 
-#&gt; niter:  100 	vallogf:  -1213.425 
-#&gt; niter:  125 	vallogf:  -1213.424 
-#&gt; niter:  150 	vallogf:  -1213.424 
-#&gt; niter:  175 	vallogf:  -1213.424 
-#&gt; niter:  200 	vallogf:  -1213.424 
-#&gt; Final niter:  200 	vallogf:  -1213.424 </div><div class='input'><span class='co'>## ... with 3 sets of automatically generated initial values.</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>a1b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='fl'>3</span>, <span class='kw'>fix</span> <span class='kw'>=</span> <span class='st'>"shift"</span>)
-}
+<span class='no'>a1a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='kw'>fix</span> <span class='kw'>=</span> <span class='st'>"shift"</span>, <span class='kw'>crit</span> <span class='kw'>=</span> <span class='fl'>1e-4</span>)
+<span class='co'>## ... with 3 sets of automatically generated initial values.</span>
+<span class='co'># \donttest{</span>
+<span class='no'>a1b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='fl'>3</span>, <span class='kw'>fix</span> <span class='kw'>=</span> <span class='st'>"shift"</span>, <span class='kw'>crit</span> <span class='kw'>=</span> <span class='fl'>1e-4</span>)
+<span class='co'># }</span>
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'># \donttest{</span>
 <span class='co'>## specify the model using a MixAR model object</span>
-<span class='no'>a1c</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='no'>a1a</span>$<span class='no'>model</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='no'>a0a</span>$<span class='no'>model</span>, <span class='kw'>fix</span> <span class='kw'>=</span> <span class='st'>"shift"</span>)
+<span class='no'>a1c</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='no'>a1a</span>$<span class='no'>model</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='no'>a0a</span>$<span class='no'>model</span>, <span class='kw'>fix</span> <span class='kw'>=</span> <span class='st'>"shift"</span>,
+           <span class='kw'>crit</span> <span class='kw'>=</span> <span class='fl'>1e-4</span>)
 
-<span class='co'>## fit a model like mo_WL using as initial values 3 automatically generated sets.</span>
-<span class='no'>a2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='no'>mo_WL</span>, <span class='fl'>3</span>, <span class='kw'>fix</span> <span class='kw'>=</span> <span class='st'>"shift"</span>, <span class='kw'>permute</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-}
+<span class='co'>## fit a model like mo_WL using as initial values 2 automatically generated sets.</span>
+<span class='no'>a2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>), <span class='no'>mo_WL</span>, <span class='fl'>2</span>, <span class='kw'>fix</span> <span class='kw'>=</span> <span class='st'>"shift"</span>, <span class='kw'>permute</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+          <span class='kw'>crit</span> <span class='kw'>=</span> <span class='fl'>1e-4</span>)
+<span class='co'># }</span>
 
 <span class='no'>moT_B3</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARgen"</span>
                , <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.3</span>, <span class='fl'>0.3</span>, <span class='fl'>0.4</span>)

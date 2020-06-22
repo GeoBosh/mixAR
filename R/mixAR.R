@@ -386,8 +386,8 @@ setMethod("make_fcond_lik", signature(model="MixAR", ts="numeric"),
 
                   res <- cond_loglik(mixar, locts)
 
-                  cat("x = ", x, "\n")
-                  cat("f(x) = ", res, "\n\n")
+                  ## 2020-06-12 was: cat("x = ", x, "\n")
+                  ##                 cat("f(x) = ", res, "\n\n")
 
                   res
               }
@@ -483,7 +483,7 @@ setMethod("lik_params", c(model = "MixARgen"),
 setMethod("mix_cdf", signature(model="MixARgen", x="numeric", index="numeric", 
                                xcond="missing", scale="ANY"), # note: scale is ignored here!
           function(model, x, index, xcond, scale) {
-              print("gen!")
+              ## 2020-06-12 was: print("gen!")
               cdf <- noise_dist(model, "cdf")
 
               wrk <- mix_ek(model, x, index, scale=TRUE)
@@ -495,7 +495,7 @@ setMethod("mix_cdf", signature(model="MixARgen", x="numeric", index="numeric",
 setMethod("mix_cdf", signature(model="MixARgen", x="numeric", index="missing", 
                                xcond="numeric", scale="ANY"), 
           function(model, x, index, xcond, scale) {
-              print("gen!")
+              ## 2020-06-12 was: print("gen!")
               cdf <- noise_dist(model, "cdf")
 
               wrk <- mix_hatk(model, xcond, length(xcond)+1)
@@ -509,7 +509,7 @@ setMethod("mix_cdf", signature(model="MixARgen", x="numeric", index="missing",
 setMethod("mix_cdf", signature(model="MixARgen", x="missing", index="missing", 
                                xcond="numeric", scale="ANY"), 
           function(model, x, index, xcond, scale) {
-              print("gen!")
+              ## 2020-06-12 was: print("gen!")
               cdf <- noise_dist(model, "cdf")
               wrk <- mix_hatk(model, xcond, length(xcond)+1)
               f <- function(x){
@@ -727,15 +727,15 @@ setMethod("fit_mixAR", signature(x = "ANY", model = "MixAR", init = "numeric"),
                                             fit_mixAR(x, model, init = locmo, fix = fix, ...)
                                         })
                       cnt <<- cnt + 1
-                      cat("perm counter: ", cnt, "\n")
-                      print( which.max( sapply(locfits, function(z) z$vallogf) ) )
+                      ## 2020-06-12 was: cat("perm counter: ", cnt, "\n")
+                      ##                 print( which.max( sapply(locfits, function(z) z$vallogf) ) )
 
                       # browser()   commented out on 2012-09-21
 
                       locfits[[ which.max( sapply(locfits, function(z) z$vallogf) )[1] ]]
                   }
                   newwrk <- lapply(wrk, f)
-                                        # browser()
+
                   wrk <- newwrk
               }
 

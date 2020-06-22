@@ -25,10 +25,18 @@
   dist, ...)}  or \code{mixARgen(...)}. The two forms are completely
   equivalent. The latter is available from version 0.19-15 of package
   MixAR.
-%%  ~~ describe objects here ~~
 }
 \section{Slots}{
+  Most slots are inherited from class \code{"\linkS4class{MixAR}"}.
   \describe{
+    \item{\code{prob}:}{the mixing probabilities, \code{"numeric"}.}
+    \item{\code{order}:}{the AR orders, \code{"numeric"}.}
+    \item{\code{shift}:}{intercept terms, \code{"numeric"}.}
+    \item{\code{scale}:}{scaling factor, \code{"numeric"}.}
+    \item{\code{arcoef}:}{
+      autoregressive coefficients, an object from class
+      \code{"raggedCoef"} containing one row for each mixture component.
+    }
     \item{\code{dist}:}{Object of class \code{"list"}, representing the
       noise distributions. The list contains one element for each
       component of the MixAR model or a single element if the
@@ -46,11 +54,6 @@
       This is not finalised but if changed, backward compatibility
       with existing objects will be maintained.
     }
-    \item{\code{prob}:}{Object of class \code{"numeric"} ~~ }
-    \item{\code{order}:}{Object of class \code{"numeric"} ~~ }
-    \item{\code{shift}:}{Object of class \code{"numeric"} ~~ }
-    \item{\code{scale}:}{Object of class \code{"numeric"} ~~ }
-    \item{\code{arcoef}:}{Object of class \code{"raggedCoef"} ~~ }
   }
 }
 \section{Extends}{
@@ -113,7 +116,6 @@ gbutils::plotpdf(pdf1a, cdf = cdf1a, lq = 0.001, uq = 0.999)
 
 cdf1gena <- mix_cdf(exampleModels$WL_ibm_gen, xcond = as.numeric(fma::ibmclose)[-(369:369)])
 
-# cond_loglik(exampleModels$WL_ibm, fma::ibmclose) # doesn't work currently, no method for `ts'
 cond_loglik(exampleModels$WL_ibm, as.numeric(fma::ibmclose))
 cond_loglik(exampleModels$WL_ibm_gen, as.numeric(fma::ibmclose))
 

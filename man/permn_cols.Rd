@@ -35,7 +35,7 @@ permn_cols(m)
 %%% ~put references to the literature/web site here ~
 %}
 
-\author{Georgin N. Boshnakov}
+\author{Georgi N. Boshnakov}
 
 \examples{
 m <- matrix(c(11:14,21:24,31:34), ncol=3)

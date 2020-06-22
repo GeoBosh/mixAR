@@ -121,8 +121,8 @@ mixARreg(x, y, mixARmodel, tol = 1e-6, niter = 200)
 }
 \examples{
 ## Simulate covariates
-n <- 500
-n <- 100 # for CRAN
+set.seed(1234)
+n <- 50 # for CRAN
 y <- data.frame(rnorm(n, 7, 1), rt(n, 3), rnorm(n, 3, 2))
 
 ## Build mixAR part
@@ -139,12 +139,12 @@ x <- 10 + y[, 1] + 3 * y[, 2] + 2 * y[, 3] + u
 ## Fit model
 
 ## Using MixARGaussian
-fit_mixARreg(x = x, y = y, mixARmodel = model, niter = 5)
+fit_mixARreg(x = x, y = y, mixARmodel = model, niter = 3)
 
 ## Using EMinit
 EMinit <- list(prob = exampleModels$WL_At@prob, scale = exampleModels$WL_At@scale,
                arcoef = exampleModels$WL_At@arcoef@a)
-fit_mixARreg(x = x, y = y, EMinit = EMinit, niter = 5)
+fit_mixARreg(x = x, y = y, EMinit = EMinit, niter = 3)
 }
 \keyword{ regression }
 \keyword{ residuals }

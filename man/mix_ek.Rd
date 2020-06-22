@@ -23,7 +23,12 @@ mix_ek(model, x, index, xcond, scale)
     a vector of positive integer specifying the indices for which to
     compute the residuls, has a natural default.
   }
-  \item{xcond}{~~ TODO: describe this argument. ~~}
+  \item{xcond}{
+
+    the past values needed for the conditional distribution, a numeric
+    vector of length at least the maximal AR order of the components.
+
+  }
   \item{scale}{
     logical or missing, if \code{TRUE} standardise the residuals.
   } 
@@ -44,16 +49,20 @@ mix_ek(model, x, index, xcond, scale)
   % don't indent 'xcond = ' below, it is in verbatim mode, so the spaces
   % are kept! 
     \item{}{\code{signature(model = "MixAR", x = "numeric", index = "missing",
- xcond = "numeric", scale = "logical")}: ~~describe this method here }
+xcond = "numeric", scale = "logical")}%: ~~describe this method here
+    }
 
     \item{}{\code{signature(model = "MixAR", x = "numeric", index = "missing",
- xcond = "numeric", scale = "missing")}: ~~describe this method here }
+xcond = "numeric", scale = "missing")}%: ~~describe this method here
+    }
 
     \item{}{\code{signature(model = "MixAR", x = "numeric", index = "numeric",
- xcond = "missing", scale = "logical")}: ~~describe this method here }
+xcond = "missing", scale = "logical")}%: ~~describe this method here
+    }
 
     \item{}{\code{signature(model = "MixAR", x = "numeric", index = "numeric",
- xcond = "missing", scale = "missing")}: ~~describe this method here }
+xcond = "missing", scale = "missing")}%: ~~describe this method here
+    }
 }}
 \seealso{
   \code{\link{mixFilter}} which is used by \code{mix_ek} to do the job,

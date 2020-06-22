@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -157,7 +157,7 @@
     <pre class="examples"><div class='input'><span class='co'>## MixAR with 2 components: N(0,1) and t_5</span>
 <span class='no'>set.seed</span> <span class='kw'>=</span> <span class='fl'>1234</span>
 <span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>2</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='fu'>mixARnoise_sim</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>rnorm</span>, <span class='kw'>function</span>(<span class='no'>n</span>) <span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>rt</a></span>(<span class='no'>n</span>, <span class='fl'>5</span>)), <span class='no'>z</span>)</div><div class='output co'>#&gt; [1] -0.8606078 -1.7848068  1.8918217  0.6338474  0.2295063</div></pre>
+<span class='fu'>mixARnoise_sim</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>rnorm</span>, <span class='kw'>function</span>(<span class='no'>n</span>) <span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>rt</a></span>(<span class='no'>n</span>, <span class='fl'>5</span>)), <span class='no'>z</span>)</div><div class='output co'>#&gt; [1]  0.4952791 -1.6357424  0.6639916  0.9037336  0.1274709</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

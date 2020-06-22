@@ -287,7 +287,7 @@ isStable(exampleModels$WL_II)
 
 
 fi0    <- fit_mixAR(fma::ibmclose, exampleModels$WL_ibm, fix = "shift")
-expect_output( fit_mixAR(fma::ibmclose, exampleModels$WL_ibm, fix = "shift", init = 2) )
+fit_mixAR(fma::ibmclose, exampleModels$WL_ibm, fix = "shift", init = 2) 
 ## fi0gen <- fit_mixAR(fma::ibmclose, exampleModels$WL_ibm_gen, fix = "shift")
 ## fit3   <- fit_mixAR(fma::ibmclose, mo_WLt3,  fix = "shift")
 ## fi30   <- fit_mixAR(fma::ibmclose, mo_WLt30, fix = "shift")

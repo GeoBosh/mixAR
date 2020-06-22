@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -242,11 +242,11 @@
 <span class='no'>a2a</span> <span class='kw'>&lt;-</span> <span class='fu'>simuExperiment</span>(<span class='fl'>TRUE</span>, <span class='kw'>simu</span> <span class='kw'>=</span> <span class='no'>sim1</span>, <span class='kw'>est</span> <span class='kw'>=</span> <span class='no'>est2</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='no'>a2a</span>$<span class='no'>Summary</span></div><div class='output co'>#&gt; $mean
 #&gt;     xbar        s 
-#&gt; 2.962240 1.887183 
+#&gt; 2.948814 1.872527 
 #&gt; 
 #&gt; $sd
 #&gt;      xbar         s 
-#&gt; 0.8831038 0.6669752 
+#&gt; 0.9103828 0.6603736 
 #&gt; 
 #&gt; $N
 #&gt; [1] 1000
@@ -254,31 +254,31 @@
 <span class='co'># replicate a2a$Summary</span>
 <span class='no'>s5</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span>(<span class='no'>a2a</span>$<span class='no'>Raw</span>, <span class='no'>identity</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span>(<span class='no'>s5</span>, <span class='fl'>1</span>, <span class='no'>mean</span>)</div><div class='output co'>#&gt;     xbar        s 
-#&gt; 2.962240 1.887183 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span>(<span class='no'>s5</span>, <span class='fl'>1</span>, <span class='no'>sd</span>)</div><div class='output co'>#&gt;      xbar         s 
-#&gt; 0.8831038 0.6669752 </div><div class='input'>
+#&gt; 2.948814 1.872527 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span>(<span class='no'>s5</span>, <span class='fl'>1</span>, <span class='no'>sd</span>)</div><div class='output co'>#&gt;      xbar         s 
+#&gt; 0.9103828 0.6603736 </div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='no'>s5</span>[<span class='fl'>1</span>,], <span class='kw'>prob</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/density.html'>density</a></span>(<span class='no'>s5</span>[<span class='fl'>1</span>,]))</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/curve.html'>curve</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span>(<span class='no'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>s5</span>[<span class='fl'>1</span>,]), <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span>(<span class='no'>s5</span>[<span class='fl'>1</span>,])), <span class='kw'>add</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"red"</span>)</div><div class='img'><img src='simuExperiment-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='kw pkg'>mixAR</span><span class='kw ns'>:::</span><span class='fu'>.fsummary</span>(<span class='no'>a2a</span>$<span class='no'>Raw</span>)</div><div class='output co'>#&gt; $mean
 #&gt;     xbar        s 
-#&gt; 2.962240 1.887183 
+#&gt; 2.948814 1.872527 
 #&gt; 
 #&gt; $sd
 #&gt;      xbar         s 
-#&gt; 0.8831038 0.6669752 
+#&gt; 0.9103828 0.6603736 
 #&gt; 
 #&gt; $N
 #&gt; [1] 1000
 #&gt; </div><div class='input'><span class='kw pkg'>mixAR</span><span class='kw ns'>:::</span><span class='fu'>.fsummary</span>(<span class='no'>a2a</span>$<span class='no'>Raw</span>, <span class='kw'>merge</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; $mean
 #&gt;     xbar        s 
-#&gt; 2.962240 1.887183 
+#&gt; 2.948814 1.872527 
 #&gt; 
 #&gt; $sd
 #&gt;      xbar         s 
-#&gt; 0.8831038 0.6669752 
+#&gt; 0.9103828 0.6603736 
 #&gt; 
 #&gt; $merged
 #&gt;          mean        sd
-#&gt; xbar 2.962240 0.8831038
-#&gt; s    1.887183 0.6669752
+#&gt; xbar 2.948814 0.9103828
+#&gt; s    1.872527 0.6603736
 #&gt; 
 #&gt; $N
 #&gt; [1] 1000

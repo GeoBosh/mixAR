@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -139,7 +139,7 @@
     </tr>
     <tr>
       <th>fix</th>
-      <td><p>~~ TODO: describe this argument. ~~</p></td>
+      <td><p>if TRUE, fix the shift parameters.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -166,8 +166,8 @@
     
 <dl'>
 
-  <dt><code>signature(x = "ANY", model = "MixVAR")</code></dt><dd><p>... <!-- % This is currently the only available method for \code{fit_mixVAR} --></p></dd>
-  <dt><code>signature(x = "ANY", model = "ANY")</code></dt><dd><p>...</p></dd>
+  <dt><code>signature(x = "ANY", model = "MixVAR")</code></dt><dd><p><!-- % This is currently the only available method for \code{fit_mixVAR} --></p></dd>
+  <dt><code>signature(x = "ANY", model = "ANY")</code></dt><dd><p></p></dd>
 
 </dl>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -176,46 +176,75 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>AR</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
-<span class='no'>AR</span><span class='kw'>[[</span><span class='fl'>1</span>]] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>,-<span class='fl'>0.3</span>,-<span class='fl'>0.6</span>,<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='fl'>0.5</span>,<span class='fl'>0.4</span>,<span class='fl'>0.5</span>,-<span class='fl'>0.3</span>),<span class='kw'>dim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>1</span>))
-<span class='no'>AR</span><span class='kw'>[[</span><span class='fl'>2</span>]] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.5</span>,<span class='fl'>0.3</span>,<span class='fl'>0</span>,<span class='fl'>1</span>,<span class='fl'>0</span>,-<span class='fl'>0.5</span>,-<span class='fl'>0.4</span>,-<span class='fl'>0.2</span>, <span class='fl'>0.5</span>),<span class='kw'>dim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>1</span>))
+<span class='no'>AR</span><span class='kw'>[[</span><span class='fl'>1</span>]] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, -<span class='fl'>0.3</span>, -<span class='fl'>0.6</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0.5</span>, <span class='fl'>0.4</span>, <span class='fl'>0.5</span>, -<span class='fl'>0.3</span>), <span class='kw'>dim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>1</span>))
+<span class='no'>AR</span><span class='kw'>[[</span><span class='fl'>2</span>]] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.5</span>, <span class='fl'>0.3</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, -<span class='fl'>0.5</span>, -<span class='fl'>0.4</span>, -<span class='fl'>0.2</span>, <span class='fl'>0.5</span>), <span class='kw'>dim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>1</span>))
 
-<span class='no'>prob</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.75</span>,<span class='fl'>0.25</span>)
-<span class='no'>shift</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='fl'>0</span>),<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='fl'>0</span>))
+<span class='no'>prob</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.75</span>, <span class='fl'>0.25</span>)
+<span class='no'>shift</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>))
 
-<span class='no'>Sigma1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0.5</span>, -<span class='fl'>0.4</span>),<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>,<span class='fl'>2</span>, <span class='fl'>0.8</span>),<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.4</span>,<span class='fl'>0.8</span>,<span class='fl'>4</span>))
-<span class='no'>Sigma2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0.2</span>, <span class='fl'>0</span>),<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.2</span>,  <span class='fl'>2</span>, -<span class='fl'>0.15</span>),<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,-<span class='fl'>0.15</span>,<span class='fl'>4</span>))
-<span class='no'>Sigma</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>Sigma1</span>, <span class='no'>Sigma2</span>), <span class='kw'>dim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>2</span>))
+<span class='no'>Sigma1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0.5</span>, -<span class='fl'>0.4</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>2</span>, <span class='fl'>0.8</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>0.4</span>, <span class='fl'>0.8</span>, <span class='fl'>4</span>))
+<span class='no'>Sigma2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>0.2</span>, <span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.2</span>,  <span class='fl'>2</span>, -<span class='fl'>0.15</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, -<span class='fl'>0.15</span>, <span class='fl'>4</span>))
+<span class='no'>Sigma</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>Sigma1</span>, <span class='no'>Sigma2</span>), <span class='kw'>dim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>2</span>))
 
-<span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixVARGaussian"</span>, <span class='kw'>prob</span><span class='kw'>=</span><span class='no'>prob</span>, <span class='kw'>vcov</span><span class='kw'>=</span><span class='no'>Sigma</span>, <span class='kw'>arcoef</span><span class='kw'>=</span><span class='no'>AR</span>, <span class='kw'>shift</span><span class='kw'>=</span><span class='no'>shift</span>)
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixVAR_sim.html'>mixVAR_sim</a></span>(<span class='no'>m</span>, <span class='kw'>n</span><span class='kw'>=</span><span class='fl'>500</span>, <span class='kw'>init</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>,<span class='fl'>3</span>), <span class='kw'>ncol</span><span class='kw'>=</span><span class='fl'>3</span>), <span class='kw'>nskip</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>flag</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+<span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixVARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>prob</span>, <span class='kw'>vcov</span> <span class='kw'>=</span> <span class='no'>Sigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>AR</span>, <span class='kw'>shift</span> <span class='kw'>=</span> <span class='no'>shift</span>)
 
-<span class='fu'>fit_mixVAR</span>(<span class='no'>y</span>, <span class='no'>m</span>)</div><div class='output co'>#&gt; niter: 25 	vallogf: -2554.606 </div><div class='output co'>#&gt; $model
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1234</span>)
+<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixVAR_sim.html'>mixVAR_sim</a></span>(<span class='no'>m</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>0</span>, <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>flag</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='fu'>fit_mixVAR</span>(<span class='no'>y</span>, <span class='no'>m</span>, <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fl'>1e-3</span>)</div><div class='output co'>#&gt; $model
 #&gt; (To see the internal structure of the object, use function 'str'.)
 #&gt; 
 #&gt; An object of class "MixVARGaussian"
 #&gt; Number of components: 2 
 #&gt; Number of series: 3 
-#&gt;             prob       shift order        ar_1                        
-#&gt; Comp_1 0.7018105  0.10730410     1  0.51246643  0.008764416  0.4249752
-#&gt;                   0.04271996       -0.25519130 -0.001056835  0.5796486
-#&gt;                  -0.04055816       -0.69480497  0.480078193 -0.3019409
-#&gt; Comp_2 0.2981895 -0.06199085     1 -0.47955582  1.059437823 -0.3970795
-#&gt;                   0.07311614        0.33439985  0.003667193 -0.2163129
-#&gt;                  -0.17166048       -0.03672008 -0.438708195  0.5353506
+#&gt;             prob      shift order        ar_1                        
+#&gt; Comp_1 0.7561508  0.1281656     1  0.41214162  0.15489065  0.36858610
+#&gt;                   0.1476945       -0.67459251  0.23338114  0.53169958
+#&gt;                  -0.4193473       -0.98634266  0.58632537 -0.33231352
+#&gt; Comp_2 0.2438492  0.3997921     1 -0.26384005  0.40212431 -0.14272653
+#&gt;                   0.6901770       -0.04967386 -0.06820107 -0.07706285
+#&gt;                  -0.5439589       -0.04438110  0.09917752  0.34190926
 #&gt;               vcov                       
-#&gt; Comp_1  0.94802171  0.5769052 -0.26533845
-#&gt;         0.57690519  2.2034803  0.94600064
-#&gt;        -0.26533845  0.9460006  3.65084876
-#&gt; Comp_2  1.11366720  0.5013025 -0.07250881
-#&gt;         0.50130254  1.8347667 -0.11426517
-#&gt;        -0.07250881 -0.1142652  3.24257337
+#&gt; Comp_1  1.28998427  0.3532316 -1.43884725
+#&gt;         0.35323165  1.4588477  0.84376732
+#&gt;        -1.43884725  0.8437673  5.09397281
+#&gt; Comp_2  1.18935913  0.5697533 -0.07065855
+#&gt;         0.56975325  0.9346697 -0.99381873
+#&gt;        -0.07065855 -0.9938187  5.28724834
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	Multivariate standard Gaussian
 #&gt; 
 #&gt; 
 #&gt; $vallogf
-#&gt; [1] -2554.607
+#&gt; [1] -477.3159
+#&gt; </div><div class='input'><span class='fu'><a href='mixVARfit.html'>mixVARfit</a></span>(<span class='no'>y</span>, <span class='no'>m</span>, <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fl'>1e-3</span>)</div><div class='output co'>#&gt; $model
+#&gt; (To see the internal structure of the object, use function 'str'.)
+#&gt; 
+#&gt; An object of class "MixVARGaussian"
+#&gt; Number of components: 2 
+#&gt; Number of series: 3 
+#&gt;             prob      shift order        ar_1                        
+#&gt; Comp_1 0.7561684  0.1281484     1  0.41212929  0.15486430  0.36858362
+#&gt;                   0.1476893       -0.67459978  0.23335828  0.53169430
+#&gt;                  -0.4192959       -0.98629155  0.58640262 -0.33230476
+#&gt; Comp_2 0.2438316  0.3997948     1 -0.26381786  0.40218964 -0.14274202
+#&gt;                   0.6900980       -0.04958495 -0.06808290 -0.07707954
+#&gt;                  -0.5439389       -0.04455661  0.09893087  0.34194016
+#&gt;               vcov                       
+#&gt; Comp_1  1.28997846  0.3532545 -1.43887869
+#&gt;         0.35325450  1.4588626  0.84369248
+#&gt;        -1.43887869  0.8436925  5.09408617
+#&gt; Comp_2  1.18937746  0.5697202 -0.07050862
+#&gt;         0.56972024  0.9345942 -0.99356299
+#&gt;        -0.07050862 -0.9935630  5.28685385
+#&gt; 
+#&gt; Distributions of the error components:
+#&gt; 	Multivariate standard Gaussian
+#&gt; 
+#&gt; 
+#&gt; $vallogf
+#&gt; [1] -477.2795
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

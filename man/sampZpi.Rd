@@ -161,11 +161,15 @@ AR <- model@arcoef@a
 
 model
 
-y <- mixAR_sim(model, n = 500, init = 0) # or, say, n = 250
-x  <- sampZpi(y, pk, prob, shift, AR, sigma, nsim = 100, d)
-x1 <- sampMuShift(y, pk, prec, nk = x$nk, shift, z = x$latentZ, AR, nsim = 100)
+set.seed(1234)
+n <- 50 # 500
+nsim <- 50
+
+y <- mixAR_sim(model, n = n, init = 0)
+x  <- sampZpi(y, pk, prob, shift, AR, sigma, nsim = nsim, d)
+x1 <- sampMuShift(y, pk, prec, nk = x$nk, shift, z = x$latentZ, AR, nsim = nsim)
 x2 <- sampSigmaTau(y, pk, prec, nk = x$nk, AR, mu = x1$mu, z = x$latentZ,
-                   a = 0.2, c = 2, nsim = 100)
+                   a = 0.2, c = 2, nsim = nsim)
 }
 %\keyword{ samp }% use one of  RShowDoc("KEYWORDS")
 %\keyword{ weights }

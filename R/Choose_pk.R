@@ -22,6 +22,8 @@ bx_dx <- function(method = c("Ratio", "Poisson", "NULL"), par, pk){
 
 Choose_pk <- function(y, model, fix_shift = FALSE, tau, pmax, method,
                       par = NULL, nsim){
+    stopifnot(is(model, "MixARGaussian"))
+    
     if(pmax < 0) stop("ar order must be at least 0")
     
     p <- max(model@order)

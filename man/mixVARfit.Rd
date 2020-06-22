@@ -8,7 +8,7 @@
   multivariate time series
 }
 \usage{
-mixVARfit(y, model, fix = FALSE, tol = 10^-6)
+mixVARfit(y, model, fix = FALSE, tol = 10^-6, verbose = FALSE)
 }
 \arguments{
   \item{y}{a data matrix.}
@@ -20,7 +20,8 @@ mixVARfit(y, model, fix = FALSE, tol = 10^-6)
     Threshold for convergence criterion.
   }
 
-  \item{fix}{~~ TODO: describe this argument. ~~}
+  \item{fix}{if TRUE, fix the shift parameters.}
+  \item{verbose}{if \code{TRUE} print information during the optimisation.}
 }
 \details{
 
@@ -42,23 +43,8 @@ mixVARfit(y, model, fix = FALSE, tol = 10^-6)
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%}
-\examples{
-AR <- list()
-AR[[1]] <- array(c(0.5,-0.3,-0.6,0,0,0.5,0.4,0.5,-0.3), dim = c(3,3,1))
-AR[[2]] <- array(c(-0.5,0.3,0,1,0,-0.5,-0.4,-0.2, 0.5), dim = c(3,3,1))
-
-prob <- c(0.75, 0.25)
-shift <- cbind(c(0,0,0), c(0,0,0))
-
-Sigma1 <- cbind(c(1,0.5, -0.4), c(0.5,2, 0.8), c(-0.4,0.8,4))
-Sigma2 <- cbind(c(1,0.2, 0), c(0.2,  2, -0.15), c(0,-0.15,4))
-Sigma <- array(c(Sigma1, Sigma2), dim = c(3,3,2))
-
-m <- new("MixVARGaussian", prob = prob, vcov = Sigma, arcoef = AR, shift = shift)
-y <- mixVAR_sim(m, n = 500, init = matrix(rep(0,3), ncol = 3), nskip = 100, flag = FALSE)
-
-mixVARfit(y, m, tol = 10^-6)
+\seealso{
+  \code{\link{fit_mixVAR-methods}} for examples
 }
+%\examples{
+%}

@@ -52,9 +52,9 @@ mixMstep(y, tau, order, index, est_shift = TRUE)
   For \code{mixMstep}, a MixAR model, an object of class \code{MixARGaussian}.
 
   For \code{tauCorrelate}, a named list with the following components:
-  \item{Stau}{Todo: describe this item.}
-  \item{Stauy}{Todo: describe this item.}
-  \item{Stauyy}{Todo: describe this item.}
+  \item{Stau}{} % Todo: describe this item.
+  \item{Stauy}{}
+  \item{Stauyy}{}
 
   For \code{tau2arcoef},   a list with two components:
   \item{shift}{the shift (intercept) terms, a numeric vector}

@@ -15,11 +15,12 @@
 \alias{ed_stdt1}
 \alias{ft_stdt}
 
-\title{Generator functions for noise noise distributions}
+\title{Generator functions for noise distributions}
 \description{
-  Generate noise distribution, currently standard normal and
-  standardised t-distributions. These functions can be used as templates
-  for new distributions.
+  These functions and objects are mostly internal and should not be
+  needed for routine use. Generate noise distribution, currently
+  standard normal and standardised t-distributions. These functions can
+  be used as templates for new distributions.
 }
 \usage{
 fdist_stdnorm()
@@ -54,14 +55,14 @@ ft_stdt
   \item{df}{degrees of freedom}
   \item{fixed}{if TRUE, the parameters are fixed, otherwise they are
     variable, see Details.}
-  \item{x}{~~ TODO: describe this argument. ~~}
-  \item{type}{~~ TODO: describe this argument. ~~}
-  \item{param}{~~ TODO: describe this argument. ~~}
-  \item{ncomp}{~~ TODO: describe this argument. ~~}
-  \item{tr}{~~ TODO: describe this argument. ~~}
-  \item{...}{~~ TODO: describe this argument. ~~}
-  \item{s}{~~ TODO: describe this argument. ~~}
-  \item{n}{~~ TODO: describe this argument. ~~}
+  \item{x}{a fitted object.}% ~~ TODO: describe this argument.
+  \item{type}{list of distributions.}
+  \item{param}{parameters.}
+  \item{ncomp}{number of components.}
+  \item{tr}{transformation.}
+  \item{...}{not used.}
+  \item{s}{named vector.}
+  \item{n}{number of different degrees of freedom.}
 }
 \details{
   If argument \code{fixed} is TRUE, estimation functions assume that the

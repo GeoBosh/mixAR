@@ -5,6 +5,7 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                         , comp_sigma = FALSE
                         , method = "BBsolve", maxit = 100, trace = FALSE, lessverbose = TRUE,
                         ... ){
+    verbose <- lessverbose && interactive()
                                                          # 2012-11-02 tova beshe vav fit_mixAR
                                                   # ako ostavya taka, ste raboti bez izmenenie
     shift_ar_params <- unlist(c(model@shift, model@arcoef@a))
@@ -119,8 +120,10 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                 res <- sum(sc@m) + sum( (tau * log(model@prob/sigma))@m )
 
                             if(any(is.infinite(res))){
-                                cat("infinite values in res!\n")
-                                browser()
+                                ## 2020-06-12 was: cat("infinite values in res!\n")
+                                ##                 browser()
+                                if(verbose)
+                                    message("infinite values in res!")
                             }
 
                 res[res==-Inf] <- - 10000   # see the R snipped above
@@ -128,8 +131,10 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                 res <- sum(res)
 
                             if(res == -Inf){
-                                cat("res is: ", res, "\n")
-                                browser()
+                                ## 2020-06-12 was: cat("res is: ", res, "\n")
+                                ##                  browser()
+                                if(verbose)
+                                    message("res is: ", res, "\n")
                             }
                 res
             }
@@ -236,8 +241,10 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
     }
 
                                            # print(param) # cat(feqns(param), "\n", sep = " ")
-    cat("Estimating")
-    cat(if(lessverbose) "." else " AR parameters...")
+    if(verbose){
+        cat("Estimating")
+        cat(if(lessverbose) "." else " AR parameters...")
+    }
     oldparam <- param
     param <- switch(method,
                         # BBsolve   = {print("Ouch!"); BBsolve(par=param, fn = feqns, ...) },
@@ -252,8 +259,8 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                                     control=list(maximize=TRUE, trace = trace), ...),
                     stop("no method specified")
                     )
-
-    cat(if(lessverbose) param$convergence else c("convergence =", param$convergence, "fn.reduction =", param$fn.reduction, "\n"))
+    if(verbose)
+        cat(if(lessverbose) param$convergence else c("convergence =", param$convergence, "fn.reduction =", param$fn.reduction, "\n"))
     if(param$convergence > 0){             # TODO: tova e krapka!
         oldlik <- cond_loglik(model, y)
         tmpmodel <- model
@@ -273,12 +280,14 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                                         # todo: more work needed, maybe enforce nondecrease?
         if(tmplik < oldlik){  # not only lack of convergence but also worse  likelihood,
                               # try again enforcing monotonicity (M=1)
-            cat("tmplik:", tmplik, "is smaller than the old lik,", oldlik, "\n")
+            if(verbose)
+                cat("tmplik:", tmplik, "is smaller than the old lik,", oldlik, "\n")
             tmpparam <- BBsolve(par=oldparam, fn = feqns, quiet = TRUE,
                                 control = list(maxit=max(armaxit,100),
                                 trace = trace, M = 1), ...)
-            cat("\n\tconvergence =", tmpparam$convergence, "fn.reduction =",
-                tmpparam$fn.reduction, "\n")
+            if(verbose)
+                cat("\n\tconvergence =", tmpparam$convergence, "fn.reduction =", 
+                    tmpparam$fn.reduction, "\n")
             param <- tmpparam
         }
     }
@@ -307,11 +316,11 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
     problik <- cond_loglik(tmpmodel2, y)
 
     if(problik < curlik)
-        cat("\tBoshwarning: using the estimated prob reduces the likelihood.\n")
+        if(verbose) cat("\tBoshwarning: using the estimated prob reduces the likelihood.\n")
 
     model@prob <- prob
 
-    cat(if(lessverbose) "." else "   scale parameters...")
+    if(verbose) cat(if(lessverbose) "." else "   scale parameters...")
     etk <- mix_ek(model, y, index)
 
     if(any(dontfix_scale)){
@@ -323,7 +332,8 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
     }
 
     if(estdist_flag){
-        cat(if(lessverbose) "." else  "   noise parameter(s)...")
+        if(verbose)
+            cat(if(lessverbose) "." else  "   noise parameter(s)...")
 
         nu <- noise_params(model)
                                         # print("nu is: ")
@@ -336,7 +346,8 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
 
         model <- set_noise_params(model,nu)
     }
-    cat("\n")
+    if(verbose)
+        cat("\n")
 
     model
 }
@@ -408,7 +419,7 @@ em_est_sigma <- function(tau, etk, Fscore, sigma, dontfix = rep(TRUE, length(sig
     if(any(sigma<0)){                 # kogato Fscore e nechetna function.
         sigma <- abs(sigma)
 
-        print("Changed sign of some sigma[k] to make them positive")
+        ## 2010-06-12 was: print("Changed sign of some sigma[k] to make them positive")
     }
                # cat("newsigma: ", sigma, "\n")
                                           # if(any(is.nan(wrk))) wrk[is.nan(wrk)] <- 0.0000001
@@ -515,7 +526,10 @@ mixARgenemFixedPoint <- function(y, model               # crit   # opts
                                  , crit = 1e-14   # maybe set to a larger value?
                                  , maxniter = 200
                                  , minniter = 10
+                                 , verbose = FALSE
                                  , ... ){
+    verbose <- verbose && interactive()
+
     y <- as.numeric(y)
 
     oldmodel <- model
@@ -534,7 +548,8 @@ mixARgenemFixedPoint <- function(y, model               # crit   # opts
     all_relchange <- numeric(0)  # for testing
     all_vallogf <- oldvallogf
 
-    cat("niter: ", 0,  "\t", "vallogf: ", oldvallogf, "\n")
+    if(verbose)
+        cat("niter: ", 0,  "\t", "vallogf: ", oldvallogf, "\n")
 
     niter <- 0
     while( niter <= minniter || niter <= maxniter && relchange > crit ){
@@ -556,8 +571,10 @@ mixARgenemFixedPoint <- function(y, model               # crit   # opts
         all_relchange <- c(all_relchange, relchange)
 
         if(niter %% 10 == 1){  # todo: replace 10 with an argument.
-            cat("niter: ", niter, "\t", "vallogf: ", newvallogf, "\n")
-            show(newmodel)
+            if(verbose){
+                cat("niter: ", niter, "\t", "vallogf: ", newvallogf, "\n")
+                show(newmodel)
+            }
         }
 
         oldmodel <- newmodel

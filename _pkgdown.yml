@@ -8,13 +8,13 @@ reference:
       Fit mixture autoregressive models using the EM algorithm or MCMC.
     contents:
       - fit_mixAR
+      - bayes_mixAR
       - fit_mixARreg
       - mixARreg
       - mixSARfit
-      - "mixAR_diag"
-      - "mixAR_BIC"
-      - "bayes_mixAR"
-      - "mix_se-methods"
+      - mixAR_diag
+      - mix_se-methods
+      - mixAR_BIC
   - title: "Prediction"
     desc: >
       Predictive distributions and their summary statistics

@@ -131,50 +131,7 @@ mo_WLt3 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
 mo_WLt30 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
                 dist = list(fdist_stdt(30)))
 
-\dontrun{
-## running all examples would take too long on CRAN
-fi0    <- fit_mixAR(fma::ibmclose, exampleModels$WL_ibm,    fix = "shift")
-fi0gen <- fit_mixAR(fma::ibmclose, exampleModels$WL_ibm_gen, fix = "shift")
-fit3   <- fit_mixAR(fma::ibmclose, mo_WLt3,  fix = "shift")
-fi30   <- fit_mixAR(fma::ibmclose, mo_WLt30, fix = "shift")
-
-stdt3v <- fdist_stdt(3, fixed = FALSE)
-mo_WLt3v <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
-                dist = list(fdist_stdt(3, fixed = FALSE)))
-fit3v <- fit_mixAR(fma::ibmclose, mo_WLt3v, fix = "shift")
-
-fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
-                        dist = list(fdist_stdt(10))), fix = "shift")
-fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
-                        dist = list(fdist_stdt(5))), fix = "shift")
-fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
-                        dist = list(fdist_stdt(4))), fix = "shift")
-fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
-                        dist = list(fdist_stdt(3))), fix = "shift")
-fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
-                        dist = list(fdist_stdt(3.5))), fix = "shift")
-fit_mixAR(fma::ibmclose, new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
-                        dist = list(fdist_stdt(3.8))), fix = "shift")
-
-mo_WLt30v <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
-                 dist = list(fdist_stdt(30, fixed = FALSE)))
-
-fit30v <- fit_mixAR(fma::ibmclose, mo_WLt30v, fix = "shift")
-
-mo_WLt20v30v40 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
-                      dist = list(fn_stdt(c(20, 30, 40), fixed = FALSE)))
-fit20v30v40 <- fit_mixAR(fma::ibmclose, mo_WLt20v30v40, fix = "shift")
-
-mo_WLt20v30v40 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
-                      dist = fn_stdt(c(20, 30, 40), fixed = FALSE))
-fit20v30v40 <- fit_mixAR(fma::ibmclose, mo_WLt20v30v40, fix = "shift")
-
-mo_WLtf <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar, 
-               dist = list(generator = function(par) fn_stdt(par, fixed = FALSE), 
-                           param = c(20, 30, 40)))
-
-fitmo_WLtf <- fit_mixAR(fma::ibmclose, mo_WLtf, fix = "shift")
-}
+fi0 <- fit_mixAR(fma::ibmclose, exampleModels$WL_ibm, fix = "shift", crit = 1e-4)
 }
 \keyword{methods}
 \keyword{MixAR}

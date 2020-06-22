@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -228,8 +228,8 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Simulate covariates</span>
-<span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>500</span>
-<span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>100</span> <span class='co'># for CRAN</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1234</span>)
+<span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>50</span> <span class='co'># for CRAN</span>
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>n</span>, <span class='fl'>7</span>, <span class='fl'>1</span>), <span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>rt</a></span>(<span class='no'>n</span>, <span class='fl'>3</span>), <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>n</span>, <span class='fl'>3</span>, <span class='fl'>2</span>))
 
 <span class='co'>## Build mixAR part</span>
@@ -246,24 +246,14 @@
 <span class='co'>## Fit model</span>
 
 <span class='co'>## Using MixARGaussian</span>
-<span class='fu'>fit_mixARreg</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>mixARmodel</span> <span class='kw'>=</span> <span class='no'>model</span>, <span class='kw'>niter</span> <span class='kw'>=</span> <span class='fl'>5</span>)</div><div class='output co'>#&gt; Initial vallogf:  -230.077 
-#&gt; Final niter:  15 	vallogf:  -226.7141 
-#&gt; Initial vallogf:  -412.3461 
-#&gt; niter:  25 	vallogf:  -262.2103 
-#&gt; Final niter:  26 	vallogf:  -262.2103 
-#&gt; Initial vallogf:  -231.2269 
-#&gt; Final niter:  16 	vallogf:  -226.7724 
-#&gt; Initial vallogf:  -379.029 
-#&gt; Final niter:  23 	vallogf:  -257.5183 
-#&gt; Initial vallogf:  -232.4181 
-#&gt; Final niter:  16 	vallogf:  -226.9225 </div><div class='output co'>#&gt; $reg
+<span class='fu'>fit_mixARreg</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>mixARmodel</span> <span class='kw'>=</span> <span class='no'>model</span>, <span class='kw'>niter</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; $reg
 #&gt; 
 #&gt; Call:
 #&gt; lm(formula = data.frame(xstar, y))
 #&gt; 
 #&gt; Coefficients:
 #&gt;    (Intercept)  rnorm.n..7..1.        rt.n..3.  rnorm.n..3..2.  
-#&gt;        10.4765          0.9053          2.9810          1.8948  
+#&gt;          7.325           1.558           2.831           1.805  
 #&gt; 
 #&gt; 
 #&gt; $mixARmodel
@@ -271,16 +261,16 @@
 #&gt; 
 #&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
-#&gt;        prob      shift scale    order ar_1      
-#&gt; Comp_1 0.4564717   0   1.196923   1   -0.5744474
-#&gt; Comp_2 0.5435283   0   2.081108   1    1.1785688
+#&gt;        prob      shift scale    order ar_1     
+#&gt; Comp_1 0.5566597   0   1.057166   1   -0.475807
+#&gt; Comp_2 0.4433403   0   1.906334   1    1.005682
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
 #&gt; 
 #&gt; 
 #&gt; $niter
-#&gt; [1] 5
+#&gt; [1] 3
 #&gt; 
 #&gt; $convergence
 #&gt; [1] 1
@@ -288,24 +278,14 @@
 <span class='co'>## Using EMinit</span>
 <span class='no'>EMinit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>prob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>scale</span>,
                <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>arcoef</span>@<span class='kw'>a</span>)
-<span class='fu'>fit_mixARreg</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>EMinit</span> <span class='kw'>=</span> <span class='no'>EMinit</span>, <span class='kw'>niter</span> <span class='kw'>=</span> <span class='fl'>5</span>)</div><div class='output co'>#&gt; Initial vallogf:  -230.077 
-#&gt; Final niter:  15 	vallogf:  -226.7141 
-#&gt; Initial vallogf:  -412.3461 
-#&gt; niter:  25 	vallogf:  -262.2103 
-#&gt; Final niter:  26 	vallogf:  -262.2103 
-#&gt; Initial vallogf:  -231.2269 
-#&gt; Final niter:  16 	vallogf:  -226.7724 
-#&gt; Initial vallogf:  -379.029 
-#&gt; Final niter:  23 	vallogf:  -257.5183 
-#&gt; Initial vallogf:  -232.4181 
-#&gt; Final niter:  16 	vallogf:  -226.9225 </div><div class='output co'>#&gt; $reg
+<span class='fu'>fit_mixARreg</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>EMinit</span> <span class='kw'>=</span> <span class='no'>EMinit</span>, <span class='kw'>niter</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; $reg
 #&gt; 
 #&gt; Call:
 #&gt; lm(formula = data.frame(xstar, y))
 #&gt; 
 #&gt; Coefficients:
 #&gt;    (Intercept)  rnorm.n..7..1.        rt.n..3.  rnorm.n..3..2.  
-#&gt;        10.4765          0.9053          2.9810          1.8948  
+#&gt;          7.325           1.558           2.831           1.805  
 #&gt; 
 #&gt; 
 #&gt; $mixARmodel
@@ -313,16 +293,16 @@
 #&gt; 
 #&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
-#&gt;        prob      shift scale    order ar_1      
-#&gt; Comp_1 0.4564717   0   1.196923   1   -0.5744474
-#&gt; Comp_2 0.5435283   0   2.081108   1    1.1785688
+#&gt;        prob      shift scale    order ar_1     
+#&gt; Comp_1 0.5566597   0   1.057166   1   -0.475807
+#&gt; Comp_2 0.4433403   0   1.906334   1    1.005682
 #&gt; 
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
 #&gt; 
 #&gt; 
 #&gt; $niter
-#&gt; [1] 5
+#&gt; [1] 3
 #&gt; 
 #&gt; $convergence
 #&gt; [1] 1

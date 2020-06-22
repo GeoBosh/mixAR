@@ -74,9 +74,11 @@ arco <- list(-0.5, 1)
 
 model <- new("MixARGaussian", prob = prob, scale = sigma, arcoef = arco)
 
+set.seed(1234)
 y <- mixAR_sim(model, 250, rep(0, max(model@order)), nskip = 100)  # data
 
-marg_loglik(y, model, tau = c(.15, .25), nsim = 50, 0.5)
+nsim <- 10 # 50
+marg_loglik(y, model, tau = c(.15, .25), nsim = nsim, 0.5)
 }
 \keyword{ estimation }
 \keyword{ selection }

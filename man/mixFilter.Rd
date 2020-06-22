@@ -41,9 +41,7 @@ mixFilter(x, coef, index, shift = 0, residual = FALSE, scale = 1)
 }
 
 \item{\code{signature(x = "numeric", coef = "raggedCoef", index = "numeric")}}{
-  Filter \code{x} and return a \code{MixComp} object.
-  % See \code{\link{mixFilter}} for a description of the meaning of the
-  % arguments.
+  %Filter \code{x} and return a \code{MixComp} object.
 }
 }}
 \seealso{

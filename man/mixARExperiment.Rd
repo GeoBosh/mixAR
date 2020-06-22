@@ -2,8 +2,6 @@
 
 \alias{mixARExperiment}
 
-%- Also NEED an '\alias' for EACH other topic documented here.
-
 \title{Simulation experiments with MixAR models}
 
 \description{Perform simulation experiments with MixAR models.}
@@ -11,8 +9,6 @@
 \usage{
 mixARExperiment(model, imodel = NULL, simargs = NULL, estargs = NULL, fix, ...)
 }
-
-%- maybe also 'usage' for other objects documented here.
 
 \arguments{
   \item{model}{the underlying model, an object inheriting from "MixAR",
@@ -61,7 +57,7 @@ mixARExperiment(model, imodel = NULL, simargs = NULL, estargs = NULL, fix, ...)
 %%% ~put references to the literature/web site here ~
 %}
 
-\author{Georgin N. Boshnakov}
+\author{Georgi N. Boshnakov}
 
 \note{
   This is an initial version of this function, some of its arguments may
@@ -80,29 +76,13 @@ mixARExperiment(model, imodel = NULL, simargs = NULL, estargs = NULL, fix, ...)
 \examples{
 exampleModels$WL_II
 
-## N of course is not realistic here but unswitch() sometimes drops all
-## as unsuccessful (see fsummary()) and error pops up. Need to guard
-## against this.
 set.seed(1234)
-mixARExperiment(exampleModels$WL_II, N = 10)
-mixARExperiment(exampleModels$WL_II, N = 10, raw = TRUE)
-mixARExperiment(exampleModels$WL_II, N = 10, raw = TRUE, simargs = list(n = 500))
-
-## the following take more time.
-##
-## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 500))
-## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 50))
-## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 50))
-## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 50),
-##     estargs = list(maxniter = 500))
-## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 50),
-##     estargs = list(init = 1, maxniter = 500))
-## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 100),
-##     estargs = list(init = 1, maxniter = 500))
-## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 100),
-##     estargs = list(init = 5, maxniter = 500))
-## mixARExperiment(exampleModels$WL_II, N = 1000, raw = TRUE, simargs = list(n = 100),
-##     estargs = list(init = 10, maxniter = 500))
+n = 20 # toy size
+N = 5 # toy number of simulations
+mixARExperiment(exampleModels$WL_II, N = N, estargs = list(crit = 1e-4))
+mixARExperiment(exampleModels$WL_II, N = N, raw = TRUE, estargs = list(crit = 1e-4))
+mixARExperiment(exampleModels$WL_II, N = N, raw = TRUE,
+    simargs = list(n = n), estargs = list(crit = 1e-4) )
 }
 \keyword{MixAR}
 \keyword{simulation}

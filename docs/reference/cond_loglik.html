@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -164,7 +164,7 @@
     <p>the log-likelihood, a numeric value</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## data(ibmclose, package = "fma")  # for `ibmclose'</span>
+    <pre class="examples"><div class='input'><span class='co'>## data(ibmclose, package = "fma") # doesn't work with fma v2.4, using '::'</span>
 <span class='fu'>cond_loglik</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>,     <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; [1] -1212.188</div><div class='input'><span class='fu'>cond_loglik</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm_gen</span>, <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; [1] -1212.188</div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>lynx</span>)  <span class='co'># for 'lynx' data</span>
 <span class='no'>sar</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"raggedCoefS"</span>, <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.1022</span>, -<span class='fl'>0.2835</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.5279</span>, -<span class='fl'>0.8871</span>)),

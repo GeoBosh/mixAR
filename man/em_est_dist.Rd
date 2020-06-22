@@ -24,8 +24,8 @@ em_est_dist(tau, etk, parscore, sigma, nu, logpdf)
 \details{
 
   One or more of the error distributions of a MixAR model may have
-  parameters that are considered unknown. In that \code{em_est_dist} can
-  be used to optimise to them.
+  parameters that are considered unknown. In that case
+  \code{em_est_dist} can be used to optimise with respect to them.
 
   The representation of the error distributions in "MixARgen" models
   carries all the necessary information about
@@ -34,7 +34,7 @@ em_est_dist(tau, etk, parscore, sigma, nu, logpdf)
   (or equation solver) and stores the result back into \code{logpdf}.
   \code{em_est_dist} is quite general, as long as \code{logpdf} is
   prepared according to the conventions it expects (this is so if they
-  arevalid elements of the \code{dist} slot of "MixARgen" objects).
+  are valid elements of the \code{dist} slot of "MixARgen" objects).
 
 }
 \value{

@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -160,8 +160,8 @@
     
 
 <p>One or more of the error distributions of a MixAR model may have
-  parameters that are considered unknown. In that <code>em_est_dist</code> can
-  be used to optimise to them.</p>
+  parameters that are considered unknown. In that case
+  <code>em_est_dist</code> can be used to optimise with respect to them.</p>
 <p>The representation of the error distributions in "MixARgen" models
   carries all the necessary information about
   parameters. <code>em_est_dist</code> works by extracting their current
@@ -169,7 +169,7 @@
   (or equation solver) and stores the result back into <code>logpdf</code>.
   <code>em_est_dist</code> is quite general, as long as <code>logpdf</code> is
   prepared according to the conventions it expects (this is so if they
-  arevalid elements of the <code>dist</code> slot of "MixARgen" objects).</p>
+  are valid elements of the <code>dist</code> slot of "MixARgen" objects).</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>the new values of the parameters</p>

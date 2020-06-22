@@ -77,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -277,11 +277,15 @@
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
 #&gt; </div><div class='input'>
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>model</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fl'>0</span>) <span class='co'># or, say, n = 250</span>
-<span class='no'>x</span>  <span class='kw'>&lt;-</span> <span class='fu'>sampZpi</span>(<span class='no'>y</span>, <span class='no'>pk</span>, <span class='no'>prob</span>, <span class='no'>shift</span>, <span class='no'>AR</span>, <span class='no'>sigma</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='no'>d</span>)
-<span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='fu'>sampMuShift</span>(<span class='no'>y</span>, <span class='no'>pk</span>, <span class='no'>prec</span>, <span class='kw'>nk</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>nk</span>, <span class='no'>shift</span>, <span class='kw'>z</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>latentZ</span>, <span class='no'>AR</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1234</span>)
+<span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>50</span> <span class='co'># 500</span>
+<span class='no'>nsim</span> <span class='kw'>&lt;-</span> <span class='fl'>50</span>
+
+<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>model</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='no'>n</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fl'>0</span>)
+<span class='no'>x</span>  <span class='kw'>&lt;-</span> <span class='fu'>sampZpi</span>(<span class='no'>y</span>, <span class='no'>pk</span>, <span class='no'>prob</span>, <span class='no'>shift</span>, <span class='no'>AR</span>, <span class='no'>sigma</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='no'>nsim</span>, <span class='no'>d</span>)
+<span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='fu'>sampMuShift</span>(<span class='no'>y</span>, <span class='no'>pk</span>, <span class='no'>prec</span>, <span class='kw'>nk</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>nk</span>, <span class='no'>shift</span>, <span class='kw'>z</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>latentZ</span>, <span class='no'>AR</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='no'>nsim</span>)
 <span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'>sampSigmaTau</span>(<span class='no'>y</span>, <span class='no'>pk</span>, <span class='no'>prec</span>, <span class='kw'>nk</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>nk</span>, <span class='no'>AR</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='no'>x1</span>$<span class='no'>mu</span>, <span class='kw'>z</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>latentZ</span>,
-                   <span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>c</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>)</div></pre>
+                   <span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>c</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='no'>nsim</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

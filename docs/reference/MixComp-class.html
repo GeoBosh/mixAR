@@ -77,7 +77,7 @@ Class &quot;MixComp&quot; represents components of mixture autoregressive
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -323,13 +323,13 @@ Class &quot;MixComp&quot; represents components of mixture autoregressive
 <span class='co'>## apply a function to the columns of a MixComp object</span>
 <span class='no'>pnorm</span> <span class='kw'>%of%</span> <span class='no'>b</span></div><div class='output co'>#&gt; An object of class "MixComp"
 #&gt; Slot "m":
-#&gt;           [,1]      [,2]       [,3]
-#&gt; [1,] 0.2680852 0.8412992 0.90699040
-#&gt; [2,] 0.4026271 0.6210143 0.82711846
-#&gt; [3,] 0.5131745 0.5562202 0.30128873
-#&gt; [4,] 0.3492557 0.3184254 0.06584878
-#&gt; [5,] 0.4120147 0.4094805 0.45309541
-#&gt; [6,] 0.2048458 0.5127332 0.91119419
+#&gt;           [,1]       [,2]       [,3]
+#&gt; [1,] 0.1225143 0.65379738 0.07595603
+#&gt; [2,] 0.1296689 0.33456253 0.92311527
+#&gt; [3,] 0.5348741 0.01232201 0.57175454
+#&gt; [4,] 0.6605424 0.53848139 0.65221316
+#&gt; [5,] 0.2303093 0.27440789 0.92985214
+#&gt; [6,] 0.6491573 0.88887962 0.95599693
 #&gt; </div><div class='input'>
 <span class='co'>## apply a separate function to to each column</span>
 <span class='no'>flist</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span>(<span class='no'>x</span>),
@@ -337,13 +337,13 @@ Class &quot;MixComp&quot; represents components of mixture autoregressive
               <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>pt</a></span>(<span class='no'>x</span>, <span class='kw'>df</span> <span class='kw'>=</span> <span class='fl'>4</span>) )
 <span class='no'>flist</span> <span class='kw'>%of%</span> <span class='no'>b</span></div><div class='output co'>#&gt; An object of class "MixComp"
 #&gt; Slot "m":
-#&gt;           [,1]      [,2]      [,3]
-#&gt; [1,] 0.2680852 0.8183499 0.8717177
-#&gt; [2,] 0.4026271 0.6148023 0.8004261
-#&gt; [3,] 0.5131745 0.5534601 0.3150359
-#&gt; [4,] 0.3492557 0.3283683 0.1030897
-#&gt; [5,] 0.4120147 0.4140141 0.4559357
-#&gt; [6,] 0.2048458 0.5121157 0.8755522
+#&gt;           [,1]       [,2]      [,3]
+#&gt; [1,] 0.1225143 0.64563983 0.1125967
+#&gt; [2,] 0.1296689 0.34345187 0.8865390
+#&gt; [3,] 0.5348741 0.03728139 0.5673579
+#&gt; [4,] 0.6605424 0.53660497 0.6422383
+#&gt; [5,] 0.2303093 0.28747326 0.8928424
+#&gt; [6,] 0.6491573 0.86167080 0.9183992
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

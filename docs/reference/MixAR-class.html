@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -124,19 +124,19 @@
 
     <h2 class="hasAnchor" id="objects-from-the-class"><a class="anchor" href="#objects-from-the-class"></a>Objects from the Class</h2>
 
-    <p>A virtual Class: No objects can be created from it.</p>
+    <p>A virtual Class: no objects can be created from it.</p>
 <p>Derived classes add distribution properties, e.g. use class
   <code>"<a href='MixARGaussian-class.html'>MixARGaussian</a>"</code> for MixAR models with Gaussian
   error components.</p>
     <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
 
     <p></p><dl'>
-    <dt><code>prob</code>:</dt><dd><p>the mixing probabilities,
-      an object of class <code>"numeric"</code></p></dd>
-    <dt><code>order</code>:</dt><dd><p>Object of class <code>"numeric"</code> ~~</p></dd>
-    <dt><code>shift</code>:</dt><dd><p>Object of class <code>"numeric"</code> ~~</p></dd>
-    <dt><code>scale</code>:</dt><dd><p>Object of class <code>"numeric"</code> ~~</p></dd>
-    <dt><code>arcoef</code>:</dt><dd><p>Object of class <code>"raggedCoef"</code> ~~</p></dd>
+    <dt><code>prob</code>:</dt><dd><p>the mixing probabilities, <code>"numeric"</code>.</p></dd>
+    <dt><code>order</code>:</dt><dd><p>the AR orders, <code>"numeric"</code>.</p></dd>
+    <dt><code>shift</code>:</dt><dd><p>intercept terms, <code>"numeric"</code>.</p></dd>
+    <dt><code>scale</code>:</dt><dd><p>scaling factor, <code>"numeric"</code>.</p></dd>
+    <dt><code>arcoef</code>:</dt><dd><p>autoregressive coefficients, an object from class
+      <code>"raggedCoef"</code> containing one row for each mixture component.</p></dd>
   
 </dl>
 
@@ -169,10 +169,48 @@
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>classes
-  <code>"<a href='MixARGaussian-class.html'>MixARGaussian</a>"</code>,
-  <code>"<a href='MixARgen-class.html'>MixARgen</a>"</code></p></div>
+    <div class='dont-index'><p>code<a href='mixAR-methods.html'>mixAR</a>,
+  classes <code>"<a href='MixARGaussian-class.html'>MixARGaussian</a>"</code>,
+          <code>"<a href='MixARgen-class.html'>MixARgen</a>"</code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>## some models from subclasses of (virtual) class "MixAR"</span>
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>exampleModels</span>)</div><div class='output co'>#&gt;  [1] "WL_ibm"     "WL_A"       "WL_B"       "WL_I"       "WL_II"     
+#&gt;  [6] "WL_ibm_gen" "WL_ibm_t3v" "WL_ibm_tf"  "WL_At"      "WL_Bt_1"   
+#&gt; [11] "WL_Bt_2"    "WL_Bt_3"    "WL_Ct_1"    "WL_Ct_2"    "WL_Ct_3"   </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_A</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
+#&gt; 
+#&gt; An object of class "MixARGaussian"
+#&gt; Number of components: 2 
+#&gt;        prob shift scale order ar_1
+#&gt; Comp_1 0.5    0     5     1   0.5 
+#&gt; Comp_2 0.5    0     1     1   1.1 
+#&gt; 
+#&gt; Distributions of the error components:
+#&gt; 	standard Gaussian
+#&gt; </div><div class='input'><span class='no'>exampleModels</span>$<span class='no'>WL_At</span></div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
+#&gt; 
+#&gt; An object of class "MixARgen"
+#&gt; Number of components: 2 
+#&gt;        prob shift scale order ar_1
+#&gt; Comp_1 0.5    0     1     1   -0.5
+#&gt; Comp_2 0.5    0     2     1    1.1
+#&gt; 
+#&gt; Distributions of the error components:
+#&gt; 	Component 1: Student t with 4 df
+#&gt; 	Component 2: Student t with 8 df
+#&gt; </div><div class='input'>
+<span class='co'>## modify an existing model, here change the mixture weights</span>
+<span class='fu'><a href='mixAR-methods.html'>mixAR</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_A</span>, <span class='kw'>coef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>((<span class='no'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.4</span>, <span class='fl'>0.6</span>))))</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
+#&gt; 
+#&gt; An object of class "MixARGaussian"
+#&gt; Number of components: 2 
+#&gt;        prob shift scale order ar_1
+#&gt; Comp_1 0.5    0     5     1   0.5 
+#&gt; Comp_2 0.5    0     1     1   1.1 
+#&gt; 
+#&gt; Distributions of the error components:
+#&gt; 	standard Gaussian
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -11,7 +11,7 @@
 \title{Class \code{"MixAR"} --- mixture autoregressive models }
 \description{Mixture autoregressive models}
 \section{Objects from the Class}{
-  A virtual Class: No objects can be created from it.
+  A virtual Class: no objects can be created from it.
 
   Derived classes add distribution properties, e.g. use class
   \code{"\linkS4class{MixARGaussian}"} for MixAR models with Gaussian
@@ -19,14 +19,14 @@
 }
 \section{Slots}{
   \describe{
-    \item{\code{prob}:}{
-      the mixing probabilities,
-      an object of class \code{"numeric"}
+    \item{\code{prob}:}{the mixing probabilities, \code{"numeric"}.}
+    \item{\code{order}:}{the AR orders, \code{"numeric"}.}
+    \item{\code{shift}:}{intercept terms, \code{"numeric"}.}
+    \item{\code{scale}:}{scaling factor, \code{"numeric"}.}
+    \item{\code{arcoef}:}{
+      autoregressive coefficients, an object from class
+      \code{"raggedCoef"} containing one row for each mixture component.
     }
-    \item{\code{order}:}{Object of class \code{"numeric"} ~~ }
-    \item{\code{shift}:}{Object of class \code{"numeric"} ~~ }
-    \item{\code{scale}:}{Object of class \code{"numeric"} ~~ }
-    \item{\code{arcoef}:}{Object of class \code{"raggedCoef"} ~~ }
   }
 }
 \section{Methods}{
@@ -61,12 +61,18 @@
 %%  ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-  classes
-  \code{"\linkS4class{MixARGaussian}"},
-  \code{"\linkS4class{MixARgen}"}
+  code{\link{mixAR}},
+  classes \code{"\linkS4class{MixARGaussian}"},
+          \code{"\linkS4class{MixARgen}"}
 }
-%\examples{
-%showClass("MixAR")
-%}
+\examples{
+## some models from subclasses of (virtual) class "MixAR"
+names(exampleModels)
+exampleModels$WL_A
+exampleModels$WL_At
+
+## modify an existing model, here change the mixture weights
+mixAR(exampleModels$WL_A, coef = list((prob = c(0.4, 0.6))))
+}
 \keyword{classes}
 \keyword{MixAR}

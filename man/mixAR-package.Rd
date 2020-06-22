@@ -299,28 +299,30 @@ mo_WLtf <- new("MixARgen", prob = mo_WLprob, scale = mo_WLsigma, arcoef = mo_WLa
 ## data(ibmclose, package = "fma")  # for `ibmclose'
 
 ## The examples below are quick but some of them are marked as 'not run'
-## to avoid cummulative time of more than 5s on CRAN.
+## to avoid cumulative time of more than 5s on CRAN.
 
 ## fit a MAR(2,2,1) model
-a0a <- fit_mixAR(as.numeric(fma::ibmclose), c(2, 2, 1))
+a0a <- fit_mixAR(as.numeric(fma::ibmclose), c(2, 2, 1), crit = 1e-4)
 ## same with 2 sets of automatically generated initial values.
-\dontrun{
-a0b <- fit_mixAR(as.numeric(fma::ibmclose), c(2, 2, 1), 2)
+\donttest{
+a0b <- fit_mixAR(as.numeric(fma::ibmclose), c(2, 2, 1), 2, crit = 1e-4)
 }
 
 ## fix the shift parameters:
-a1a <- fit_mixAR(as.numeric(fma::ibmclose), c(2, 2, 1), fix = "shift")
+a1a <- fit_mixAR(as.numeric(fma::ibmclose), c(2, 2, 1), fix = "shift", crit = 1e-4)
 ## ... with 3 sets of automatically generated initial values.
-\dontrun{
-a1b <- fit_mixAR(as.numeric(fma::ibmclose), c(2, 2, 1), 3, fix = "shift")
+\donttest{
+a1b <- fit_mixAR(as.numeric(fma::ibmclose), c(2, 2, 1), 3, fix = "shift", crit = 1e-4)
 }
 
-\dontrun{
+\donttest{
 ## specify the model using a MixAR model object
-a1c <- fit_mixAR(as.numeric(fma::ibmclose), a1a$model, init = a0a$model, fix = "shift")
+a1c <- fit_mixAR(as.numeric(fma::ibmclose), a1a$model, init = a0a$model, fix = "shift",
+           crit = 1e-4)
 
-## fit a model like mo_WL using as initial values 3 automatically generated sets.
-a2 <- fit_mixAR(as.numeric(fma::ibmclose), mo_WL, 3, fix = "shift", permute = TRUE)
+## fit a model like mo_WL using as initial values 2 automatically generated sets.
+a2 <- fit_mixAR(as.numeric(fma::ibmclose), mo_WL, 2, fix = "shift", permute = TRUE, 
+          crit = 1e-4)
 }
 
 moT_B3 <- new("MixARgen"

@@ -1,4 +1,5 @@
-mixVARfit <- function(y, model, fix = FALSE, tol = 10^-6){
+mixVARfit <- function(y, model, fix = FALSE, tol = 10^-6, verbose = FALSE){
+    verbose <- verbose && interactive()
     
   prob <- model@prob
   Scale <- model@vcov
@@ -17,8 +18,9 @@ mixVARfit <- function(y, model, fix = FALSE, tol = 10^-6){
   while(diff>tol){
     count <- count +1; if(count%%25 == 0) {
         loglik <- cond_loglikV(new("MixVARGaussian", prob=prob, vcov=Scale, arcoef=arcoef,
-                                      shift=shift), y)
-        cat("niter:", count, "\tvallogf:", loglik, "\n")
+                                   shift=shift), y)
+        if(verbose)
+            cat("niter:", count, "\tvallogf:", loglik, "\n")
     }
     ##Calculate residuals. Each residual is a mult x 1 vector
     

@@ -11,7 +11,10 @@ etk2tau(etk)
 \arguments{
   \item{y}{time series.}
   \item{order}{MixAR order, vector of length the number of components.}
-  \item{partempl}{ TODO: describe \code{partempl}.}
+  \item{partempl}{
+    parameter template, a list containing one element for each mixture
+    component, see \code{\link{randomArCoefficients}}.
+  }
   \item{etk}{MixAR component residuals, a matrix.}
 }
 \details{

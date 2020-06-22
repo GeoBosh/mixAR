@@ -49,7 +49,7 @@ mixARExperiment <- function(model, imodel= NULL, simargs = NULL, estargs = NULL,
         sa[names(simargs)] <- simargs
     sa <- c(list(model), sa)
 
-    cat("sa$init is: ", sa$init, "\n")
+    ## 2020-06-12 was: cat("sa$init is: ", sa$init, "\n")
 
     ea <- list(crit = 10^(-4))
     if(!missing(fix))
@@ -167,7 +167,7 @@ unswitch <- function(models, true_model, Nref = 100, simargs = NULL){
 
         wrk <- sapply(ranks, f)
 
-        print(wrk)
+        ## 2020-06-12 was: print(wrk)
         # if(sum(wrk)< nrow(reftau))        # todo: if sigma_k for some component is (close
         #     browser()                     #     to) 0, bad things happen (all taus are NaN).
                                             #
@@ -187,8 +187,8 @@ unswitch <- function(models, true_model, Nref = 100, simargs = NULL){
 
     good <- !is.na(allperm[,1])
 
-    if(sum(good) < length(models))
-        cat("Dropping", length(models) - sum(good), "unsuccessful runs.\n")
+    ## 2020-06-12 was: if(sum(good) < length(models))
+    ##                     cat("Dropping", length(models) - sum(good), "unsuccessful runs.\n")
 
     models <- models[good]
     allperm <- allperm[good,]     # a matrix containing the best permutation of models[[i]]

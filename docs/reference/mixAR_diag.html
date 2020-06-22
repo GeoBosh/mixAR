@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -224,9 +224,8 @@ doi: <a href='https://doi.org/10.1002/for.3980040305'>10.1002/for.3980040305</a>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>model1</span>, <span class='fl'>400</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='fl'>0</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>100</span>)
 
-<span class='no'>fit1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='no'>y</span>, <span class='no'>model1</span>)</div><div class='output co'>#&gt; Initial vallogf:  -864.5205 
-#&gt; niter:  25 	vallogf:  -862.3682 
-#&gt; Final niter:  34 	vallogf:  -862.3682 </div><div class='input'><span class='fu'>mixAR_diag</span>(<span class='no'>fit1</span>, <span class='no'>y</span>)</div><div class='img'><img src='mixAR_diag-1.png' alt='' width='700' height='433' /></div><div class='img'><img src='mixAR_diag-2.png' alt='' width='700' height='433' /></div><div class='img'><img src='mixAR_diag-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='no'>fit1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='no'>y</span>, <span class='no'>model1</span>)
+<span class='fu'>mixAR_diag</span>(<span class='no'>fit1</span>, <span class='no'>y</span>)</div><div class='img'><img src='mixAR_diag-1.png' alt='' width='700' height='433' /></div><div class='img'><img src='mixAR_diag-2.png' alt='' width='700' height='433' /></div><div class='img'><img src='mixAR_diag-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

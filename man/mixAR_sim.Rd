@@ -58,15 +58,10 @@ exampleModels$WL_ibm
 ## simulate a continuation of BJ ibm data
 ts1 <- mixAR_sim(exampleModels$WL_ibm, n = 30, init = c(346, 352, 357), nskip = 0)
 
-## ts1 <- mixAR_sim(exampleModels$WL_ibm, n = 400, init = c(346, 352, 357), nskip = 0)
-## plot(diff(ts(ts1)))
-
-## plot(diff(mixAR_sim(exampleModels$WL_ibm_gen, n = 100, init = c(346, 352, 357), nskip = 0)),
-##      type = "l")
-
 # a simulation based estimate of the 1-step predictive distribution
 # for the first date after the data.
-s1 <- replicate(1000, mixAR_sim(exampleModels$WL_ibm, n = 1, init = c(346, 352, 357), nskip = 0))
+s1 <- replicate(1000, mixAR_sim(exampleModels$WL_ibm, n = 1, init = c(346, 352, 357), 
+                      nskip = 0))
 plot(density(s1))
 
 # load ibm data from BJ

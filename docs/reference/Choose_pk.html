@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -135,8 +135,7 @@
     </tr>
     <tr>
       <th>model</th>
-      <td><p>an object inheriting from class <code>"MixAR"</code> (currenlty only
-    supports class <code>"MixARGaussian"</code>.)</p></td>
+      <td><p>an object inheriting from class <code>"MixAR"</code>.</p></td>
     </tr>
     <tr>
       <th>fix_shift</th>
@@ -184,6 +183,10 @@
     <p>Ravagli D, Boshnakov GN (2019).
 &#8220;Bayesian analysis of mixture autoregressive models covering the complete parameter space.&#8221;
 <em>(in preparation)</em>.</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p><code>Choose_pk</code> currenlty supports class <code>"MixARGaussian"</code>
+   only.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='bx_dx.html'>bx_dx</a></code> for more details on the <code>method</code></p></div>
@@ -192,12 +195,15 @@
     <pre class="examples"><div class='input'><span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>,
              <span class='kw'>prob</span>   <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>prob</span>,      <span class='co'># c(0.5, 0.5)</span>
              <span class='kw'>scale</span>  <span class='kw'>=</span> <span class='no'>exampleModels</span>$<span class='no'>WL_At</span>@<span class='kw'>scale</span>,     <span class='co'># c(1, 2)        </span>
-             <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(-<span class='fl'>0.5</span>, <span class='fl'>1</span>) ) <span class='co'># != list(-0.5, 1.1) == exampleModels$WL_At@arcoef@a</span>
+             <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(-<span class='fl'>0.5</span>, <span class='fl'>1</span>) )
+             <span class='co'># note: arcoef != list(-0.5, 1.1) == exampleModels$WL_At@arcoef@a</span>
 
-<span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>200</span> <span class='co'># 300</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1234</span>)
+<span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>50</span> <span class='co'># 200</span>
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>model</span>, <span class='no'>n</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>, <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='no'>model</span>@<span class='kw'>order</span>)), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>100</span>)
 
-<span class='no'>pk_star</span> <span class='kw'>&lt;-</span> <span class='fu'>Choose_pk</span>(<span class='no'>y</span>, <span class='no'>model</span>, <span class='kw'>tau</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.15</span>, <span class='fl'>.25</span>), <span class='kw'>pmax</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"NULL"</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>)</div></pre>
+<span class='no'>nsim</span> <span class='kw'>&lt;-</span> <span class='fl'>25</span> <span class='co'># 100</span>
+<span class='no'>pk_star</span> <span class='kw'>&lt;-</span> <span class='fu'>Choose_pk</span>(<span class='no'>y</span>, <span class='no'>model</span>, <span class='kw'>tau</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.15</span>, <span class='fl'>.25</span>), <span class='kw'>pmax</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"NULL"</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='no'>nsim</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

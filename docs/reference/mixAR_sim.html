@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -199,15 +199,10 @@
 #&gt; </div><div class='input'><span class='co'>## simulate a continuation of BJ ibm data</span>
 <span class='no'>ts1</span> <span class='kw'>&lt;-</span> <span class='fu'>mixAR_sim</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>346</span>, <span class='fl'>352</span>, <span class='fl'>357</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>0</span>)
 
-<span class='co'>## ts1 &lt;- mixAR_sim(exampleModels$WL_ibm, n = 400, init = c(346, 352, 357), nskip = 0)</span>
-<span class='co'>## plot(diff(ts(ts1)))</span>
-
-<span class='co'>## plot(diff(mixAR_sim(exampleModels$WL_ibm_gen, n = 100, init = c(346, 352, 357), nskip = 0)),</span>
-<span class='co'>##      type = "l")</span>
-
 <span class='co'># a simulation based estimate of the 1-step predictive distribution</span>
 <span class='co'># for the first date after the data.</span>
-<span class='no'>s1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span>(<span class='fl'>1000</span>, <span class='fu'>mixAR_sim</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>346</span>, <span class='fl'>352</span>, <span class='fl'>357</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>0</span>))
+<span class='no'>s1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span>(<span class='fl'>1000</span>, <span class='fu'>mixAR_sim</span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>346</span>, <span class='fl'>352</span>, <span class='fl'>357</span>),
+                      <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>0</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/density.html'>density</a></span>(<span class='no'>s1</span>))</div><div class='input'>
 <span class='co'># load ibm data from BJ</span>
 <span class='co'>## data(ibmclose, package = "fma")</span>

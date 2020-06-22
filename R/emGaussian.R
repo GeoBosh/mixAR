@@ -117,8 +117,10 @@ mixARemFixedPoint <- local({em_global.res <- em_globalAll.res <- list(); functio
                               , crit = 1e-14
                               , maxniter = 200
                               , minniter = 10
-                              , verbose = FALSE   # 2011-11-30
+                              , verbose = FALSE   # new: 2011-11-30; 2020-06-13: deprecated
                               ){
+    trace <- if(isTRUE(verbose)  &&  interactive()) Inf else 0
+        
     y <- as.numeric(y)
     oldmodel <- model
 
@@ -132,15 +134,14 @@ mixARemFixedPoint <- local({em_global.res <- em_globalAll.res <- list(); functio
     newvallogf <- NA
     relchange <- crit + 1
 
-    cat("Initial vallogf: ", oldvallogf, "\n")
+    if(trace > 0) cat("Initial vallogf: ", oldvallogf, "\n")
 
     special_flag <- FALSE
     emtrace <- list(ts = y, init = list(oldmodel, oldvallogf))
 
     niter <- 0
-    while(!is.nan(newvallogf) && (niter <= minniter || niter < maxniter && relchange > crit)
                # the check for newvallogf is a patch to get the simulations going (2011-11-22)
-          ){
+    while(!is.nan(newvallogf) && (niter <= minniter || niter < maxniter && relchange > crit)){
         niter <- niter + 1
                                                                                       # E-step
         oldetk <- mix_ek(oldmodel, y, indx, scale = TRUE)   # em_tau needs standardised resid.
@@ -177,9 +178,10 @@ mixARemFixedPoint <- local({em_global.res <- em_globalAll.res <- list(); functio
         if(special_flag )
             emtrace[[length(emtrace) + 1]] <- list(newmodel, newvallogf)
 
-        if(verbose || niter %% 25 == 0)                                      # print some info
+        ## 2020-06-08 was: verbose || niter %% 25 == 0
+        if(niter %% 25 == 0  && trace > 0)                                # print some info
             cat("niter: ", niter, "\tvallogf: ", newvallogf, "\n")
-        if(is.nan(newvallogf))
+        if(is.nan(newvallogf) && trace >= 1)
             cat("!!!! Log-likelihood is NaN, maybe due to singularity.\n")
 
 
@@ -187,7 +189,9 @@ mixARemFixedPoint <- local({em_global.res <- em_globalAll.res <- list(); functio
 
         oldmodel <- newmodel
     }
-    cat("Final niter: ", niter, "\tvallogf: ", newvallogf, "\n")
+
+    if(trace > 0)
+        cat("Final niter: ", niter, "\tvallogf: ", newvallogf, "\n")
 
     if(special_flag){                              # assign in devel_envir for further testing
         emtrace$niter <- c(emtrace$niter, niter)
@@ -195,8 +199,6 @@ mixARemFixedPoint <- local({em_global.res <- em_globalAll.res <- list(); functio
         ##    assign("em_global.res", emtrace, envir = .GlobalEnv)
         em_global.res <<- emtrace
     }
-
-#browser()
 
     list(model = newmodel, vallogf = newvallogf)
 }})

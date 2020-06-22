@@ -81,7 +81,7 @@ The function implements the method by
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -203,27 +203,29 @@ The function implements the method by
 
 <span class='no'>model</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='no'>prob</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='no'>sigma</span>, <span class='kw'>arcoef</span> <span class='kw'>=</span> <span class='no'>arco</span>)
 
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1234</span>)
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>model</span>, <span class='fl'>250</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>, <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='no'>model</span>@<span class='kw'>order</span>)), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>100</span>)  <span class='co'># data</span>
 
-<span class='fu'>marg_loglik</span>(<span class='no'>y</span>, <span class='no'>model</span>, <span class='kw'>tau</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.15</span>, <span class='fl'>.25</span>), <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='fl'>0.5</span>)</div><div class='output co'>#&gt; $marg_loglik
-#&gt; [1] -549.4419
+<span class='no'>nsim</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span> <span class='co'># 50</span>
+<span class='fu'>marg_loglik</span>(<span class='no'>y</span>, <span class='no'>model</span>, <span class='kw'>tau</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.15</span>, <span class='fl'>.25</span>), <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='no'>nsim</span>, <span class='fl'>0.5</span>)</div><div class='output co'>#&gt; $marg_loglik
+#&gt; [1] -541.8437
 #&gt; 
 #&gt; $phi_hd
 #&gt; $phi_hd[[1]]
-#&gt; [1] -0.471619
+#&gt; [1] -0.4470663
 #&gt; 
 #&gt; $phi_hd[[2]]
-#&gt; [1] 1.010916
+#&gt; [1] 0.9891284
 #&gt; 
 #&gt; 
 #&gt; $prec_hd
-#&gt; [1] 0.8207148 0.2249754
+#&gt; [1] 0.7085924 0.2737237
 #&gt; 
 #&gt; $mu_hd
-#&gt; [1] -0.07199147  2.94373842
+#&gt; [1]  0.04633408 -0.76579127
 #&gt; 
 #&gt; $weig_hd
-#&gt; [1] 0.5223636 0.4776364
+#&gt; [1] 0.4992028 0.5007972
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -29,6 +29,9 @@ ui <- function(x, t, i){
 
 ## Version with intercept
 mixSARfit <- function(y, model, est_shift = FALSE, tol = 10^-14){
+
+    verbose <- interactive() && options("verbose")$verbose
+    
     one_or_zero <- if(est_shift) 0 else 1
 
     n  <- length(y)
@@ -42,7 +45,8 @@ mixSARfit <- function(y, model, est_shift = FALSE, tol = 10^-14){
     
     index <- ((sp * s) + 1):n
     oldlik <- cond_loglikS(model, y, index)
-    cat("Initial vallogf: ", oldlik, "\n")
+    if(verbose)
+        cat("Initial vallogf: ", oldlik, "\n")
 
     nc <- sp + p + one_or_zero
     nck_all <- pk + spk + one_or_zero
@@ -162,9 +166,9 @@ mixSARfit <- function(y, model, est_shift = FALSE, tol = 10^-14){
 
         newlik <- cond_loglikS(newmod, y, index)
 
-        if(count %% 25 == 0)
+        if(count %% 25 == 0  && verbose)
             cat("niter: ", count, "\tvallogf: ", newlik, "\n")
-        if(is.nan(newlik))
+        if(is.nan(newlik)  && verbose)
             cat("!!!! Log-likelihood is NaN, maybe due to singularity.\n")
 
         ## Update stopping criterion and model
@@ -176,7 +180,8 @@ mixSARfit <- function(y, model, est_shift = FALSE, tol = 10^-14){
         if(count == 200)
             break  ## max number of iterations
     }
-
-    cat("Final niter: ", count, "\tvallogf: ", newlik, "\n")
+    if(verbose)
+        cat("Final niter: ", count, "\tvallogf: ", newlik, "\n")
+    
     list("model" = newmod, "vallogf" = newlik)
 }

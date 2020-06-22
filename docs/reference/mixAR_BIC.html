@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -192,21 +192,12 @@
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>model1</span>, <span class='fl'>400</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>100</span>)
 
 <span class='fu'>mixAR_BIC</span>(<span class='no'>y</span>, <span class='no'>model1</span>)</div><div class='output co'>#&gt; [1] 1770.964</div><div class='input'>
-<span class='no'>model_fit1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='no'>y</span>, <span class='no'>model1</span>)</div><div class='output co'>#&gt; Initial vallogf:  -864.5205 
-#&gt; niter:  25 	vallogf:  -862.3682 
-#&gt; Final niter:  34 	vallogf:  -862.3682 </div><div class='input'><span class='no'>model_fit2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='no'>y</span>, <span class='no'>model2</span>)</div><div class='output co'>#&gt; Initial vallogf:  -1039.737 
-#&gt; niter:  25 	vallogf:  -855.7885 
-#&gt; niter:  50 	vallogf:  -854.2727 
-#&gt; niter:  75 	vallogf:  -853.9278 
-#&gt; niter:  100 	vallogf:  -853.8595 
-#&gt; niter:  125 	vallogf:  -853.8456 
-#&gt; niter:  150 	vallogf:  -853.8426 
-#&gt; niter:  175 	vallogf:  -853.842 
-#&gt; niter:  200 	vallogf:  -853.8418 
-#&gt; Final niter:  200 	vallogf:  -853.8418 </div><div class='input'>
-<span class='fu'>mixAR_BIC</span>(<span class='no'>y</span>, <span class='no'>model_fit1</span>)</div><div class='output co'>#&gt; [1] 1766.659</div><div class='input'><span class='fu'>mixAR_BIC</span>(<span class='no'>y</span>, <span class='no'>model_fit2</span>)</div><div class='output co'>#&gt; [1] 1779.521</div><div class='input'>
-<span class='fu'>BIC_comp</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>model1</span>, <span class='no'>model2</span>, <span class='no'>model_fit1</span>, <span class='no'>model_fit2</span>), <span class='no'>y</span>)</div><div class='output co'>#&gt; Best model:  1 1 </div><div class='output co'>#&gt; [1] 1770.964 2151.311 1766.659 1779.521</div><div class='input'>
-<span class='fu'>mixAR_BIC</span>(<span class='no'>y</span>, <span class='no'>model_fit1</span>, <span class='kw'>index</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; [1] 3.439512</div><div class='input'><span class='fu'>mixAR_BIC</span>(<span class='no'>y</span>, <span class='no'>model_fit2</span>, <span class='kw'>index</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; [1] 3.494198</div></pre>
+<span class='no'>model_fit1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='no'>y</span>, <span class='no'>model1</span>)
+<span class='no'>model_fit2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='no'>y</span>, <span class='no'>model2</span>, <span class='kw'>crit</span> <span class='kw'>=</span> <span class='fl'>1e-4</span>)
+
+<span class='fu'>mixAR_BIC</span>(<span class='no'>y</span>, <span class='no'>model_fit1</span>)</div><div class='output co'>#&gt; [1] 1766.659</div><div class='input'><span class='fu'>mixAR_BIC</span>(<span class='no'>y</span>, <span class='no'>model_fit2</span>)</div><div class='output co'>#&gt; [1] 1782.464</div><div class='input'>
+<span class='fu'>BIC_comp</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>model1</span>, <span class='no'>model2</span>, <span class='no'>model_fit1</span>, <span class='no'>model_fit2</span>), <span class='no'>y</span>)</div><div class='output co'>#&gt; Best model:  1 1 </div><div class='output co'>#&gt; [1] 1770.964 2151.311 1766.659 1782.464</div><div class='input'>
+<span class='fu'>mixAR_BIC</span>(<span class='no'>y</span>, <span class='no'>model_fit1</span>, <span class='kw'>index</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; [1] 3.439512</div><div class='input'><span class='fu'>mixAR_BIC</span>(<span class='no'>y</span>, <span class='no'>model_fit2</span>, <span class='kw'>index</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; [1] 3.456183</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

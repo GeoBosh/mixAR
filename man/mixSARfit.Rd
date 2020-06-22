@@ -57,11 +57,11 @@ model <- new("MixARGaussian", prob = exampleModels$WL_A@prob, # c(0.5, 0.5)
              scale = exampleModels$WL_A@scale,                # c(5, 1)
              arcoef = rag)
 
-#set.seed(1234)
-y <- mixAR_sim(model, n = 500, init = rep(0, 24))
+set.seed(1234)
+y <- mixAR_sim(model, n = 100, init = rep(0, 24))
 
 mixSARfit(y, model)
 ## fix the intercepts to zero
-mixSARfit(y, model, est_shift = FALSE)
+mixSARfit(y, model, est_shift = FALSE, tol = 10e-4)
 }
 %\keyword{ }% use one of  RShowDoc("KEYWORDS")

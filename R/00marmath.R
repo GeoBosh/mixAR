@@ -74,7 +74,8 @@ randomArCoefficients <- function(ts, wv, pk, pmax, partempl,
                       # kappa(t(m) %*% m, exact = TRUE) # 2-norm;  no need of such precision?
                     kappa(t(m) %*% m) # 2-norm; todo: no need of such precision?
                 }
-        cat("cond: ", cond, "\n")
+        if(FALSE) # 2020-06-13 TODO: needs new arrangements
+            cat("cond: ", cond, "\n")
     }
 
     rhs <- m[ ,  ncol(m)]

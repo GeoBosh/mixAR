@@ -9,11 +9,11 @@
   EM algorithm.
 }
 \usage{
-mixARemFixedPoint(y, model, est_shift = TRUE, crit = 1e-14,
+mixARemFixedPoint(y, model, est_shift = TRUE, crit = 1e-14, 
                   maxniter = 200, minniter = 10, verbose = FALSE)
 
-mixARgenemFixedPoint(y, model, crit = 1e-14, maxniter = 200,
-                     minniter = 10, \dots)
+mixARgenemFixedPoint(y, model, crit = 1e-14, maxniter = 200, 
+                     minniter = 10, verbose = FALSE, \dots)
 }
 \arguments{
   \item{y}{a univariate time series.}
@@ -85,10 +85,9 @@ show_diff(m1$model, m1a$model)
 
 mixARemFixedPoint(fma::ibmclose, m0, est_shift = FALSE)
 
-\dontrun{
-## (not run to maybe safe a couple of seconds on CRAN)    
+\donttest{
 ## simulate a continuation of ibmclose, assuming m0
-ts1 <- mixAR_sim(m0, n = 1000, init = c(346, 352, 357), nskip = 0)
+ts1 <- mixAR_sim(m0, n = 50, init = c(346, 352, 357), nskip = 0)
 m2a <- mixARemFixedPoint(ts1,       m0, est_shift = FALSE)$model
 m2b <- mixARemFixedPoint(diff(ts1), m0, est_shift = FALSE)$model
 }

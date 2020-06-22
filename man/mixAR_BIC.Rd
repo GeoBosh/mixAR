@@ -75,7 +75,7 @@ y <- mixAR_sim(model1, 400, c(0, 0, 0), nskip = 100)
 mixAR_BIC(y, model1)
 
 model_fit1 <- fit_mixAR(y, model1)
-model_fit2 <- fit_mixAR(y, model2)
+model_fit2 <- fit_mixAR(y, model2, crit = 1e-4)
 
 mixAR_BIC(y, model_fit1)
 mixAR_BIC(y, model_fit2)

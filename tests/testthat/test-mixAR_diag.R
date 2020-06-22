@@ -19,8 +19,8 @@ test_that("diagnostics for mixAR work",{
     mixAR_BIC(y, model, index = 100:200) 
     mixAR_BIC(y, fit1)
     
-    BIC_comp(list(model, model2), y)
-    BIC_comp(list(model, model2, fit1), y)
+    expect_output( BIC_comp(list(model, model2), y) )
+    expect_output( BIC_comp(list(model, model2, fit1), y) )
     
     tsdiag(model, y = y, ask = FALSE)
 

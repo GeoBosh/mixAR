@@ -7,7 +7,12 @@ models.
 
 # Installing mixAR
 
-You can install the [development version](https://github.com/GeoBosh/mixAR) of
+Install the  [latest stable version](https://cran.r-project.org/package=mixAR) from CRAN:
+
+    install.packages("mixAR")
+
+
+Alternatively, install the [development version](https://github.com/GeoBosh/mixAR) of
 `mixAR` from Github:
 
     library(devtools)
@@ -24,4 +29,4 @@ You can install the [development version](https://github.com/GeoBosh/mixAR) of
   fitting functions such as
   [fit_mixAR](https://geobosh.github.io/mixAR/reference/fit_mixAR-methods.html)
   and [bayes_mixAR](https://geobosh.github.io/mixAR/reference/bayes_mixAR.html).
-
+  

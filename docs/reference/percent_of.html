@@ -76,7 +76,7 @@ The infix operator %of% is a generic function which applies
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.4</span>
       </span>
     </div>
 
@@ -221,13 +221,13 @@ The infix operator %of% is a generic function which applies
 <span class='no'>mc</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixComp"</span>, <span class='kw'>m</span> <span class='kw'>=</span> <span class='no'>m</span>)
 <span class='no'>pnorm</span> <span class='kw'>%of%</span> <span class='no'>mc</span></div><div class='output co'>#&gt; An object of class "MixComp"
 #&gt; Slot "m":
-#&gt;           [,1]        [,2]      [,3]
-#&gt; [1,] 0.4504317 0.719439208 0.9591072
-#&gt; [2,] 0.5101414 0.422621689 0.1992345
-#&gt; [3,] 0.2079421 0.046435679 0.3207028
-#&gt; [4,] 0.2294234 0.007358837 0.5398975
-#&gt; [5,] 0.9796581 0.335747942 0.9116178
-#&gt; [6,] 0.2211523 0.544049531 0.4269548
+#&gt;           [,1]      [,2]      [,3]
+#&gt; [1,] 0.6331502 0.1160244 0.6740943
+#&gt; [2,] 0.4306943 0.1910889 0.3883076
+#&gt; [3,] 0.5201271 0.5757670 0.9257244
+#&gt; [4,] 0.3059220 0.2870982 0.2739692
+#&gt; [5,] 0.2498748 0.3089111 0.9584489
+#&gt; [6,] 0.8040861 0.1328869 0.9665520
 #&gt; </div><div class='input'><span class='no'>pmc3</span> <span class='kw'>&lt;-</span> <span class='no'>f3</span> <span class='kw'>%of%</span> <span class='no'>mc</span>
 <span class='co'>## result is equivalent to applying f3[[i] to m[ , i]:</span>
 <span class='fu'><a href='https://rdrr.io/r/base/all.equal.html'>all.equal</a></span>(<span class='no'>pmc3</span>@<span class='kw'>m</span>, <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='no'>f3</span><span class='kw'>[[</span><span class='fl'>1</span>]](<span class='no'>m</span>[ , <span class='fl'>1</span>]), <span class='no'>f3</span><span class='kw'>[[</span><span class='fl'>2</span>]](<span class='no'>m</span>[ , <span class='fl'>2</span>]), <span class='no'>f3</span><span class='kw'>[[</span><span class='fl'>3</span>]](<span class='no'>m</span>[ , <span class='fl'>3</span>])))</div><div class='output co'>#&gt; [1] TRUE</div></pre>
