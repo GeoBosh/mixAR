@@ -1,6 +1,9 @@
-# mixAR 0.22.4 (CRAN)
+# mixAR 0.22.4
 
-- Updated README.md.
+- updated README.md.
+
+- relaxed some comparison tests raising "Additional issues" on CRAN.
+
 
 # mixAR 0.22.3 (CRAN)
 
