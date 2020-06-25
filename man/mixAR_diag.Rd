@@ -1,7 +1,8 @@
 \name{mixAR_diag}
 \alias{mixAR_diag}
 \alias{tsdiag}
-\alias{tsdiag.MixARGaussian}
+\alias{tsdiag.MixAR}
+\alias{tsdiag_MixARGaussian}
 
 \title{
   Diagnostic checks for mixture autoregressive models
@@ -11,7 +12,7 @@
   object with respect to a given time series.
 }
 \usage{
-\method{tsdiag}{MixARGaussian}(object, gof.lag, y, ask = interactive(), ...)
+\method{tsdiag}{MixAR}(object, gof.lag, y, ask = interactive(), ...)
 
 mixAR_diag(model, y, ask = interactive())
 }

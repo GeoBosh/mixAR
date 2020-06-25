@@ -1,5 +1,10 @@
 # mixAR 0.22.4
 
+- `tsdiag` now works also for models with non-Gaussian components.
+
+- `mixAR_BIC` now takes into account estimated noise parameters, useful for
+   non-Gaussian noise components.
+
 - updated README.md.
 
 - relaxed some comparison tests raising "Additional issues" on CRAN.

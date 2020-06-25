@@ -27,7 +27,7 @@ importFrom(Rdpack, reprompt)
 
 importFrom(mvtnorm, dmvnorm, rmvnorm)
 
-S3method(tsdiag, "MixARGaussian")
+S3method(tsdiag, "MixAR")
 
 exportMethods(
     "-",

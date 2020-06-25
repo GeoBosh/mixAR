@@ -22,10 +22,9 @@ test_that("diagnostics for mixAR work",{
     expect_output( BIC_comp(list(model, model2), y) )
     expect_output( BIC_comp(list(model, model2, fit1), y) )
     
-    tsdiag(model, y = y, ask = FALSE)
+    d <- tsdiag(model, y = y, ask = FALSE)
+    expect_equal(d, tsdiag_MixARGaussian(model, y = y, ask = FALSE) )
 
     mixAR_diag(model, y = y, ask = FALSE)
     mixAR_diag(fit1, y = y, ask = FALSE)
 })
-
-

@@ -132,14 +132,15 @@
     </tr>
     <tr>
       <th>model</th>
-      <td><p>An object of class <code>MixAR</code>. Alternatively an output list from
-    <code>fit_mixAR</code>. The model for which to calculate BIC.</p></td>
+      <td><p>the model for which to calculate BIC, an object inheriting from
+    class <code>MixAR</code>. Alternatively, an output list from
+    <code>fit_mixAR</code>.</p></td>
     </tr>
     <tr>
       <th>fix</th>
-      <td><p>If <code>fix = "shift"</code> shift parameters are not included
-  in calculation of BIC. Default is <code>NULL</code>, i.e. shift parameters
-  are included.</p></td>
+      <td><p>If <code>fix = "shift"</code> shift parameters are not included in
+    calculation of BIC. Default is <code>NULL</code>, i.e. shift parameters are
+    included.</p></td>
     </tr>
     <tr>
       <th>
@@ -172,6 +173,9 @@
 
 <p><code>BIC_comp</code> calculates the value of BIC for the models listed in
   <code>x</code> with respect to the specified time series <code>y</code>.</p>
+<p>If the distributions of the components contain estimated parameters,
+  then their number is included in the number of parameters for the
+  calculation of BIC.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     

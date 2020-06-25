@@ -14,12 +14,14 @@ BIC_comp(x, y)
 \arguments{
   \item{y}{a time series.}
   \item{model}{
-    An object of class \code{MixAR}. Alternatively an output list from
-    \code{fit_mixAR}. The model for which to calculate BIC.
-  }  \item{fix}{
-  If \code{fix = "shift"} shift parameters are not included
-  in calculation of BIC. Default is \code{NULL}, i.e. shift parameters
-  are included.
+    the model for which to calculate BIC, an object inheriting from
+    class \code{MixAR}. Alternatively, an output list from
+    \code{fit_mixAR}.
+  }
+  \item{fix}{
+    If \code{fix = "shift"} shift parameters are not included in
+    calculation of BIC. Default is \code{NULL}, i.e. shift parameters are
+    included.
   }
   \item{
     comp_loglik}{Should the loglikelihood be calculated?  Default is
@@ -48,6 +50,10 @@ BIC_comp(x, y)
   \code{BIC_comp} calculates the value of BIC for the models listed in
   \code{x} with respect to the specified time series \code{y}.
 
+  If the distributions of the components contain estimated parameters,
+  then their number is included in the number of parameters for the
+  calculation of BIC.
+  
 }
 \value{
   
