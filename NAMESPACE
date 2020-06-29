@@ -8,7 +8,7 @@ importFrom(stats, approxfun, density, dnorm, ecdf, pnorm,
 
 importFrom(graphics, title, par, lines, hist)
 
-importFrom(utils, head, str, tail, as.relistable)
+importFrom(utils, head, str, tail, as.relistable, menu)
 importFrom(MCMCpack, rdirichlet, ddirichlet)
 importFrom(e1071, rdiscrete)
 importFrom(permute, allPerms)
@@ -28,6 +28,7 @@ importFrom(Rdpack, reprompt)
 importFrom(mvtnorm, dmvnorm, rmvnorm)
 
 S3method(tsdiag, "MixAR")
+S3method(print, "tsdiagMixAR")
 
 exportMethods(
     "-",

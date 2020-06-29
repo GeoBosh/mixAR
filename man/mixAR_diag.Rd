@@ -8,13 +8,14 @@
   Diagnostic checks for mixture autoregressive models
 }
 \description{
-  Perform diagnostic checks and tests on given \code{MixARGaussian}
+  Perform diagnostic checks and tests on given \code{MixAR}
   object with respect to a given time series.
 }
 \usage{
-\method{tsdiag}{MixAR}(object, gof.lag, y, ask = interactive(), ...)
+\method{tsdiag}{MixAR}(object, gof.lag = NULL, y, ask = interactive(), \dots, 
+       plot = TRUE, std.resid = FALSE)
 
-mixAR_diag(model, y, ask = interactive())
+mixAR_diag(model, y, \dots)
 }
 \arguments{
   \item{model,object}{
@@ -23,12 +24,30 @@ mixAR_diag(model, y, ask = interactive())
     \code{fit_mixAR}.
   }
   \item{gof.lag}{
+
+    Goodness of fit lag(s) for the Ljung-Box tests. Vector containing
+    one or more positive integers. \code{max(gof.lag)} is the maximal
+    lag in the acf and pacf plots.
+    
     how many lags to compute for acf and pacf? The default is as that of
     \code{lag.max} for \code{acf}.
+
   }
-  \item{y}{A time series, currently a \code{numeric} vector.}
+  \item{y}{a time series, currently a \code{numeric} vector.}
   \item{ask}{if \code{TRUE} ask before presenting a new plot.}
-  \item{...}{currently not used.}
+  \item{plot}{
+    if \code{TRUE}, the default, produce diagnostic plots. If
+    \code{FALSE} don't produce plots. Otherwise, a numeric vector of
+    integers defining a subset of plots to consider, see Details.
+  }
+  \item{std.resid}{
+
+    if \code{TRUE} standardise the ordinary residuals using
+    the conditional standard deviations. \strong{NOTE:}  the default is
+    currently \code{FALSE} but it may soon be changed to \code{TRUE}. 
+
+  }
+  \item{...}{for \code{mixAR_diag}, passed on to \code{tsdiag}.}
 }
 \details{
 
@@ -39,49 +58,89 @@ mixAR_diag(model, y, ask = interactive())
   argument \code{model} but this is equivalent to calling \code{tsdiag}
   with \code{object = model$model}.
 
-  The function calculates two types of residuals. The first set
-  calculates residuals as of canonical definition.  ACF and Partial ACF
-  plots are given.
+  
+  The function calculates several types of residuals, provides
+  diagnostic plots for each of them, and returns numerical results.
+  The following choices are currently available:
+  \enumerate{
+    \item ACF/PACF of residuals,
+    \item ACF/PACF of U_residuals,
+    \item ACF/PACF of tau_residuals,
+    \item ACF/Histogram of tau_residuals.
+  }
+
+
+  In interactive sessions the user is presented with a menu to select
+  plot(s) from the available ones. The choice can be restricted to a
+  subset of them by giving argument \code{plot} a vector of integers.
+  This is most useful to select a particular plot, with somethinng like
+  \code{plot = 2} in the call to \code{tsdiag}.  \code{plot} is used as
+  an index vector, so \code{plot = -1} would remove the first item
+  listed above from the offered alternatives.
 
   Transformations on the data are performed, as described in Smith
   (1985).
 
-  The following tests are available:
-
+  Four types of residuals are computed:
   \describe{
 
-    \item{Ljung-Box test}{
-      is applied to \code{residuals}, checking for residual correlation
-      up to lag 20.
+    \item{ordinary residuals}{
+      difference (possibly scaled) between observed values and point
+      predictions.
+    }
+    \item{U_residuals/PIT residuals}{
+
+      probability integral transform of the data using the CDF of the
+      conditional distributions implied by the fitted model.  For a good
+      model these should resemble an IID sequence uniformly distributed
+      on (0,1).
+      % equivalently, the one step ahead predictive distributions of
+      % \code{y_t}. 
+    }
+    \item{V_residuals}{
+      
+      set of transformed \code{U_residuals} with the quantile function
+      of the standard normal distribution (\code{qnorm}).  For a good
+      model these should resemble an IID sequence from N(0,1).
+
+    }
+    \item{tau_residuals}{
+      
+      These residuals are calculated as the component specific residual
+      \code{e_tk} divided by its corresponding scale \code{sigma_k},
+      according to under which component y_t has largest density.  Under
+      correct model specification, these should be jointly
+      Normal. Shapiro-Wilk test is performed on this set of residual to
+      assess the hypothesis.
+
     }
 
-    \item{Kolmogorov-Smirnov test}{
-      is applied to \code{U} to assess the hypothesis of uniform
-      distribution.
-    }
 
-    \item{
-      Shapiro-Wilk test of Normality}{ is applied to \code{V}, where
-      \code{V = qnorm(U)}.
-    }
-  }
-
-  The second set is calculated as the component specific residual
-  \code{e_tk} divided by its corresponding scale \code{sigma_k},
-  according to under which component y_t has largest density.  Under
-  correct model specification, these should be jointly
-  Normal. Shapiro-Wilk test is performed on this set of residual to
-  assess the hypothesis.
+    For all types of residual results for the Ljung-Box test are
+    provided. This test is particularly relevant for the V- and
+    tau-residuals.
+    
+    Kolmogorov-Smirnov test is carried out for the U_residuals to assess
+    the hypothesis of uniform distribution.
+    
+    Shapiro-Wilk test of normality} is applied to V- and tau-residuals.
 
 }
 \value{
-  \item{residuals}{the first set of residuals,}
-  \item{U}{CDF of the one step ahead predictors of \code{y_t},}
-  \item{V}{set of transformed \code{U} by use of \code{qnorm},}
-  \item{tau_residuals}{The second set of residuals, as described,}
-  \item{tests}{
-    a \code{list} containing the results of the tests deescribed in Details.
-  }
+  
+  returns invisibly a list with class \code{"tsdiagMixAR"}, currently
+  containing the following components:
+
+  \item{residuals}{ordinary residuals,}
+  \item{U_residuals}{see Details,}
+  \item{V_residuals}{see Details,}
+  \item{tau_residuals}{see Details,}
+  \item{BIC}{the value of the BIC criterion, a number.}
+
+  Each component, except \code{BIC}, is a list containing the residuals
+  in component \code{value}, Ljung-Box test in \code{"Ljung-Box"} and
+  possibly other tests suitable for the corresponding type of
+  residuals. 
 }
 \references{
   \insertRef{Smith1985}{mixAR}
@@ -94,7 +153,8 @@ mixAR_diag(model, y, ask = interactive())
   objects only.
 }
 \seealso{
-  \code{\link{mixAR_BIC}}
+  \code{\link{mixAR_BIC}},
+  \code{\link[stats]{tsdiag}}
 }
 \examples{
 model1 <- new("MixARGaussian", prob = c(0.5, 0.5), scale = c(1, 2),
@@ -103,7 +163,8 @@ set.seed(123)
 y <- mixAR_sim(model1, 400, c(0,0,0), nskip = 100) 
 
 fit1 <- fit_mixAR(y, model1)
-mixAR_diag(fit1, y)
+d <- tsdiag(fit1$model, c(10, 20, 50), y)
+d
 }
 \keyword{ MixAR }% use one of  RShowDoc("KEYWORDS")
-%\keyword{}
+

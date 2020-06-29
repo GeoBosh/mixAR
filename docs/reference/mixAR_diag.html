@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Diagnostic checks for mixture autoregressive models — mixAR_diag" />
-<meta property="og:description" content="Perform diagnostic checks and tests on given MixARGaussian
+<meta property="og:description" content="Perform diagnostic checks and tests on given MixAR
   object with respect to a given time series." />
 
 
@@ -118,14 +118,15 @@
     </div>
 
     <div class="ref-description">
-    <p>Perform diagnostic checks and tests on given <code>MixARGaussian</code>
+    <p>Perform diagnostic checks and tests on given <code>MixAR</code>
   object with respect to a given time series.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for MixAR</span>
-<span class='fu'>tsdiag</span>(<span class='no'>object</span>, <span class='no'>gof.lag</span>, <span class='no'>y</span>, <span class='kw'>ask</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>(), <span class='no'>...</span>)
+<span class='fu'>tsdiag</span>(<span class='no'>object</span>, <span class='kw'>gof.lag</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>y</span>, <span class='kw'>ask</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>(), <span class='no'>...</span>,
+       <span class='kw'>plot</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>std.resid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>mixAR_diag</span>(<span class='no'>model</span>, <span class='no'>y</span>, <span class='kw'>ask</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>())</pre>
+<span class='fu'>mixAR_diag</span>(<span class='no'>model</span>, <span class='no'>y</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,20 +139,41 @@
     </tr>
     <tr>
       <th>gof.lag</th>
-      <td><p>how many lags to compute for acf and pacf? The default is as that of
-    <code>lag.max</code> for <code>acf</code>.</p></td>
+      <td>
+
+<p>Goodness of fit lag(s) for the Ljung-Box tests. Vector containing
+    one or more positive integers. <code><a href='https://rdrr.io/r/base/Extremes.html'>max(gof.lag)</a></code> is the maximal
+    lag in the acf and pacf plots.</p>    
+<p>how many lags to compute for acf and pacf? The default is as that of
+    <code>lag.max</code> for <code>acf</code>.</p>
+<p></p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>A time series, currently a <code>numeric</code> vector.</p></td>
+      <td><p>a time series, currently a <code>numeric</code> vector.</p></td>
     </tr>
     <tr>
       <th>ask</th>
       <td><p>if <code>TRUE</code> ask before presenting a new plot.</p></td>
     </tr>
     <tr>
+      <th>plot</th>
+      <td><p>if <code>TRUE</code>, the default, produce diagnostic plots. If
+    <code>FALSE</code> don't produce plots. Otherwise, a numeric vector of
+    integers defining a subset of plots to consider, see Details.</p></td>
+    </tr>
+    <tr>
+      <th>std.resid</th>
+      <td>
+
+<p>if <code>TRUE</code> standardise the ordinary residuals using
+    the conditional standard deviations. <strong>NOTE:</strong>  the default is
+    currently <code>FALSE</code> but it may soon be changed to <code>TRUE</code>.</p>
+<p></p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>currently not used.</p></td>
+      <td><p>for <code>mixAR_diag</code>, passed on to <code>tsdiag</code>.</p></td>
     </tr>
     </table>
 
@@ -165,40 +187,73 @@
   advantage of <code>mixAR_diag</code> is that it accepts also a list for
   argument <code>model</code> but this is equivalent to calling <code>tsdiag</code>
   with <code>object = model$model</code>.</p>
-<p>The function calculates two types of residuals. The first set
-  calculates residuals as of canonical definition.  ACF and Partial ACF
-  plots are given.</p>
+  
+<p>The function calculates several types of residuals, provides
+  diagnostic plots for each of them, and returns numerical results.
+  The following choices are currently available:</p><ol>
+<li><p>ACF/PACF of residuals,</p></li>
+<li><p>ACF/PACF of U_residuals,</p></li>
+<li><p>ACF/PACF of tau_residuals,</p></li>
+<li><p>ACF/Histogram of tau_residuals.</p></li>
+</ol>
+
+
+<p>In interactive sessions the user is presented with a menu to select
+  plot(s) from the available ones. The choice can be restricted to a
+  subset of them by giving argument <code>plot</code> a vector of integers.
+  This is most useful to select a particular plot, with somethinng like
+  <code>plot = 2</code> in the call to <code>tsdiag</code>.  <code>plot</code> is used as
+  an index vector, so <code>plot = -1</code> would remove the first item
+  listed above from the offered alternatives.</p>
 <p>Transformations on the data are performed, as described in Smith
   (1985).</p>
-<p>The following tests are available:</p>
-<p></p><dl'>
+<p>Four types of residuals are computed:</p><dl'>
 
-    <dt>Ljung-Box test</dt><dd><p>is applied to <code>residuals</code>, checking for residual correlation
-      up to lag 20.</p></dd>
+    <dt>ordinary residuals</dt><dd><p>difference (possibly scaled) between observed values and point
+      predictions.</p></dd>
+    <dt>U_residuals/PIT residuals</dt><dd><p>probability integral transform of the data using the CDF of the
+      conditional distributions implied by the fitted model.  For a good
+      model these should resemble an IID sequence uniformly distributed
+      on (0,1).
+      <!-- % equivalently, the one step ahead predictive distributions of -->
+      <!-- % \code{y_t}.  --></p></dd>
+    <dt>V_residuals</dt><dd><p>set of transformed <code>U_residuals</code> with the quantile function
+      of the standard normal distribution (<code>qnorm</code>).  For a good
+      model these should resemble an IID sequence from N(0,1).</p></dd>
+    <dt>tau_residuals</dt><dd><p>These residuals are calculated as the component specific residual
+      <code>e_tk</code> divided by its corresponding scale <code>sigma_k</code>,
+      according to under which component y_t has largest density.  Under
+      correct model specification, these should be jointly
+      Normal. Shapiro-Wilk test is performed on this set of residual to
+      assess the hypothesis.</p></dd>
 
-    <dt>Kolmogorov-Smirnov test</dt><dd><p>is applied to <code>U</code> to assess the hypothesis of uniform
-      distribution.</p></dd>
 
-    <dt>
-      Shapiro-Wilk test of Normality</dt><dd><p>is applied to <code>V</code>, where
-      <code>V = qnorm(U)</code>.</p></dd>
-  
-</dl>
-
-<p>The second set is calculated as the component specific residual
-  <code>e_tk</code> divided by its corresponding scale <code>sigma_k</code>,
-  according to under which component y_t has largest density.  Under
-  correct model specification, these should be jointly
-  Normal. Shapiro-Wilk test is performed on this set of residual to
-  assess the hypothesis.</p>
+    For all types of residual results for the Ljung-Box test are
+    provided. This test is particularly relevant for the V- and
+    tau-residuals.
+    
+    Kolmogorov-Smirnov test is carried out for the U_residuals to assess
+    the hypothesis of uniform distribution.
+    
+    Shapiro-Wilk test of normality
+</dl><p>is applied to V- and tau-residuals.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p></p>
-<dt>residuals</dt><dd><p>the first set of residuals,</p></dd>
-  <dt>U</dt><dd><p>CDF of the one step ahead predictors of <code>y_t</code>,</p></dd>
-  <dt>V</dt><dd><p>set of transformed <code>U</code> by use of <code>qnorm</code>,</p></dd>
-  <dt>tau_residuals</dt><dd><p>The second set of residuals, as described,</p></dd>
-  <dt>tests</dt><dd><p>a <code>list</code> containing the results of the tests deescribed in Details.</p></dd>
+    
+  
+<p>returns invisibly a list with class <code>"tsdiagMixAR"</code>, currently
+  containing the following components:</p>
+<p></p>
+<dt>residuals</dt><dd><p>ordinary residuals,</p></dd>
+  <dt>U_residuals</dt><dd><p>see Details,</p></dd>
+  <dt>V_residuals</dt><dd><p>see Details,</p></dd>
+  <dt>tau_residuals</dt><dd><p>see Details,</p></dd>
+  <dt>BIC</dt><dd><p>the value of the BIC criterion, a number.</p></dd>
+
+  Each component, except BIC, is a list containing the residuals
+  in component value, Ljung-Box test in "Ljung-Box" and
+  possibly other tests suitable for the corresponding type of
+  residuals. 
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -216,7 +271,8 @@ doi: <a href='https://doi.org/10.1002/for.3980040305'>10.1002/for.3980040305</a>
   objects only.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='mixAR_BIC.html'>mixAR_BIC</a></code></p></div>
+    <div class='dont-index'><p><code><a href='mixAR_BIC.html'>mixAR_BIC</a></code>,
+  <code><a href='https://rdrr.io/r/stats/tsdiag.html'>tsdiag</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>model1</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"MixARGaussian"</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>0.5</span>), <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>),
@@ -225,7 +281,72 @@ doi: <a href='https://doi.org/10.1002/for.3980040305'>10.1002/for.3980040305</a>
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mixAR_sim.html'>mixAR_sim</a></span>(<span class='no'>model1</span>, <span class='fl'>400</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='fl'>0</span>), <span class='kw'>nskip</span> <span class='kw'>=</span> <span class='fl'>100</span>)
 
 <span class='no'>fit1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_mixAR-methods.html'>fit_mixAR</a></span>(<span class='no'>y</span>, <span class='no'>model1</span>)
-<span class='fu'>mixAR_diag</span>(<span class='no'>fit1</span>, <span class='no'>y</span>)</div><div class='img'><img src='mixAR_diag-1.png' alt='' width='700' height='433' /></div><div class='img'><img src='mixAR_diag-2.png' alt='' width='700' height='433' /></div><div class='img'><img src='mixAR_diag-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'>tsdiag</span>(<span class='no'>fit1</span>$<span class='no'>model</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10</span>, <span class='fl'>20</span>, <span class='fl'>50</span>), <span class='no'>y</span>)
+<span class='no'>d</span></div><div class='output co'>#&gt; 
+#&gt;  -------------------------------------------------- 
+#&gt; Tests on the ordinary residuals
+#&gt;  -------------------------------------------------- 
+#&gt; $`Ljung-Box`
+#&gt;        df   p.value
+#&gt; Lag_10 10 0.1363658
+#&gt; Lag_20 20 0.1693712
+#&gt; Lag_50 50 0.4213514
+#&gt; 
+#&gt; 
+#&gt;  -------------------------------------------------- 
+#&gt; Tests on the U_residuals
+#&gt;  -------------------------------------------------- 
+#&gt; $`Ljung-Box`
+#&gt;        df    p.value
+#&gt; Lag_10 10 0.43658682
+#&gt; Lag_20 20 0.29918541
+#&gt; Lag_50 50 0.03460944
+#&gt; 
+#&gt; $KS
+#&gt; 
+#&gt; 	One-sample Kolmogorov-Smirnov test
+#&gt; 
+#&gt; data:  cdf
+#&gt; D = 0.028344, p-value = 0.9057
+#&gt; alternative hypothesis: two-sided
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt;  -------------------------------------------------- 
+#&gt; Tests on the V_residuals
+#&gt;  -------------------------------------------------- 
+#&gt; $`Ljung-Box`
+#&gt;        df    p.value
+#&gt; Lag_10 10 0.68338359
+#&gt; Lag_20 20 0.47238093
+#&gt; Lag_50 50 0.06870134
+#&gt; 
+#&gt; $`Shapiro-Wilk`
+#&gt; 
+#&gt; 	Shapiro-Wilk normality test
+#&gt; 
+#&gt; data:  v
+#&gt; W = 0.99784, p-value = 0.8928
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt;  -------------------------------------------------- 
+#&gt; Tests on the tau_residuals
+#&gt;  -------------------------------------------------- 
+#&gt; $`Ljung-Box`
+#&gt;        df   p.value
+#&gt; Lag_10 10 0.8708327
+#&gt; Lag_20 20 0.9790725
+#&gt; Lag_50 50 0.6138649
+#&gt; 
+#&gt; $`Shapiro-Wilk`
+#&gt; 
+#&gt; 	Shapiro-Wilk normality test
+#&gt; 
+#&gt; data:  err2
+#&gt; W = 0.99563, p-value = 0.3328
+#&gt; 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
