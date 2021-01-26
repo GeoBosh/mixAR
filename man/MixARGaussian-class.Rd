@@ -99,6 +99,9 @@ pdf1 <- mix_pdf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
 ## (cdf is used to determine limits on the x-axis)
 cdf1 <- mix_cdf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
 gbutils::plotpdf(pdf1, cdf = cdf1, lq = 0.001, uq = 0.999)
+
+## compute lower 5\% quantile of cdf1
+gbutils::cdf2quantile(0.05, cdf = cdf1)
 }
 \keyword{classes}
 \keyword{MixAR}

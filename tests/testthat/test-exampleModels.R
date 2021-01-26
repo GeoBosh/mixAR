@@ -133,15 +133,17 @@ test_that("exampleModels is consistent with the old moWL objects", {
     expect_identical(moWLgen, exampleModels$WL_ibm_gen)
     ## the rest contain environments and are equal but not identical
     expect_equal(moWLt3v, exampleModels$WL_ibm_t3v)
-    expect_equal(moWLtf,  exampleModels$WL_ibm_tf)
+    ## 2020-12-17: here and further below, add 'check.environment = FALSE'
+    ##             to comply with change with all.equal() on R-devel
+    expect_equal(moWLtf,  exampleModels$WL_ibm_tf, check.environment = FALSE)
 
-    expect_equal(moT_A , exampleModels$WL_At  )
+    expect_equal(moT_A , exampleModels$WL_At, check.environment = FALSE)
     # TODO: could do (see covr issues #423 and #436):
     #     testthat::skip_if(in_covr())
     # instead of commenting out.
     #
     # expect_equal(moT_B , exampleModels$WL_Bt_1) #139 (see below for the reasons of commenting out these))
-    expect_equal(moT_B2, exampleModels$WL_Bt_2)
+    expect_equal(moT_B2, exampleModels$WL_Bt_2, check.environment = FALSE)
     expect_equal(moT_B3, exampleModels$WL_Bt_3)
     # expect_equal(moT_C1, exampleModels$WL_Ct_1) #142
     # expect_equal(moT_C2, exampleModels$WL_Ct_2) #143

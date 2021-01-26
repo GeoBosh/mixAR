@@ -1,3 +1,9 @@
+# mixAR 0.22.5 (CRAN)
+
+- in tests, include `check.environment = FALSE` in calls to expect_equal() to
+  accommodate for a change in `all.equal()` in `R-devel`.
+
+
 # mixAR 0.22.4 (CRAN)
 
 - `tsdiag` has been extensively revamped. It now is more user friendly and
