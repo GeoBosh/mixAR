@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.6</span>
       </span>
     </div>
 
@@ -202,7 +202,7 @@
 
 <span class='co'>## compute a predictive density, assuming exampleModels$WL_ibm model</span>
 <span class='co'>## for the first date after the end of the data</span>
-<span class='no'>pdf1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_pdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: replacing previous import ‘vctrs::data_frame’ by ‘tibble::data_frame’ when loading ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'quantmod':</span>
+<span class='no'>pdf1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mix_pdf-methods.html'>mix_pdf</a></span>(<span class='no'>exampleModels</span>$<span class='no'>WL_ibm</span>, <span class='kw'>xcond</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='kw pkg'>fma</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fma/man/ibmclose.html'>ibmclose</a></span>))</div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'quantmod':</span>
 #&gt; <span class='message'>  method            from</span>
 #&gt; <span class='message'>  as.zoo.data.frame zoo </span></div><div class='input'>
 <span class='co'>## plot the predictive density</span>

@@ -113,15 +113,26 @@ setMethod("multiStep_dist",
           c(model = "MixARGaussian", maxh = "numeric", N = "missing", xcond = "missing"),
           function(model, maxh){
               co <- predict_coef(model, maxh)
-              
-              f <- function(h, xcond, what){
-                  hmo <- new("MixARGaussian",
-                             prob = co$probs[[h]],
-                             scale = co$sStable[[h]],
-                                                                 # todo: more carefully!
-                             shift = as.numeric( t(co$arcoefs[[h]]) %*% xcond ),
 
-                             arcoef = t(co$arcoefs[[h]]))
+              f <- function(h, xcond, what){
+                  arh <- t(co$arcoefs[[h]])
+                  if(ncol(arh) != length(xcond)){
+                      excess <- length(xcond) - ncol(arh)
+                      if(excess > 0){
+                          ## TODO: argument to suppress the message?
+                          message(paste0("using the last ",  length(xcond),
+                                         " values in 'xcond'"))
+                          xcond <- xcond[-(1:excess)]
+                      } else
+                          stop("length(xcond) must be >= maximal AR order")
+                  }
+
+                  hmo <- new("MixARGaussian",
+                             prob   = co$probs[[h]],
+                             scale  = co$sStable[[h]],
+                             shift  = as.numeric( arh %*% xcond ),
+                             arcoef = arh
+                             )
                   switch(what,
                          cdf = mix_cdf(hmo, xcond = xcond),
                          pdf = mix_pdf(hmo, xcond = xcond),
@@ -138,15 +149,25 @@ setMethod("multiStep_dist",
           function(model, maxh, ...){
               xcond <- xcond
               co <- predict_coef(model, maxh)
-
+	      
               f <- function(h, what){
-                  hmo <- new("MixARGaussian",
-                             prob = co$probs[[h]],
-                             scale = co$sStable[[h]],
-                                                                        #todo: more carefully!
-                             shift = as.numeric( t(co$arcoefs[[h]]) %*% xcond ),
+                  arh <- t(co$arcoefs[[h]])
+                  if(ncol(arh) != length(xcond)){
+                      excess <- length(xcond) - ncol(arh)
+                      if(excess > 0){
+                          ## TODO: argument to suppress the message?
+                          message(paste0("using the last ",  length(xcond),
+                                         " values in 'xcond'"))
+                          xcond <- xcond[-(1:excess)]
+                      } else
+                          stop("length(xcond) must be >= maximal AR order")
+                  }
 
-                             arcoef = t(co$arcoefs[[h]]))
+                  hmo <- new("MixARGaussian",
+                             prob   = co$probs[[h]],
+                             scale  = co$sStable[[h]],
+                             shift  = as.numeric(arh %*% xcond ),
+                             arcoef =arh)
                   switch(what,
                          cdf = mix_cdf(hmo, xcond = xcond),
                          pdf = mix_pdf(hmo, xcond = xcond),

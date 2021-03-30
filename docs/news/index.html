@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.6</span>
       </span>
     </div>
 
@@ -114,6 +114,14 @@
       <small>Source: <a href='https://github.com/GeoBosh/mixAR/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="mixar-0226" class="section level1">
+<h1 class="page-header" data-toc-text="0.22.6">
+<a href="#mixar-0226" class="anchor"></a>mixAR 0.22.6<small> Unreleased </small>
+</h1>
+<ul>
+<li>The function returned by the methods for <code>multiStep_dist</code> with <code>N = "missing" now checks the length of the supplied</code>xcond<code>argument and throw error if it is shorter than the maximal AR order</code>p<code>. If it is longer, the the last</code>p<code>values in it are used.  This has alway been the case when</code>N` is not missing.</li>
+</ul>
+</div>
     <div id="mixar-0225-cran" class="section level1">
 <h1 class="page-header" data-toc-text="0.22.5">
 <a href="#mixar-0225-cran" class="anchor"></a>mixAR 0.22.5 (CRAN)<small> 2021-01-04 </small>

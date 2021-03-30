@@ -15,8 +15,7 @@ Install the  [latest stable version](https://cran.r-project.org/package=mixAR) f
 Alternatively, install the [development version](https://github.com/GeoBosh/mixAR) of
 `mixAR` from Github:
 
-    library(devtools)
-    install_github("GeoBosh/mixAR")
+    remotes::install_github("GeoBosh/mixAR")
 
 
 # Overview

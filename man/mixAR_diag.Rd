@@ -2,7 +2,6 @@
 \alias{mixAR_diag}
 \alias{tsdiag}
 \alias{tsdiag.MixAR}
-\alias{tsdiag_MixARGaussian}
 
 \title{
   Diagnostic checks for mixture autoregressive models
@@ -13,7 +12,7 @@
 }
 \usage{
 \method{tsdiag}{MixAR}(object, gof.lag = NULL, y, ask = interactive(), \dots, 
-       plot = TRUE, std.resid = FALSE)
+       plot = interactive(), std.resid = FALSE)
 
 mixAR_diag(model, y, \dots)
 }
@@ -34,7 +33,11 @@ mixAR_diag(model, y, \dots)
 
   }
   \item{y}{a time series, currently a \code{numeric} vector.}
-  \item{ask}{if \code{TRUE} ask before presenting a new plot.}
+  \item{ask}{
+    if \code{TRUE}, ask (using a menu) which plot to present. Otherwise
+    just plot the selected plots. \code{ask} is ignored if only one plot 
+    is selected with argument \code{plot}. 
+  }
   \item{plot}{
     if \code{TRUE}, the default, produce diagnostic plots. If
     \code{FALSE} don't produce plots. Otherwise, a numeric vector of
@@ -165,6 +168,10 @@ y <- mixAR_sim(model1, 400, c(0,0,0), nskip = 100)
 fit1 <- fit_mixAR(y, model1)
 d <- tsdiag(fit1$model, c(10, 20, 50), y)
 d
+## This will put each plot in a separate file (mydiag01.pdf, ..., mydiag04.pdf)
+## pdf("mydiag%02d.pdf", onefile = FALSE)
+## d <- tsdiag(fit1$model, c(10, 20, 50), y,  ask = FALSE)
+## dev.off()
 }
 \keyword{ MixAR }% use one of  RShowDoc("KEYWORDS")
 

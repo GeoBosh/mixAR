@@ -5,8 +5,13 @@ test_that("functions in predict.R are ok", {
     dist <- multiStep_dist(exampleModels$WL_ibm, maxh = 3)
     tfpdf <- dist(3, "pdf", xcond = c(560, 600)) # xcond is argument to 'dist' here
     tfcdf <- dist(3, "cdf", xcond = c(560, 600))
+    expect_message(dist(3, "cdf", xcond = c(300, 560, 600)),
+                   "using the last ")
+    expect_error(dist(3, "cdf", xcond = c(600)),
+                 "length\\(xcond\\) must be >= maximal AR order")
+    
     ## currently 2nd argument is anything besides "pdf" and "cdf"
-    ## for the method above. (looks like *:TODO:* - se the method with "N = ..." below
+    ## for the method above. (looks like *:TODO:* - see the method with "N = ..." below
     dist(3, "model", xcond = c(560, 600))
     
 ## use a simulation method with N = 1000
@@ -32,7 +37,16 @@ tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(560, 600))
 ## get pdf and cdf for horizon 3
 tfepdf <- tfe(3, "pdf")
 tfecdf <- tfe(3, "cdf")
+invisible(tfe(3, "model"))
 
+    tfe_mes <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(300, 560, 600))
+    tfe_err <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(600))
+    
+    expect_message(tfe_mes(3, "pdf"), "using the last ")
+    expect_error(tfe_err(3, "pdf"), "length\\(xcond\\) must be >= maximal AR order")
+    
+
+    
 })
 
 test_that("functions for 'predict' work", {

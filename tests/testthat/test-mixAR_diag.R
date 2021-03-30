@@ -21,15 +21,14 @@ test_that("diagnostics for mixAR work",{
     
     expect_output( BIC_comp(list(model, model2), y) )
     expect_output( BIC_comp(list(model, model2, fit1), y) )
-    
+
     d <- tsdiag(model, y = y, ask = FALSE)
+    d <- tsdiag(model, y = y, plot = 2, std.resid = TRUE)
+    expect_output(print(d))
+    expect_warning(tsdiag(model, y = y, plot = c(1, 10)),
+                   "'plot' should be TRUE/FALSE or vector of positive integers <=")
+    d <- tsdiag(model, y = y, plot = c(1,4), ask = FALSE)
 
-    ## this test made sense during the initial refactoring of the mixAr tsdiag method but now
-    ## the structure of the result has also changed. Some components are still as before and
-    ## could be compared individually.
-    ##
-    ## expect_equal(unclass(d), tsdiag_MixARGaussian(model, y = y, ask = FALSE) )
-
-    mixAR_diag(model, y = y, ask = FALSE)
-    mixAR_diag(fit1, y = y, ask = FALSE)
+    mixAR_diag(model, y = y, plot = 3)
+    mixAR_diag(fit1, y = y, plot = 4)
 })

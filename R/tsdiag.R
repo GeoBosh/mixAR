@@ -1,5 +1,5 @@
 tsdiag.MixAR <- function(object, gof.lag = NULL, y, ask = interactive(), ...,
-                         plot = TRUE, std.resid = FALSE){
+                         plot = interactive(), std.resid = FALSE){
     old.par <- par(no.readonly = TRUE)
     on.exit(par(old.par))     # restore graphics parameters before exiting.
 
@@ -107,13 +107,15 @@ tsdiag.MixAR <- function(object, gof.lag = NULL, y, ask = interactive(), ...,
         "ACF/PACF of tau_residuals",
         "ACF/Histogram of tau_residuals"
     )
-
+    chnum <- 1:length(choices)
+    
     if(!isTRUE(plot)){                  # plot is typically numeric index;
-        nchoice <- length(choices)      # FALSE or NULL give zero length result, so no plots
-        choices <- choices[plot]
+        choices <- choices[plot]        # FALSE or NULL give zero length result, so no plots
+        chnum <- chnum[plot]
         if(anyNA(choices)){
             warning("'plot' should be TRUE/FALSE or vector of positive integers <= ",
-                    nchoice, ",\n", "ignoring non-existent values")
+                    length(choices), ",\n", "ignoring non-existent values")
+            chnum <- chnum[!is.na(choices)]
             choices <- choices[!is.na(choices)]
         }
     }
@@ -121,13 +123,17 @@ tsdiag.MixAR <- function(object, gof.lag = NULL, y, ask = interactive(), ...,
     if(length(choices) > 0){
         par(mfrow = c(2,1))
         choice_title <- "Select a plot number or 0 to exit"
-        choice <- if(length(choices) == 1)
-                      choices
-                  else if(interactive())
-                      menu(choices, title = choice_title)
-                  else 0 
+        ch_index <- if(length(choices) == 1)
+                        1
+                    else if(ask)
+                        menu(choices, title = choice_title)
+                    else if(!identical(plot, FALSE))
+                        1
+                    else
+                        integer(0)
+        choice <- chnum[ch_index]
         
-        while(choice != 0){
+        while(length(choice) != 0){
             switch(choice,
             { # 1:  "ACF/PACF of residuals",
                 acf(err, main = "ACF of residuals from model", lag.max = lag.max)
@@ -150,9 +156,18 @@ tsdiag.MixAR <- function(object, gof.lag = NULL, y, ask = interactive(), ...,
                 lines(seq(-5, 5, .01), dnorm(seq(-5, 5, .01)), col = "red")
             }
             )
-            if(length(choices) == 1)
+            if(length(chnum) == 1)  # length(choices) == 1
                 break
-            choice <- menu(choices, title = choice_title)
+            ## TODO: argument 'ask' could be used here to present a menu or just
+            ##       plot the next plot in choices.
+            if(ask)
+                choice <- chnum[ menu(choices, title = choice_title) ]
+            else{
+                ## just plot the next one
+                chnum <- chnum[-1]
+                choice <- chnum[1]
+            }
+            
         }
     }
     

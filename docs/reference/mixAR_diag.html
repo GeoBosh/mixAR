@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mixAR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.22.6</span>
       </span>
     </div>
 
@@ -124,7 +124,7 @@
 
     <pre class="usage"><span class='co'># S3 method for MixAR</span>
 <span class='fu'>tsdiag</span>(<span class='no'>object</span>, <span class='kw'>gof.lag</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>y</span>, <span class='kw'>ask</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>(), <span class='no'>...</span>,
-       <span class='kw'>plot</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>std.resid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+       <span class='kw'>plot</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>(), <span class='kw'>std.resid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>mixAR_diag</span>(<span class='no'>model</span>, <span class='no'>y</span>, <span class='no'>...</span>)</pre>
 
@@ -154,7 +154,9 @@
     </tr>
     <tr>
       <th>ask</th>
-      <td><p>if <code>TRUE</code> ask before presenting a new plot.</p></td>
+      <td><p>if <code>TRUE</code>, ask (using a menu) which plot to present. Otherwise
+    just plot the selected plots. <code>ask</code> is ignored if only one plot 
+    is selected with argument <code>plot</code>.</p></td>
     </tr>
     <tr>
       <th>plot</th>
@@ -346,7 +348,11 @@ doi: <a href='https://doi.org/10.1002/for.3980040305'>10.1002/for.3980040305</a>
 #&gt; data:  err2
 #&gt; W = 0.99563, p-value = 0.3328
 #&gt; 
-#&gt; </div></pre>
+#&gt; </div><div class='input'>## This will put each plot in a separate file (mydiag01.pdf, ..., mydiag04.pdf)
+## pdf("mydiag%02d.pdf", onefile = FALSE)
+## d &lt;- tsdiag(fit1$model, c(10, 20, 50), y,  ask = FALSE)
+## dev.off()
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
