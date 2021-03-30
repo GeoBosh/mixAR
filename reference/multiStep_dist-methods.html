@@ -272,8 +272,8 @@ doi: <a href='https://doi.org/10.1016/j.spl.2009.04.009'>10.1016/j.spl.2009.04.0
 #&gt;     wrk &lt;- inner(wrk, model@prob/model@scale)
 #&gt;     wrk
 #&gt; }
-#&gt; &lt;bytecode: 0x7f8ea67d4fa0&gt;
-#&gt; &lt;environment: 0x7f8ea19c7230&gt;</div><div class='input'>
+#&gt; &lt;bytecode: 0x7fee960b05c0&gt;
+#&gt; &lt;environment: 0x7fee96d25f20&gt;</div><div class='input'>
 <span class='co'>## use a simulation method with N = 1000</span>
 <span class='va'>tf</span>  <span class='op'>&lt;-</span> <span class='fu'>multiStep_dist</span><span class='op'>(</span><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_ibm</span>, maxh <span class='op'>=</span> <span class='fl'>3</span>, N <span class='op'>=</span> <span class='fl'>1000</span>, xcond <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>560</span>, <span class='fl'>600</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/args.html'>args</a></span><span class='op'>(</span><span class='va'>tf</span><span class='op'>)</span> <span class='co'># (h, what, ...)</span>
