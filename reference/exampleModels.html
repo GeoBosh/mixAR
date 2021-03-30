@@ -256,44 +256,44 @@
 #&gt; [[1]]$logpdf
 #&gt; function (x) 
 #&gt; log(dnorm(x))
-#&gt; &lt;bytecode: 0x7feb590a89e8&gt;
-#&gt; &lt;environment: 0x7feb590a7a88&gt;
+#&gt; &lt;bytecode: 0x7f8ea1a07070&gt;
+#&gt; &lt;environment: 0x7f8ea1a0dcb0&gt;
 #&gt; 
 #&gt; [[1]]$Fscore
 #&gt; function (x) 
 #&gt; -x
-#&gt; &lt;bytecode: 0x7feb590a8358&gt;
-#&gt; &lt;environment: 0x7feb590a7a88&gt;
+#&gt; &lt;bytecode: 0x7f8ea1a07700&gt;
+#&gt; &lt;environment: 0x7f8ea1a0dcb0&gt;
 #&gt; 
 #&gt; [[1]]$xFscore
 #&gt; function (x) 
 #&gt; -x^2
-#&gt; &lt;bytecode: 0x7feb590abcb8&gt;
-#&gt; &lt;environment: 0x7feb590a7a88&gt;
+#&gt; &lt;bytecode: 0x7f8ea1a07cb0&gt;
+#&gt; &lt;environment: 0x7f8ea1a0dcb0&gt;
 #&gt; 
 #&gt; [[1]]$Parscore
 #&gt; function () 
 #&gt; 0
-#&gt; &lt;bytecode: 0x7feb590ab698&gt;
-#&gt; &lt;environment: 0x7feb590a7a88&gt;
+#&gt; &lt;bytecode: 0x7f8ea1a082d0&gt;
+#&gt; &lt;environment: 0x7f8ea1a0dcb0&gt;
 #&gt; 
 #&gt; [[1]]$get_param
 #&gt; function () 
 #&gt; numeric()
-#&gt; &lt;bytecode: 0x7feb590ab190&gt;
-#&gt; &lt;environment: 0x7feb590a7a88&gt;
+#&gt; &lt;bytecode: 0x7f8ea1a08848&gt;
+#&gt; &lt;environment: 0x7f8ea1a0dcb0&gt;
 #&gt; 
 #&gt; [[1]]$set_param
 #&gt; function () 
 #&gt; stop("Standard normal has no parameters to set.")
-#&gt; &lt;bytecode: 0x7feb590aac50&gt;
-#&gt; &lt;environment: 0x7feb590a7a88&gt;
+#&gt; &lt;bytecode: 0x7f8ea1a04e78&gt;
+#&gt; &lt;environment: 0x7f8ea1a0dcb0&gt;
 #&gt; 
 #&gt; [[1]]$any_param
 #&gt; function () 
 #&gt; param_flag
-#&gt; &lt;bytecode: 0x7feb590aa6d8&gt;
-#&gt; &lt;environment: 0x7feb590a7a88&gt;
+#&gt; &lt;bytecode: 0x7f8ea1a05c78&gt;
+#&gt; &lt;environment: 0x7f8ea1a0dcb0&gt;
 #&gt; 
 #&gt; 
 #&gt; </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_ibm_t3v</span>
@@ -311,62 +311,62 @@
 #&gt; [[1]]$pdf
 #&gt; function (x) 
 #&gt; dstd(x, nu = nu)
-#&gt; &lt;bytecode: 0x7feb590b3cf0&gt;
-#&gt; &lt;environment: 0x7feb590add28&gt;
+#&gt; &lt;bytecode: 0x7f8ea1a027d8&gt;
+#&gt; &lt;environment: 0x7f8ea1a065a8&gt;
 #&gt; 
 #&gt; [[1]]$cdf
 #&gt; function (x) 
 #&gt; pstd(x, nu = nu)
-#&gt; &lt;bytecode: 0x7feb590b3628&gt;
-#&gt; &lt;environment: 0x7feb590add28&gt;
+#&gt; &lt;bytecode: 0x7f8ea19fefc8&gt;
+#&gt; &lt;environment: 0x7f8ea1a065a8&gt;
 #&gt; 
 #&gt; [[1]]$rand
 #&gt; function (n) 
 #&gt; rstd(n, nu = nu)
-#&gt; &lt;bytecode: 0x7feb590b2f60&gt;
-#&gt; &lt;environment: 0x7feb590add28&gt;
+#&gt; &lt;bytecode: 0x7f8ea19ff690&gt;
+#&gt; &lt;environment: 0x7f8ea1a065a8&gt;
 #&gt; 
 #&gt; [[1]]$logpdf
 #&gt; function (x) 
 #&gt; log(dstd(x, nu = nu))
-#&gt; &lt;bytecode: 0x7feb590b2860&gt;
-#&gt; &lt;environment: 0x7feb590add28&gt;
+#&gt; &lt;bytecode: 0x7f8ea19ffd58&gt;
+#&gt; &lt;environment: 0x7f8ea1a065a8&gt;
 #&gt; 
 #&gt; [[1]]$Fscore
 #&gt; function (x) 
 #&gt; -x * (1 + nu)/(x^2 + nu - 2)
-#&gt; &lt;bytecode: 0x7feb590b8038&gt;
-#&gt; &lt;environment: 0x7feb590add28&gt;
+#&gt; &lt;bytecode: 0x7f8ea1a00490&gt;
+#&gt; &lt;environment: 0x7f8ea1a065a8&gt;
 #&gt; 
 #&gt; [[1]]$xFscore
 #&gt; function (x) 
 #&gt; -x^2 * (1 + nu)/(x^2 + nu - 2)
-#&gt; &lt;bytecode: 0x7feb590b75b8&gt;
-#&gt; &lt;environment: 0x7feb590add28&gt;
+#&gt; &lt;bytecode: 0x7f8ea19fd0e0&gt;
+#&gt; &lt;environment: 0x7f8ea1a065a8&gt;
 #&gt; 
 #&gt; [[1]]$Parscore
 #&gt; function (x) 
 #&gt; param_score_stdt(x, nu)
-#&gt; &lt;bytecode: 0x7feb590b6a90&gt;
-#&gt; &lt;environment: 0x7feb590add28&gt;
+#&gt; &lt;bytecode: 0x7f8ea19fe490&gt;
+#&gt; &lt;environment: 0x7f8ea1a065a8&gt;
 #&gt; 
 #&gt; [[1]]$get_param
 #&gt; function () 
 #&gt; nu
-#&gt; &lt;bytecode: 0x7feb590b6400&gt;
-#&gt; &lt;environment: 0x7feb590add28&gt;
+#&gt; &lt;bytecode: 0x7f8ea19feb90&gt;
+#&gt; &lt;environment: 0x7f8ea1a065a8&gt;
 #&gt; 
 #&gt; [[1]]$set_param
 #&gt; function (x) 
 #&gt; nu &lt;&lt;- x
-#&gt; &lt;bytecode: 0x7feb590b9dd0&gt;
-#&gt; &lt;environment: 0x7feb590add28&gt;
+#&gt; &lt;bytecode: 0x7f8ea19fb1c0&gt;
+#&gt; &lt;environment: 0x7f8ea1a065a8&gt;
 #&gt; 
 #&gt; [[1]]$any_param
 #&gt; function () 
 #&gt; param_flag
-#&gt; &lt;bytecode: 0x7feb590b9820&gt;
-#&gt; &lt;environment: 0x7feb590add28&gt;
+#&gt; &lt;bytecode: 0x7f8ea19fb850&gt;
+#&gt; &lt;environment: 0x7f8ea1a065a8&gt;
 #&gt; 
 #&gt; 
 #&gt; </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_ibm_tf</span>
