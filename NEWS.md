@@ -1,9 +1,9 @@
 # mixAR 0.22.6
 
 - The function returned by the methods for `multiStep_dist` with `N = "missing"
-  now checks the length of the supplied `xcond` argument and throw error if it
+  now checks the length of the supplied `xcond` argument and throws error if it
   is shorter than the maximal AR order `p`. If it is longer, the the last `p`
-  values in it are used.  This has alway been the case when `N` is not missing.
+  values in it are used.  This has always been the case when `N` is not missing.
 
 
 # mixAR 0.22.5 (CRAN)
