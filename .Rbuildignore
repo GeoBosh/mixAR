@@ -22,3 +22,4 @@ mixAR.Rproj
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
+^\.github$
