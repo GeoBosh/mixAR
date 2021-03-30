@@ -1,7 +1,8 @@
+<!-- badges: start -->
 [![CRANStatusBadge](http://www.r-pkg.org/badges/version/mixAR)](https://cran.r-project.org/package=mixAR)
-[![Build Status](https://travis-ci.com/GeoBosh/mixAR.svg?branch=master)](https://travis-ci.com/GeoBosh/mixAR)
-[![Coverage Status](https://coveralls.io/repos/github/GeoBosh/mixAR/badge.svg?branch=master)](https://coveralls.io/github/GeoBosh/mixAR?branch=master)
-
+[![R-CMD-check](https://github.com/GeoBosh/mixAR/workflows/R-CMD-check/badge.svg)](https://github.com/GeoBosh/mixAR/actions)
+[![codecov](https://codecov.io/gh/GeoBosh/mixAR/branch/master/graph/badge.svg?token=2SW9HKG71Y)](https://codecov.io/gh/GeoBosh/mixAR)
+<!-- badges: end -->
 'mixAR' is an R package for time series modelling with mixture autoregressive and related
 models.
 
