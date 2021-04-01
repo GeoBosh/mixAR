@@ -10,6 +10,22 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                                                   # ako ostavya taka, ste raboti bez izmenenie
     shift_ar_params <- unlist(c(model@shift, model@arcoef@a))
 
+    ## 2021-03-31 new
+    if(identical(fix, "white.noise")) {
+        g <- .nmix(model)
+
+        fix <- NULL
+        white_noise <- TRUE
+        
+        stopifnot(any(model@order != model@order[1])) # TODO: for now all ar orders equal
+
+        constr_params <- numeric(g + sum(model@order))  # g = .nmix(model)
+        constr_indx   <- c(g, sum(g + model@order[-g]) + 1:model@order[g])
+        unconstr_indx <- seq_along(constr_params)[-constr_indx]
+    }else
+        white_noise <- FALSE
+    
+
     dont_g <- .nmix(model)
     dont_ar <- sum(model@order)
     dontfix_shift  <- if(identical(fix,"shift")) rep(FALSE, dont_g) else rep(TRUE, dont_g)
@@ -44,8 +60,9 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                        # 2012-10-26 TODO: slagam vremenno na TRUE, za da testvam novite raboti
                        #            todo: otchitay i novite raboti!
            # 2012-10-31 estdist_flag <- TRUE  # any( sapply(dist, function(x) x$any_param()) )
-    estdist_flag <- with(environment(dist[[1]]$pdf), any(param_flags))
-
+           # 2021-03-31 was: estdist_flag <- with(environment(dist[[1]]$pdf), any(param_flags))
+           #     it seems that I have changed the way this is retrieved at the time      
+    estdist_flag <- dist[[1]]$any_param()
     n <- length(y)
 
     prob <- tau2probhat(tau)
@@ -53,7 +70,41 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
     eqns <- matrix(NA, nrow = g, ncol = 1 + pm)
 
     lcond <-
-        if(est_shift){
+        if(white_noise){  # 2021-03-31 new - modified from the 'else' part below
+            function(par){
+                    # shift_ar_params[dontfix_shift_ar] <- par
+                    # model@shift <- shift_ar_params[1:g]
+                    # model@arcoef <- rag_modify(model@arcoef, shift_ar_params[-(1:g)])
+
+                cur_probs <- model@prob  # TODO: Dali tova ne tryava da e 'prob'?  
+                                         #       may ne, 'prob' e veroyatno initial value
+                shift_ar_params[unconstr_indx] <- par
+                model@shift <- c(shift_ar_params[1:(g-1)],
+                                 sum(cur_probs[-g] * shift_ar_params[1:(g-1)]) / cur_probs[g])
+
+                tmp_m <- matrix(shift_ar_params[-(1:g)], nrow = g)
+                constr_ar_param <- numeric(pm)
+                for(k in 1:(g-1)) {
+                    for(i in 1:pm){
+                        constr_ar_param[i] <-
+                            constr_ar_param[i] + cur_probs[k] * tmp_m[k, i]
+                    }
+                }
+                shift_ar_params[constr_indx[-1]] <- constr_ar_param / cur_probs[g]
+                
+                model@arcoef <- rag_modify(model@arcoef, shift_ar_params[-(1:g)])
+
+                
+
+                stdetk <- mix_ek(model, y, index, scale=TRUE)    # standardised resid.
+                sc <-  tau * (log %of% ((fpdf %of% stdetk)/ sigma))
+                                        # tuk nyama nuzhda da vzemam podmnozhestvo ponezhe se
+                                        # vrasta samo edna stoynost!
+                sum(sc@m) + sum( (tau * log(model@prob))@m )
+            }
+
+            
+        } else if(est_shift){
             function(par){
                 model@shift <- par[1:g]
                 model@arcoef <- rag_modify(model@arcoef, par[-(1:g)])
@@ -231,7 +282,10 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                                      #     param <- c( model@shift, ragged2vec(model@arcoef) )
                                      # else
                                      #     param <- ragged2vec(model@arcoef)
-    if(est_shift)
+    if(white_noise){
+        tmp_v <- ragged2vec(model@arcoef)
+        param <- c( model@shift[-g], tmp_v[1:(length(tmp_v) - model@prob[g])] )
+    }else if(est_shift)
         param <- c( model@shift, ragged2vec(model@arcoef) )
     else if(est_ar_all)
         param <- ragged2vec(model@arcoef)
@@ -297,7 +351,12 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                              # }else{
                              #     model@arcoef <- rag_modify(model@arcoef, param$par)
                              # }
-    if(est_shift){
+    if(white_noise){  # 2021-03-31 new
+        shift_ar_params[unconstr_indx] <- param$par
+
+        model@shift <- shift_ar_params[1:g]
+        model@arcoef <- rag_modify(model@arcoef, shift_ar_params[-(1:g)])
+    }else if(est_shift){
         model@shift <- param$par[1:g]
         model@arcoef <- rag_modify(model@arcoef, param$par[-(1:g)])
     }else if(est_ar_all){

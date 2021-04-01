@@ -5,6 +5,7 @@
   is shorter than the maximal AR order `p`. If it is longer, the the last `p`
   values in it are used.  This has always been the case when `N` is not missing.
 
+- numerous fixes and improvements.
 
 # mixAR 0.22.5 (CRAN)
 

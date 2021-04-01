@@ -40,7 +40,7 @@ test_unswitch(models, true_model, allperm, ...)
 %%% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
 \examples{
-## all examples run succesfully, commenting out some for CRAN
+## N is small for to make the examples run instantly.
 set.seed(1234)
 aII10data <- mixARExperiment(exampleModels$WL_II, N = 5, raw = TRUE,
                  estargs = list(crit = 1e-4))

@@ -61,7 +61,7 @@ stdtabsmoment <- function(nu, k){   # nu>2 here      # exists if k < nu   E|x|^k
 stdtmoment <- function(nu, k){   # nu>2 here      # exists if k < nu   E|x|^k za t-dist
     res <- rep_len(NaN, length(k))
     res[k == 0] <- 1                  # zero'th moment is = 1
-    res[k %% 2 == 1] <- 0  # odd moments are zero (arbitray but principal value of the integral)
+    res[k %% 2 == 1] <- 0  # odd moments are zero (arbitrary, but principal value of the integral)
     i <- which(k %% 2 == 0  &  k > 0) # even moments are non-zero
     res[i] <- stdtabsmoment(nu, k[i])
     res

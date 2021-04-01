@@ -7,7 +7,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Compute moments and absolute moments of standardised-t and normal distributions}
 \description{
-  Compute moments and absolute moments of standardised-t and normal
+  Compute moments and absolute moments of standardised-t, t and normal
   distributions.
 }
 \usage{
@@ -27,7 +27,8 @@ tabsmoment(nu, k)
   distibutions. These distributions have mean zero and variance 1.
   Standardised-t is often prefferred over Student-t for innovation
   distributions, since its variance doesn't depend on its parameter
-  (degrees of freedom).
+  (degrees of freedom). The absolute moments of the usual
+  t-distributions are provided, as well.
 
   The names of the functions start with an abbreviated name of the
   distribution concerned: \code{stdnorm} (N(0,1)), \code{stdt}

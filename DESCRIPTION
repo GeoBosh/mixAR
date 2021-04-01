@@ -24,7 +24,7 @@ Depends: R (>= 3.5), methods
 Imports: stats, graphics, utils, stats4, BB, combinat, timeDate,
         fGarch, Rdpack (>= 0.7), gbutils (>= 0.3-1), MCMCpack, e1071,
         permute, mvtnorm
-Suggests: fma, testthat
+Suggests: fma, testthat, covr
 RdMacros: Rdpack
 URL: https://geobosh.github.io/mixAR/ (website),
         https://github.com/GeoBosh/mixAR/ (devel)
