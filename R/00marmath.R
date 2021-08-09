@@ -78,13 +78,15 @@ randomArCoefficients <- function(ts, wv, pk, pmax, partempl,
             cat("cond: ", cond, "\n")
     }
 
-    rhs <- m[ ,  ncol(m)]
-    a   <- m[ , -ncol(m)]
-    res <- pseudoInverse(a) %*% rhs
 
+    ## 2021-08-09 handle case when there are no parameters to estimate
     newpar <- c(partempl[[1]], partempl[[2]])
-
-    newpar[is.na(newpar)] <- res # assumes 'res' has the appropriate length; todo: must check!
+    if(ncol(m) > 1){
+        rhs <- m[ ,  ncol(m)]  # last is the righ-hand side of ax = rhs
+        a   <- m[ , -ncol(m)]
+        res <- pseudoInverse(a) %*% rhs
+        newpar[is.na(newpar)] <- res # assumes 'res' has the appropriate length; todo:  check!
+    }
 
     list(newpar[1], newpar[-1])
 }

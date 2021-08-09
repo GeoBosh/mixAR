@@ -4,7 +4,8 @@ import(stats4)
 importFrom(stats, approxfun, density, dnorm, ecdf, pnorm,
            sd, uniroot, var, ar, dgamma, dpois, lm, rgamma, rnorm, runif,
            ks.test, punif, qnorm, shapiro.test, 
-           Box.test, acf, pacf, tsdiag)
+           Box.test, acf, pacf, tsdiag,
+           constrOptim, optim)
 
 importFrom(graphics, title, par, lines, hist)
 

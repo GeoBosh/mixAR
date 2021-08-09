@@ -6,32 +6,37 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                         , method = "BBsolve", maxit = 100, trace = FALSE, lessverbose = TRUE,
                         ... ){
     verbose <- lessverbose && interactive()
+
+    n <- length(y)
+
+    g     <- .nmix(model)
+    order <- model@order
+    sigma <- model@scale
+    p     <- order
+    pm    <- max(order)
                                                          # 2012-11-02 tova beshe vav fit_mixAR
                                                   # ako ostavya taka, ste raboti bez izmenenie
     shift_ar_params <- unlist(c(model@shift, model@arcoef@a))
 
     ## 2021-03-31 new
+    ##    TODO: this could be merged better with the code for the other cases
     if(identical(fix, "white.noise")) {
-        g <- .nmix(model)
-
-        fix <- NULL
+        ## TODO: the calling function should check that the last component has order pmax !!!
         white_noise <- TRUE
-        
-        stopifnot(any(model@order != model@order[1])) # TODO: for now all ar orders equal
+        fix <- NULL     # for now; could allow fixed params later!
 
-        constr_params <- numeric(g + sum(model@order))  # g = .nmix(model)
-        constr_indx   <- c(g, sum(g + model@order[-g]) + 1:model@order[g])
+        constr_params <- numeric(g + sum(model@order))
+        constr_indx   <- c(g, g + sum(model@order[1:(g-1)]) + 1:model@order[g])
         unconstr_indx <- seq_along(constr_params)[-constr_indx]
     }else
         white_noise <- FALSE
-    
 
     dont_g <- .nmix(model)
     dont_ar <- sum(model@order)
     dontfix_shift  <- if(identical(fix,"shift")) rep(FALSE, dont_g) else rep(TRUE, dont_g)
     dontfix_scale  <- rep(TRUE, dont_g)
     dontfix_arcoef <- rep(TRUE, dont_ar)
-    if(is.list(fix)){      # should contain named logical vectors with TRUE for fixed elements
+    if(is.list(fix)){ # should contain named logical vectors with TRUE for fixed elements
                # dontfix_prob   <- if(!is.null(fix$prob))   !fix$prob   else rep(TRUE, dont_g)
         if(!is.null(fix$shift))  dontfix_shift  <- !fix$shift
         if(!is.null(fix$scale))  dontfix_scale  <- !fix$scale
@@ -42,16 +47,7 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
     est_shift  <- all(dontfix_shift_ar)                        # compatibility
     est_ar_all <- all(dontfix_arcoef) && all(!dontfix_shift)
 
-
-
-    armaxit <- maxit # todo: make n argument for this?
-
-    order  <- model@order
-    sigma  <- model@scale
-
-    g <- .nmix(model)
-    p <- order
-    pm <- max(order)
+    armaxit <- maxit # todo: make an argument for this?
 
     dist   <- get_edist(model)               # dist <- model@dist
     Fscore <- lapply( dist, function(x) x$Fscore )     # Fscore <- noise_dist(model, "Fscore")
@@ -62,14 +58,20 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
            # 2012-10-31 estdist_flag <- TRUE  # any( sapply(dist, function(x) x$any_param()) )
            # 2021-03-31 was: estdist_flag <- with(environment(dist[[1]]$pdf), any(param_flags))
            #     it seems that I have changed the way this is retrieved at the time      
+#browser()
+    ## 20211-06-26 TODO: this seems to assume that any_param() for the 1st component gives an
+    ##                   overall result. Shouldn't it be any(sapply(dist, function(x) x$any_param)) ?
+    ##
+    ## For now leaving as is but this will not work correctly if the first component has no
+    ## params to estimate but some of the others do.
     estdist_flag <- dist[[1]]$any_param()
-    n <- length(y)
 
-    prob <- tau2probhat(tau)
-
-    eqns <- matrix(NA, nrow = g, ncol = 1 + pm)
+    prob <- tau2probhat(tau)  # TODO: new mixing weights, but model@prob is updated after the other parameters,
+                              #    i.e., prob is not used in their updates but rather model@prob.
+                              #       TODO: why? (seems ok!)
 
     lcond <-
+
         if(white_noise){  # 2021-03-31 new - modified from the 'else' part below
             function(par){
                     # shift_ar_params[dontfix_shift_ar] <- par
@@ -80,9 +82,17 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                                          #       may ne, 'prob' e veroyatno initial value
                 shift_ar_params[unconstr_indx] <- par
                 model@shift <- c(shift_ar_params[1:(g-1)],
-                                 sum(cur_probs[-g] * shift_ar_params[1:(g-1)]) / cur_probs[g])
+                                 - sum(cur_probs[-g] * shift_ar_params[1:(g-1)]) / cur_probs[g])
 
-                tmp_m <- matrix(shift_ar_params[-(1:g)], nrow = g)
+                    # tmp_m <- matrix(shift_ar_params[-(1:g)], nrow = g - 1, ncol = pm)
+                tmp_m <- matrix(0, nrow = g - 1, ncol = pm)
+                tmp_v <- shift_ar_params[-(1:g)] # only ar param
+                for(i in 1:(g-1)){
+                    r_ind <- 1:model@order[i]
+		    tmp_m[i, r_ind] <- tmp_v[r_ind]
+                    tmp_v <- tmp_v[-r_ind]
+		}
+
                 constr_ar_param <- numeric(pm)
                 for(k in 1:(g-1)) {
                     for(i in 1:pm){
@@ -90,11 +100,9 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                             constr_ar_param[i] + cur_probs[k] * tmp_m[k, i]
                     }
                 }
-                shift_ar_params[constr_indx[-1]] <- constr_ar_param / cur_probs[g]
+                shift_ar_params[constr_indx[-1]] <- - constr_ar_param / cur_probs[g]
                 
                 model@arcoef <- rag_modify(model@arcoef, shift_ar_params[-(1:g)])
-
-                
 
                 stdetk <- mix_ek(model, y, index, scale=TRUE)    # standardised resid.
                 sc <-  tau * (log %of% ((fpdf %of% stdetk)/ sigma))
@@ -103,7 +111,6 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                 sum(sc@m) + sum( (tau * log(model@prob))@m )
             }
 
-            
         } else if(est_shift){
             function(par){
                 model@shift <- par[1:g]
@@ -111,48 +118,16 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
 
                 stdetk <- mix_ek(model, y, index, scale=TRUE)    # standardised resid.
                 sc <-  tau * (log %of% ((fpdf %of% stdetk)/ sigma))
-                sum(sc@m) + sum( (tau * log(model@prob))@m )
+
+                res <- sum(sc@m) + sum( (tau * log(model@prob))@m )
+                res
             }
+
         }else if(est_ar_all){
             function(par){
                 model@arcoef <- rag_modify(model@arcoef, par)
 
                 stdetk <- mix_ek(model, y, index, scale=TRUE)    # standardised resid.
-
-                # it is dangerous to take log of fpdf(stdetk) since some residuals may be
-                # large , hence fpdf effectively zero, hence log(f())=-Inf, this derails
-                # optim. programs.
-                # On the other hand, log is changing so slowly that even the smallest
-                # representable number (on a 32bit machine) has a log of around -710.
-                # So, the problem may be only with exact zeroes.
-                   # > k<-0; eps <- 1; while(log(eps)>-Inf){ k<-k+1; eps <- eps/10 }
-                   # > eps
-                   # [1] 0
-                   # > eps==0
-                   # [1] TRUE
-                   # > k
-                   # [1] 324
-                   # > 10^(-k+1)
-                   # [1] 9.881313e-324
-                   # > log(10^(-k+1))
-                   # [1] -743.7469
-
-                   #> log(.Machine$double.xmin)
-                   #[1] -708.3964
-                   #> .Machine$double.xmin
-                   #[1] 2.225074e-308
-                   #>
-                   #> .Machine$double.eps
-                   #[1] 2.220446e-16
-                   #> log(.Machine$double.eps)
-                   #[1] -36.04365
-                   #>
-                # sc <-  tau * (log %of% ((fpdf[[1]] %of% stdetk)/ sigma))
-                # sc  <- tau * (log %of% ((fpdf[[1]] %of% stdetk)))   # todo: [[1]] is krapka!
-                # res <- sum(sc@m) + sum( (tau * log(model@prob/sigma))@m
-
-                                                                      # todo: [[1]] is krapka!
-                # sc <-  tau * (log %of% ((fpdf[[1]] %of% stdetk)* (model@prob/sigma)))
 
                 log_etk <- log %of% ((fpdf %of% stdetk))
                             if(any(log_etk@m==-Inf)){
@@ -189,6 +164,7 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                             }
                 res
             }
+
         }else{
             function(par){
                 shift_ar_params[dontfix_shift_ar] <- par
@@ -203,12 +179,12 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
             }
         }
 
+    eqns <- matrix(NA, nrow = g, ncol = 1 + pm)
 
     feqns <-
-        if(est_shift){
-            function(par){
-                                        # cat("Starting feqns\n")
 
+        if(est_shift){ # estimate all shift and ar parameters (ie all of them are not fixed)
+            function(par){
                 model@shift <- par[1:g]
                 model@arcoef <- rag_modify(model@arcoef, par[-(1:g)])
 
@@ -230,7 +206,8 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                 res #  -res   ne mozhe tuk da smenyam znaka, ponezhe smenya i na interceptite!
                     #         2012-10-31 todo: No zasto da ne go smenya za tyach? !!! check!!!
             }
-        }else if(est_ar_all){
+
+        }else if(est_ar_all){ # all shift parameters fixed and all ar parameters not fixed.
             function(par){
                 model@arcoef <- rag_modify(model@arcoef, par)
                 stdetk <- mix_ek(model, y, index, scale=TRUE)    # standardised resid.
@@ -254,6 +231,7 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                                         # cat("feqns\n")
                 res
             }
+
         }else{ # estimate subset of the shift-ar parameters
             function(par){
                 shift_ar_params[dontfix_shift_ar] <- par
@@ -275,16 +253,16 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
 
                 res[dontfix_shift_ar] # return the required subset of the equations.
             }
-
         }
-                                        # 2012-11-02 smen yam s dolnoto zaradi promenite
+
+                                     #     2012-11-02 smen yam s dolnoto zaradi promenite
                                      # if(est_shift)
                                      #     param <- c( model@shift, ragged2vec(model@arcoef) )
                                      # else
                                      #     param <- ragged2vec(model@arcoef)
     if(white_noise){
         tmp_v <- ragged2vec(model@arcoef)
-        param <- c( model@shift[-g], tmp_v[1:(length(tmp_v) - model@prob[g])] )
+        param <- c( model@shift[-g], tmp_v[1:(length(tmp_v) - model@order[g])] )
     }else if(est_shift)
         param <- c( model@shift, ragged2vec(model@arcoef) )
     else if(est_ar_all)
@@ -315,7 +293,7 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                     )
     if(verbose)
         cat(if(lessverbose) param$convergence else c("convergence =", param$convergence, "fn.reduction =", param$fn.reduction, "\n"))
-    if(param$convergence > 0){             # TODO: tova e krapka!
+    if(param$convergence > 0  && !white_noise){             # TODO: tova e krapka!
         oldlik <- cond_loglik(model, y)
         tmpmodel <- model
         if(est_shift){
@@ -336,6 +314,7 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                               # try again enforcing monotonicity (M=1)
             if(verbose)
                 cat("tmplik:", tmplik, "is smaller than the old lik,", oldlik, "\n")
+
             tmpparam <- BBsolve(par=oldparam, fn = feqns, quiet = TRUE,
                                 control = list(maxit=max(armaxit,100),
                                 trace = trace, M = 1), ...)
@@ -371,24 +350,57 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
     curlik <- cond_loglik(model, y)
 
     tmpmodel2 <- model
-    tmpmodel2@prob <- prob
+    if(white_noise){
+        ## update mixing weights
+        ui <- rbind(rep(-1, g-1), diag(g-1))
+        ci <- c(-1, numeric(g-1))
+
+        
+        f_wn_pi <- function(par) {
+            tmpmodel2@prob[1:(g-1)] <- par
+            tmpmodel2@prob[g] <- 1 - sum(par)
+
+            tmpmodel2@shift[g] <- - sum(par * tmpmodel2@shift[1:(g-1)]) / (1 - sum(par))
+
+            constr_ar_param <- - par %*% tmpmodel2@arcoef[1:(g-1), ] / (1 - sum(par))
+            tmpmodel2@arcoef[g, ] <- as.numeric(constr_ar_param)
+            
+            - cond_loglik(tmpmodel2, y)    # 'minus' since constrOptim minimises
+        }
+
+        new_probs <- constrOptim(tmpmodel2@prob[1:(g-1)], f_wn_pi, grad = NULL, ui = ui, ci = ci)
+        
+        tmpmodel2@prob[1:(g-1)] <- new_probs$par
+        tmpmodel2@prob[g] <- 1 - sum(new_probs$par)
+
+        tmpmodel2@shift[g] <- - sum(new_probs$par * tmpmodel2@shift[1:(g-1)]) / (1 - sum(new_probs$par))
+
+        tmpmodel2@arcoef[g, ] <- 
+            as.numeric( - new_probs$par %*% tmpmodel2@arcoef[1:(g-1), ] / (1 - sum(new_probs$par)) )
+    }else{
+        tmpmodel2@prob <- prob
+    }
+
     problik <- cond_loglik(tmpmodel2, y)
-
-    if(problik < curlik)
+    if(!white_noise && problik < curlik){
         if(verbose) cat("\tBoshwarning: using the estimated prob reduces the likelihood.\n")
+    }
 
-    model@prob <- prob
+        # 2021-04-04 was: model@prob <- prob  # update the mixture probabilitties
+    model <- tmpmodel2
 
     if(verbose) cat(if(lessverbose) "." else "   scale parameters...")
     etk <- mix_ek(model, y, index)
 
-    if(any(dontfix_scale)){
+    if(any(dontfix_scale)){  # update the scale parameters
         sigmahat <- em_est_sigma(tau, etk, Fscore, model@scale,
                                  dontfix = dontfix_scale,
                                  compwise = comp_sigma)
                                                                # was: tauetk2sigmahat(tau,etk)
         model@scale <- sigmahat
     }
+
+        
 
     if(estdist_flag){
         if(verbose)
@@ -403,7 +415,7 @@ mixgenMstep <- function(y, tau, model, index, fix = NULL # 2012-11-02 est_shift=
                                         # cat("Entering em_est_dist\n")
         nu <- em_est_dist(tau, etk, parscore, sigma, nu, wrklogpdf)
 
-        model <- set_noise_params(model,nu)
+        model <- set_noise_params(model, nu)
     }
     if(verbose)
         cat("\n")
@@ -449,6 +461,11 @@ em_est_sigma <- function(tau, etk, Fscore, sigma, dontfix = rep(TRUE, length(sig
         }
     }
 
+    ## (2021-04-03) TODO: temporary patch !!! Find more permanent solution!
+    sum_f_sq <- function(par){
+        sum(f(par)^2)
+    }
+
                                          # the equations for sigma can be solved independently
                                          # for each component.  need to change `f()' above
                                          # though...  a lazy solution would be (wrk-par)[k]
@@ -462,14 +479,31 @@ em_est_sigma <- function(tau, etk, Fscore, sigma, dontfix = rep(TRUE, length(sig
                   # print(cbind( oldsigma=sigma, newsigma=newsigma, diffsigma=newsigma-sigma))
         sigma <- newsigma
     }else if(all(dontfix)){
-        newsigma <- BBsolve(par=sigma, fn = f, quiet = TRUE,
-                                    control=list(trace = FALSE))
+        ## (2021-04-03) TODO: temporary patch !!! Find more permanent solution!
+        cat("sigma = ", sigma, "\n")
+        if(any(sigma < 0.01))
+            print("inside!\n")
+        sigma[sigma < 0.01] <- 0.01
+
+        ## (2021-04-03) TODO: temporary patch !!! Find more permanent solution!
+            # newsigma <- BBsolve(par=sigma, fn = f, quiet = TRUE,
+            #                             control=list(trace = FALSE))
+        newsigma <- try( BBsolve(par=sigma, fn = f, quiet = TRUE,
+                                 control=list(trace = FALSE)) )
+        if(inherits(newsigma, "try-error") || any( newsigma$par < 0.01 ))
+            newsigma <- optim(par=sigma, fn = sum_f_sq, method = "L-BFGS-B", lower = 0.01)
+
         newsigma <- newsigma$par
                   # print(cbind( oldsigma=sigma, newsigma=newsigma, diffsigma=newsigma-sigma))
         sigma <- newsigma
     }else{
+        ## (2021-04-03) TODO: temporary patch !!! Find more permanent solution!
+        if(any(sigma[dontfix] < 0.01))
+            sigma[dontfix][sigma[dontfix] < 0.01] <- 0.01
+        
         newsigma <- BBsolve(par=sigma[dontfix], fn = f, quiet = TRUE,
-                                    control=list(trace = FALSE))
+                            control=list(trace = FALSE))
+
         newsigma <- newsigma$par
                   # print(cbind( oldsigma=sigma, newsigma=newsigma, diffsigma=newsigma-sigma))
         sigma[dontfix] <- newsigma

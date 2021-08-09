@@ -36,21 +36,35 @@ tauCorrelate <- function(y, tau, order){
 
 mixSubsolve <- function(k, pk, Stau, Stauy, Stauyy, shift, tol = 1e-7){
     A <- matrix(0, nrow = pk + 1, ncol = pk + 1)
-    b <- c(Stauy[k, 0 + 1], Stauyy[k, (1:pk) + 1, 0 + 1])
+    b <- c(Stauy[k, 0 + 1], Stauyy[k, seq_len(pk) + 1, 0 + 1])
 
-    A[, 1] <- c(Stau[k], Stauy[k, (1:pk) + 1])
-    for(j in 1:pk){
-        A[, j + 1] <- c(Stauy[k, j + 1], Stauyy[k, (1:pk) + 1, j + 1])
+    A[, 1] <- c(Stau[k], Stauy[k, seq_len(pk) + 1])
+    for(j in seq_len(pk)){
+        A[, j + 1] <- c(Stauy[k, j + 1], Stauyy[k, seq_len(pk) + 1, j + 1])
     }
     res <- if(shift)
                try(     solve(A, b))       # 2011-11-24 - svd to guard against singular A
            else      
-               try(c(0, solve(A[-1, -1], b[-1]))) #TODO: this works if the shifts are zeroes!
+               try(c(0,                          # TODO: this works if the shifts are zeroes!
+                     ## 2021-08-09 handle dim(A) = c(0,0)
+                     if(length(A) > 1) # so, at least 2x2
+                         solve(A[-1, -1], b[-1])
+                     else
+                         numeric(0)
+                     ))
 
     if(inherits(res, "try-error")){
         cat("mixSubsolve: singular system, trying again with svd\n")
         res <- if(shift) pseudoInverse(A, tol) %*% b
-               else      c(0, pseudoInverse(A[-1, -1], tol) %*% b[-1])
+               else{
+                   ## 2021-08-09 handle dim(A) = c(0,0)
+                   c(0, 
+                     if(length(A) > 1)
+                         c(0, pseudoInverse(A[-1, -1], tol) %*% b[-1])
+                     else
+                         numeric(0)
+                     )
+               }
     }
     res
 }

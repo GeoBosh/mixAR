@@ -294,7 +294,7 @@ setMethod("show", "MixAR", # 12-09-2018 "show" method adapted to handle class "r
                   ps <- max(object@arcoef@ps)
                   s  <- object@arcoef@s
               }
-              cat("(To see the internal structure of the object, use function 'str'.)\n\n")
+              ## cat("(To see the internal structure of the object, use function 'str'.)\n\n")
               cat("An object of class \"", cl, "\"\n", sep="")
               cat("Number of components:", length(object@prob), "\n")
               if(p > 0){
@@ -386,7 +386,7 @@ setMethod("make_fcond_lik", signature(model="MixAR", ts="numeric"),
 
                   res <- cond_loglik(mixar, locts)
 
-                  ## 2020-06-12 was: cat("x = ", x, "\n")
+                  ## 2020-06-12 was: cat("x = ", x, "\n")       
                   ##                 cat("f(x) = ", res, "\n\n")
 
                   res
@@ -735,7 +735,7 @@ setMethod("fit_mixAR", signature(x = "ANY", model = "MixAR", init = "numeric"),
                       locfits[[ which.max( sapply(locfits, function(z) z$vallogf) )[1] ]]
                   }
                   newwrk <- lapply(wrk, f)
-
+                                        # browser()
                   wrk <- newwrk
               }
 
@@ -779,7 +779,7 @@ setMethod("fit_mixAR", signature(x = "ANY", model = "MixAR", init = "missing"),
                          ##     an argument that works for other methods.
                          ##     An example in inst/slowtests/example.R actually uses 
                          ##     fix = "shift" and throws error (before this change).
-                         ## TODO: error message below is still confusing since the 
+                         ## TODO: error message below is still confusing since the user
                          ##     may not notice that it is about mixSARfit, not mixARfit
                          ##     and even if they did, that would be equally confusing.
                          else if(is.character(fix) && length(fix) == 1 && fix == "shift")
@@ -1286,7 +1286,6 @@ setMethod("parameters<-", "MixAR",
 
 # 2020-4-20
 ## companion_matrix and isStable now handle mixVAR objects.
-
 companion_matrix <- function(v, ncol = length(v), nrow = ncol){
     mult <- ifelse(is.matrix(v), nrow(v), 1)
     if(ncol %% mult != 0) stop("Wrong dimensions for companion matrix")
@@ -1297,27 +1296,26 @@ companion_matrix <- function(v, ncol = length(v), nrow = ncol){
             v <- c(v, rep(0, ncol - length(v)))
     }
     rbind(v, diag(1, nrow = nrow-mult , ncol = ncol), deparse.level = 0 ) # no labels
-    
 }
+
 
 isStable <- function(x){     # todo: make generic?
     cl <-inherits(x, "MixVAR")
     nc <- max(x@order)
     co <- if(cl) x@arcoef else x@arcoef[]    # a matrix
     prob <- x@prob
-    
     if(ncol(co[]) == 0)   # i.i.d. mixture
         return(TRUE)
-    
+
     f <- function(k){
         if(cl){ m <- companion_matrix(co[k, ], nc * nrow(co[]))
         }else m <- companion_matrix(co[k,], nc)
         prob[k] * kronecker(m,m)
     }
-    
+
     # wrk <- lapply(seq_along(x@prob), f)
     wrk <- do.call(.mplus, lapply(seq_along(x@prob), f))
-    
+
     abs(eigen(wrk)$values[1]) < 1                       # stable if  maximal eigenvalue is < 1
 }
 

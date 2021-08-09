@@ -14,6 +14,7 @@ fdist_stdnorm <- function(){
                  , get_param = function() numeric()  #  todo: may be stop()?
                  , set_param = function() stop("Standard normal has no parameters to set.")
                  , any_param = function() param_flag
+                 , show      = function()  "Standard normal distribution"
                  )
         }
     f()
@@ -95,6 +96,7 @@ fdist_stdt <- function(df, fixed = TRUE){# currently uses functions from fGarch;
                  , get_param = function() nu
                  , set_param = function(x) nu <<- x
                  , any_param = function() param_flag
+                 , show = function() paste("Student t with", format(nu, digits = 4), "df")
                  )
         }
     f()
@@ -148,16 +150,27 @@ b_show <- function(x){
                   inherits = TRUE, ifnotfound = list(NULL))[[1]] # mget returns a list
         if(!is.null(f))
             f()
-        else
-            show(x)
-    }else
+        else {
+            lapply(seq_along(x), function(i) cat("\tComponent ", i, ": ", x[[i]]$show(), "\n", sep = ""))
+            invisible(x)
+        }
+    ## }else if(is.list(x)){
+    ##     lapply(x, function(d) d$show())
+    ##     invisible(x)
+    }else{
         show(x)
+    }
 }
 
 # currently uses functions from fGarch;
                                   # note: df is a vector here!
 ft_stdt <- function(df, fixed = TRUE, n = length(df), tr = function(x, k) x[k] ){
-    if(is.null(n))  n <- if(missing(tr) || is.function(tr)) length(df) else length(tr)
+#cat("a: ", n, "\n")    
+    ## 2021-06-26
+    ##     was: if(is.null(n))  n <- if(missing(tr) || is.function(tr)) length(df) else length(tr)
+    ##     but that leaves n = 0 when tr is NULL
+    if(is.null(n))  n <- if(missing(tr) || is.function(tr) || is.null(tr)) length(df) else length(tr)
+#cat("b: ", n, "\n")
 
     if(is.numeric(tr)){        # elem of 'tr' are indices in 'nu'
         nuind <- tr
@@ -187,6 +200,7 @@ ft_stdt <- function(df, fixed = TRUE, n = length(df), tr = function(x, k) x[k] )
     }
 
     res <- vector("list", n)
+#cat("c: ", n, "\n")    
     for(i in 1:n){  # assumes n >= 1
         local({
               k <- i
@@ -203,9 +217,14 @@ ft_stdt <- function(df, fixed = TRUE, n = length(df), tr = function(x, k) x[k] )
                                     # not clear what to do here.
                                     # , set_param = function(x) nu[k] <<- x
 
-                                   # na toa mozhe da se pridade smisal, no zasega macham.
+                                   # na tova mozhe da se pridade smisal, no zasega macham.
                                    #      (taka nyama a ima opasnost ot confusion)
-                                   # , any_param = function() param_flags[k]
+                                   ##
+                                   ## 2021-06-26: reinstating but returning the overall flag
+                                   ##             indicating if any dist in the distlist has
+                                   ##             a parameter to estimate
+                                   #        any_param = function() param_flags[k]
+                                   , any_param = function() param_flag
 
                                    , show = function()
                                                    paste("Student t with",

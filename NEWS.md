@@ -1,5 +1,10 @@
 # mixAR 0.22.6
 
+- `fit_mixAR` was failing for some mixAR models with Gaussian components when
+  the AR order of a component was zero. (reported by Lu Cao)
+
+- improved printing of `mixARgen` objects.
+
 - The function returned by the methods for `multiStep_dist` with `N = "missing"
   now checks the length of the supplied `xcond` argument and throws error if it
   is shorter than the maximal AR order `p`. If it is longer, the the last `p`
