@@ -182,9 +182,7 @@
 </div><div class='output co'>#&gt;  [1] "WL_ibm"     "WL_A"       "WL_B"       "WL_I"       "WL_II"     
 #&gt;  [6] "WL_ibm_gen" "WL_ibm_t3v" "WL_ibm_tf"  "WL_At"      "WL_Bt_1"   
 #&gt; [11] "WL_Bt_2"    "WL_Bt_3"    "WL_Ct_1"    "WL_Ct_2"    "WL_Ct_3"   </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_A</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARGaussian"
+</div><div class='output co'>#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1 0.5    0     5     1   0.5 
@@ -193,9 +191,7 @@
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
 #&gt; </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_At</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARgen"
+</div><div class='output co'>#&gt; An object of class "MixARgen"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1 0.5    0     1     1   -0.5
@@ -207,9 +203,7 @@
 #&gt; </div><div class='input'>
 <span class='co'>## modify an existing model, here change the mixture weights</span>
 <span class='fu'><a href='mixAR-methods.html'>mixAR</a></span><span class='op'>(</span><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_A</span>, coef <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>prob</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.4</span>, <span class='fl'>0.6</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARGaussian"
+</div><div class='output co'>#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1 0.5    0     5     1   0.5 

@@ -132,7 +132,7 @@
     <p>This is a list of functions or names of functions for calculations
   related to the standard normal distribution. Currently it has
   elements with the following names:
-      "pdf", "cdf", "rand", "logpdf", "Fscore", "xFscore", "Parscore", "get_param", "set_param", "any_param"
+      "pdf", "cdf", "rand", "logpdf", "Fscore", "xFscore", "Parscore", "get_param", "set_param", "any_param", "show"
 .</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -157,44 +157,50 @@
 #&gt; $logpdf
 #&gt; function (x) 
 #&gt; log(dnorm(x))
-#&gt; &lt;bytecode: 0x7fac0ba56d88&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
+#&gt; &lt;bytecode: 0x7fbc38949d98&gt;
+#&gt; &lt;environment: 0x7fbc1f0e2dd8&gt;
 #&gt; 
 #&gt; $Fscore
 #&gt; function (x) 
 #&gt; -x
-#&gt; &lt;bytecode: 0x7fac0ba5a608&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
+#&gt; &lt;bytecode: 0x7fbc38949708&gt;
+#&gt; &lt;environment: 0x7fbc1f0e2dd8&gt;
 #&gt; 
 #&gt; $xFscore
 #&gt; function (x) 
 #&gt; -x^2
-#&gt; &lt;bytecode: 0x7fac0ba5a058&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
+#&gt; &lt;bytecode: 0x7fbc38949158&gt;
+#&gt; &lt;environment: 0x7fbc1f0e2dd8&gt;
 #&gt; 
 #&gt; $Parscore
 #&gt; function () 
 #&gt; 0
-#&gt; &lt;bytecode: 0x7fac0ba59878&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
+#&gt; &lt;bytecode: 0x7fbc38948b38&gt;
+#&gt; &lt;environment: 0x7fbc1f0e2dd8&gt;
 #&gt; 
 #&gt; $get_param
 #&gt; function () 
 #&gt; numeric()
-#&gt; &lt;bytecode: 0x7fac0ba59300&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
+#&gt; &lt;bytecode: 0x7fbc38948630&gt;
+#&gt; &lt;environment: 0x7fbc1f0e2dd8&gt;
 #&gt; 
 #&gt; $set_param
 #&gt; function () 
 #&gt; stop("Standard normal has no parameters to set.")
-#&gt; &lt;bytecode: 0x7fac0ba58d50&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
+#&gt; &lt;bytecode: 0x7fbc3894e000&gt;
+#&gt; &lt;environment: 0x7fbc1f0e2dd8&gt;
 #&gt; 
 #&gt; $any_param
 #&gt; function () 
 #&gt; param_flag
-#&gt; &lt;bytecode: 0x7fac0ba5c6e8&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
+#&gt; &lt;bytecode: 0x7fbc3894da88&gt;
+#&gt; &lt;environment: 0x7fbc1f0e2dd8&gt;
+#&gt; 
+#&gt; $show
+#&gt; function () 
+#&gt; "Standard normal distribution"
+#&gt; &lt;bytecode: 0x7fbc3894d580&gt;
+#&gt; &lt;environment: 0x7fbc1f0e2dd8&gt;
 #&gt; </div><div class='input'><span class='va'>dist_norm</span><span class='op'>$</span><span class='va'>pdf</span>
 </div><div class='output co'>#&gt; [1] "dnorm"</div><div class='input'><span class='va'>dist_norm</span><span class='op'>$</span><span class='va'>cdf</span>
 </div><div class='output co'>#&gt; [1] "pnorm"</div></pre>

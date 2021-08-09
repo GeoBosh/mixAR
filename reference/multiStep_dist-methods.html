@@ -243,11 +243,11 @@
 
     <p>Boshnakov GN (2009).
 &#8220;Analytic expressions for predictive distributions in mixture autoregressive models.&#8221;
-<em>Stat. Probab. Lett. </em>, <b>79</b>(15), 1704--1709.
+<em>Stat. Probab. Lett. </em>, <b>79</b>(15), 1704-1709.
 doi: <a href='https://doi.org/10.1016/j.spl.2009.04.009'>10.1016/j.spl.2009.04.009</a>
-, <a href='https://doi.org/10.1016/j.spl.2009.04.009'>https://doi.org/10.1016/j.spl.2009.04.009</a>.<br /><br /> Wong CS, Li WK (2000).
+.<br /><br /> Wong CS, Li WK (2000).
 &#8220;On a mixture autoregressive model.&#8221;
-<em>J. R. Stat. Soc., Ser. B, Stat. Methodol. </em>, <b>62</b>(1), 95--115.</p>
+<em>J. R. Stat. Soc., Ser. B, Stat. Methodol. </em>, <b>62</b>(1), 95-115.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Georgi N. Boshnakov</p>
@@ -272,8 +272,8 @@ doi: <a href='https://doi.org/10.1016/j.spl.2009.04.009'>10.1016/j.spl.2009.04.0
 #&gt;     wrk &lt;- inner(wrk, model@prob/model@scale)
 #&gt;     wrk
 #&gt; }
-#&gt; &lt;bytecode: 0x7fabed40e748&gt;
-#&gt; &lt;environment: 0x7fac079a4760&gt;</div><div class='input'>
+#&gt; &lt;bytecode: 0x7fbc39bd1b30&gt;
+#&gt; &lt;environment: 0x7fbc3965c420&gt;</div><div class='input'>
 <span class='co'>## use a simulation method with N = 1000</span>
 <span class='va'>tf</span>  <span class='op'>&lt;-</span> <span class='fu'>multiStep_dist</span><span class='op'>(</span><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_ibm</span>, maxh <span class='op'>=</span> <span class='fl'>3</span>, N <span class='op'>=</span> <span class='fl'>1000</span>, xcond <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>560</span>, <span class='fl'>600</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/args.html'>args</a></span><span class='op'>(</span><span class='va'>tf</span><span class='op'>)</span> <span class='co'># (h, what, ...)</span>

@@ -162,14 +162,12 @@
 
     <p>Wong CS, Li WK (2000).
 &#8220;On a mixture autoregressive model.&#8221;
-<em>J. R. Stat. Soc., Ser. B, Stat. Methodol. </em>, <b>62</b>(1), 95--115.</p>
+<em>J. R. Stat. Soc., Ser. B, Stat. Methodol. </em>, <b>62</b>(1), 95-115.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## use these instead of moWL, moWL_A, moWL_B, etc.</span>
 <span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_ibm</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARGaussian"
+</div><div class='output co'>#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob   shift scale   order ar_1   ar_2   
 #&gt; Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
@@ -180,9 +178,7 @@
 #&gt; 	standard Gaussian
 #&gt; </div><div class='input'>
 <span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_A</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARGaussian"
+</div><div class='output co'>#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1 0.5    0     5     1   0.5 
@@ -191,9 +187,7 @@
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
 #&gt; </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_B</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARGaussian"
+</div><div class='output co'>#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1 0.75   0     5     1   0.5 
@@ -207,9 +201,7 @@
 #&gt; Comp_1 -0.25   0     0     1    0.0
 #&gt; Comp_2  0.25   0     0     1   -0.3</div><div class='input'>
 <span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_I</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARGaussian"
+</div><div class='output co'>#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.4    0     1     2    0.9 -0.60     
@@ -219,9 +211,7 @@
 #&gt; Distributions of the error components:
 #&gt; 	standard Gaussian
 #&gt; </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_II</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARGaussian"
+</div><div class='output co'>#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2
 #&gt; Comp_1 0.4    5     1     2    0.9 -0.6
@@ -233,9 +223,7 @@
 #&gt; </div><div class='input'><span class='co'>#show_diff(exampleModels$WL_I, exampleModels$WL_II)</span>
 
 <span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_ibm_gen</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARgen"
+</div><div class='output co'>#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob   shift scale   order ar_1   ar_2   
 #&gt; Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
@@ -243,63 +231,9 @@
 #&gt; Comp_3 0.0385   0   18.1716   1   1.0000        
 #&gt; 
 #&gt; Distributions of the error components:
-#&gt; [[1]]
-#&gt; [[1]]$pdf
-#&gt; [1] "dnorm"
-#&gt; 
-#&gt; [[1]]$cdf
-#&gt; [1] "pnorm"
-#&gt; 
-#&gt; [[1]]$rand
-#&gt; [1] "rnorm"
-#&gt; 
-#&gt; [[1]]$logpdf
-#&gt; function (x) 
-#&gt; log(dnorm(x))
-#&gt; &lt;bytecode: 0x7fabf215eeb8&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
-#&gt; 
-#&gt; [[1]]$Fscore
-#&gt; function (x) 
-#&gt; -x
-#&gt; &lt;bytecode: 0x7fabf215e828&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
-#&gt; 
-#&gt; [[1]]$xFscore
-#&gt; function (x) 
-#&gt; -x^2
-#&gt; &lt;bytecode: 0x7fabf215e278&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
-#&gt; 
-#&gt; [[1]]$Parscore
-#&gt; function () 
-#&gt; 0
-#&gt; &lt;bytecode: 0x7fabf2161b68&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
-#&gt; 
-#&gt; [[1]]$get_param
-#&gt; function () 
-#&gt; numeric()
-#&gt; &lt;bytecode: 0x7fabf2161660&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
-#&gt; 
-#&gt; [[1]]$set_param
-#&gt; function () 
-#&gt; stop("Standard normal has no parameters to set.")
-#&gt; &lt;bytecode: 0x7fabf2161120&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
-#&gt; 
-#&gt; [[1]]$any_param
-#&gt; function () 
-#&gt; param_flag
-#&gt; &lt;bytecode: 0x7fabf2160ba8&gt;
-#&gt; &lt;environment: 0x7fabf215df58&gt;
-#&gt; 
-#&gt; 
+#&gt; 	Component 1: Standard normal distribution
 #&gt; </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_ibm_t3v</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARgen"
+</div><div class='output co'>#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob   shift scale   order ar_1   ar_2   
 #&gt; Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
@@ -307,72 +241,9 @@
 #&gt; Comp_3 0.0385   0   18.1716   1   1.0000        
 #&gt; 
 #&gt; Distributions of the error components:
-#&gt; [[1]]
-#&gt; [[1]]$pdf
-#&gt; function (x) 
-#&gt; dstd(x, nu = nu)
-#&gt; &lt;bytecode: 0x7fabf21662b0&gt;
-#&gt; &lt;environment: 0x7fabf21602e8&gt;
-#&gt; 
-#&gt; [[1]]$cdf
-#&gt; function (x) 
-#&gt; pstd(x, nu = nu)
-#&gt; &lt;bytecode: 0x7fabf2169af8&gt;
-#&gt; &lt;environment: 0x7fabf21602e8&gt;
-#&gt; 
-#&gt; [[1]]$rand
-#&gt; function (n) 
-#&gt; rstd(n, nu = nu)
-#&gt; &lt;bytecode: 0x7fabf21693f8&gt;
-#&gt; &lt;environment: 0x7fabf21602e8&gt;
-#&gt; 
-#&gt; [[1]]$logpdf
-#&gt; function (x) 
-#&gt; log(dstd(x, nu = nu))
-#&gt; &lt;bytecode: 0x7fabf2168d30&gt;
-#&gt; &lt;environment: 0x7fabf21602e8&gt;
-#&gt; 
-#&gt; [[1]]$Fscore
-#&gt; function (x) 
-#&gt; -x * (1 + nu)/(x^2 + nu - 2)
-#&gt; &lt;bytecode: 0x7fabf21685f8&gt;
-#&gt; &lt;environment: 0x7fabf21602e8&gt;
-#&gt; 
-#&gt; [[1]]$xFscore
-#&gt; function (x) 
-#&gt; -x^2 * (1 + nu)/(x^2 + nu - 2)
-#&gt; &lt;bytecode: 0x7fabf216ba88&gt;
-#&gt; &lt;environment: 0x7fabf21602e8&gt;
-#&gt; 
-#&gt; [[1]]$Parscore
-#&gt; function (x) 
-#&gt; param_score_stdt(x, nu)
-#&gt; &lt;bytecode: 0x7fabf216af60&gt;
-#&gt; &lt;environment: 0x7fabf21602e8&gt;
-#&gt; 
-#&gt; [[1]]$get_param
-#&gt; function () 
-#&gt; nu
-#&gt; &lt;bytecode: 0x7fabf216a8d0&gt;
-#&gt; &lt;environment: 0x7fabf21602e8&gt;
-#&gt; 
-#&gt; [[1]]$set_param
-#&gt; function (x) 
-#&gt; nu &lt;&lt;- x
-#&gt; &lt;bytecode: 0x7fabf216a390&gt;
-#&gt; &lt;environment: 0x7fabf21602e8&gt;
-#&gt; 
-#&gt; [[1]]$any_param
-#&gt; function () 
-#&gt; param_flag
-#&gt; &lt;bytecode: 0x7fabf216dcf0&gt;
-#&gt; &lt;environment: 0x7fabf21602e8&gt;
-#&gt; 
-#&gt; 
+#&gt; 	Component 1: Student t with 3 df
 #&gt; </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_ibm_tf</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARgen"
+</div><div class='output co'>#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob   shift scale   order ar_1   ar_2   
 #&gt; Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
@@ -386,9 +257,7 @@
 #&gt; </div><div class='input'><span class='co'>#show_diff(exampleModels$WL_ibm_gen, exampleModels$WL_ibm_t3v)</span>
 
 <span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_At</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARgen"
+</div><div class='output co'>#&gt; An object of class "MixARgen"
 #&gt; Number of components: 2 
 #&gt;        prob shift scale order ar_1
 #&gt; Comp_1 0.5    0     1     1   -0.5
@@ -399,9 +268,7 @@
 #&gt; 	Component 2: Student t with 8 df
 #&gt; </div><div class='input'>
 <span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_Bt_1</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARgen"
+</div><div class='output co'>#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
@@ -413,9 +280,7 @@
 #&gt; 	Component 2: Student t with 6 df
 #&gt; 	Component 3: Student t with 10 df
 #&gt; </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_Bt_2</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARgen"
+</div><div class='output co'>#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
@@ -427,9 +292,7 @@
 #&gt; 	Component 2: Student t with 4 df
 #&gt; 	Component 3: Student t with 10 df
 #&gt; </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_Bt_3</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARgen"
+</div><div class='output co'>#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
@@ -459,9 +322,7 @@
 #&gt; 	Component 2: Student t with 6 df
 #&gt; 	Component 3: Student t with 10 df</div><div class='input'>
 <span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_Ct_1</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARgen"
+</div><div class='output co'>#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
@@ -473,9 +334,7 @@
 #&gt; 	Component 2: Student t with 7 df
 #&gt; 	Component 3: Standard normal distribution
 #&gt; </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_Ct_2</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARgen"
+</div><div class='output co'>#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
@@ -487,9 +346,7 @@
 #&gt; 	Component 2: Student t with 7 df
 #&gt; 	Component 3: Standard normal distribution
 #&gt; </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_Ct_3</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARGaussian"
+</div><div class='output co'>#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     

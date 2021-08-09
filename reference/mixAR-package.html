@@ -308,23 +308,23 @@
 Ph.D. thesis, Probability and Statistics Group, School of Mathematics, University of Manchester.</p>
 <p>Boshnakov GN (2009).
 &#8220;Analytic expressions for predictive distributions in mixture autoregressive models.&#8221;
-<em>Stat. Probab. Lett. </em>, <b>79</b>(15), 1704--1709.
+<em>Stat. Probab. Lett. </em>, <b>79</b>(15), 1704-1709.
 doi: <a href='https://doi.org/10.1016/j.spl.2009.04.009'>10.1016/j.spl.2009.04.009</a>
-, <a href='https://doi.org/10.1016/j.spl.2009.04.009'>https://doi.org/10.1016/j.spl.2009.04.009</a>.</p>
+.</p>
 <p>Boshnakov GN (2011).
 &#8220;On First and Second Order Stationarity of Random Coefficient Models.&#8221;
 <em>Linear Algebra Appl.</em>, <b>434</b>(2), 415--423.
 doi: <a href='https://doi.org/10.1016/j.laa.2010.09.023'>10.1016/j.laa.2010.09.023</a>
-, <a href='https://doi.org/10.1016/j.laa.2010.09.023'>https://doi.org/10.1016/j.laa.2010.09.023</a>.</p>
+.</p>
 <p>Fong PW, Li WK, Yau CW, Wong CS (2007).
 &#8220;On a mixture vector autoregressive model.&#8221;
-<em>Can. J. Stat. </em>, <b>35</b>(1), 135--150.</p>
+<em>Can. J. Stat. </em>, <b>35</b>(1), 135-150.</p>
 <p>Ravagli D, Boshnakov GN (2020).
 &#8220;Bayesian analysis of mixture autoregressive models covering the complete parameter space.&#8221;
-<a href='https://arxiv.org/abs/2006.11041'>https://arxiv.org/abs/2006.11041</a>.</p>  
+2006.11041, <a href='https://arxiv.org/abs/2006.11041'>https://arxiv.org/abs/2006.11041</a>.</p>  
 <p>Ravagli D, Boshnakov GN (2020).
 &#8220;Portfolio optimization with mixture vector autoregressive models.&#8221;
-<a href='https://arxiv.org/abs/2005.13396'>https://arxiv.org/abs/2005.13396</a>.</p>
+2005.13396, <a href='https://arxiv.org/abs/2005.13396'>https://arxiv.org/abs/2005.13396</a>.</p>
 <p>Hossain AS (2012).
 <em>Complete Bayesian analysis of some mixture time series models</em>.
 Ph.D. thesis, Probability and Statistics Group, School of Mathematics, University of Manchester.</p>
@@ -333,17 +333,17 @@ Ph.D. thesis, Probability and Statistics Group, School of Mathematics, Universit
 Ph.D. thesis, University of Hong Kong, Hong Kong .</p>
 <p>Wong CS, Li WK (2000).
 &#8220;On a mixture autoregressive model.&#8221;
-<em>J. R. Stat. Soc., Ser. B, Stat. Methodol. </em>, <b>62</b>(1), 95--115.</p>
+<em>J. R. Stat. Soc., Ser. B, Stat. Methodol. </em>, <b>62</b>(1), 95-115.</p>
 <p>Wong CS, Li WK (2001).
 &#8220;On a logistic mixture autoregressive model.&#8221;
-<em>Biometrika </em>, <b>88</b>(3), 833--846.
+<em>Biometrika </em>, <b>88</b>(3), 833-846.
 doi: <a href='https://doi.org/10.1093/biomet/88.3.833'>10.1093/biomet/88.3.833</a>
-, <a href='https://doi.org/10.1093/biomet/88.3.833'>https://doi.org/10.1093/biomet/88.3.833</a>.</p>
+.</p>
 <p>Wong CS, Li WK (2001).
 &#8220;On a mixture autoregressive conditional heteroscedastic model.&#8221;
-<em>J. Am. Stat. Assoc. </em>, <b>96</b>(455), 982--995.
+<em>J. Am. Stat. Assoc. </em>, <b>96</b>(455), 982-995.
 doi: <a href='https://doi.org/10.1198/016214501753208645'>10.1198/016214501753208645</a>
-, <a href='https://doi.org/10.1198/016214501753208645'>https://doi.org/10.1198/016214501753208645</a>.</p>
+.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## object 'exampleModels' contains a number of models for examples and testing</span>
@@ -351,9 +351,7 @@ doi: <a href='https://doi.org/10.1198/016214501753208645'>10.1198/01621450175320
 </div><div class='output co'>#&gt;  [1] "WL_ibm"     "WL_A"       "WL_B"       "WL_I"       "WL_II"     
 #&gt;  [6] "WL_ibm_gen" "WL_ibm_t3v" "WL_ibm_tf"  "WL_At"      "WL_Bt_1"   
 #&gt; [11] "WL_Bt_2"    "WL_Bt_3"    "WL_Ct_1"    "WL_Ct_2"    "WL_Ct_3"   </div><div class='input'><span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_ibm</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARGaussian"
+</div><div class='output co'>#&gt; An object of class "MixARGaussian"
 #&gt; Number of components: 3 
 #&gt;        prob   shift scale   order ar_1   ar_2   
 #&gt; Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
@@ -465,9 +463,7 @@ doi: <a href='https://doi.org/10.1198/016214501753208645'>10.1198/01621450175320
 
 <span class='co'>## demonstrate reuse of existing models</span>
 <span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_Bt_1</span>
-</div><div class='output co'>#&gt; (To see the internal structure of the object, use function 'str'.)
-#&gt; 
-#&gt; An object of class "MixARgen"
+</div><div class='output co'>#&gt; An object of class "MixARgen"
 #&gt; Number of components: 3 
 #&gt;        prob shift scale order ar_1 ar_2  ar_3
 #&gt; Comp_1 0.3    5   2.0     2    0.5  0.24     
