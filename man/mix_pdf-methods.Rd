@@ -27,8 +27,8 @@
 
 \title{Conditional pdf's and cdf's of MixAR models}
 \description{
- Gives conditional probability densities and distribution functions of
- mixture autoregressive models. 
+  Gives conditional probability densities and distribution functions of
+  mixture autoregressive models. 
 }
 \section{Methods}{
 

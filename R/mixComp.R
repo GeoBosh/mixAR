@@ -279,7 +279,9 @@ setMethod("mixFilter", signature(x = "numeric", coef = "raggedCoef", index = "nu
               i <- 0
               for(flt in coef@a){
                   i <- i + 1
+#cat("i =", i, ", flt = ", flt, "\n")
                   y <- raghat1(flt, x, index, shift[i], residual, scale[i])
+#cat("y =", y, "\n\n")
                   if(i==1)
                       wrk <- y
                   else
@@ -303,5 +305,6 @@ raghat1 <- function(filter, x, index, shift = 0, residual = FALSE, scale = 1){
     if(scale != 1)                               # probably meaningful only when residual=TRUE
         res <- res/scale
                              ## todo: kakto e tragnalo moga da dobavya i argument za cdf, etc.
+#browser()
     res
 }

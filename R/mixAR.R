@@ -35,6 +35,11 @@ setGeneric("mix_cdf",
               standardGeneric("mix_cdf"), 
            useAsDefault=FALSE)
 
+setGeneric("mix_qf",  # 2021-04-30 new
+           function(model, p, x, index, xcond)
+              standardGeneric("mix_qf"), 
+           useAsDefault=FALSE)
+
 setClass("MixAR", 
          representation(prob = "numeric", 
                         order = "numeric", 
@@ -645,13 +650,52 @@ setMethod("mix_pdf", signature(model="MixARGaussian", x="missing", index="missin
                               xcond="numeric", scale="ANY"), 
           function(model, x, index, xcond, scale) {
               wrk <- mix_hatk(model, xcond, length(xcond)+1)
-              # browser()
+#browser()
               f <- function(x){
                       wrk <- (x - wrk)/model@scale
                       wrk <- dnorm %of% wrk
                       wrk <- inner(wrk, model@prob/model@scale)
                       wrk
                   }
+              f
+          })
+
+## quantile function
+setMethod("mix_qf", signature(model = "MixARGaussian", p = "numeric", x = "numeric",
+                              index = "numeric", xcond = "missing"),
+          function(model, p, x, index, xcond) { 
+              ## index <- seq_along(x)[-(1:max(model@order))]
+              ##
+              ## TODO: verify that this is consistent with mix_pdf, mix_location, etc.
+              ##       Is this  conditional quantile computed 'at time i' or 'for time i'?
+              ##       (seems it should be 'for time i', i.e. at time i-1, 
+              ##                                                     see ?mix_pdf-methods)
+	      ## ind <- max(model@order) : 1
+
+              res <- sapply(index, function(i) mix_qf(model, p, xcond = x[1:i]))
+              res
+          })
+
+setMethod("mix_qf", signature(model = "MixARGaussian", p = "numeric", x = "missing", 
+                              index = "missing", xcond = "numeric"), 
+          function(model, p, x, index, xcond) {
+              qf <- mix_qf(model, xcond = xcond)
+              qf(p)
+          })
+
+setMethod("mix_qf", signature(model = "MixARGaussian", p = "missing", x = "missing",
+                              index = "missing", xcond = "numeric"), 
+          function(model, p, x, index, xcond) {
+              cdf <- mix_cdf(model, xcond = xcond)
+
+              f <- function(p, ..., tol = .Machine$double.eps^0.5){
+                  if(length(p) > 1)
+                      # sapply(p, cdf2quantile, tol = tol, ..., MoreArgs = list(cdf = cdf))
+                      sapply(p, cdf2quantile, cdf = cdf, tol = tol, ...)
+                  else
+                      cdf2quantile(p, cdf, tol = tol, ...)
+              }
+
               f
           })
 
@@ -955,10 +999,12 @@ setMethod("mix_moment",
               gmom <- cbind(1, 0, model@scale^2, 0, 3*model@scale^4, 0) # todo: this is temp!
 
               facbin <- choose(k, k:0)
-              facloc <- outer(drop(locall), k:0, "^")
+              facloc <- outer(drop(locall@m), k:0, "^")
               faceps <- gmom[ , 0:k + 1]
 
-              sum( inner(facloc * faceps * model@prob, facbin) )
+              # tuk sa obiknoveni matristi
+              # sum( inner(facloc * faceps * model@prob, facbin) )
+              sum((facloc * faceps * model@prob) %*% facbin)
           })
 
 
@@ -1024,6 +1070,10 @@ setMethod("noise_moment", signature(model = "MixARGaussian", k = "numeric"),
 setMethod("noise_moment", signature(model = "MixARgen", k = "numeric"), 
           function(model, k){
               dist <- get_edist(model)
+              ## 2021-04-30 :TODO: 
+              ##    the following throw error since there is no component 'moment':
+              ## noise_moment(exampleModels$WL_At, 3)      # gives error
+	      ## noise_moment(exampleModels$WL_ibm_gen, 2) # gives error
               wrk <- sapply(dist, function(x) x$moment(k))
 
               if(length(k) > 1)       # one row for each component

@@ -155,9 +155,28 @@ gbutils::plotpdf(pdf1, cdf = cdf1, lq = 0.001, uq = 0.999)
 mix_pdf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
 mix_pdf(exampleModels$WL_ibm_gen, xcond = as.numeric(fma::ibmclose))
 mix_cdf(exampleModels$WL_ibm_gen, xcond = as.numeric(fma::ibmclose))
+
+## c(352, 357) are the last 2 values of fma::ibmclose
+## 367:369     fma::ibmclose has length 369
+mix_pdf(exampleModels$WL_ibm, x = c(352, 357), xcond = as.numeric(fma::ibmclose))
+mix_cdf(exampleModels$WL_ibm, x = c(352, 357), xcond = as.numeric(fma::ibmclose))
+mix_pdf(exampleModels$WL_ibm_gen, x = c(352, 357), xcond = as.numeric(fma::ibmclose))
+mix_cdf(exampleModels$WL_ibm_gen, x = c(352, 357), xcond = as.numeric(fma::ibmclose))
+mix_pdf(exampleModels$WL_ibm_gen, x = as.numeric(fma::ibmclose), index = 367:369 )
+mix_cdf(exampleModels$WL_ibm_gen, x = as.numeric(fma::ibmclose), index = 367:369 )
+
+
 pdf1 <- mix_pdf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
 cdf1 <- mix_cdf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
 gbutils::plotpdf(pdf1, cdf = cdf1, lq = 0.001, uq = 0.999)
+qf1 <- mix_qf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
+tmp <- qf1(0.05)
+tmp <- qf1(1:9/10)
+tmp1 <- mix_qf(exampleModels$WL_ibm, p = 1:9/10, xcond = as.numeric(fma::ibmclose))
+expect_equal(tmp1, tmp)
+
+mix_qf(exampleModels$WL_ibm, p = 0.05, x = as.numeric(fma::ibmclose), index = 367:369)
+mix_qf(exampleModels$WL_ibm, p = 1:9/10, x = as.numeric(fma::ibmclose), index = 367:369)
 
 noise_dist(exampleModels$WL_ibm_gen, "cdf")
 noise_dist(exampleModels$WL_ibm_gen, "pdf")
@@ -256,6 +275,7 @@ moWL <- exampleModels$WL_ibm
 
 mix_location(moWL,xcond = c(500,450))
 mix_kurtosis(moWL,xcond = c(500,450))
+mix_ekurtosis(moWL,xcond = c(500,450))
 
 f1pdf <- mix_pdf(moWL,xcond = c(500,450))
 f1cdf <- mix_cdf(moWL,xcond = c(500,450))
@@ -265,6 +285,7 @@ f1cdf(c(400,480))
 
 mix_variance(moWL,xcond = c(500,450))
 mix_central_moment(moWL,xcond = c(500,450), k=2)
+mix_moment(moWL,xcond = c(500,450), k=2)
 
 sqrt(mix_variance(moWL,xcond = c(500,450)))
 sqrt(mix_central_moment(moWL,xcond = c(500,450), k=2))

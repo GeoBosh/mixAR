@@ -17,7 +17,7 @@ mix_hatk(model, x, index, xcond)
   \item{model}{a model.}
   \item{x}{time series.}
   \item{index}{
-    a vector of positive integer specifying the indices for which to
+    a vector of positive integers specifying the indices for which to
     compute the residuals, has a natural default.
   }
   \item{xcond}{
