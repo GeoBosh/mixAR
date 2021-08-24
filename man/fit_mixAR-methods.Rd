@@ -126,12 +126,32 @@ ar    <- exampleModels$WL_ibm@arcoef@a # list(c(0.6792, 0.3208), c(1.6711, -0.67
 
 ## data(ibmclose, package = "fma")  # `ibmclose'
 
-mo_WLt3 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
-               dist = list(fdist_stdt(3)))
-mo_WLt30 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
-                dist = list(fdist_stdt(30)))
+mot30 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
+             dist = distlist("stdt", c(30, 30, 30)))
 
+mot20_30_40 <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
+                   dist = distlist("stdt", c(20, 30, 40)))
+
+mo_t20_t30_norm <- new("MixARgen", prob = prob, scale = sigma, arcoef = ar,
+                   dist = distlist(c("stdt", "stdt", "stdnorm"), c(20, 30)))
+
+## Gaussian components
 fi0 <- fit_mixAR(fma::ibmclose, exampleModels$WL_ibm, fix = "shift", crit = 1e-4)
+fi0$model
+
+if(FALSE){ # don't run on CRAN to save a couple of seconds
+## remove minniter/maxniter below for realistic results.
+
+## std-t components
+fi1 <- fit_mixAR(fma::ibmclose, mot30, fix = "shift",
+                 crit = 1e-4, minniter = 1, maxniter = 3)
+fi1$model
+
+## 1st and 2nd components std-t, 3rd Gaussian
+fi2 <- fit_mixAR(fma::ibmclose, mo_t20_t30_norm, fix = "shift",
+                 crit = 1e-4, minniter = 1, maxniter = 3)
+fi2$model
+}
 }
 \keyword{methods}
 \keyword{MixAR}

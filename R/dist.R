@@ -289,6 +289,14 @@ ed_stdt <-
       , get_param = 'function() tr(nu,k)'
       , show      = 'function() paste("Student t with", format(tr(nu,k), digits = 4), "df")'
       , moment    = 'function(x) stdtmoment(tr(nu,k), x)'   # 2012-11-10 new
+      ## 2021-08-23: add the below any_param(). this is misleading but it is the same in the 
+      ##             N(0,1), which doesn't have param. It seems that the intent had been this
+      ##              to be a flag about any param in any component.
+      ##      TODO: this needs big consolidation. In particular there should be distinction 
+      ##            between any_param for individual component and any_param for all 
+      ##            (in that case probably 'parflag' could be an attribute.
+      ##     But if any_param() is used consistently in the current sense, this may be ok.
+      , any_param = 'function()  param_flag'
       )
 ## These comments are from 2012 or older:
       # , 'not clear what to do here.'
