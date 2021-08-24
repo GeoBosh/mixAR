@@ -221,12 +221,41 @@
 
 <span class='co'>## data(ibmclose, package = "fma")  # `ibmclose'</span>
 
-<span class='va'>mo_WLt3</span> <span class='op'>&lt;-</span> <span class='fu'>new</span><span class='op'>(</span><span class='st'>"MixARgen"</span>, prob <span class='op'>=</span> <span class='va'>prob</span>, scale <span class='op'>=</span> <span class='va'>sigma</span>, arcoef <span class='op'>=</span> <span class='va'>ar</span>,
-               dist <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='fnoise.html'>fdist_stdt</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>mo_WLt30</span> <span class='op'>&lt;-</span> <span class='fu'>new</span><span class='op'>(</span><span class='st'>"MixARgen"</span>, prob <span class='op'>=</span> <span class='va'>prob</span>, scale <span class='op'>=</span> <span class='va'>sigma</span>, arcoef <span class='op'>=</span> <span class='va'>ar</span>,
-                dist <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='fnoise.html'>fdist_stdt</a></span><span class='op'>(</span><span class='fl'>30</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>mot30</span> <span class='op'>&lt;-</span> <span class='fu'>new</span><span class='op'>(</span><span class='st'>"MixARgen"</span>, prob <span class='op'>=</span> <span class='va'>prob</span>, scale <span class='op'>=</span> <span class='va'>sigma</span>, arcoef <span class='op'>=</span> <span class='va'>ar</span>,
+             dist <span class='op'>=</span> <span class='fu'><a href='fnoise.html'>distlist</a></span><span class='op'>(</span><span class='st'>"stdt"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>30</span>, <span class='fl'>30</span>, <span class='fl'>30</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 
+<span class='va'>mot20_30_40</span> <span class='op'>&lt;-</span> <span class='fu'>new</span><span class='op'>(</span><span class='st'>"MixARgen"</span>, prob <span class='op'>=</span> <span class='va'>prob</span>, scale <span class='op'>=</span> <span class='va'>sigma</span>, arcoef <span class='op'>=</span> <span class='va'>ar</span>,
+                   dist <span class='op'>=</span> <span class='fu'><a href='fnoise.html'>distlist</a></span><span class='op'>(</span><span class='st'>"stdt"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>20</span>, <span class='fl'>30</span>, <span class='fl'>40</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>mo_t20_t30_norm</span> <span class='op'>&lt;-</span> <span class='fu'>new</span><span class='op'>(</span><span class='st'>"MixARgen"</span>, prob <span class='op'>=</span> <span class='va'>prob</span>, scale <span class='op'>=</span> <span class='va'>sigma</span>, arcoef <span class='op'>=</span> <span class='va'>ar</span>,
+                   dist <span class='op'>=</span> <span class='fu'><a href='fnoise.html'>distlist</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"stdt"</span>, <span class='st'>"stdt"</span>, <span class='st'>"stdnorm"</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>20</span>, <span class='fl'>30</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'>## Gaussian components</span>
 <span class='va'>fi0</span> <span class='op'>&lt;-</span> <span class='fu'>fit_mixAR</span><span class='op'>(</span><span class='fu'>fma</span><span class='fu'>::</span><span class='va'><a href='https://pkg.robjhyndman.com/fma/reference/ibmclose.html'>ibmclose</a></span>, <span class='va'>exampleModels</span><span class='op'>$</span><span class='va'>WL_ibm</span>, fix <span class='op'>=</span> <span class='st'>"shift"</span>, crit <span class='op'>=</span> <span class='fl'>1e-4</span><span class='op'>)</span>
+<span class='va'>fi0</span><span class='op'>$</span><span class='va'>model</span>
+</div><div class='output co'>#&gt; An object of class "MixARGaussian"
+#&gt; Number of components: 3 
+#&gt;        prob       shift scale     order ar_1      ar_2      
+#&gt; Comp_1 0.54287126   0    4.797900   2   0.6825951  0.3184695
+#&gt; Comp_2 0.42094949   0    5.938168   2   1.6731621 -0.6755995
+#&gt; Comp_3 0.03617925   0   17.749431   1   0.9889259           
+#&gt; 
+#&gt; Distributions of the error components:
+#&gt; 	standard Gaussian
+#&gt; </div><div class='input'>
+<span class='kw'>if</span><span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>{</span> <span class='co'># don't run on CRAN to save a couple of seconds</span>
+<span class='co'>## remove minniter/maxniter below for realistic results.</span>
+
+<span class='co'>## std-t components</span>
+<span class='va'>fi1</span> <span class='op'>&lt;-</span> <span class='fu'>fit_mixAR</span><span class='op'>(</span><span class='fu'>fma</span><span class='fu'>::</span><span class='va'><a href='https://pkg.robjhyndman.com/fma/reference/ibmclose.html'>ibmclose</a></span>, <span class='va'>mot30</span>, fix <span class='op'>=</span> <span class='st'>"shift"</span>,
+                 crit <span class='op'>=</span> <span class='fl'>1e-4</span>, minniter <span class='op'>=</span> <span class='fl'>1</span>, maxniter <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+<span class='va'>fi1</span><span class='op'>$</span><span class='va'>model</span>
+
+<span class='co'>## 1st and 2nd components std-t, 3rd Gaussian</span>
+<span class='va'>fi2</span> <span class='op'>&lt;-</span> <span class='fu'>fit_mixAR</span><span class='op'>(</span><span class='fu'>fma</span><span class='fu'>::</span><span class='va'><a href='https://pkg.robjhyndman.com/fma/reference/ibmclose.html'>ibmclose</a></span>, <span class='va'>mo_t20_t30_norm</span>, fix <span class='op'>=</span> <span class='st'>"shift"</span>,
+                 crit <span class='op'>=</span> <span class='fl'>1e-4</span>, minniter <span class='op'>=</span> <span class='fl'>1</span>, maxniter <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+<span class='va'>fi2</span><span class='op'>$</span><span class='va'>model</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
