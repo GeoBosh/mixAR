@@ -86,3 +86,4 @@ mixARExperiment(exampleModels$WL_II, N = N, raw = TRUE,
 }
 \keyword{MixAR}
 \keyword{simulation}
+\keyword{internal}

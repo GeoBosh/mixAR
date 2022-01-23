@@ -86,8 +86,11 @@
   predictive distributions 
 }
 \keyword{methods}
-\keyword{MixAR}
-\keyword{prediction}
+\keyword{distribution}
+\keyword{ts}
+
+\concept{MixAR}
+\concept{prediction}
 
        % \eqn{\;\;\;\;\;\;}{ }       % \verb{ }
        % \eqn{\;}{ }

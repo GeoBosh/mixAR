@@ -54,17 +54,15 @@ mix_qf(model, p, x, index, xcond)
 }}
 \seealso{
   \code{\link{mix_pdf}},
-  \code{\link{mix_cdf}}
+  \code{\link{mix_cdf}};
+
+  \code{\link{mix_moment}} for examples
 }
 %\examples{
 %}
 \keyword{methods}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory (show via RShowDoc("KEYWORDS")):
-% \keyword{ ~kwd1 }
-% \keyword{ ~kwd2 }
-% Use only one keyword per line.
-% For non-standard keywords, use \concept instead of \keyword:
-% \concept{ ~cpt1 }
-% \concept{ ~cpt2 }
-% Use only one concept per line.
+\keyword{distribution}
+\keyword{ts}
+
+\concept{MixAR}
+\concept{prediction}

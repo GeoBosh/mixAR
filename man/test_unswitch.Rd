@@ -54,3 +54,4 @@ aII10a
 }
 \keyword{MixAR}
 \keyword{simulation}
+\keyword{internal}

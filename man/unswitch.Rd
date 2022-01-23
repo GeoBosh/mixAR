@@ -1,20 +1,17 @@
 \name{unswitch}
-
 \alias{unswitch}
 
-%- Also NEED an '\alias' for EACH other topic documented here.
+\title{
+  Dealing with label switching in MixAR experiments
+}
 
-\title{Dealing with label switching in MixAR experiments}
-
-\description{Deal with label switching in MixAR experiments.
+\description{
+  Deal with label switching in MixAR experiments.
 }
 
 \usage{
 unswitch(models, true_model, Nref = 100, simargs = NULL)
 }
-
-%- maybe also 'usage' for other objects documented here.
-
 \arguments{
   \item{models}{a list of MixAR models to process.}
   \item{true_model}{the MixAR model used in the experiment.}
@@ -59,3 +56,4 @@ unswitch(models, true_model, Nref = 100, simargs = NULL)
 
 \keyword{simulation}
 \keyword{MixAR}
+\keyword{internal}

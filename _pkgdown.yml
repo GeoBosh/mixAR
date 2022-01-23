@@ -1,3 +1,7 @@
+url: https://geobosh.github.io/mixAR
+
+template:
+  bootstrap: 5
 
 reference:
   - title: "mixAR overview"
@@ -20,6 +24,7 @@ reference:
       Predictive distributions and their summary statistics
     contents:
       - "mix_pdf-methods"
+      - "mix_qf-methods"
       - "mix_moment"
       - "multiStep_dist-methods"
   - title: "Simulation of mixAR time series"
@@ -133,6 +138,9 @@ reference:
       - "mix_moment-methods"
       - "mix_central_moment-methods"
       - "mix_variance-methods"
+  - title: "Experimental (may be change/renamed/removed)"
+    contents:
+      - "simuExperiment"
   - title: "Internal utility functions"
     contents:
       - "adjustLengths"
