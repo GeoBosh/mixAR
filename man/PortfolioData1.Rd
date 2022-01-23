@@ -24,7 +24,7 @@ data("PortfolioData1")
 
 }
 \source{
-  \url{https://finance.yahoo.com/}
+  \samp{https://finance.yahoo.com/}
 }
 % \references{
 %    TODO: put here a reference to the portfolio paper

@@ -1,4 +1,4 @@
-# mixAR 0.22.6
+# mixAR 0.22.6 (CRAN)
 
 - `fit_mixAR` was failing for some mixAR models with Gaussian components when
   the AR order of a component was zero. (reported by Lu Cao)
