@@ -5,15 +5,16 @@
 
 - improved printing of `mixARgen` objects.
 
-- The function returned by the methods for `multiStep_dist` with `N = "missing"
+- The function returned by the methods for `multiStep_dist` with `N = "missing"`
   now checks the length of the supplied `xcond` argument and throws error if it
-  is shorter than the maximal AR order `p`. If it is longer, the the last `p`
-  values in it are used.  This has always been the case when `N` is not missing.
+  is shorter than the maximal AR order `p`. If it is longer, the last `p` values
+  in it are used.  This has always been the case when `N` is not missing.
 
 - new function `mix_qf` computes conditional quantiles, analogous to `mix_pdf`
   and `mix_cdf`.
 
 - numerous fixes and improvements.
+
 
 # mixAR 0.22.5 (CRAN)
 
