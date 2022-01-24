@@ -45,7 +45,7 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.22.6" id="mixar-0226">mixAR 0.22.6<a class="anchor" aria-label="anchor" href="#mixar-0226"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.22.6" id="mixar-0226-cran">mixAR 0.22.6 (CRAN)<a class="anchor" aria-label="anchor" href="#mixar-0226-cran"></a></h2><p class="text-muted">CRAN release: 2022-01-23</p>
 <ul><li><p><code>fit_mixAR</code> was failing for some mixAR models with Gaussian components when the AR order of a component was zero. (reported by Lu Cao)</p></li>
 <li><p>improved printing of <code>mixARgen</code> objects.</p></li>
 <li><p>The function returned by the methods for <code>multiStep_dist</code> with <code>N = "missing"</code> now checks the length of the supplied <code>xcond</code> argument and throws error if it is shorter than the maximal AR order <code>p</code>. If it is longer, the last <code>p</code> values in it are used. This has always been the case when <code>N</code> is not missing.</p></li>
