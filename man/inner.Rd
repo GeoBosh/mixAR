@@ -39,7 +39,8 @@ inner(x, y, star = "*", plus = .mplus)
   corresponding pairs of elements and combines them with \code{plus}.
   There is no recycling, if \code{x} and \code{y} have different
   lengths, an error is raised.  The elements of \code{x} and \code{y}
-  are accessed with "[[". \code{plus} should be \code{n}-ar operation.
+  are accessed with "[[". \code{plus} should be an \code{n}-ary
+  operation.
 }
 \value{
   the inner product, the type of the result depends on the arguments

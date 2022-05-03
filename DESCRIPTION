@@ -1,8 +1,8 @@
 Package: mixAR
 Type: Package
 Title: Mixture Autoregressive Models
-Version: 0.22.6
-Date: 2022-01-23
+Version: 0.22.7
+Date: 2022-05-03
 Authors@R: c( person(given = c("Georgi", "N."), 
                      family = "Boshnakov", 
                      role = c("aut", "cre"), 

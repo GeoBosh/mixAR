@@ -1,3 +1,9 @@
+# mixAR 0.22.7
+
+- fixed CRAN warning "`\item` in `\describe` must have non-empty label" in a
+  couple of Rd files.
+
+
 # mixAR 0.22.6 (CRAN)
 
 - `fit_mixAR` was failing for some mixAR models with Gaussian components when

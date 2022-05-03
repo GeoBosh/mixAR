@@ -7,8 +7,7 @@
   Diagnostic checks for mixture autoregressive models
 }
 \description{
-  Perform diagnostic checks and tests on given \code{MixAR}
-  object with respect to a given time series.
+  Carry out diagnostic checks and tests on fitted mixAR models.
 }
 \usage{
 \method{tsdiag}{MixAR}(object, gof.lag = NULL, y, ask = interactive(), \dots, 

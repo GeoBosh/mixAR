@@ -58,7 +58,8 @@ mix_ekurtosis(...)
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-  \code{\link{mix_pdf}} for the predictive distributions
+  \code{\link{mix_pdf}}, \code{\link{mix_cdf}}, \code{\link{mix_qf}}
+  for the predictive distributions (pdf, cdf, quantiles);
 }
 \examples{
 ## data(ibmclose, package = "fma") # `ibmclose'

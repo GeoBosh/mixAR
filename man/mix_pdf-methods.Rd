@@ -83,7 +83,9 @@
 \author{Georgi N. Boshnakov}
 \seealso{
   \code{\link{mix_moment}} for examples and computation of summary statistics of the
-  predictive distributions 
+  predictive distributions
+
+  \code{\link{mix_qf}} for computation of quantiles.
 }
 \keyword{methods}
 \keyword{distribution}

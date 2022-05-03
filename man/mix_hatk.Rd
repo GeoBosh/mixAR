@@ -34,8 +34,8 @@ mix_hatk(model, x, index, xcond)
 \section{Methods}{
 \describe{
 
-  \item{}{\code{signature(model = "MixAR", x = "numeric", index = "numeric",
- xcond = "missing")}%}{
+  \item{\code{signature(model = "MixAR", x = "numeric", index = "numeric",
+      xcond = "missing")}}{
     %: ~~describe this method here 
   }
 }}

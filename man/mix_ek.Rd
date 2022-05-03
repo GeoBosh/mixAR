@@ -46,22 +46,24 @@ mix_ek(model, x, index, xcond, scale)
 \author{Georgi N. Boshnakov}
 \section{Methods}{
   \describe{
-  % don't indent 'xcond = ' below, it is in verbatim mode, so the spaces
-  % are kept! 
-    \item{}{\code{signature(model = "MixAR", x = "numeric", index = "missing",
-xcond = "numeric", scale = "logical")}%: ~~describe this method here
+    \item{\code{signature(model = "MixAR", x = "numeric", index = "missing",
+	xcond = "numeric", scale = "logical")}}{
+      %: ~~describe this method here
     }
 
-    \item{}{\code{signature(model = "MixAR", x = "numeric", index = "missing",
-xcond = "numeric", scale = "missing")}%: ~~describe this method here
+    \item{\code{signature(model = "MixAR", x = "numeric", index = "missing",
+	xcond = "numeric", scale = "missing")}}{
+      %: ~~describe this method here
     }
 
-    \item{}{\code{signature(model = "MixAR", x = "numeric", index = "numeric",
-xcond = "missing", scale = "logical")}%: ~~describe this method here
+    \item{\code{signature(model = "MixAR", x = "numeric", index = "numeric",
+	xcond = "missing", scale = "logical")}}{
+      %: ~~describe this method here
     }
 
-    \item{}{\code{signature(model = "MixAR", x = "numeric", index = "numeric",
-xcond = "missing", scale = "missing")}%: ~~describe this method here
+    \item{\code{signature(model = "MixAR", x = "numeric", index = "numeric",
+	xcond = "missing", scale = "missing")}}{
+      %: ~~describe this method here
     }
 }}
 \seealso{
