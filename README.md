@@ -1,5 +1,7 @@
 <!-- badges: start -->
 [![CRANStatusBadge](http://www.r-pkg.org/badges/version/mixAR)](https://cran.r-project.org/package=mixAR)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/mixAR)](https://www.r-pkg.org/pkg/mixAR)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/mixAR?color=blue)](https://r-pkg.org/pkg/mixAR)
 [![R-CMD-check](https://github.com/GeoBosh/mixAR/workflows/R-CMD-check/badge.svg)](https://github.com/GeoBosh/mixAR/actions)
 [![codecov](https://codecov.io/gh/GeoBosh/mixAR/branch/master/graph/badge.svg?token=2SW9HKG71Y)](https://app.codecov.io/gh/GeoBosh/mixAR)
 <!-- badges: end -->
@@ -30,4 +32,3 @@ Alternatively, install the [development version](https://github.com/GeoBosh/mixA
   fitting functions such as
   [fit_mixAR](https://geobosh.github.io/mixAR/reference/fit_mixAR-methods.html)
   and [bayes_mixAR](https://geobosh.github.io/mixAR/reference/bayes_mixAR.html).
-  
