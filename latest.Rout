@@ -1,0 +1,3366 @@
+
+R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+> setwd('~/repos/private/mixAR')
+> devtools::load_all()
+ℹ Loading mixAR
+> pkgdown::build_site()
+*** output flushed ***
+> library(cvar)
+
+
+## simulate time series, and fit model
+model1 <- new("MixARGaussian",prob= c(0.5, 0.5),scale = c(9,4),
+              arcoef = list(0.6,0.2))
+sim1=mixAR_sim(model1, 1500, c(-1,1), nskip=100,flag=FALSE)
+fit1 <- fit_mixAR(sim1[1:1000],c(1,1), fix = "shift") 
+
+library(cvar)
+> 
+> 
+> ## simulate time series, and fit model
+> model1 <- new("MixARGaussian",prob= c(0.5, 0.5),scale = c(9,4),
++               arcoef = list(0.6,0.2))
+> sim1=mixAR_sim(model1, 1500, c(-1,1), nskip=100,flag=FALSE)
+> fit1 <- fit_mixAR(sim1[1:1000],c(1,1), fix = "shift") 
+> fit1
+$model
+An object of class "MixARGaussian"
+Number of components: 2 
+       prob      shift scale    order ar_1     
+Comp_1 0.5635589   0   8.217966   1   0.5609647
+Comp_2 0.4364411   0   4.224585   1   0.2259426
+
+Distributions of the error components:
+	standard Gaussian
+
+
+$vallogf
+[1] -3327.609
+
+> ## Var and ES
+> VaR1_par=numeric(500)  # parametric VaR model 1
+> ES1_par=numeric(500)   # parametric ES model 1
+> for (i in 1:500){
++   # predict cdf at time (1000+i)
++   dist_exact<-multiStep_dist(fit1$model, maxh=1) 
++   cdf1<- dist_exact(h=1,what="cdf",xcond=sim1[(1000+i):(1000 + i)] )
++   
++   # compute lower 5% quantile of cdf1
++   VaR1_par[i]= cvar::VaR(cdf1, x = 0.05, dist.type = "qf")
++   ES1_par[i]<-cvar::ES(cdf1, x = 0.05, dist.type = "qf")
++ }
+> plot(sim1[1000:1500],type ="l",xlab="time",ylab="series")
+> lines(VaR1_par,col="red",lwd=2)
+> ES1_par[500]
+[1] -0.5973654
+> plot(ES1_par)
+> hist(ES1_par)
+> ?cvar::VaR
+> VaR1_par=numeric(500)  # parametric VaR model 1
+> ES1_par=numeric(500)   # parametric ES model 1
+> for (i in 1:500){
++   # predict cdf at time (1000+i)
++   dist_exact<-multiStep_dist(fit1$model, maxh=1) 
++   cdf1<- dist_exact(h=1,what="cdf",xcond=sim1[(1000+i):(1000 + i)] )
++   
++   # compute lower 5% quantile of cdf1
++   VaR1_par[i]= cvar::VaR(cdf1, x = 0.05, dist.type = "cdf")
++   ES1_par[i]<-cvar::ES(cdf1, x = 0.05, dist.type = "cdf")
++ }
+> plot(sim1[1000:1500],type ="l",xlab="time",ylab="series")
+> lines(VaR1_par,col="red",lwd=2)
+> ES1_par[500]
+[1] 17.09894
+> dist_exact
+function(h, xcond, what){
+                  arh <- t(co$arcoefs[[h]])
+                  if(ncol(arh) != length(xcond)){
+                      excess <- length(xcond) - ncol(arh)
+                      if(excess > 0){
+                          ## TODO: argument to suppress the message?
+                          message(paste0("using the last ",  length(xcond),
+                                         " values in 'xcond'"))
+                          xcond <- xcond[-(1:excess)]
+                      } else
+                          stop("length(xcond) must be >= maximal AR order")
+                  }
+
+                  hmo <- new("MixARGaussian",
+                             prob   = co$probs[[h]],
+                             scale  = co$sStable[[h]],
+                             shift  = as.numeric( arh %*% xcond ),
+                             arcoef = arh
+                             )
+                  switch(what,
+                         cdf = mix_cdf(hmo, xcond = xcond),
+                         pdf = mix_pdf(hmo, xcond = xcond),
+                         # default, mainly for testing
+                         hmo
+                         )
+              }
+<bytecode: 0x55ed49484498>
+<environment: 0x55ed50536238>
+> sim1
+*** output flushed ***
+> fit1
+$model
+An object of class "MixARGaussian"
+Number of components: 2 
+       prob      shift scale    order ar_1     
+Comp_1 0.5635589   0   8.217966   1   0.5609647
+Comp_2 0.4364411   0   4.224585   1   0.2259426
+
+Distributions of the error components:
+	standard Gaussian
+
+
+$vallogf
+[1] -3327.609
+
+> VaR_cdf
+function (dist, x = 0.05, ..., intercept = 0, slope = 1, tol = .Machine$double.eps^0.5) 
+{
+    dist <- match.fun(dist)
+    res <- if (length(x) > 1) 
+        -sapply(x, cdf2quantile, ..., MoreArgs = list(cdf = dist, 
+            tol = tol))
+    else -cdf2quantile(x, dist, tol = tol, ...)
+    -intercept + slope * res
+}
+<bytecode: 0x55ed47a0b2b0>
+<environment: namespace:cvar>
+> plot(sim1[1000:1500],type ="l",xlab="time",ylab="series")
+> lines( -VaR1_par,col="red",lwd=2)
+> browseVignettes("cvar")
+starting httpd help server ... done
+> rebib
+*** output flushed ***
+> quantile
+*** output flushed ***
+> ?quantile
+> ?mix_pdf
+> ?cdf2quantile
+> args(qnorm)
+function (p, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE) 
+NULL
+> methods("mix_cdf")
+[1] mix_cdf,MixARGaussian,missing,missing,numeric-method
+[2] mix_cdf,MixARGaussian,numeric,missing,numeric-method
+[3] mix_cdf,MixARGaussian,numeric,numeric,missing-method
+[4] mix_cdf,MixARgen,missing,missing,numeric-method     
+[5] mix_cdf,MixARgen,numeric,missing,numeric-method     
+[6] mix_cdf,MixARgen,numeric,numeric,missing-method     
+see '?methods' for accessing help and source code
+> showMethods("mix_cdf")
+Function: mix_cdf (package mixAR)
+model="MixARGaussian", x="missing", index="missing", xcond="numeric"
+model="MixARGaussian", x="numeric", index="missing", xcond="numeric"
+model="MixARGaussian", x="numeric", index="numeric", xcond="missing"
+model="MixARgen", x="missing", index="missing", xcond="numeric"
+model="MixARgen", x="numeric", index="missing", xcond="numeric"
+model="MixARgen", x="numeric", index="numeric", xcond="missing"
+
+> cdf2quantile
+Error: object 'cdf2quantile' not found
+> gbutils::cdf2quantile
+function (p, cdf, interval = c(-3, 3), lower = min(interval), 
+    upper = max(interval), ...) 
+{
+    f <- function(x, ...) {
+        cdf(x, ...) - p
+    }
+    wrk <- uniroot(f, lower = lower, upper = upper, extendInt = "upX", 
+        ...)
+    res <- wrk$root
+    res
+}
+<bytecode: 0x55ed47c87fe8>
+<environment: namespace:gbutils>
+> ?uniroot
+> reprompt("mix_qf")
+Rd source not supplied, looking for installed documentation.
+Rd source not supplied and installed documentation not found.
+Trying a 'prompt' function to generate documentation for the object.
+Error in reprompt("mix_qf") : 
+  unsuccessful attempt to create Rd doc. using a 'prompt' function.
+> devtools::load_all()
+ℹ Loading mixAR
+> reprompt("mix_qf")
+Rd source not supplied, looking for installed documentation.
+Rd source not supplied and installed documentation not found.
+Trying a 'prompt' function to generate documentation for the object.
+	success: documentation generated using a 'prompt' function.
+	The Rd content was written to file  mix_qf.Rd 
+[1] "mix_qf.Rd"
+> reprompt("mix_qf", type = "methods")
+Rd source not supplied, looking for installed documentation.
+Rd source not supplied and installed documentation not found.
+Trying a 'prompt' function to generate documentation for the object.
+	success: documentation generated using a 'prompt' function.
+	The Rd content was written to file  mix_qf-methods.Rd 
+[1] "mix_qf-methods.Rd"
+> ?pnorm
+> 
+> 
+> pdf1 <- mix_pdf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
+
+pdf1 <- mix_pdf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
+Registered S3 method overwritten by 'quantmod':
+  method            from
+  as.zoo.data.frame zoo 
+> cdf1 <- mix_cdf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
+gbutils::plotpdf(pdf1, cdf = cdf1, lq = 0.001, uq = 0.999)
+
+cdf1 <- mix_cdf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
+> gbutils::plotpdf(pdf1, cdf = cdf1, lq = 0.001, uq = 0.999)
+> 
+> qf1 <- mix_qf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
+> qf1
+*** output flushed ***
+> gbutils::plotpdf(qf1, cdf = cdf1, lq = 0.001, uq = 0.999)
+Error in cdf(x, ...) : argument "cdf" is missing, with no default
+> qf1(0.05)
+[1] 347.7531
+> cdf1(347.7531)
+[1] 0.04999943
+> curve(qf1, from = 0.001, to = 0.999)
+Error in cdf(x, ...) : argument "cdf" is missing, with no default
+> options(error=recover)
+> options(error=recover)
+> curve(qf1, from = 0.001, to = 0.999)
+> args(cdf2quantile)
+function (p, cdf, interval = c(-3, 3), lower = min(interval), 
+    upper = max(interval), ...) 
+NULL
+> ls(environment(qf1))
+[1] "cdf"   "f"     "index" "model" "p"     "x"     "xcond"
+> qf1(1:9/10)
+Error in cdf(x, ...) : argument "cdf" is missing, with no default
+
+Enter a frame number, or 0 to exit   
+
+1: qf1(1:9/10)
+2: mixAR.R#687: sapply(p, cdf2quantile, tol = tol, ..., MoreArgs = list(cdf = 
+3: lapply(X = X, FUN = FUN, ...)
+4: FUN(X[[i]], ...)
+5: uniroot(f, lower = lower, upper = upper, extendInt = "upX", ...)
+6: f(lower, ...)
+
+Selection: 0
+> 
+> devtools::load_all()
+ℹ Loading mixAR
+> qf1 <- mix_qf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
+> qf1(1:9/10)
+[1] 349.9105 352.4107 354.2101 355.7706 357.2621 358.7968 360.4990 362.5843
+[9] 365.6616
+> gbutils::plotpdf(qf1, cdf = cdf1, lq = 0.001, uq = 0.999)
+Error in uniroot(f, lower = lower, upper = upper, extendInt = "upX", ...) : 
+  no sign change found in 1000 iterations
+
+Enter a frame number, or 0 to exit   
+
+ 1: gbutils::plotpdf(qf1, cdf = cdf1, lq = 0.001, uq = 0.999)
+ 2: plot(pdf, from = from, to = to, ...)
+ 3: plot.function(pdf, from = from, to = to, ...)
+ 4: curve(expr = x, from = from, to = to, xlim = xlim, ylab = ylab, ...)
+ 5: eval(expr, envir = ll, enclos = parent.frame())
+ 6: eval(expr, envir = ll, enclos = parent.frame())
+ 7: x(x)
+ 8: mixAR.R#687: sapply(p, cdf2quantile, cdf = cdf, tol = tol, ...)
+ 9: lapply(X = X, FUN = FUN, ...)
+10: FUN(X[[i]], ...)
+11: uniroot(f, lower = lower, upper = upper, extendInt = "upX", ...)
+
+Selection: 0
+> gbutils::plotpdf(qf1, cdf = cdf1, lq = 0.01, uq = 0.99)
+Error in uniroot(f, lower = lower, upper = upper, extendInt = "upX", ...) : 
+  no sign change found in 1000 iterations
+
+Enter a frame number, or 0 to exit   
+
+ 1: gbutils::plotpdf(qf1, cdf = cdf1, lq = 0.01, uq = 0.99)
+ 2: plot(pdf, from = from, to = to, ...)
+ 3: plot.function(pdf, from = from, to = to, ...)
+ 4: curve(expr = x, from = from, to = to, xlim = xlim, ylab = ylab, ...)
+ 5: eval(expr, envir = ll, enclos = parent.frame())
+ 6: eval(expr, envir = ll, enclos = parent.frame())
+ 7: x(x)
+ 8: mixAR.R#687: sapply(p, cdf2quantile, cdf = cdf, tol = tol, ...)
+ 9: lapply(X = X, FUN = FUN, ...)
+10: FUN(X[[i]], ...)
+11: uniroot(f, lower = lower, upper = upper, extendInt = "upX", ...)
+
+Selection: 0
+> gbutils::plotpdf(qf1, cdf = cdf1, lq = 0.1, uq = 0.9)
+Error in uniroot(f, lower = lower, upper = upper, extendInt = "upX", ...) : 
+  no sign change found in 1000 iterations
+
+Enter a frame number, or 0 to exit   
+
+ 1: gbutils::plotpdf(qf1, cdf = cdf1, lq = 0.1, uq = 0.9)
+ 2: plot(pdf, from = from, to = to, ...)
+ 3: plot.function(pdf, from = from, to = to, ...)
+ 4: curve(expr = x, from = from, to = to, xlim = xlim, ylab = ylab, ...)
+ 5: eval(expr, envir = ll, enclos = parent.frame())
+ 6: eval(expr, envir = ll, enclos = parent.frame())
+ 7: x(x)
+ 8: mixAR.R#687: sapply(p, cdf2quantile, cdf = cdf, tol = tol, ...)
+ 9: lapply(X = X, FUN = FUN, ...)
+10: FUN(X[[i]], ...)
+11: uniroot(f, lower = lower, upper = upper, extendInt = "upX", ...)
+
+Selection: 0
+> curve(qf1, from = 0.001, to = 0.999)
+>  
+> 
+> 
+> devtools::load_all()
+ℹ Loading mixAR
+> covr::report()
+> covr::report()
+Error: Failure in `/tmp/RtmpT4j4Gj/R_LIBSf0043a39b147/mixAR/mixAR-tests/testthat.Rout.fail`
+1 
+══ Skipped tests ═══════════════════════════════════════════════════════════════
+● empty test (6)
+
+══ Failed tests ════════════════════════════════════════════════════════════════
+── Error (test-mixAR.R:271:1): mixAR and new() for mixAR work ──────────────────
+Error: attempt to replicate an object of type 'S4'
+Backtrace:
+    █
+ 1. ├─mixAR::mix_moment(moWL, xcond = c(500, 450), k = 2) test-mixAR.R:271:0
+ 2. └─mixAR::mix_moment(moWL, xcond = c(500, 450), k = 2)
+ 3.   └─base::outer(drop(locall), k:0, "^")
+
+[ FAIL 1 | WARN 0 | SKIP 6 | PASS 346 ]
+Error: Test failures
+Execution halted
+
+Enter a frame number, or 0 to exit   
+
+ 1: covr::report()
+ 2: dir.create(dirname(file), recursive = TRUE, showWarnings = FALSE)
+ 3: dirname(file)
+ 4: file.path(tempdir(), paste0(get_package_name(x), "-report.html"))
+ 5: paste0(get_package_name(x), "-report.html")
+ 6: get_package_name(x)
+ 7: attr(x, "package")$package %||% "coverage"
+ 8: package_coverage()
+ 9: withr::with_envvar(c(R_DEFAULT_PACKAGES = "datasets,utils,grDevices,graphic
+10: force(code)
+11: withCallingHandlers({
+    if ("vignettes" %in% type) {
+        type <- type
+12: show_failures(out_dir)
+
+Selection: 0
+> devtools::check()
+*** output flushed ***
+> 
+> 
+> 
+> devtools::test()
+> devtools::load_all()
+ℹ Loading mixAR
+> devtools::load_all()
+ℹ Loading mixAR
+> devtools::test()
+ℹ Loading mixAR
+ℹ Testing mixAR
+✔ |  OK F W S | Context
+✔ |  46       | bayesian [3.6 s]
+✔ |   0     1 | dist
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-dist.R:1:1): mixAR and new() for mixAR work
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |  18       | Testing exampleModels
+⠏ |   0       | fit_mixAR                                                       Estimating.0.sigma =  5.505965 5.911653 6.988254 
+.
+Estimating.1.sigma =  5.505976 5.911649 6.988241 
+.
+Estimating.1.sigma =  5.505975 5.911643 6.988237 
+.
+✔ |   0     1 | fit_mixAR [9.9 s]
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-fit_mixAR.R:4:1): fit_mixAR works
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   3       | Testing inner
+✔ |   6       | tests of mix_se() [1.1 s]
+✔ |   5       | mixAR_diag [0.2 s]
+✔ |  30       | mixAR [0.4 s]
+✔ |   5       | tests of mixARemFixedPoint() [4.6 s]
+✔ |   0     1 | mixARnoise_sim
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixARnoise_sim.R:1:1): mixARnoise_sim works
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   0     1 | mixARreg
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixARreg.R:29:5): mixARreg and fit_mixARreg work
+Reason: !covr::in_covr() is TRUE
+────────────────────────────────────────────────────────────────────────────────
+✔ |   0     1 | mixARsim
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixARsim.R:3:1): mixARsim functions work
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   0     1 | mixComp
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixComp.R:1:1): MixComp class and methods are ok
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   7       | mixutil
+✔ |  17       | mixVAR [5.4 s]
+✔ |   5     1 | predict [0.1 s]
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-predict.R:52:1): functions for 'predict' work
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |  88       | Testing ragged helper functions
+✔ |  80       | Testing raggedS helper functions
+✔ |  29       | Testing raggedV helper functions
+✔ |   0     1 | unswitch [0.6 s]
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-unswitch.R:1:1): unswitch works
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+
+══ Results ═════════════════════════════════════════════════════════════════════
+Duration: 26.2 s
+
+── Skipped tests  ──────────────────────────────────────────────────────────────
+● !covr::in_covr() is TRUE (1)
+● empty test (7)
+
+[ FAIL 0 | WARN 0 | SKIP 8 | PASS 339 ]
+> covr::report()
+> tmp2 <- mix_qf(exampleModels$WL_ibm, p = 1:9/10, xcond = as.numeric(fma::ibmclose))
+> mpt == tmp2
+Error: object 'mpt' not found
+No suitable frames for recover()
+> tmp == tmp2
+Error: object 'tmp' not found
+No suitable frames for recover()
+> tmp <- qf1(1:9/10)
+> tmp == tmp2
+[1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+> devtools::load_all()
+ℹ Loading mixAR
+> devtools::test()
+*** output flushed ***
+> devtools::test()
+ℹ Loading mixAR
+ℹ Testing mixAR
+✔ |  OK F W S | Context
+✔ |  46       | bayesian [3.5 s]
+✔ |   0     1 | dist
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-dist.R:1:1): mixAR and new() for mixAR work
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |  18       | Testing exampleModels
+⠏ |   0       | fit_mixAR                                                       Estimating.0.sigma =  5.505965 5.911653 6.988254 
+.
+Estimating.1.sigma =  5.505976 5.911649 6.988241 
+.
+Estimating.1.sigma =  5.505975 5.911643 6.988237 
+.
+✔ |   0     1 | fit_mixAR [9.5 s]
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-fit_mixAR.R:4:1): fit_mixAR works
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   3       | Testing inner
+✔ |   6       | tests of mix_se() [1.1 s]
+✔ |   5       | mixAR_diag [0.2 s]
+✔ |  31       | mixAR [0.4 s]
+✔ |   5       | tests of mixARemFixedPoint() [4.6 s]
+✔ |   0     1 | mixARnoise_sim
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixARnoise_sim.R:1:1): mixARnoise_sim works
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   0     1 | mixARreg
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixARreg.R:29:5): mixARreg and fit_mixARreg work
+Reason: !covr::in_covr() is TRUE
+────────────────────────────────────────────────────────────────────────────────
+✔ |   0     1 | mixARsim
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixARsim.R:3:1): mixARsim functions work
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   0     1 | mixComp
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixComp.R:1:1): MixComp class and methods are ok
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   7       | mixutil
+✔ |  17       | mixVAR [5.6 s]
+✔ |   5     1 | predict [0.1 s]
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-predict.R:52:1): functions for 'predict' work
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |  88       | Testing ragged helper functions
+✔ |  80       | Testing raggedS helper functions
+✔ |  29       | Testing raggedV helper functions
+✔ |   0     1 | unswitch [0.6 s]
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-unswitch.R:1:1): unswitch works
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+
+══ Results ═════════════════════════════════════════════════════════════════════
+Duration: 26.1 s
+
+── Skipped tests  ──────────────────────────────────────────────────────────────
+● !covr::in_covr() is TRUE (1)
+● empty test (7)
+
+[ FAIL 0 | WARN 0 | SKIP 8 | PASS 340 ]
+> covr::report()
+> length(fma::ibmclose)
+[1] 369
+> mix_pdf(exampleModels$WL_ibm_gen, x = as.numeric(fma::ibmclose), index = 367:369 )
+[1] 0.03971328 0.03917370 0.04422941
+> mix_cdf(exampleModels$WL_ibm_gen, x = as.numeric(fma::ibmclose), index = 367:369 )
+[1] 0.1485747 0.8575971 0.7619221
+> noise_moment(exampleModels$WL_ibm_gen, 2)
+Error in FUN(X[[i]], ...) (from mixAR.R#1068) : attempt to apply non-function
+
+Enter a frame number, or 0 to exit   
+
+1: noise_moment(exampleModels$WL_ibm_gen, 2)
+2: noise_moment(exampleModels$WL_ibm_gen, 2)
+3: mixAR.R#1068: sapply(dist, function(x) x$moment(k))
+4: lapply(X = X, FUN = FUN, ...)
+5: FUN(X[[i]], ...)
+
+Selection: 0
+> 
+> noise_moment
+standardGeneric for "noise_moment" defined from package "mixAR"
+
+function (model, k) 
+standardGeneric("noise_moment")
+<environment: 0x55ed5966df90>
+Methods may be defined for arguments: model, k
+Use  showMethods("noise_moment")  for currently available ones.
+> noise_moment(exampleModels$WL_ibm_gen, 2)
+Error in FUN(X[[i]], ...) (from mixAR.R#1068) : attempt to apply non-function
+
+Enter a frame number, or 0 to exit   
+
+1: noise_moment(exampleModels$WL_ibm_gen, 2)
+2: noise_moment(exampleModels$WL_ibm_gen, 2)
+3: mixAR.R#1068: sapply(dist, function(x) x$moment(k))
+4: lapply(X = X, FUN = FUN, ...)
+5: FUN(X[[i]], ...)
+
+Selection: 3
+Called from: lapply(X = X, FUN = FUN, ...)
+Browse[1]> dist
+*** output flushed ***
+Browse[1]> ls()
+[1] "FUN"       "simplify"  "USE.NAMES" "X"        
+Browse[1]> get_edist(model)
+Error during wrapup: error in evaluating the argument 'model' in selecting a method for function 'get_edist': object 'model' not found
+Error: no more error handlers available (recursive errors?); invoking 'abort' restart
+Browse[1]> 
+
+Enter a frame number, or 0 to exit   
+
+1: noise_moment(exampleModels$WL_ibm_gen, 2)
+2: noise_moment(exampleModels$WL_ibm_gen, 2)
+3: mixAR.R#1068: sapply(dist, function(x) x$moment(k))
+4: lapply(X = X, FUN = FUN, ...)
+5: FUN(X[[i]], ...)
+
+Selection: 2
+Called from: sapply(dist, function(x) x$moment(k))
+Browse[2]> ls()
+[1] "dist"  "k"     "model"
+Browse[2]> dist
+[[1]]
+[[1]]$pdf
+[1] "dnorm"
+
+[[1]]$cdf
+[1] "pnorm"
+
+[[1]]$rand
+[1] "rnorm"
+
+[[1]]$logpdf
+function(x) log(dnorm(x))
+<environment: 0x55ed5e1873b8>
+
+[[1]]$Fscore
+function(x) -x
+<environment: 0x55ed5e1873b8>
+
+[[1]]$xFscore
+function(x) -x^2
+<environment: 0x55ed5e1873b8>
+
+[[1]]$Parscore
+function() 0
+<environment: 0x55ed5e1873b8>
+
+[[1]]$get_param
+function() numeric()
+<environment: 0x55ed5e1873b8>
+
+[[1]]$set_param
+function() stop("Standard normal has no parameters to set.")
+<environment: 0x55ed5e1873b8>
+
+[[1]]$any_param
+function() param_flag
+<environment: 0x55ed5e1873b8>
+
+
+Browse[2]> get_edist(model)
+[[1]]
+[[1]]$pdf
+[1] "dnorm"
+
+[[1]]$cdf
+[1] "pnorm"
+
+[[1]]$rand
+[1] "rnorm"
+
+[[1]]$logpdf
+function(x) log(dnorm(x))
+<environment: 0x55ed5e1873b8>
+
+[[1]]$Fscore
+function(x) -x
+<environment: 0x55ed5e1873b8>
+
+[[1]]$xFscore
+function(x) -x^2
+<environment: 0x55ed5e1873b8>
+
+[[1]]$Parscore
+function() 0
+<environment: 0x55ed5e1873b8>
+
+[[1]]$get_param
+function() numeric()
+<environment: 0x55ed5e1873b8>
+
+[[1]]$set_param
+function() stop("Standard normal has no parameters to set.")
+<environment: 0x55ed5e1873b8>
+
+[[1]]$any_param
+function() param_flag
+<environment: 0x55ed5e1873b8>
+
+
+Browse[2]> wrk
+Error during wrapup: object 'wrk' not found
+Error: no more error handlers available (recursive errors?); invoking 'abort' restart
+Browse[2]> dist
+[[1]]
+[[1]]$pdf
+[1] "dnorm"
+
+[[1]]$cdf
+[1] "pnorm"
+
+[[1]]$rand
+[1] "rnorm"
+
+[[1]]$logpdf
+function(x) log(dnorm(x))
+<environment: 0x55ed5e1873b8>
+
+[[1]]$Fscore
+function(x) -x
+<environment: 0x55ed5e1873b8>
+
+[[1]]$xFscore
+function(x) -x^2
+<environment: 0x55ed5e1873b8>
+
+[[1]]$Parscore
+function() 0
+<environment: 0x55ed5e1873b8>
+
+[[1]]$get_param
+function() numeric()
+<environment: 0x55ed5e1873b8>
+
+[[1]]$set_param
+function() stop("Standard normal has no parameters to set.")
+<environment: 0x55ed5e1873b8>
+
+[[1]]$any_param
+function() param_flag
+<environment: 0x55ed5e1873b8>
+
+
+Browse[2]> class(dist)
+[1] "list"
+Browse[2]> sapply(dist, function(x) x$moment(k))
+Error during wrapup: attempt to apply non-function
+Error: no more error handlers available (recursive errors?); invoking 'abort' restart
+Browse[2]> sapply(k, function(x) dist$moment(k))
+Error during wrapup: attempt to apply non-function
+Error: no more error handlers available (recursive errors?); invoking 'abort' restart
+Browse[2]> sapply(k, function(x) dist$moment(x))
+Error during wrapup: attempt to apply non-function
+Error: no more error handlers available (recursive errors?); invoking 'abort' restart
+Browse[2]> names(dist)
+NULL
+Browse[2]> dist
+[[1]]
+[[1]]$pdf
+[1] "dnorm"
+
+[[1]]$cdf
+[1] "pnorm"
+
+[[1]]$rand
+[1] "rnorm"
+
+[[1]]$logpdf
+function(x) log(dnorm(x))
+<environment: 0x55ed5e1873b8>
+
+[[1]]$Fscore
+function(x) -x
+<environment: 0x55ed5e1873b8>
+
+[[1]]$xFscore
+function(x) -x^2
+<environment: 0x55ed5e1873b8>
+
+[[1]]$Parscore
+function() 0
+<environment: 0x55ed5e1873b8>
+
+[[1]]$get_param
+function() numeric()
+<environment: 0x55ed5e1873b8>
+
+[[1]]$set_param
+function() stop("Standard normal has no parameters to set.")
+<environment: 0x55ed5e1873b8>
+
+[[1]]$any_param
+function() param_flag
+<environment: 0x55ed5e1873b8>
+
+
+Browse[2]> 
+
+Enter a frame number, or 0 to exit   
+
+1: noise_moment(exampleModels$WL_ibm_gen, 2)
+2: noise_moment(exampleModels$WL_ibm_gen, 2)
+3: mixAR.R#1068: sapply(dist, function(x) x$moment(k))
+4: lapply(X = X, FUN = FUN, ...)
+5: FUN(X[[i]], ...)
+
+Selection: 0
+> exampleModels$WL_At
+An object of class "MixARgen"
+Number of components: 2 
+       prob shift scale order ar_1
+Comp_1 0.5    0     1     1   -0.5
+Comp_2 0.5    0     2     1    1.1
+
+Distributions of the error components:
+	Component 1: Student t with 4 df
+	Component 2: Student t with 8 df
+
+> get_edist(exampleModels$WL_At)
+[[1]]
+[[1]]$pdf
+function(x) dstd(x, nu = nu[k])
+<bytecode: 0x55ed5562f708>
+<environment: 0x55ed5c4139d8>
+
+[[1]]$cdf
+function(x) pstd(x, nu = nu[k])
+<bytecode: 0x55ed58684aa8>
+<environment: 0x55ed5c4139d8>
+
+[[1]]$rand
+function(n) rstd(n, nu = nu[k])
+<bytecode: 0x55ed53cc6930>
+<environment: 0x55ed5c4139d8>
+
+[[1]]$logpdf
+function(x) log(dstd(x, nu = nu[k]))
+<bytecode: 0x55ed5cf66f90>
+<environment: 0x55ed5c4139d8>
+
+[[1]]$Fscore
+function(x) - x*(1+nu[k])/(x^2+nu[k]-2)
+<bytecode: 0x55ed572dd870>
+<environment: 0x55ed5c4139d8>
+
+[[1]]$xFscore
+function(x) - x^2*(1+nu[k])/(x^2+nu[k]-2)
+<bytecode: 0x55ed59932c80>
+<environment: 0x55ed5c4139d8>
+
+[[1]]$Parscore
+function(x) param_score_stdt(x,nu[k])
+<bytecode: 0x55ed515df588>
+<environment: 0x55ed5c4139d8>
+
+[[1]]$get_param
+function() nu[k]
+<bytecode: 0x55ed4aa8c4c8>
+<environment: 0x55ed5c4139d8>
+
+[[1]]$set_param
+function(x) nu[k] <<- x
+<bytecode: 0x55ed479e0200>
+<environment: 0x55ed5c4139d8>
+
+[[1]]$any_param
+function() param_flag
+<bytecode: 0x55ed61b81478>
+<environment: 0x55ed5c4139d8>
+
+[[1]]$show
+function()
+                                           paste("Student t with",
+                                                 format(nu[[k]], digits = 4), "df")
+<bytecode: 0x55ed51d91de0>
+<environment: 0x55ed5c4139d8>
+
+
+[[2]]
+[[2]]$pdf
+function(x) dstd(x, nu = nu[k])
+<bytecode: 0x55ed5562f708>
+<environment: 0x55ed552a49c0>
+
+[[2]]$cdf
+function(x) pstd(x, nu = nu[k])
+<bytecode: 0x55ed58684aa8>
+<environment: 0x55ed552a49c0>
+
+[[2]]$rand
+function(n) rstd(n, nu = nu[k])
+<bytecode: 0x55ed53cc6930>
+<environment: 0x55ed552a49c0>
+
+[[2]]$logpdf
+function(x) log(dstd(x, nu = nu[k]))
+<bytecode: 0x55ed5cf66f90>
+<environment: 0x55ed552a49c0>
+
+[[2]]$Fscore
+function(x) - x*(1+nu[k])/(x^2+nu[k]-2)
+<bytecode: 0x55ed572dd870>
+<environment: 0x55ed552a49c0>
+
+[[2]]$xFscore
+function(x) - x^2*(1+nu[k])/(x^2+nu[k]-2)
+<bytecode: 0x55ed59932c80>
+<environment: 0x55ed552a49c0>
+
+[[2]]$Parscore
+function(x) param_score_stdt(x,nu[k])
+<bytecode: 0x55ed515df588>
+<environment: 0x55ed552a49c0>
+
+[[2]]$get_param
+function() nu[k]
+<bytecode: 0x55ed4aa8c4c8>
+<environment: 0x55ed552a49c0>
+
+[[2]]$set_param
+function(x) nu[k] <<- x
+<bytecode: 0x55ed479e0200>
+<environment: 0x55ed552a49c0>
+
+[[2]]$any_param
+function() param_flag
+<bytecode: 0x55ed61b81478>
+<environment: 0x55ed552a49c0>
+
+[[2]]$show
+function()
+                                           paste("Student t with",
+                                                 format(nu[[k]], digits = 4), "df")
+<bytecode: 0x55ed51d91de0>
+<environment: 0x55ed552a49c0>
+
+
+> names(get_edist(exampleModels$WL_At))
+NULL
+> names(get_edist(exampleModels$WL_At)[[1]])
+ [1] "pdf"       "cdf"       "rand"      "logpdf"    "Fscore"    "xFscore"  
+ [7] "Parscore"  "get_param" "set_param" "any_param" "show"     
+> get_edist(exampleModels$WL_At)
+[[1]]
+[[1]]$pdf
+function(x) dstd(x, nu = nu[k])
+<bytecode: 0x55ed5562f708>
+<environment: 0x55ed5a0633d0>
+
+[[1]]$cdf
+function(x) pstd(x, nu = nu[k])
+<bytecode: 0x55ed58684aa8>
+<environment: 0x55ed5a0633d0>
+
+[[1]]$rand
+function(n) rstd(n, nu = nu[k])
+<bytecode: 0x55ed53cc6930>
+<environment: 0x55ed5a0633d0>
+
+[[1]]$logpdf
+function(x) log(dstd(x, nu = nu[k]))
+<bytecode: 0x55ed5cf66f90>
+<environment: 0x55ed5a0633d0>
+
+[[1]]$Fscore
+function(x) - x*(1+nu[k])/(x^2+nu[k]-2)
+<bytecode: 0x55ed572dd870>
+<environment: 0x55ed5a0633d0>
+
+[[1]]$xFscore
+function(x) - x^2*(1+nu[k])/(x^2+nu[k]-2)
+<bytecode: 0x55ed59932c80>
+<environment: 0x55ed5a0633d0>
+
+[[1]]$Parscore
+function(x) param_score_stdt(x,nu[k])
+<bytecode: 0x55ed515df588>
+<environment: 0x55ed5a0633d0>
+
+[[1]]$get_param
+function() nu[k]
+<bytecode: 0x55ed4aa8c4c8>
+<environment: 0x55ed5a0633d0>
+
+[[1]]$set_param
+function(x) nu[k] <<- x
+<bytecode: 0x55ed479e0200>
+<environment: 0x55ed5a0633d0>
+
+[[1]]$any_param
+function() param_flag
+<bytecode: 0x55ed61b81478>
+<environment: 0x55ed5a0633d0>
+
+[[1]]$show
+function()
+                                           paste("Student t with",
+                                                 format(nu[[k]], digits = 4), "df")
+<bytecode: 0x55ed51d91de0>
+<environment: 0x55ed5a0633d0>
+
+
+[[2]]
+[[2]]$pdf
+function(x) dstd(x, nu = nu[k])
+<bytecode: 0x55ed5562f708>
+<environment: 0x55ed5a064240>
+
+[[2]]$cdf
+function(x) pstd(x, nu = nu[k])
+<bytecode: 0x55ed58684aa8>
+<environment: 0x55ed5a064240>
+
+[[2]]$rand
+function(n) rstd(n, nu = nu[k])
+<bytecode: 0x55ed53cc6930>
+<environment: 0x55ed5a064240>
+
+[[2]]$logpdf
+function(x) log(dstd(x, nu = nu[k]))
+<bytecode: 0x55ed5cf66f90>
+<environment: 0x55ed5a064240>
+
+[[2]]$Fscore
+function(x) - x*(1+nu[k])/(x^2+nu[k]-2)
+<bytecode: 0x55ed572dd870>
+<environment: 0x55ed5a064240>
+
+[[2]]$xFscore
+function(x) - x^2*(1+nu[k])/(x^2+nu[k]-2)
+<bytecode: 0x55ed59932c80>
+<environment: 0x55ed5a064240>
+
+[[2]]$Parscore
+function(x) param_score_stdt(x,nu[k])
+<bytecode: 0x55ed515df588>
+<environment: 0x55ed5a064240>
+
+[[2]]$get_param
+function() nu[k]
+<bytecode: 0x55ed4aa8c4c8>
+<environment: 0x55ed5a064240>
+
+[[2]]$set_param
+function(x) nu[k] <<- x
+<bytecode: 0x55ed479e0200>
+<environment: 0x55ed5a064240>
+
+[[2]]$any_param
+function() param_flag
+<bytecode: 0x55ed61b81478>
+<environment: 0x55ed5a064240>
+
+[[2]]$show
+function()
+                                           paste("Student t with",
+                                                 format(nu[[k]], digits = 4), "df")
+<bytecode: 0x55ed51d91de0>
+<environment: 0x55ed5a064240>
+
+
+> noise_moment(exampleModels$WL_At)
+Error in noise_moment(exampleModels$WL_At) (from mixAR.R#1042) : 
+  argument "k" is missing, with no default
+
+Enter a frame number, or 0 to exit   
+
+1: noise_moment(exampleModels$WL_At)
+2: noise_moment(exampleModels$WL_At)
+
+Selection: 0
+> noise_moment(exampleModels$WL_At, 3)
+Error in FUN(X[[i]], ...) (from mixAR.R#1068) : attempt to apply non-function
+
+Enter a frame number, or 0 to exit   
+
+1: noise_moment(exampleModels$WL_At, 3)
+2: noise_moment(exampleModels$WL_At, 3)
+3: mixAR.R#1068: sapply(dist, function(x) x$moment(k))
+4: lapply(X = X, FUN = FUN, ...)
+5: FUN(X[[i]], ...)
+
+Selection: 0
+> devtools::test()
+ℹ Loading mixAR
+ℹ Testing mixAR
+✔ |  OK F W S | Context
+✔ |  46       | bayesian [3.6 s]
+✔ |   0     1 | dist
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-dist.R:1:1): mixAR and new() for mixAR work
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |  18       | Testing exampleModels
+⠏ |   0       | fit_mixAR                                                       Estimating.0.sigma =  5.505965 5.911653 6.988254 
+.
+Estimating.1.sigma =  5.505976 5.911649 6.988241 
+.
+Estimating.1.sigma =  5.505975 5.911643 6.988237 
+.
+✔ |   0     1 | fit_mixAR [10.1 s]
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-fit_mixAR.R:4:1): fit_mixAR works
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   3       | Testing inner
+✔ |   6       | tests of mix_se() [1.1 s]
+✔ |   5       | mixAR_diag [0.2 s]
+✔ |  31       | mixAR [0.5 s]
+✔ |   5       | tests of mixARemFixedPoint() [4.6 s]
+✔ |   0     1 | mixARnoise_sim
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixARnoise_sim.R:1:1): mixARnoise_sim works
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   0     1 | mixARreg
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixARreg.R:29:5): mixARreg and fit_mixARreg work
+Reason: !covr::in_covr() is TRUE
+────────────────────────────────────────────────────────────────────────────────
+✔ |   0     1 | mixARsim
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixARsim.R:3:1): mixARsim functions work
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   0     1 | mixComp
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixComp.R:1:1): MixComp class and methods are ok
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   7       | mixutil
+✔ |  17       | mixVAR [5.4 s]
+✔ |   5     1 | predict [0.1 s]
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-predict.R:52:1): functions for 'predict' work
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |  88       | Testing ragged helper functions
+✔ |  80       | Testing raggedS helper functions
+✔ |  29       | Testing raggedV helper functions
+✔ |   0     1 | unswitch [0.6 s]
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-unswitch.R:1:1): unswitch works
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+
+══ Results ═════════════════════════════════════════════════════════════════════
+Duration: 26.5 s
+
+── Skipped tests  ──────────────────────────────────────────────────────────────
+● !covr::in_covr() is TRUE (1)
+● empty test (7)
+
+[ FAIL 0 | WARN 0 | SKIP 8 | PASS 340 ]
+> covr::report()
+> pkgdown::build_site()
+── Installing package into temporary library ───────────────────────────────────
+══ Building pkgdown site ═══════════════════════════════════════════════════════
+Reading from: '/home/georgi/repos/private/mixAR'
+Writing to:   '/home/georgi/repos/private/mixAR/docs'
+── Initialising site ───────────────────────────────────────────────────────────
+── Building home ───────────────────────────────────────────────────────────────
+Reading 'NEWS_devel.md'
+Reading 'README_dev.md'
+── Building function reference ─────────────────────────────────────────────────
+Reading 'man/Choose_pk.Rd'
+Reading 'man/MixAR-class.Rd'
+Reading 'man/MixARGaussian-class.Rd'
+Reading 'man/MixARgen-class.Rd'
+Writing 'reference/MixARgen-class.html'
+Reading 'man/MixComp-class.Rd'
+Reading 'man/MixVAR-class.Rd'
+Reading 'man/MixVARGaussian-class.Rd'
+Reading 'man/PortfolioData1.Rd'
+Reading 'man/adjustLengths.Rd'
+Reading 'man/bayes_mixAR.Rd'
+Reading 'man/bx_dx.Rd'
+Reading 'man/companion_matrix.Rd'
+Reading 'man/cond_loglik.Rd'
+Reading 'man/dist_norm.Rd'
+Writing 'reference/dist_norm.html'
+Reading 'man/em_est_dist.Rd'
+Reading 'man/em_est_sigma.Rd'
+Reading 'man/em_rinit.Rd'
+Reading 'man/em_tau.Rd'
+Reading 'man/err.Rd'
+Reading 'man/err_k.Rd'
+Reading 'man/est_templ.Rd'
+Reading 'man/exampleModels.Rd'
+Writing 'reference/exampleModels.html'
+Reading 'man/fit_mixAR-methods.Rd'
+Reading 'man/fit_mixARreg-methods.Rd'
+Reading 'man/fit_mixVAR-methods.Rd'
+Reading 'man/fnoise.Rd'
+Writing 'reference/fnoise.html'
+Reading 'man/get_edist-methods.Rd'
+Reading 'man/initialize-methods.Rd'
+Reading 'man/inner.Rd'
+Reading 'man/isStable.Rd'
+Reading 'man/label_switch.Rd'
+Reading 'man/lastn.Rd'
+Reading 'man/lik_params.Rd'
+Reading 'man/lik_params_bounds.Rd'
+Reading 'man/make_fcond_lik-methods.Rd'
+Reading 'man/marg_loglik.Rd'
+Reading 'man/mixAR-internal.Rd'
+Reading 'man/mixAR-methods.Rd'
+Reading 'man/mixAR-package.Rd'
+Reading 'man/mixARExperiment.Rd'
+Reading 'man/mixAR_BIC.Rd'
+Reading 'man/mixAR_cond_probs.Rd'
+Reading 'man/mixAR_diag.Rd'
+Reading 'man/mixAR_sim.Rd'
+Reading 'man/mixAR_switch.Rd'
+Reading 'man/mixARemFixedPoint.Rd'
+Reading 'man/mixARnoise_sim.Rd'
+Reading 'man/mixFilter.Rd'
+Reading 'man/mixMstep.Rd'
+Reading 'man/mixSARfit.Rd'
+Reading 'man/mixSubsolve.Rd'
+Reading 'man/mixVAR_sim.Rd'
+Reading 'man/mixVARfit.Rd'
+Reading 'man/mix_central_moment-methods.Rd'
+Reading 'man/mix_ek.Rd'
+Reading 'man/mix_hatk.Rd'
+Writing 'reference/mix_hatk.html'
+Reading 'man/mix_location-methods.Rd'
+Reading 'man/mix_moment-methods.Rd'
+Reading 'man/mix_moment.Rd'
+Reading 'man/mix_ncomp-methods.Rd'
+Reading 'man/mix_pdf-methods.Rd'
+Writing 'reference/mix_pdf-methods.html'
+Reading 'man/mix_qf-methods.Rd'
+Writing 'reference/mix_qf-methods.html'
+Reading 'man/mix_se-methods.Rd'
+Reading 'man/mix_variance-methods.Rd'
+Reading 'man/mixgenMstep.Rd'
+Reading 'man/multiStep_dist-methods.Rd'
+Writing 'reference/multiStep_dist-methods.html'
+Reading 'man/noise_dist-methods.Rd'
+Reading 'man/noise_dist.Rd'
+Reading 'man/noise_moment-methods.Rd'
+Reading 'man/noise_params-methods.Rd'
+Reading 'man/noise_rand-methods.Rd'
+Reading 'man/parameters.Rd'
+Reading 'man/percent_of.Rd'
+Reading 'man/permn_cols.Rd'
+Reading 'man/predict_coef.Rd'
+Reading 'man/ragged.Rd'
+Reading 'man/ragged2char.Rd'
+Reading 'man/raggedCoef-class.Rd'
+Reading 'man/raggedCoefS-class.Rd'
+Reading 'man/raggedCoefV-class.Rd'
+Reading 'man/raghat1.Rd'
+Reading 'man/randomArCoefficients.Rd'
+Reading 'man/row_length-methods.Rd'
+Reading 'man/sampZpi.Rd'
+Reading 'man/show_diff.Rd'
+Reading 'man/simuExperiment.Rd'
+Reading 'man/stdnormmoment.Rd'
+Reading 'man/tau2probhat.Rd'
+Reading 'man/test_unswitch.Rd'
+Reading 'man/tomarparambyComp.Rd'
+Reading 'man/ui.Rd'
+Reading 'man/unswitch.Rd'
+Reading 'man/xxcanonic_coef.Rd'
+── Building news ───────────────────────────────────────────────────────────────
+══ DONE ════════════════════════════════════════════════════════════════════════
+Warning message:
+Topics missing from index: 
+* mixARExperiment
+* mix_qf-methods
+* simuExperiment
+* test_unswitch
+* unswitch 
+── Previewing site ─────────────────────────────────────────────────────────────
+> methods(residuals)
+ [1] residuals,ANY-method        residuals,fGARCH-method    
+ [3] residuals,glmRespMod-method residuals,glpModel-method  
+ [5] residuals,respModule-method residuals.ar*              
+ [7] residuals.ARFIMA*           residuals.Arima*           
+ [9] residuals.arma*             residuals.bats*            
+[11] residuals.default*          residuals.ets*             
+[13] residuals.forecast*         residuals.forecast_ARIMA*  
+[15] residuals.fracdiff*         residuals.garch*           
+[17] residuals.glm               residuals.gls*             
+[19] residuals.glsStruct*        residuals.gnls*            
+[21] residuals.gnlsStruct*       residuals.HoltWinters*     
+[23] residuals.isoreg*           residuals.lm               
+[25] residuals.lme*              residuals.lmeStruct*       
+[27] residuals.lmList*           residuals.loglm*           
+[29] residuals.nlmeStruct*       residuals.nlrq*            
+[31] residuals.nls*              residuals.nnetar*          
+[33] residuals.quantmod*         residuals.slm*             
+[35] residuals.smooth.spline*    residuals.stlm*            
+[37] residuals.tbats*            residuals.trls*            
+[39] residuals.tslm*             residuals.tukeyline*       
+see '?methods' for accessing help and source code
+> devtools::load_all()
+ℹ Loading mixAR
+> qf1 <- mix_qf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
+tmp <- qf1(0.05)
+tmp <- qf1(1:9/10)
+tmp1 <- mix_qf(exampleModels$WL_ibm, p = 1:9/10, xcond = as.numeric(fma::ibmclose))
+
+qf1 <- mix_qf(exampleModels$WL_ibm, xcond = as.numeric(fma::ibmclose))
+> tmp <- qf1(0.05)
+> tmp <- qf1(1:9/10)
+> tmp1 <- mix_qf(exampleModels$WL_ibm, p = 1:9/10, xcond = as.numeric(fma::ibmclose))
+> tmp1 <- mix_qf(exampleModels$WL_ibm, p = 1:9/10, x = as.numeric(fma::ibmclose))
+Error in (function (classes, fdef, mtable)  : 
+  unable to find an inherited method for function ‘mix_qf’ for signature ‘"MixARGaussian", "numeric", "numeric", "missing", "missing"’
+
+Enter a frame number, or 0 to exit   
+
+1: mix_qf(exampleModels$WL_ibm, p = 1:9/10, x = as.numeric(fma::ibmclose))
+2: mixAR.R#39: (function (classes, fdef, mtable) 
+{
+    methods <- .findInheri
+
+Selection: 0
+
+> mix_qf(exampleModels$WL_ibm, p = 1:9/10, x = as.numeric(fma::ibmclose), index = 369)
+          [,1]
+ [1,] 349.9105
+ [2,] 352.4107
+ [3,] 354.2101
+ [4,] 355.7706
+ [5,] 357.2621
+ [6,] 358.7968
+ [7,] 360.4990
+ [8,] 362.5843
+ [9,] 365.6616
+> mix_qf(exampleModels$WL_ibm, p = 1:9/10, x = as.numeric(fma::ibmclose), index = 367:369)
+          [,1]     [,2]     [,3]
+ [1,] 336.8523 344.7761 349.9105
+ [2,] 340.0871 347.3096 352.4107
+ [3,] 342.2959 349.1478 354.2101
+ [4,] 344.0912 350.7545 355.7706
+ [5,] 345.6975 352.3025 357.2621
+ [6,] 347.2455 353.9088 358.7968
+ [7,] 348.8522 355.7041 360.4990
+ [8,] 350.6904 357.9129 362.5843
+ [9,] 353.2239 361.1477 365.6616
+> ?sapply
+> mix_qf(exampleModels$WL_ibm, p = 0.05, x = as.numeric(fma::ibmclose), index = 367:369)
+[1] 334.0483 342.6060 347.7531
+> devtools::test()
+ℹ Loading mixAR
+ℹ Testing mixAR
+✔ |  OK F W S | Context
+✔ |  46       | bayesian [3.6 s]
+✔ |   0     1 | dist
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-dist.R:1:1): mixAR and new() for mixAR work
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |  18       | Testing exampleModels
+⠏ |   0       | fit_mixAR                                                       Estimating.0.sigma =  5.505965 5.911653 6.988254 
+.
+Estimating.1.sigma =  5.505976 5.911649 6.988241 
+.
+Estimating.1.sigma =  5.505975 5.911643 6.988237 
+.
+✔ |   0     1 | fit_mixAR [9.8 s]
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-fit_mixAR.R:4:1): fit_mixAR works
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   3       | Testing inner
+✔ |   6       | tests of mix_se() [1.1 s]
+✔ |   5       | mixAR_diag [0.3 s]
+✔ |  31       | mixAR [0.7 s]
+✔ |   5       | tests of mixARemFixedPoint() [4.7 s]
+✔ |   0     1 | mixARnoise_sim
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixARnoise_sim.R:1:1): mixARnoise_sim works
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   0     1 | mixARreg
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixARreg.R:29:5): mixARreg and fit_mixARreg work
+Reason: !covr::in_covr() is TRUE
+────────────────────────────────────────────────────────────────────────────────
+✔ |   0     1 | mixARsim
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixARsim.R:3:1): mixARsim functions work
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   0     1 | mixComp
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-mixComp.R:1:1): MixComp class and methods are ok
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |   7       | mixutil
+✔ |  17       | mixVAR [5.6 s]
+✔ |   5     1 | predict [0.1 s]
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-predict.R:52:1): functions for 'predict' work
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+✔ |  88       | Testing ragged helper functions [0.1 s]
+✔ |  80       | Testing raggedS helper functions
+✔ |  29       | Testing raggedV helper functions
+✔ |   0     1 | unswitch [0.6 s]
+────────────────────────────────────────────────────────────────────────────────
+Skip (test-unswitch.R:1:1): unswitch works
+Reason: empty test
+────────────────────────────────────────────────────────────────────────────────
+
+══ Results ═════════════════════════════════════════════════════════════════════
+Duration: 27.0 s
+
+── Skipped tests  ──────────────────────────────────────────────────────────────
+● !covr::in_covr() is TRUE (1)
+● empty test (7)
+
+[ FAIL 0 | WARN 0 | SKIP 8 | PASS 340 ]
+> covr::report()
+> devtools::load_all()
+ℹ Loading mixAR
+> ?multiStep_dist
+> dist <- multiStep_dist(exampleModels$WL_ibm, maxh = 3)
+> tfpdf <- dist(3, "pdf", xcond = c(560, 600)) # xcond is argument to 'dist' here
+> tfcdf <- dist(3, "cdf", xcond = c(560, 600))
+> gbutils::plotpdf(tfpdf, cdf = tfcdf)
+> args(dist(3, "pdf", xcond = c(500, 600)))
+function (x) 
+NULL
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(560, 600))
+> ## get pdf and cdf for horizon 3
+> tfepdf <- tfe(3, "pdf")
+> tfecdf <- tfe(3, "cdf")
+> gbutils::plotpdf(tfepdf, cdf = tfecdf)
+> gbutils::plotpdf(tfecdf, cdf = tfecdf)
+> tfe
+function(h, what){
+                  arh <- t(co$arcoefs[[h]])
+                  if(ncol(arh) != length(xcond)){
+                      excess <- length(xcond) - ncol(arh)
+                      if(excess > 0){
+                          ## TODO: argument to suppress the message?
+                          message(paste0("using the last ",  length(xcond),
+                                         " values in 'xcond'"))
+                          xcond <- xcond[-(1:excess)]
+                      } else
+                          stop("length(xcond) must be >= maximal AR order")
+                  }
+
+                  hmo <- new("MixARGaussian",
+                             prob   = co$probs[[h]],
+                             scale  = co$sStable[[h]],
+                             shift  = as.numeric(arh %*% xcond ),
+                             arcoef =arh)
+                  switch(what,
+                         cdf = mix_cdf(hmo, xcond = xcond),
+                         pdf = mix_pdf(hmo, xcond = xcond),
+                         # default, mainly for testing
+                         hmo
+                         )
+              }
+<environment: 0x55ed43c2af40>
+> 
+No suitable frames for recover()
+> Save workspace image? [y/n/c]: n
+
+Process R finished at Sat May  1 12:01:32 2021
+
+
+R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> setwd('/home/georgi/repos/private/mixAR')
+> install.packages("mixAR")
+Installing package into ‘/home/georgi/R/x86_64-pc-linux-gnu-library/4.0’
+(as ‘lib’ is unspecified)
+trying URL 'https://cloud.r-project.org/src/contrib/mixAR_0.22.5.tar.gz'
+Content type 'application/x-gzip' length 257202 bytes (251 KB)
+==================================================
+downloaded 251 KB
+
+* installing *source* package ‘mixAR’ ...
+** package ‘mixAR’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (mixAR)
+
+The downloaded source packages are in
+	‘/tmp/RtmpDYljrZ/downloaded_packages’
+> library(mixAR)
+> dist <- multiStep_dist(exampleModels$WL_ibm, maxh = 3)
+> tfpdf <- dist(3, "pdf", xcond = c(560, 600)) # xcond is argument to 'dist' here
+> tfcdf <- dist(3, "cdf", xcond = c(560, 600))
+> ## plot the pdf (gbutils::plotpdf determines suitable range automatically)
+> gbutils::plotpdf(tfpdf, cdf = tfcdf)
+> tfpdf <- dist(1, "pdf", xcond = c(560, 600))
+> tfcdf <- dist(2, "cdf", xcond = c(560, 600))
+> tfpdf <- dist(2, "pdf", xcond = c(560, 600))
+> gbutils::plotpdf(tfpdf, cdf = tfcdf)
+> tfpdf <- dist(3, "pdf", xcond = c(560, 600)) # xcond is argument to 'dist' here
+> tfcdf <- dist(3, "cdf", xcond = c(560, 600))
+> ## plot the pdf (gbutils::plotpdf determines suitable range automatically)
+> gbutils::plotpdf(tfpdf, cdf = tfcdf)
+> tfpdf
+function (x) 
+{
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+<bytecode: 0x55df5a2782b8>
+<environment: 0x55df608ece88>
+> ls(environment(tfpdf))
+[1] "f"     "index" "model" "scale" "wrk"   "x"     "xcond"
+> model
+Error: object 'model' not found
+> with(environment(tfpdf), model)
+(To see the internal structure of the object, use function 'str'.)
+
+An object of class "MixARGaussian"
+Number of components: 27 
+        prob         shift    scale     order ar_1      ar_2      
+Comp_1  1.609004e-01 570.0361  6.943705   2   0.7490983  0.2509017
+Comp_2  1.235374e-01 539.0050  7.487943   2   1.5248758 -0.5248758
+Comp_3  1.138935e-02 560.0000 15.361496   2   1.0000000  0.0000000
+Comp_4  1.235374e-01 578.6810  9.444825   2   0.5329758  0.4670242
+Comp_5  9.485059e-02 520.9202 10.789703   2   1.9769948 -0.9769948
+Comp_6  8.744607e-03 560.0000 27.198296   2   1.0000000  0.0000000
+Comp_7  1.138935e-02 572.8320 14.101261   2   0.6792000  0.3208000
+Comp_8  8.744607e-03 533.1560 14.549419   2   1.6711000 -0.6711000
+Comp_9  8.061958e-04 560.0000 22.489868   2   1.0000000  0.0000000
+Comp_10 1.235374e-01 565.9529 10.298297   2   0.8511773  0.1488227
+Comp_11 9.485059e-02 547.5468 10.431600   2   1.3113308 -0.3113308
+Comp_12 8.744607e-03 560.0000 13.119239   2   1.0000000  0.0000000
+Comp_13 9.485059e-02 587.2228 15.542985   2   0.3194308  0.6805692
+Comp_14 7.282516e-02 503.0511 17.302398   2   2.4237220 -1.4237220
+Comp_15 6.714006e-03 560.0000 40.287155   2   1.0000000  0.0000000
+Comp_16 8.744607e-03 572.8320 31.328660   2   0.6792000  0.3208000
+Comp_17 6.714006e-03 533.1560 31.532918   2   1.6711000 -0.6711000
+Comp_18 6.189876e-04 560.0000 35.894756   2   1.0000000  0.0000000
+Comp_19 1.138935e-02 568.7155 19.083891   2   0.7821126  0.2178874
+Comp_20 8.744607e-03 541.7676 19.238455   2   1.4558111 -0.4558111
+Comp_21 8.061958e-04 560.0000 22.489868   2   1.0000000  0.0000000
+Comp_22 8.744607e-03 581.4436 20.766715   2   0.4639111  0.5360889
+Comp_23 6.714006e-03 515.1410 21.612802   2   2.1214752 -1.1214752
+Comp_24 6.189876e-04 560.0000 35.894756   2   1.0000000  0.0000000
+Comp_25 8.061958e-04 572.8320 26.147132   2   0.6792000  0.3208000
+Comp_26 6.189876e-04 533.1560 26.391524   2   1.6711000 -0.6711000
+Comp_27 5.706663e-05 560.0000 31.474134   2   1.0000000  0.0000000
+
+Distributions of the error components:
+	standard Gaussian
+
+> tfpdf <- dist(3, "pdf", xcond = c(560, 600)) # xcond is argument to 'dist' here
+> tfcdf <- dist(3, "cdf", xcond = c(560, 600))
+> ## plot the pdf (gbutils::plotpdf determines suitable range automatically)
+> gbutils::plotpdf(tfpdf, cdf = tfcdf)
+> with(environment(tfpdf), model)
+(To see the internal structure of the object, use function 'str'.)
+
+An object of class "MixARGaussian"
+Number of components: 27 
+        prob         shift    scale     order ar_1      ar_2      
+Comp_1  1.609004e-01 570.0361  6.943705   2   0.7490983  0.2509017
+Comp_2  1.235374e-01 539.0050  7.487943   2   1.5248758 -0.5248758
+Comp_3  1.138935e-02 560.0000 15.361496   2   1.0000000  0.0000000
+Comp_4  1.235374e-01 578.6810  9.444825   2   0.5329758  0.4670242
+Comp_5  9.485059e-02 520.9202 10.789703   2   1.9769948 -0.9769948
+Comp_6  8.744607e-03 560.0000 27.198296   2   1.0000000  0.0000000
+Comp_7  1.138935e-02 572.8320 14.101261   2   0.6792000  0.3208000
+Comp_8  8.744607e-03 533.1560 14.549419   2   1.6711000 -0.6711000
+Comp_9  8.061958e-04 560.0000 22.489868   2   1.0000000  0.0000000
+Comp_10 1.235374e-01 565.9529 10.298297   2   0.8511773  0.1488227
+Comp_11 9.485059e-02 547.5468 10.431600   2   1.3113308 -0.3113308
+Comp_12 8.744607e-03 560.0000 13.119239   2   1.0000000  0.0000000
+Comp_13 9.485059e-02 587.2228 15.542985   2   0.3194308  0.6805692
+Comp_14 7.282516e-02 503.0511 17.302398   2   2.4237220 -1.4237220
+Comp_15 6.714006e-03 560.0000 40.287155   2   1.0000000  0.0000000
+Comp_16 8.744607e-03 572.8320 31.328660   2   0.6792000  0.3208000
+Comp_17 6.714006e-03 533.1560 31.532918   2   1.6711000 -0.6711000
+Comp_18 6.189876e-04 560.0000 35.894756   2   1.0000000  0.0000000
+Comp_19 1.138935e-02 568.7155 19.083891   2   0.7821126  0.2178874
+Comp_20 8.744607e-03 541.7676 19.238455   2   1.4558111 -0.4558111
+Comp_21 8.061958e-04 560.0000 22.489868   2   1.0000000  0.0000000
+Comp_22 8.744607e-03 581.4436 20.766715   2   0.4639111  0.5360889
+Comp_23 6.714006e-03 515.1410 21.612802   2   2.1214752 -1.1214752
+Comp_24 6.189876e-04 560.0000 35.894756   2   1.0000000  0.0000000
+Comp_25 8.061958e-04 572.8320 26.147132   2   0.6792000  0.3208000
+Comp_26 6.189876e-04 533.1560 26.391524   2   1.6711000 -0.6711000
+Comp_27 5.706663e-05 560.0000 31.474134   2   1.0000000  0.0000000
+
+Distributions of the error components:
+	standard Gaussian
+
+> dist
+function (h, xcond, what) 
+{
+    hmo <- new("MixARGaussian", prob = co$probs[[h]], scale = co$sStable[[h]], 
+        shift = as.numeric(t(co$arcoefs[[h]]) %*% xcond), arcoef = t(co$arcoefs[[h]]))
+    switch(what, cdf = mix_cdf(hmo, xcond = xcond), pdf = mix_pdf(hmo, 
+        xcond = xcond), hmo)
+}
+<environment: 0x55df58e3eb80>
+> tfpdf <- dist(3, "pdf", xcond = c(560, 600)) # xcond is argument to 'dist' here
+> tfcdf <- dist(3, "cdf", xcond = c(560, 600))
+> tfpdf
+function (x) 
+{
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+<bytecode: 0x55df5a2782b8>
+<environment: 0x55df63a3c0d0>
+> tfcdf <- dist(2, "cdf", xcond = c(560, 600))
+> tfpdf <- dist(2, "pdf", xcond = c(560, 600))
+> tfcdf
+function (x) 
+{
+    wrk <- (x - wrk)/model@scale
+    wrk <- pnorm %of% wrk
+    wrk <- inner(wrk, model@prob)
+    wrk
+}
+<bytecode: 0x55df59267448>
+<environment: 0x55df63afca38>
+> ls(tfcdf)
+Error in as.environment(pos) : invalid object for 'as.environment'
+> ls(environment(tfcdf))
+[1] "f"     "index" "model" "scale" "wrk"   "x"     "xcond"
+> (environment(tfcdf), model)
+Error: unexpected ',' in "(environment(tfcdf),"
+> with(environment(tfcdf), model)
+(To see the internal structure of the object, use function 'str'.)
+
+An object of class "MixARGaussian"
+Number of components: 9 
+       prob       shift    scale     order ar_1      ar_2      
+Comp_1 0.29582721 568.7155  5.829910   2   0.7821126  0.2178874
+Comp_2 0.22713264 541.7676  6.317524   2   1.4558111 -0.4558111
+Comp_3 0.02094015 560.0000 13.250929   2   1.0000000  0.0000000
+Comp_4 0.22713264 581.4436 10.052333   2   0.4639111  0.5360889
+Comp_5 0.17438976 515.1410 11.700690   2   2.1214752 -1.1214752
+Comp_6 0.01607760 560.0000 30.955233   2   1.0000000  0.0000000
+Comp_7 0.02094015 572.8320 18.800678   2   0.6792000  0.3208000
+Comp_8 0.01607760 533.1560 19.139110   2   1.6711000 -0.6711000
+Comp_9 0.00148225 560.0000 25.698523   2   1.0000000  0.0000000
+
+Distributions of the error components:
+	standard Gaussian
+
+> with(environment(tfpdf), model)
+(To see the internal structure of the object, use function 'str'.)
+
+An object of class "MixARGaussian"
+Number of components: 9 
+       prob       shift    scale     order ar_1      ar_2      
+Comp_1 0.29582721 568.7155  5.829910   2   0.7821126  0.2178874
+Comp_2 0.22713264 541.7676  6.317524   2   1.4558111 -0.4558111
+Comp_3 0.02094015 560.0000 13.250929   2   1.0000000  0.0000000
+Comp_4 0.22713264 581.4436 10.052333   2   0.4639111  0.5360889
+Comp_5 0.17438976 515.1410 11.700690   2   2.1214752 -1.1214752
+Comp_6 0.01607760 560.0000 30.955233   2   1.0000000  0.0000000
+Comp_7 0.02094015 572.8320 18.800678   2   0.6792000  0.3208000
+Comp_8 0.01607760 533.1560 19.139110   2   1.6711000 -0.6711000
+Comp_9 0.00148225 560.0000 25.698523   2   1.0000000  0.0000000
+
+Distributions of the error components:
+	standard Gaussian
+
+> gbutils::plotpdf(tfpdf, cdf = tfcdf)
+> with(environment(tfpdf), xcond)
+[1] 560 600
+> with(environment(tfpdf), ls())
+[1] "f"     "index" "model" "scale" "wrk"   "x"     "xcond"
+> x
+Error: object 'x' not found
+> with(environment(tfpdf), x)
+Error in eval(substitute(expr), data, enclos = parent.frame()) : 
+  argument "x" is missing, with no default
+> with(environment(tfpdf), wrk)
+An object of class "MixComp"
+Slot "m":
+      wrk    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160
+
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(560, 600))
+> 
+> ## get pdf and cdf for horizon 3
+> tfepdf <- tfe(3, "pdf")
+> tfecdf <- tfe(3, "cdf")
+> ## plot the pdf
+> gbutils::plotpdf(tfepdf, cdf = tfecdf)
+> tfpdf
+function (x) 
+{
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+<bytecode: 0x55df5a2782b8>
+<environment: 0x55df63b4c1d0>
+> tfepdf(1160)
+[1] 0.03936893
+> tfepdf(600)
+[1] 7.352339e-47
+> devtools::load_all()
+ℹ Loading mixAR
+> dist <- multiStep_dist(exampleModels$WL_ibm, maxh = 3)
+> tfpdf <- dist(3, "pdf", xcond = c(560, 600)) # xcond is argument to 'dist' here
+> tfcdf <- dist(3, "cdf", xcond = c(560, 600))
+> tfpdf(3)
+[1] 5.320085e-184
+> devtools::load_all()
+ℹ Loading mixAR
+> ## the exact method may also be used with fixed xcond:
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(560, 600))
+> 
+> ## get pdf and cdf for horizon 3
+> tfepdf <- tfe(3, "pdf")
+Called from: mix_pdf(hmo, xcond = xcond)
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixAR.R#654: f <- function(x) {
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+Browse[2]> tfecdf <- tfe(3, "cdf")
+Browse[2]> wrk
+An object of class "MixComp"
+Slot "m":
+      wrk    y    y    y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+        y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+
+Browse[2]> x
+Error: argument "x" is missing, with no default
+Browse[2]> xcond
+[1] 560 600
+Browse[2]> model
+An object of class "MixARGaussian"
+Number of components: 27 
+        prob         shift    scale     order ar_1      ar_2      
+Comp_1  1.609004e-01 570.0361  6.943705   2   0.7490983  0.2509017
+Comp_2  1.235374e-01 539.0050  7.487943   2   1.5248758 -0.5248758
+Comp_3  1.138935e-02 560.0000 15.361496   2   1.0000000  0.0000000
+Comp_4  1.235374e-01 578.6810  9.444825   2   0.5329758  0.4670242
+Comp_5  9.485059e-02 520.9202 10.789703   2   1.9769948 -0.9769948
+Comp_6  8.744607e-03 560.0000 27.198296   2   1.0000000  0.0000000
+Comp_7  1.138935e-02 572.8320 14.101261   2   0.6792000  0.3208000
+Comp_8  8.744607e-03 533.1560 14.549419   2   1.6711000 -0.6711000
+Comp_9  8.061958e-04 560.0000 22.489868   2   1.0000000  0.0000000
+Comp_10 1.235374e-01 565.9529 10.298297   2   0.8511773  0.1488227
+Comp_11 9.485059e-02 547.5468 10.431600   2   1.3113308 -0.3113308
+Comp_12 8.744607e-03 560.0000 13.119239   2   1.0000000  0.0000000
+Comp_13 9.485059e-02 587.2228 15.542985   2   0.3194308  0.6805692
+Comp_14 7.282516e-02 503.0511 17.302398   2   2.4237220 -1.4237220
+Comp_15 6.714006e-03 560.0000 40.287155   2   1.0000000  0.0000000
+Comp_16 8.744607e-03 572.8320 31.328660   2   0.6792000  0.3208000
+Comp_17 6.714006e-03 533.1560 31.532918   2   1.6711000 -0.6711000
+Comp_18 6.189876e-04 560.0000 35.894756   2   1.0000000  0.0000000
+Comp_19 1.138935e-02 568.7155 19.083891   2   0.7821126  0.2178874
+Comp_20 8.744607e-03 541.7676 19.238455   2   1.4558111 -0.4558111
+Comp_21 8.061958e-04 560.0000 22.489868   2   1.0000000  0.0000000
+Comp_22 8.744607e-03 581.4436 20.766715   2   0.4639111  0.5360889
+Comp_23 6.714006e-03 515.1410 21.612802   2   2.1214752 -1.1214752
+Comp_24 6.189876e-04 560.0000 35.894756   2   1.0000000  0.0000000
+Comp_25 8.061958e-04 572.8320 26.147132   2   0.6792000  0.3208000
+Comp_26 6.189876e-04 533.1560 26.391524   2   1.6711000 -0.6711000
+Comp_27 5.706663e-05 560.0000 31.474134   2   1.0000000  0.0000000
+
+Distributions of the error components:
+	standard Gaussian
+
+Browse[2]> class(wrk)
+[1] "MixComp"
+attr(,"package")
+[1] "mixAR"
+Browse[2]> wrk
+An object of class "MixComp"
+Slot "m":
+      wrk    y    y    y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+        y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+
+Browse[2]> str(wrk)
+Formal class 'MixComp' [package "mixAR"] with 1 slot
+  ..@ m: num [1, 1:27] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 ...
+  .. ..- attr(*, "dimnames")=List of 2
+  .. .. ..$ : NULL
+  .. .. ..$ : chr [1:27] "wrk" "y" "y" "y" ...
+Browse[2]> 
+debug at /home/georgi/repos/private/mixAR/R/mixAR.R#660: f
+Browse[2]> 
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(560, 560, 600))
+> tfepdf <- tfe(3, "pdf")
+using the last 3 values in 'xcond'
+Called from: mix_pdf(hmo, xcond = xcond)
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixAR.R#654: f <- function(x) {
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+Browse[2]> wrk
+An object of class "MixComp"
+Slot "m":
+      wrk    y    y    y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+        y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+
+Browse[2]> 
+debug at /home/georgi/repos/private/mixAR/R/mixAR.R#660: f
+Browse[2]> 
+> mixFilter
+standardGeneric for "mixFilter" defined from package "mixAR"
+
+function (x, coef, index, shift = 0, residual = FALSE, scale = 1) 
+standardGeneric("mixFilter")
+<environment: 0x55df623b1680>
+Methods may be defined for arguments: x, coef, index, shift, residual, scale
+Use  showMethods("mixFilter")  for currently available ones.
+> showMethods("mixFilter", includeDefs=TRUE)
+Function: mixFilter (package mixAR)
+x="ANY", coef="ANY", index="ANY"
+function (x, coef, index, shift = 0, residual = FALSE, scale = 1) 
+{
+    stop("Bosh: no default method for `mixFilter'")
+}
+
+
+x="numeric", coef="raggedCoef", index="numeric"
+function (x, coef, index, shift = 0, residual = FALSE, scale = 1) 
+{
+    k <- length(coef@a)
+    if (length(shift) == 1) 
+        shift <- rep(shift, k)
+    if (length(scale) == 1) 
+        scale <- rep(scale, k)
+    i <- 0
+    for (flt in coef@a) {
+        i <- i + 1
+        y <- raghat1(flt, x, index, shift[i], residual, scale[i])
+        if (i == 1) 
+            wrk <- y
+        else wrk <- cbind(wrk, y)
+    }
+    new("MixComp", m = wrk)
+}
+
+
+
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(580, 560, 560, 600))
+> tfepdf <- tfe(3, "pdf")
+using the last 4 values in 'xcond'
+Called from: mix_pdf(hmo, xcond = xcond)
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixAR.R#654: f <- function(x) {
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+Browse[2]> x
+Error: argument "x" is missing, with no default
+Browse[2]> xcond
+[1] 560 600
+Browse[2]> wrk
+An object of class "MixComp"
+Slot "m":
+      wrk    y    y    y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+        y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+
+Browse[2]> xcond
+[1] 560 600
+Browse[2]> mix_hatk(model, c(570, 580, xcond), 4:5)
+An object of class "MixComp"
+Slot "m":
+          wrk        y    y        y       y    y        y        y    y
+[1,] 1135.054 1088.507 1120 1148.021 1061.38 1120 1139.248 1079.734 1120
+[2,] 1160.000 1160.000 1160 1160.000 1160.00 1160 1160.000 1160.000 1160
+            y       y    y        y        y    y        y        y    y
+[1,] 1128.929 1101.32 1120 1160.834 1034.577 1120 1139.248 1079.734 1120
+[2,] 1160.000 1160.00 1160 1160.000 1160.000 1160 1160.000 1160.000 1160
+            y        y    y        y        y    y        y        y    y
+[1,] 1133.073 1092.651 1120 1152.165 1052.711 1120 1139.248 1079.734 1120
+[2,] 1160.000 1160.000 1160 1160.000 1160.000 1160 1160.000 1160.000 1160
+
+Browse[2]> raghat1
+function(filter, x, index, shift = 0, residual = FALSE, scale = 1){
+    if(is.list(filter))               ## krapka, vzh. komentara pri mixFilter. todo: izchisti!
+        filter <- filter[[1]]
+
+    res <- rep(shift, length(index))
+    for(i in seq_along(filter)){                  # expression x[index-i] assumes there are
+        res <- res + filter[i]*x[index-i]         # enough past x's for all elements of index.
+    }
+    if(residual)
+        res <- x[index] - res
+
+    if(scale != 1)                               # probably meaningful only when residual=TRUE
+        res <- res/scale
+                             ## todo: kakto e tragnalo moga da dobavya i argument za cdf, etc.
+    res
+}
+<environment: namespace:mixAR>
+Browse[2]> 
+debug at /home/georgi/repos/private/mixAR/R/mixAR.R#660: f
+Browse[2]> 
+> devtools::load_all()
+ℹ Loading mixAR
+Error in add_classes_to_exports(ns = nsenv, package = package, exports = exports,  : 
+  in package ‘mixAR’ classes MixComp were specified for export but not defined
+> 
+> Save workspace image? [y/n/c]: n
+
+Process R finished at Mon May  3 18:31:59 2021
+
+
+R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+> setwd('/home/georgi/repos/private/mixAR')
+> devtools::load_all()
+ℹ Loading mixAR
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(580, 560, 560, 600))
+> tfepdf <- tfe(3, "pdf")
+using the last 4 values in 'xcond'
+Called from: mix_pdf(hmo, xcond = xcond)
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixAR.R#654: f <- function(x) {
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+Browse[2]> wrk
+An object of class "MixComp"
+Slot "m":
+      wrk    y    y    y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+        y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+
+Browse[2]> mix_hatk(model, xcond, 4:5)
+An object of class "MixComp"
+Slot "m":
+     wrk  y  y  y  y  y  y  y  y  y  y  y  y  y  y  y  y  y  y  y  y  y  y  y
+[1,]  NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+[2,]  NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+      y  y  y
+[1,] NA NA NA
+[2,] NA NA NA
+
+Browse[2]> mix_hatk(model, c(55, 580, xcond), 4:5)
+An object of class "MixComp"
+Slot "m":
+          wrk        y    y        y       y    y        y        y    y
+[1,] 1135.054 1088.507 1120 1148.021 1061.38 1120 1139.248 1079.734 1120
+[2,] 1160.000 1160.000 1160 1160.000 1160.00 1160 1160.000 1160.000 1160
+            y       y    y        y        y    y        y        y    y
+[1,] 1128.929 1101.32 1120 1160.834 1034.577 1120 1139.248 1079.734 1120
+[2,] 1160.000 1160.00 1160 1160.000 1160.000 1160 1160.000 1160.000 1160
+            y        y    y        y        y    y        y        y    y
+[1,] 1133.073 1092.651 1120 1152.165 1052.711 1120 1139.248 1079.734 1120
+[2,] 1160.000 1160.000 1160 1160.000 1160.000 1160 1160.000 1160.000 1160
+
+Browse[2]> 
+debug at /home/georgi/repos/private/mixAR/R/mixAR.R#660: f
+Browse[2]> 
+> devtools::load_all()
+ℹ Loading mixAR
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(580, 560, 560, 600))
+> tfepdf <- tfe(3, "pdf")
+using the last 4 values in 'xcond'
+i = 1 , flt =  0.7490983 0.2509017 
+i = 2 , flt =  1.524876 -0.5248758 
+i = 3 , flt =  1 0 
+i = 4 , flt =  0.5329758 0.4670242 
+i = 5 , flt =  1.976995 -0.9769948 
+i = 6 , flt =  1 0 
+i = 7 , flt =  0.6792 0.3208 
+i = 8 , flt =  1.6711 -0.6711 
+i = 9 , flt =  1 0 
+i = 10 , flt =  0.8511773 0.1488227 
+i = 11 , flt =  1.311331 -0.3113308 
+i = 12 , flt =  1 0 
+i = 13 , flt =  0.3194308 0.6805692 
+i = 14 , flt =  2.423722 -1.423722 
+i = 15 , flt =  1 0 
+i = 16 , flt =  0.6792 0.3208 
+i = 17 , flt =  1.6711 -0.6711 
+i = 18 , flt =  1 0 
+i = 19 , flt =  0.7821126 0.2178874 
+i = 20 , flt =  1.455811 -0.4558111 
+i = 21 , flt =  1 0 
+i = 22 , flt =  0.4639111 0.5360889 
+i = 23 , flt =  2.121475 -1.121475 
+i = 24 , flt =  1 0 
+i = 25 , flt =  0.6792 0.3208 
+i = 26 , flt =  1.6711 -0.6711 
+i = 27 , flt =  1 0 
+Called from: mix_pdf(hmo, xcond = xcond)
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixAR.R#654: f <- function(x) {
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+Browse[2]> wrk
+An object of class "MixComp"
+Slot "m":
+      wrk    y    y    y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+        y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+
+Browse[2]> 
+debug at /home/georgi/repos/private/mixAR/R/mixAR.R#660: f
+Browse[2]> 
+> devtools::load_all()
+ℹ Loading mixAR
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(580, 560, 560, 600))
+> tfepdf <- tfe(3, "pdf")
+using the last 4 values in 'xcond'
+i = 1 , flt =  0.7490983 0.2509017 
+y = 1160 
+
+i = 2 , flt =  1.524876 -0.5248758 
+y = 1160 
+
+i = 3 , flt =  1 0 
+y = 1160 
+
+i = 4 , flt =  0.5329758 0.4670242 
+y = 1160 
+
+i = 5 , flt =  1.976995 -0.9769948 
+y = 1160 
+
+i = 6 , flt =  1 0 
+y = 1160 
+
+i = 7 , flt =  0.6792 0.3208 
+y = 1160 
+
+i = 8 , flt =  1.6711 -0.6711 
+y = 1160 
+
+i = 9 , flt =  1 0 
+y = 1160 
+
+i = 10 , flt =  0.8511773 0.1488227 
+y = 1160 
+
+i = 11 , flt =  1.311331 -0.3113308 
+y = 1160 
+
+i = 12 , flt =  1 0 
+y = 1160 
+
+i = 13 , flt =  0.3194308 0.6805692 
+y = 1160 
+
+i = 14 , flt =  2.423722 -1.423722 
+y = 1160 
+
+i = 15 , flt =  1 0 
+y = 1160 
+
+i = 16 , flt =  0.6792 0.3208 
+y = 1160 
+
+i = 17 , flt =  1.6711 -0.6711 
+y = 1160 
+
+i = 18 , flt =  1 0 
+y = 1160 
+
+i = 19 , flt =  0.7821126 0.2178874 
+y = 1160 
+
+i = 20 , flt =  1.455811 -0.4558111 
+y = 1160 
+
+i = 21 , flt =  1 0 
+y = 1160 
+
+i = 22 , flt =  0.4639111 0.5360889 
+y = 1160 
+
+i = 23 , flt =  2.121475 -1.121475 
+y = 1160 
+
+i = 24 , flt =  1 0 
+y = 1160 
+
+i = 25 , flt =  0.6792 0.3208 
+y = 1160 
+
+i = 26 , flt =  1.6711 -0.6711 
+y = 1160 
+
+i = 27 , flt =  1 0 
+y = 1160 
+
+Called from: mix_pdf(hmo, xcond = xcond)
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixAR.R#654: f <- function(x) {
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+Browse[2]> 
+debug at /home/georgi/repos/private/mixAR/R/mixAR.R#660: f
+Browse[2]> 
+> devtools::load_all()
+ℹ Loading mixAR
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(580, 560, 560, 600))
+> devtools::load_all()
+ℹ Loading mixAR
+> tfepdf <- tfe(3, "pdf")
+using the last 4 values in 'xcond'
+i = 1 , flt =  0.7490983 0.2509017 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> res
+[1] 1160
+Browse[2]> shift
+[1] 570.0361
+Browse[2]> filter[1]
+[1] 0.7490983
+Browse[2]> filter[2]
+[1] 0.2509017
+Browse[2]> filter
+[1] 0.7490983 0.2509017
+Browse[2]> index
+[1] 3
+Browse[2]> seq_along(filter)
+[1] 1 2
+Browse[2]> 
+y = 1160 
+
+i = 2 , flt =  1.524876 -0.5248758 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> res
+[1] 1160
+Browse[2]> filter[1]
+[1] 1.524876
+Browse[2]> shift
+[1] 539.005
+Browse[2]> class(flt)
+Error: object 'flt' not found
+Browse[2]> class(filter)
+[1] "numeric"
+Browse[2]> index
+[1] 3
+Browse[2]> shift + filter[1]*x[3 - 1] + filter[2]*x[3 - 2]
+[1] 1160
+Browse[2]> x
+[1] 560 600
+Browse[2]>  filter[1]*x[3 - 1] + filter[2]*x[3 - 2]
+[1] 620.995
+Browse[2]> 
+y = 1160 
+
+i = 3 , flt =  1 0 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 4 , flt =  0.5329758 0.4670242 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 5 , flt =  1.976995 -0.9769948 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]>   C-c C-c
+Browse[2]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]>   C-c C-c
+Browse[1]> 
+debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 7 , flt =  0.6792 0.3208 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 8 , flt =  1.6711 -0.6711 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 9 , flt =  1 0 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 10 , flt =  0.8511773 0.1488227 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 11 , flt =  1.311331 -0.3113308 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 12 , flt =  1 0 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 13 , flt =  0.3194308 0.6805692 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 14 , flt =  2.423722 -1.423722 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 15 , flt =  1 0 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 16 , flt =  0.6792 0.3208 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 17 , flt =  1.6711 -0.6711 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 18 , flt =  1 0 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 19 , flt =  0.7821126 0.2178874 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+
+y = 1160 
+
+i = 20 , flt =  1.455811 -0.4558111 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> y = 1160 
+
+i = 21 , flt =  1 0 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 22 , flt =  0.4639111 0.5360889 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 23 , flt =  2.121475 -1.121475 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 24 , flt =  1 0 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 25 , flt =  0.6792 0.3208 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 26 , flt =  1.6711 -0.6711 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+i = 27 , flt =  1 0 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1160 
+
+Called from: mix_pdf(hmo, xcond = xcond)
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixAR.R#654: f <- function(x) {
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+Browse[2]> 
+debug at /home/georgi/repos/private/mixAR/R/mixAR.R#660: f
+Browse[2]> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> isStable(exampleModels$WL_ibm)
+[1] FALSE
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(580, 600))
+> tfepdf <- tfe(2, "pdf")
+i = 1 , flt =  0.7821126 0.2178874 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> res
+[1] 1180
+Browse[2]> 
+y = 1180 
+
+i = 2 , flt =  1.455811 -0.4558111 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1180 
+
+i = 3 , flt =  1 0 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1180 
+
+i = 4 , flt =  0.4639111 0.5360889 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1180 
+
+i = 5 , flt =  2.121475 -1.121475 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1180 
+
+i = 6 , flt =  1 0 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1180 
+
+i = 7 , flt =  0.6792 0.3208 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1180 
+
+i = 8 , flt =  1.6711 -0.6711 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1180 
+
+i = 9 , flt =  1 0 
+Called from: raghat1(flt, x, index, shift[i], residual, scale[i])
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixComp.R#309: res
+Browse[2]> 
+y = 1180 
+
+Called from: mix_pdf(hmo, xcond = xcond)
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixAR.R#654: f <- function(x) {
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+Browse[2]> 
+debug at /home/georgi/repos/private/mixAR/R/mixAR.R#660: f
+Browse[2]> 
+> 
+> 
+> 
+> 
+> exampleModels$WL_ibm
+An object of class "MixARGaussian"
+Number of components: 3 
+       prob   shift scale   order ar_1   ar_2   
+Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
+Comp_2 0.4176   0    6.0082   2   1.6711 -0.6711
+Comp_3 0.0385   0   18.1716   1   1.0000        
+
+Distributions of the error components:
+	standard Gaussian
+
+> devtools::load_all()
+ℹ Loading mixAR
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(580, 560, 560, 600))
+> tfepdf <- tfe(2, "pdf")
+using the last 4 values in 'xcond'
+i = 1 , flt =  0.7821126 0.2178874 
+y = 1160 
+
+i = 2 , flt =  1.455811 -0.4558111 
+y = 1160 
+
+i = 3 , flt =  1 0 
+y = 1160 
+
+i = 4 , flt =  0.4639111 0.5360889 
+y = 1160 
+
+i = 5 , flt =  2.121475 -1.121475 
+y = 1160 
+
+i = 6 , flt =  1 0 
+y = 1160 
+
+i = 7 , flt =  0.6792 0.3208 
+y = 1160 
+
+i = 8 , flt =  1.6711 -0.6711 
+y = 1160 
+
+i = 9 , flt =  1 0 
+y = 1160 
+
+Called from: mix_pdf(hmo, xcond = xcond)
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixAR.R#654: f <- function(x) {
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+Browse[2]> wrk
+An object of class "MixComp"
+Slot "m":
+      wrk    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160
+
+Browse[2]> 
+debug at /home/georgi/repos/private/mixAR/R/mixAR.R#660: f
+Browse[2]> 
+> tfepdf <- tfe(1, "pdf")
+using the last 4 values in 'xcond'
+i = 1 , flt =  0.6792 0.3208 
+y = 1160 
+
+i = 2 , flt =  1.6711 -0.6711 
+y = 1160 
+
+i = 3 , flt =  1 0 
+y = 1160 
+
+Called from: mix_pdf(hmo, xcond = xcond)
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixAR.R#654: f <- function(x) {
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+Browse[2]> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(560, 600, 560, 600))
+Browse[2]> 
+debug at /home/georgi/repos/private/mixAR/R/mixAR.R#660: f
+Browse[2]> 
+> 
+> 
+> 
+> 
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(560, 600, 560, 600))
+> tfepdf <- tfe(3, "pdf")
+using the last 4 values in 'xcond'
+i = 1 , flt =  0.7490983 0.2509017 
+y = 1160 
+
+i = 2 , flt =  1.524876 -0.5248758 
+y = 1160 
+
+i = 3 , flt =  1 0 
+y = 1160 
+
+i = 4 , flt =  0.5329758 0.4670242 
+y = 1160 
+
+i = 5 , flt =  1.976995 -0.9769948 
+y = 1160 
+
+i = 6 , flt =  1 0 
+y = 1160 
+
+i = 7 , flt =  0.6792 0.3208 
+y = 1160 
+
+i = 8 , flt =  1.6711 -0.6711 
+y = 1160 
+
+i = 9 , flt =  1 0 
+y = 1160 
+
+i = 10 , flt =  0.8511773 0.1488227 
+y = 1160 
+
+i = 11 , flt =  1.311331 -0.3113308 
+y = 1160 
+
+i = 12 , flt =  1 0 
+y = 1160 
+
+i = 13 , flt =  0.3194308 0.6805692 
+y = 1160 
+
+i = 14 , flt =  2.423722 -1.423722 
+y = 1160 
+
+i = 15 , flt =  1 0 
+y = 1160 
+
+i = 16 , flt =  0.6792 0.3208 
+y = 1160 
+
+i = 17 , flt =  1.6711 -0.6711 
+y = 1160 
+
+i = 18 , flt =  1 0 
+y = 1160 
+
+i = 19 , flt =  0.7821126 0.2178874 
+y = 1160 
+
+i = 20 , flt =  1.455811 -0.4558111 
+y = 1160 
+
+i = 21 , flt =  1 0 
+y = 1160 
+
+i = 22 , flt =  0.4639111 0.5360889 
+y = 1160 
+
+i = 23 , flt =  2.121475 -1.121475 
+y = 1160 
+
+i = 24 , flt =  1 0 
+y = 1160 
+
+i = 25 , flt =  0.6792 0.3208 
+y = 1160 
+
+i = 26 , flt =  1.6711 -0.6711 
+y = 1160 
+
+i = 27 , flt =  1 0 
+y = 1160 
+
+Called from: mix_pdf(hmo, xcond = xcond)
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixAR.R#654: f <- function(x) {
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+Browse[2]> wrk
+An object of class "MixComp"
+Slot "m":
+      wrk    y    y    y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+        y    y    y    y    y    y    y    y    y    y    y    y
+[1,] 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160 1160
+
+Browse[2]> xcond
+[1] 560 600
+Browse[2]> mix_hatk(model, c(xcond, xcond), 3:5)
+i = 1 , flt =  0.7490983 0.2509017 
+y = 1160 1140.072 1160 
+
+i = 2 , flt =  1.524876 -0.5248758 
+y = 1160 1078.01 1160 
+
+i = 3 , flt =  1 0 
+y = 1160 1120 1160 
+
+i = 4 , flt =  0.5329758 0.4670242 
+y = 1160 1157.362 1160 
+
+i = 5 , flt =  1.976995 -0.9769948 
+y = 1160 1041.84 1160 
+
+i = 6 , flt =  1 0 
+y = 1160 1120 1160 
+
+i = 7 , flt =  0.6792 0.3208 
+y = 1160 1145.664 1160 
+
+i = 8 , flt =  1.6711 -0.6711 
+y = 1160 1066.312 1160 
+
+i = 9 , flt =  1 0 
+y = 1160 1120 1160 
+
+i = 10 , flt =  0.8511773 0.1488227 
+y = 1160 1131.906 1160 
+
+i = 11 , flt =  1.311331 -0.3113308 
+y = 1160 1095.094 1160 
+
+i = 12 , flt =  1 0 
+y = 1160 1120 1160 
+
+i = 13 , flt =  0.3194308 0.6805692 
+y = 1160 1174.446 1160 
+
+i = 14 , flt =  2.423722 -1.423722 
+y = 1160 1006.102 1160 
+
+i = 15 , flt =  1 0 
+y = 1160 1120 1160 
+
+i = 16 , flt =  0.6792 0.3208 
+y = 1160 1145.664 1160 
+
+i = 17 , flt =  1.6711 -0.6711 
+y = 1160 1066.312 1160 
+
+i = 18 , flt =  1 0 
+y = 1160 1120 1160 
+
+i = 19 , flt =  0.7821126 0.2178874 
+y = 1160 1137.431 1160 
+
+i = 20 , flt =  1.455811 -0.4558111 
+y = 1160 1083.535 1160 
+
+i = 21 , flt =  1 0 
+y = 1160 1120 1160 
+
+i = 22 , flt =  0.4639111 0.5360889 
+y = 1160 1162.887 1160 
+
+i = 23 , flt =  2.121475 -1.121475 
+y = 1160 1030.282 1160 
+
+i = 24 , flt =  1 0 
+y = 1160 1120 1160 
+
+i = 25 , flt =  0.6792 0.3208 
+y = 1160 1145.664 1160 
+
+i = 26 , flt =  1.6711 -0.6711 
+y = 1160 1066.312 1160 
+
+i = 27 , flt =  1 0 
+y = 1160 1120 1160 
+
+An object of class "MixComp"
+Slot "m":
+          wrk       y    y        y       y    y        y        y    y
+[1,] 1160.000 1160.00 1160 1160.000 1160.00 1160 1160.000 1160.000 1160
+[2,] 1140.072 1078.01 1120 1157.362 1041.84 1120 1145.664 1066.312 1120
+[3,] 1160.000 1160.00 1160 1160.000 1160.00 1160 1160.000 1160.000 1160
+            y        y    y        y        y    y        y        y    y
+[1,] 1160.000 1160.000 1160 1160.000 1160.000 1160 1160.000 1160.000 1160
+[2,] 1131.906 1095.094 1120 1174.446 1006.102 1120 1145.664 1066.312 1120
+[3,] 1160.000 1160.000 1160 1160.000 1160.000 1160 1160.000 1160.000 1160
+            y        y    y        y        y    y        y        y    y
+[1,] 1160.000 1160.000 1160 1160.000 1160.000 1160 1160.000 1160.000 1160
+[2,] 1137.431 1083.535 1120 1162.887 1030.282 1120 1145.664 1066.312 1120
+[3,] 1160.000 1160.000 1160 1160.000 1160.000 1160 1160.000 1160.000 1160
+
+Browse[2]> ?isStable
+debug at /home/georgi/repos/private/mixAR/R/mixAR.R#660: f
+Browse[2]> isStable(model)
+[1] FALSE
+Browse[2]> isStable
+function(x){     # todo: make generic?
+    cl <-inherits(x, "MixVAR")
+    nc <- max(x@order)
+    co <- if(cl) x@arcoef else x@arcoef[]    # a matrix
+    prob <- x@prob
+    if(ncol(co[]) == 0)   # i.i.d. mixture
+        return(TRUE)
+
+    f <- function(k){
+        if(cl){ m <- companion_matrix(co[k, ], nc * nrow(co[]))
+        }else m <- companion_matrix(co[k,], nc)
+        prob[k] * kronecker(m,m)
+    }
+
+    # wrk <- lapply(seq_along(x@prob), f)
+    wrk <- do.call(.mplus, lapply(seq_along(x@prob), f))
+
+    abs(eigen(wrk)$values[1]) < 1                       # stable if  maximal eigenvalue is < 1
+}
+<environment: namespace:mixAR>
+Browse[2]> inherits(model, "MixVAR")
+[1] FALSE
+Browse[2]> 
+> exampleModels
+$WL_ibm
+An object of class "MixARGaussian"
+Number of components: 3 
+       prob   shift scale   order ar_1   ar_2   
+Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
+Comp_2 0.4176   0    6.0082   2   1.6711 -0.6711
+Comp_3 0.0385   0   18.1716   1   1.0000        
+
+Distributions of the error components:
+	standard Gaussian
+
+
+$WL_A
+An object of class "MixARGaussian"
+Number of components: 2 
+       prob shift scale order ar_1
+Comp_1 0.5    0     5     1   0.5 
+Comp_2 0.5    0     1     1   1.1 
+
+Distributions of the error components:
+	standard Gaussian
+
+
+$WL_B
+An object of class "MixARGaussian"
+Number of components: 2 
+       prob shift scale order ar_1
+Comp_1 0.75   0     5     1   0.5 
+Comp_2 0.25   0     1     1   1.4 
+
+Distributions of the error components:
+	standard Gaussian
+
+
+$WL_I
+An object of class "MixARGaussian"
+Number of components: 3 
+       prob shift scale order ar_1 ar_2  ar_3
+Comp_1 0.4    0     1     2    0.9 -0.60     
+Comp_2 0.3    0     1     1   -0.5           
+Comp_3 0.3   -5     5     3    1.5 -0.74 0.12
+
+Distributions of the error components:
+	standard Gaussian
+
+
+$WL_II
+An object of class "MixARGaussian"
+Number of components: 3 
+       prob shift scale order ar_1 ar_2
+Comp_1 0.4    5     1     2    0.9 -0.6
+Comp_2 0.3    0     1     2   -0.7  0.0
+Comp_3 0.3   -5     5     2    0.0  0.8
+
+Distributions of the error components:
+	standard Gaussian
+
+
+$WL_ibm_gen
+An object of class "MixARgen"
+Number of components: 3 
+       prob   shift scale   order ar_1   ar_2   
+Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
+Comp_2 0.4176   0    6.0082   2   1.6711 -0.6711
+Comp_3 0.0385   0   18.1716   1   1.0000        
+
+Distributions of the error components:
+[[1]]
+[[1]]$pdf
+[1] "dnorm"
+
+[[1]]$cdf
+[1] "pnorm"
+
+[[1]]$rand
+[1] "rnorm"
+
+[[1]]$logpdf
+function(x) log(dnorm(x))
+<environment: 0x55cf55157dc8>
+
+[[1]]$Fscore
+function(x) -x
+<environment: 0x55cf55157dc8>
+
+[[1]]$xFscore
+function(x) -x^2
+<environment: 0x55cf55157dc8>
+
+[[1]]$Parscore
+function() 0
+<environment: 0x55cf55157dc8>
+
+[[1]]$get_param
+function() numeric()
+<environment: 0x55cf55157dc8>
+
+[[1]]$set_param
+function() stop("Standard normal has no parameters to set.")
+<environment: 0x55cf55157dc8>
+
+[[1]]$any_param
+function() param_flag
+<environment: 0x55cf55157dc8>
+
+
+
+
+$WL_ibm_t3v
+An object of class "MixARgen"
+Number of components: 3 
+       prob   shift scale   order ar_1   ar_2   
+Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
+Comp_2 0.4176   0    6.0082   2   1.6711 -0.6711
+Comp_3 0.0385   0   18.1716   1   1.0000        
+
+Distributions of the error components:
+[[1]]
+[[1]]$pdf
+function(x) dstd(x, nu = nu)
+<environment: 0x55cf5426df50>
+
+[[1]]$cdf
+function(x) pstd(x, nu = nu)
+<environment: 0x55cf5426df50>
+
+[[1]]$rand
+function(n) rstd(n, nu = nu)
+<environment: 0x55cf5426df50>
+
+[[1]]$logpdf
+function(x) log(dstd(x, nu = nu))
+<environment: 0x55cf5426df50>
+
+[[1]]$Fscore
+function(x) - x*(1+nu)/(x^2+nu-2)
+<environment: 0x55cf5426df50>
+
+[[1]]$xFscore
+function(x) - x^2*(1+nu)/(x^2+nu-2)
+<environment: 0x55cf5426df50>
+
+[[1]]$Parscore
+function(x) param_score_stdt(x,nu)
+<environment: 0x55cf5426df50>
+
+[[1]]$get_param
+function() nu
+<environment: 0x55cf5426df50>
+
+[[1]]$set_param
+function(x) nu <<- x
+<environment: 0x55cf5426df50>
+
+[[1]]$any_param
+function() param_flag
+<environment: 0x55cf5426df50>
+
+
+
+
+$WL_ibm_tf
+An object of class "MixARgen"
+Number of components: 3 
+       prob   shift scale   order ar_1   ar_2   
+Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
+Comp_2 0.4176   0    6.0082   2   1.6711 -0.6711
+Comp_3 0.0385   0   18.1716   1   1.0000        
+
+Distributions of the error components:
+	Component 1: Student t with 20 df
+	Component 2: Student t with 30 df
+	Component 3: Student t with 40 df
+
+
+$WL_At
+An object of class "MixARgen"
+Number of components: 2 
+       prob shift scale order ar_1
+Comp_1 0.5    0     1     1   -0.5
+Comp_2 0.5    0     2     1    1.1
+
+Distributions of the error components:
+	Component 1: Student t with 4 df
+	Component 2: Student t with 8 df
+
+
+$WL_Bt_1
+An object of class "MixARgen"
+Number of components: 3 
+       prob shift scale order ar_1 ar_2  ar_3
+Comp_1 0.3    5   2.0     2    0.5  0.24     
+Comp_2 0.3   -5   1.0     1   -0.9           
+Comp_3 0.4    0   0.5     3    1.5 -0.74 0.12
+
+Distributions of the error components:
+	Component 1: Student t with 4 df
+	Component 2: Student t with 6 df
+	Component 3: Student t with 10 df
+
+
+$WL_Bt_2
+An object of class "MixARgen"
+Number of components: 3 
+       prob shift scale order ar_1 ar_2  ar_3
+Comp_1 0.3    5   2.0     2    0.5  0.24     
+Comp_2 0.3   -5   1.0     1   -0.9           
+Comp_3 0.4    0   0.5     3    1.5 -0.74 0.12
+
+Distributions of the error components:
+	Component 1: Student t with 4 df
+	Component 2: Student t with 4 df
+	Component 3: Student t with 10 df
+
+
+$WL_Bt_3
+An object of class "MixARgen"
+Number of components: 3 
+       prob shift scale order ar_1 ar_2  ar_3
+Comp_1 0.3    5   2.0     2    0.5  0.24     
+Comp_2 0.3   -5   1.0     1   -0.9           
+Comp_3 0.4    0   0.5     3    1.5 -0.74 0.12
+
+Distributions of the error components:
+	Component 1: Student t with 4 df
+	Component 2: Student t with 4 df
+	Component 3: Student t with 10 df
+
+
+$WL_Ct_1
+An object of class "MixARgen"
+Number of components: 3 
+       prob shift scale order ar_1 ar_2  ar_3
+Comp_1 0.3    5   2.0     2    0.5  0.24     
+Comp_2 0.3   -5   1.0     1   -0.9           
+Comp_3 0.4    0   0.5     3    1.5 -0.74 0.12
+
+Distributions of the error components:
+	Component 1: Student t with 4 df
+	Component 2: Student t with 7 df
+	Component 3: Standard normal distribution
+
+
+$WL_Ct_2
+An object of class "MixARgen"
+Number of components: 3 
+       prob shift scale order ar_1 ar_2  ar_3
+Comp_1 0.3    5   2.0     2    0.5  0.24     
+Comp_2 0.3   -5   1.0     1   -0.9           
+Comp_3 0.4    0   0.5     3    1.5 -0.74 0.12
+
+Distributions of the error components:
+	Component 1: Student t with 4 df
+	Component 2: Student t with 7 df
+	Component 3: Standard normal distribution
+
+
+$WL_Ct_3
+An object of class "MixARGaussian"
+Number of components: 3 
+       prob shift scale order ar_1 ar_2  ar_3
+Comp_1 0.3    5   2.0     2    0.5  0.24     
+Comp_2 0.3   -5   1.0     1   -0.9           
+Comp_3 0.4    0   0.5     3    1.5 -0.74 0.12
+
+Distributions of the error components:
+	standard Gaussian
+
+
+> for(mo in exampleModels) print(isStable(mo))
+[1] FALSE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] FALSE
+[1] FALSE
+[1] FALSE
+[1] TRUE
+[1] FALSE
+[1] FALSE
+[1] FALSE
+[1] FALSE
+[1] FALSE
+[1] FALSE
+> for(i in 1:length(exampleModels)) print(names(exampleModels)[i], isStable(exampleModels[[i]]))
+[1] "WL_ibm"
+[1] "WL_A"
+[1] "WL_B"
+[1] "WL_I"
+[1] "WL_II"
+[1] "WL_ibm_gen"
+[1] "WL_ibm_t3v"
+[1] "WL_ibm_tf"
+[1] "WL_At"
+[1] "WL_Bt_1"
+[1] "WL_Bt_2"
+[1] "WL_Bt_3"
+[1] "WL_Ct_1"
+[1] "WL_Ct_2"
+[1] "WL_Ct_3"
+> for(i in 1:length(exampleModels)) cat(names(exampleModels)[i], "\t", isStable(exampleModels[[i]])))
+Error: unexpected ')' in "for(i in 1:length(exampleModels)) cat(names(exampleModels)[i], "\t", isStable(exampleModels[[i]])))"
+> for(i in 1:length(exampleModels)) cat(names(exampleModels)[i], "\t", isStable(exampleModels[[i]]))
+WL_ibm 	 FALSEWL_A 	 TRUEWL_B 	 TRUEWL_I 	 TRUEWL_II 	 TRUEWL_ibm_gen 	 FALSEWL_ibm_t3v 	 FALSEWL_ibm_tf 	 FALSEWL_At 	 TRUEWL_Bt_1 	 FALSEWL_Bt_2 	 FALSEWL_Bt_3 	 FALSEWL_Ct_1 	 FALSEWL_Ct_2 	 FALSEWL_Ct_3 	 FALSE> 
+> 
+> for(i in 1:length(exampleModels)) cat(names(exampleModels)[i], "\t", isStable(exampleModels[[i]]), "\n")
+WL_ibm 	 FALSE 
+WL_A 	 TRUE 
+WL_B 	 TRUE 
+WL_I 	 TRUE 
+WL_II 	 TRUE 
+WL_ibm_gen 	 FALSE 
+WL_ibm_t3v 	 FALSE 
+WL_ibm_tf 	 FALSE 
+WL_At 	 TRUE 
+WL_Bt_1 	 FALSE 
+WL_Bt_2 	 FALSE 
+WL_Bt_3 	 FALSE 
+WL_Ct_1 	 FALSE 
+WL_Ct_2 	 FALSE 
+WL_Ct_3 	 FALSE 
+> 
+> 
+> 
+> tfe <- multiStep_dist(exampleModels$WL_A, maxh = 3, xcond = c(560, 600))
+> tfepdf <- tfe(3, "pdf")
+using the last 2 values in 'xcond'
+i = 1 , flt =  0.125 
+y = 150 
+
+i = 2 , flt =  0.275 
+y = 330 
+
+i = 3 , flt =  0.275 
+y = 330 
+
+i = 4 , flt =  0.605 
+y = 726 
+
+i = 5 , flt =  0.275 
+y = 330 
+
+i = 6 , flt =  0.605 
+y = 726 
+
+i = 7 , flt =  0.605 
+y = 726 
+
+i = 8 , flt =  1.331 
+y = 1597.2 
+
+Called from: mix_pdf(hmo, xcond = xcond)
+Browse[1]> debug at /home/georgi/repos/private/mixAR/R/mixAR.R#654: f <- function(x) {
+    wrk <- (x - wrk)/model@scale
+    wrk <- dnorm %of% wrk
+    wrk <- inner(wrk, model@prob/model@scale)
+    wrk
+}
+Browse[2]> wrk
+An object of class "MixComp"
+Slot "m":
+     wrk   y   y   y   y   y   y      y
+[1,] 150 330 330 726 330 726 726 1597.2
+
+Browse[2]> 
+debug at /home/georgi/repos/private/mixAR/R/mixAR.R#660: f
+Browse[2]> 
+> devtools::load_all()
+ℹ Loading mixAR
+> tfe <- multiStep_dist(exampleModels$WL_A, maxh = 3, xcond = c(560, 600))
+> tfepdf <- tfe(3, "pdf")
+using the last 2 values in 'xcond'
+> tfepdf <- tfe(3, "pdf")
+
+using the last 2 values in 'xcond'
+> tfecdf <- tfe(3, "cdf")
+using the last 2 values in 'xcond'
+> ## plot the pdf
+> gbutils::plotpdf(tfepdf, cdf = tfecdf)
+> devtools::load_all()
+ℹ Loading mixAR
+> tfe <- multiStep_dist(exampleModels$WL_A, maxh = 2, xcond = c(560, 600))
+> tfe <- multiStep_dist(exampleModels$WL_A, maxh = 3, xcond = c(560, 600))
+> tfepdf <- tfe(2, "pdf")
+using the last 2 values in 'xcond'
+> tfecdf <- tfe(2, "cdf")
+using the last 2 values in 'xcond'
+> gbutils::plotpdf(tfepdf, cdf = tfecdf)
+> fma::ibmclose
+Registered S3 method overwritten by 'quantmod':
+  method            from
+  as.zoo.data.frame zoo 
+Time Series:
+Start = 1 
+End = 369 
+Frequency = 1 
+  [1] 460 457 452 459 462 459 463 479 493 490 492 498 499 497 496 490 489 478
+ [19] 487 491 487 482 479 478 479 477 479 475 479 476 476 478 479 477 476 475
+ [37] 475 473 474 474 474 465 466 467 471 471 467 473 481 488 490 489 489 485
+ [55] 491 492 494 499 498 500 497 494 495 500 504 513 511 514 510 509 515 519
+ [73] 523 519 523 531 547 551 547 541 545 549 545 549 547 543 540 539 532 517
+ [91] 527 540 542 538 541 541 547 553 559 557 557 560 571 571 569 575 580 584
+[109] 585 590 599 603 599 596 585 587 585 581 583 592 592 596 596 595 598 598
+[127] 595 595 592 588 582 576 578 589 585 580 579 584 581 581 577 577 578 580
+[145] 586 583 581 576 571 575 575 573 577 582 584 579 572 577 571 560 549 556
+[163] 557 563 564 567 561 559 553 553 553 547 550 544 541 532 525 542 555 558
+[181] 551 551 552 553 557 557 548 547 545 545 539 539 535 537 535 536 537 543
+[199] 548 546 547 548 549 553 553 552 551 550 553 554 551 551 545 547 547 537
+[217] 539 538 533 525 513 510 521 521 521 523 516 511 518 517 520 519 519 519
+[235] 518 513 499 485 454 462 473 482 486 475 459 451 453 446 455 452 457 449
+[253] 450 435 415 398 399 361 383 393 385 360 364 365 370 374 359 335 323 306
+[271] 333 330 336 328 316 320 332 320 333 344 339 350 351 350 345 350 359 375
+[289] 379 376 382 370 365 367 372 373 363 371 369 376 387 387 376 385 385 380
+[307] 373 382 377 376 379 386 387 386 389 394 393 409 411 409 408 393 391 388
+[325] 396 387 383 388 382 384 382 383 383 388 395 392 386 383 377 364 369 355
+[343] 350 353 340 350 349 358 360 360 366 359 356 355 367 357 361 355 348 343
+[361] 330 340 339 331 345 352 346 352 357
+> tfe <- multiStep_dist(exampleModels$WL_A, maxh = 3, xcond = c(352, 357))
+> tfepdf <- tfe(2, "pdf")
+using the last 2 values in 'xcond'
+> tfecdf <- tfe(2, "cdf")
+using the last 2 values in 'xcond'
+> gbutils::plotpdf(tfepdf, cdf = tfecdf)
+> 
+> Save workspace image? [y/n/c]: n
+
+Process R finished at Mon May  3 19:33:48 2021
+
+
+R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> setwd('/home/georgi/repos/private/mixAR')
+> library(mixAR)
+> isStable(exampleModels$WL_ibm)
+[1] FALSE
+> isStable(exampleModels$WL_A)
+[1] TRUE
+> for(i in 1:length(exampleModels)) cat(names(exampleModels)[i], "\t", isStable(exampleModels[[i]]), "\n")
+WL_ibm 	 FALSE 
+WL_A 	 TRUE 
+WL_B 	 TRUE 
+WL_I 	 TRUE 
+WL_II 	 TRUE 
+WL_ibm_gen 	 FALSE 
+WL_ibm_t3v 	 FALSE 
+WL_ibm_tf 	 FALSE 
+WL_At 	 TRUE 
+WL_Bt_1 	 FALSE 
+WL_Bt_2 	 FALSE 
+WL_Bt_3 	 FALSE 
+WL_Ct_1 	 FALSE 
+WL_Ct_2 	 FALSE 
+WL_Ct_3 	 FALSE 
+> ?exampleModels
+> 
+> 
+Save workspace image? [y/n/c]: n
+
+Process R finished at Mon May  3 19:40:55 2021
+
+
+R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+> setwd('/home/georgi/repos/private/mixAR')
+> library(mixAR)
+> packageDescription("mixAR")
+*** output flushed ***
+> library(mixAR)
+> for(i in 1:length(exampleModels)) cat(names(exampleModels)[i], "\t", isStable(exampleModels[[i]]), "\n")
+WL_ibm 	 FALSE 
+WL_A 	 TRUE 
+WL_B 	 TRUE 
+WL_I 	 TRUE 
+WL_II 	 TRUE 
+WL_ibm_gen 	 FALSE 
+WL_ibm_t3v 	 FALSE 
+WL_ibm_tf 	 FALSE 
+WL_At 	 TRUE 
+WL_Bt_1 	 FALSE 
+WL_Bt_2 	 FALSE 
+WL_Bt_3 	 FALSE 
+WL_Ct_1 	 FALSE 
+WL_Ct_2 	 FALSE 
+WL_Ct_3 	 FALSE 
+> tf  <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, N = 1000, xcond = c(560, 600))
+> tfe <- multiStep_dist(exampleModels$WL_ibm, maxh = 3, xcond = c(560, 600))
+> tfepdf <- tfe(3, "pdf")
+> tfecdf <- tfe(3, "cdf")
+> ## plot the pdf
+> gbutils::plotpdf(tfepdf, cdf = tfecdf)
+> exampleModels$WL_A
+(To see the internal structure of the object, use function 'str'.)
+
+An object of class "MixARGaussian"
+Number of components: 2 
+       prob shift scale order ar_1
+Comp_1 0.5    0     5     1   0.5 
+Comp_2 0.5    0     1     1   1.1 
+
+Distributions of the error components:
+	standard Gaussian
+
+> tfe <- multiStep_dist(exampleModels$WL_A, maxh = 3, xcond = c(2, 2.5))
+> tfepdf <- tfe(3, "pdf")
+tfecdf <- tfe(3, "cdf")
+## plot the pdf
+gbutils::plotpdf(tfepdf, cdf = tfecdf)
+
+tfepdf <- tfe(3, "pdf")
+Error in .local(.Object, ...) : 
+  length of 'shift' should be 1 or the length of 'order'
+> tfecdf <- tfe(3, "cdf")
+Error in .local(.Object, ...) : 
+  length of 'shift' should be 1 or the length of 'order'
+> ## plot the pdf
+> gbutils::plotpdf(tfepdf, cdf = tfecdf)
+> tfe <- multiStep_dist(exampleModels$WL_A, maxh = 3, xcond = c(2))
+> tfepdf <- tfe(3, "pdf")
+tfecdf <- tfe(3, "cdf")
+## plot the pdf
+gbutils::plotpdf(tfepdf, cdf = tfecdf)
+
+tfepdf <- tfe(3, "pdf")
+> tfecdf <- tfe(3, "cdf")
+> ## plot the pdf
+> gbutils::plotpdf(tfepdf, cdf = tfecdf)
+> 
+> Save workspace image? [y/n/c]: n
+
+Process R finished at Mon May  3 19:47:19 2021
+
+
+R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> setwd('/home/georgi/repos/private/mixAR')
+> devtools::load_all()
+ℹ Loading mixAR
+> tfe <- multiStep_dist(exampleModels$WL_A, maxh = 3, xcond = c(2))
+> tfepdf <- tfe(3, "pdf")
+tfecdf <- tfe(3, "cdf")
+## plot the pdf
+gbutils::plotpdf(tfepdf, cdf = tfecdf)
+
+tfepdf <- tfe(3, "pdf")
+> tfecdf <- tfe(3, "cdf")
+> ## plot the pdf
+> gbutils::plotpdf(tfepdf, cdf = tfecdf)
+> tfesim <- multiStep_dist(exampleModels$WL_A, maxh = 3, N = 10000, xcond = c(2))
+> tfepdfsim <- tfesim(3, "pdf")
+> tfecdfsim <- tfesim(3, "cdf")
+> curve(tfepdfsim, add = TRUE, col = "blue")
+> tfesim <- multiStep_dist(exampleModels$WL_A, maxh = 3, N = 100000, xcond = c(2))
+> tfepdfsim <- tfesim(3, "pdf")
+> tfecdfsim <- tfesim(3, "cdf")
+> curve(tfepdfsim, add = TRUE, col = "red")
+> exampleModels$WL_A
+An object of class "MixARGaussian"
+Number of components: 2 
+       prob shift scale order ar_1
+Comp_1 0.5    0     5     1   0.5 
+Comp_2 0.5    0     1     1   1.1 
+
+Distributions of the error components:
+	standard Gaussian
+
+> tfesim <- multiStep_dist(exampleModels$WL_A, maxh = 3, N = 1000000, xcond = c(2))
+> tfepdfsim <- tfesim(3, "pdf")
+> tfecdfsim <- tfesim(3, "cdf")
+> curve(tfepdfsim, add = TRUE, col = "green")
+> tfecdfsim2 <- tfesim(2, "cdf")
+> tfepdfsim2 <- tfesim(2, "pdf")
+> tfepdf2 <- tfe(2, "pdf")
+> gbutils::plotpdf(tfepdf2, cdf = tfecdf2)
+Error in f(lower, ...) : object 'tfecdf2' not found
+> gbutils::plotpdf(tfepdfsim2, cdf = tfecdfsim2)
+> curve(tfepdf2, add = TRUE, col = "red")
+> exampleModels$WL_ibm
+An object of class "MixARGaussian"
+Number of components: 3 
+       prob   shift scale   order ar_1   ar_2   
+Comp_1 0.5439   0    4.8227   2   0.6792  0.3208
+Comp_2 0.4176   0    6.0082   2   1.6711 -0.6711
+Comp_3 0.0385   0   18.1716   1   1.0000        
+
+Distributions of the error components:
+	standard Gaussian
+
+> 
