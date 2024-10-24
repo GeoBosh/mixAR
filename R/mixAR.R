@@ -867,7 +867,7 @@ setMethod("fit_mixAR", signature(x = "ANY", model = "MixARGaussian", init = "Mix
           })
 
 # build_mixAR <- function(x, ncomp = 2, pmax = 2, ...){
-#                                      # stop("There is currently no default for this funciton")
+#                                      # stop("There is currently no default for this function")
 #     if(ncomp < 2)
 #         ncomp <- 2
 #
@@ -1288,7 +1288,7 @@ setMethod("show_diff", signature(model1="MixARGaussian", model2="MixARgen"),
               invisible("")
 	  })
 
-                                                                  # 2012-11-02 new arg. 'drop'
+# 2012-11-02 new arg. 'drop'
 parameters <- function(model, namesflag = FALSE, drop = character(0)){
     coef(model)
 }

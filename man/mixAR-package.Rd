@@ -2,6 +2,16 @@
 \alias{mixAR-package}
 %\alias{mixAR}
 \docType{package}
+
+\concept{mixture autoregressive model}
+\concept{MAR model}
+\concept{TMAR model}
+\concept{mixture autoregression}
+
+\concept{non-gaussian time series}
+\concept{asymmetry in time series}
+\concept{multi-modality in time series}
+
 % attaching the package is not necessary for this file but it ensures
 % that Sexpr's using functions from the package will work also in other
 % Rd files, without them needing to attach the package. This is
@@ -236,10 +246,25 @@ Maintainer: \Sexpr[stage=build]{pd$Maintainer}
 
   \insertRef{WongLi2001b}{mixAR}
 }
-% \seealso{
-% ~~ Optional links to other man pages, e.g. ~~
-% ~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-% }
+\seealso{
+  fit several types of mixAR models:
+  \code{\link{fit_mixAR}}, \code{\link{bayes_mixAR}},
+  \code{\link{fit_mixARreg}},
+  \code{\link{mixSARfit}};
+
+  Predictive distributions and summaries:
+  \code{\link{mix_pdf}}, \code{\link{mix_cdf}}, \code{\link{mix_qf}},
+  \code{\link{mix_location}},
+  \code{\link{mix_variance}},
+  \code{\link{mix_central_moment}},
+  \code{\link{mix_moment}},
+  \code{\link{mix_kurtosis}},
+  \code{\link{mix_ekurtosis}}
+
+  multi-step prediction:
+  \code{\link{multiStep_dist}}
+
+}
 \examples{
 ## object 'exampleModels' contains a number of models for examples and testing
 names(exampleModels)

@@ -1,8 +1,7 @@
 Package: mixAR
 Type: Package
 Title: Mixture Autoregressive Models
-Version: 0.22.7.9000
-Date: 2022-05-05
+Version: 0.22.8.9000
 Authors@R: c( person(given = c("Georgi", "N."), 
                      family = "Boshnakov", 
                      role = c("aut", "cre"), 
@@ -26,8 +25,8 @@ Imports: stats, graphics, utils, stats4, BB, combinat, timeDate,
         permute, mvtnorm
 Suggests: fma, testthat, covr
 RdMacros: Rdpack
-URL: https://geobosh.github.io/mixAR/ (website),
-        https://github.com/GeoBosh/mixAR/ (devel)
+URL: https://geobosh.github.io/mixAR/ (doc),
+     https://github.com/GeoBosh/mixAR/ (devel)
 BugReports: https://github.com/GeoBosh/mixAR/issues
 Collate: raggedCoef.R raggedCoefS.R mixComp.R mixAR.R mixARcalc.R
         mixutil.R dist.R predict.R mix_se.R obs_info_matrix.R

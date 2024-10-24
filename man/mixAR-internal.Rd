@@ -19,15 +19,8 @@
 param_score_stdt(x, nu)
 }
 \arguments{
-  \item{nu}{~~ TODO: describe this argument. ~~}
-  \item{p}{~~ TODO: describe this argument. ~~}
-  \item{value}{~~ TODO: describe this argument. ~~}
   \item{x}{~~ TODO: describe this argument. ~~}
-  \item{tau}{~~ TODO: describe this argument. ~~}
-  \item{etk}{~~ TODO: describe this argument. ~~}
-  \item{parscore}{~~ TODO: describe this argument. ~~}
-  \item{sigma}{~~ TODO: describe this argument. ~~}
-  \item{logpdf}{~~ TODO: describe this argument. ~~}
+  \item{nu}{~~ TODO: describe this argument. ~~}
 }
 \details{
   These are not to be called by the user (or in some cases are just

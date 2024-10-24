@@ -61,7 +61,7 @@
 %%  ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-  code{\link{mixAR}},
+  \code{\link{mixAR}},
   classes \code{"\linkS4class{MixARGaussian}"},
           \code{"\linkS4class{MixARgen}"}
 }

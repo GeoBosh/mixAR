@@ -2,7 +2,7 @@
 ## It has been automatically generated from mixAR.org.
 
 fit_mixARreg <- function(x, y, mixARmodel, EMinit, ...){
-    stop("There is currently no default for this funciton")
+    stop("There is currently no default for this function")
 }
 setGeneric("fit_mixARreg")
 
