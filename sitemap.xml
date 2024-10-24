@@ -1,300 +1,102 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://geobosh.github.io/mixAR/404.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/README_dev.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/index.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/Choose_pk.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/MixAR-class.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/MixARGaussian-class.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/MixARgen-class.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/MixComp-class.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/MixVAR-class.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/MixVARGaussian-class.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/PortfolioData1.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/adjustLengths.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/bayes_mixAR.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/bx_dx.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/companion_matrix.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/cond_loglik.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/dist_norm.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/em_est_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/em_est_sigma.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/em_rinit.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/em_tau.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/err.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/err_k.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/est_templ.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/exampleModels.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/fit_mixAR-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/fit_mixARreg-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/fit_mixVAR-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/fnoise.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/get_edist-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/initialize-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/inner.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/isStable.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/label_switch.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/lastn.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/lik_params.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/lik_params_bounds.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/make_fcond_lik-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/marg_loglik.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixAR-internal.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixAR-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixAR-package.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixARExperiment.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixAR_BIC.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixAR_cond_probs.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixAR_diag.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixAR_sim.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixAR_switch.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixARemFixedPoint.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixARnoise_sim.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixFilter.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixMstep.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixSARfit.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixSubsolve.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixVAR_sim.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixVARfit.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mix_central_moment-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mix_ek.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mix_hatk.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mix_location-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mix_moment-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mix_moment.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mix_ncomp-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mix_pdf-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mix_qf-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mix_se-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mix_variance-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/mixgenMstep.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/multiStep_dist-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/noise_dist-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/noise_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/noise_moment-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/noise_params-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/noise_rand-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/parameters.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/percent_of.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/permn_cols.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/predict_coef.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/ragged.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/ragged2char.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/raggedCoef-class.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/raggedCoefS-class.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/raggedCoefV-class.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/raghat1.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/randomArCoefficients.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/row_length-methods.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/sampZpi.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/show_diff.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/simuExperiment.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/stdnormmoment.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/tau2probhat.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/test_unswitch.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/tomarparambyComp.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/ui.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/unswitch.html</loc>
-  </url>
-  <url>
-    <loc>https://geobosh.github.io/mixAR/reference/xxcanonic_coef.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://geobosh.github.io/mixAR/404.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/README_dev.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/authors.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/index.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/news/index.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/Choose_pk.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/MixAR-class.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/MixARGaussian-class.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/MixARgen-class.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/MixComp-class.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/MixVAR-class.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/MixVARGaussian-class.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/PortfolioData1.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/adjustLengths.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/bayes_mixAR.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/bx_dx.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/companion_matrix.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/cond_loglik.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/dist_norm.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/em_est_dist.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/em_est_sigma.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/em_rinit.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/em_tau.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/err.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/err_k.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/est_templ.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/exampleModels.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/fit_mixAR-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/fit_mixARreg-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/fit_mixVAR-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/fnoise.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/get_edist-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/index.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/initialize-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/inner.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/isStable.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/label_switch.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/lastn.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/lik_params.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/lik_params_bounds.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/make_fcond_lik-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/marg_loglik.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixAR-internal.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixAR-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixAR-package.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixARExperiment.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixAR_BIC.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixAR_cond_probs.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixAR_diag.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixAR_sim.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixAR_switch.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixARemFixedPoint.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixARnoise_sim.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixFilter.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixMstep.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixSARfit.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixSubsolve.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixVAR_sim.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixVARfit.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mix_central_moment-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mix_ek.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mix_hatk.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mix_location-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mix_moment-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mix_moment.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mix_ncomp-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mix_pdf-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mix_qf-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mix_se-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mix_variance-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/mixgenMstep.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/multiStep_dist-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/noise_dist-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/noise_dist.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/noise_moment-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/noise_params-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/noise_rand-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/parameters.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/percent_of.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/permn_cols.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/predict_coef.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/ragged.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/ragged2char.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/raggedCoef-class.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/raggedCoefS-class.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/raggedCoefV-class.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/raghat1.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/randomArCoefficients.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/row_length-methods.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/sampZpi.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/show_diff.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/simuExperiment.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/stdnormmoment.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/tau2probhat.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/test_unswitch.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/tomarparambyComp.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/ui.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/unswitch.html</loc></url>
+<url><loc>https://geobosh.github.io/mixAR/reference/xxcanonic_coef.html</loc></url>
 </urlset>
+
