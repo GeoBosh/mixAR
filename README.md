@@ -4,6 +4,7 @@
 [![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/mixAR?color=blue)](https://r-pkg.org/pkg/mixAR)
 [![R-CMD-check](https://github.com/GeoBosh/mixAR/workflows/R-CMD-check/badge.svg)](https://github.com/GeoBosh/mixAR/actions)
 [![codecov](https://codecov.io/gh/GeoBosh/mixAR/branch/master/graph/badge.svg?token=2SW9HKG71Y)](https://app.codecov.io/gh/GeoBosh/mixAR)
+[![Codecov test coverage](https://codecov.io/gh/GeoBosh/mixAR/graph/badge.svg)](https://app.codecov.io/gh/GeoBosh/mixAR)
 <!-- badges: end -->
 
 'mixAR' is an R package for time series modelling with mixture autoregressive and related
