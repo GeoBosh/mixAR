@@ -1,0 +1,30 @@
+# Installing mixAR
+
+‘mixAR’ is an R package for time series modelling with mixture
+autoregressive and related models.
+
+Install the [latest stable
+version](https://cran.r-project.org/package=mixAR) from CRAN:
+
+``` R
+install.packages("mixAR")
+```
+
+Alternatively, install the [development
+version](https://github.com/GeoBosh/mixAR) of `mixAR` from Github:
+
+``` R
+remotes::install_github("GeoBosh/mixAR")
+```
+
+# Overview
+
+Package `mixAR` provides functions for modelling with mixture
+autoregressive (MAR/mixAR) models.
+
+See, for example, the [overview of
+mixAR](https://geobosh.github.io/mixAR/reference/mixAR-package.html) and
+model fitting functions such as
+[fit_mixAR](https://geobosh.github.io/mixAR/reference/fit_mixAR-methods.html)
+and
+[bayes_mixAR](https://geobosh.github.io/mixAR/reference/bayes_mixAR.html).

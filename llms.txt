@@ -1,0 +1,478 @@
+# Installing mixAR
+
+‘mixAR’ is an R package for time series modelling with mixture
+autoregressive and related models.
+
+Install the [latest stable
+version](https://cran.r-project.org/package=mixAR) from CRAN:
+
+``` R
+install.packages("mixAR")
+```
+
+Alternatively, install the [development
+version](https://github.com/GeoBosh/mixAR) of `mixAR` from Github:
+
+``` R
+remotes::install_github("GeoBosh/mixAR")
+```
+
+# Overview
+
+Package `mixAR` provides functions for modelling with mixture
+autoregressive (MAR/mixAR) models.
+
+See, for example, the [overview of
+mixAR](https://geobosh.github.io/mixAR/reference/mixAR-package.html) and
+model fitting functions such as
+[fit_mixAR](https://geobosh.github.io/mixAR/reference/fit_mixAR-methods.html)
+and
+[bayes_mixAR](https://geobosh.github.io/mixAR/reference/bayes_mixAR.html).
+
+# Package index
+
+## mixAR overview
+
+- [`mixAR-package`](https://geobosh.github.io/mixAR/reference/mixAR-package.md)
+  : Mixture Autoregressive Models
+
+## EM and Bayesian estimation of mixture autoregressive models
+
+Fit mixture autoregressive models using the EM algorithm or MCMC.
+
+- [`fit_mixAR()`](https://geobosh.github.io/mixAR/reference/fit_mixAR-methods.md)
+  : Fit mixture autoregressive models
+- [`bayes_mixAR()`](https://geobosh.github.io/mixAR/reference/bayes_mixAR.md)
+  : Bayesian sampling of mixture autoregressive models
+- [`fit_mixARreg()`](https://geobosh.github.io/mixAR/reference/fit_mixARreg-methods.md)
+  [`mixARreg()`](https://geobosh.github.io/mixAR/reference/fit_mixARreg-methods.md)
+  : Fit time series regression models with mixture autoregressive
+  residuals
+- [`mixSARfit()`](https://geobosh.github.io/mixAR/reference/mixSARfit.md)
+  : Fit mixture autoregressive models with seasonal AR parameters
+- [`tsdiag(`*`<MixAR>`*`)`](https://geobosh.github.io/mixAR/reference/mixAR_diag.md)
+  [`mixAR_diag()`](https://geobosh.github.io/mixAR/reference/mixAR_diag.md)
+  : Diagnostic checks for mixture autoregressive models
+- [`mix_se()`](https://geobosh.github.io/mixAR/reference/mix_se-methods.md)
+  : Compute standard errors of estimates of MixAR models
+- [`mixAR_BIC()`](https://geobosh.github.io/mixAR/reference/mixAR_BIC.md)
+  [`BIC_comp()`](https://geobosh.github.io/mixAR/reference/mixAR_BIC.md)
+  : BIC based model selection for MixAR models
+
+## Prediction
+
+Predictive distributions and their summary statistics
+
+- [`mix_pdf`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_pdf-methods`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_pdf,MixARGaussian,missing,missing,numeric-method`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_pdf,MixARGaussian,numeric,missing,numeric-method`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_pdf,MixARGaussian,numeric,numeric,missing-method`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_pdf,MixARgen,missing,missing,numeric-method`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_pdf,MixARgen,numeric,missing,numeric-method`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_pdf,MixARgen,numeric,numeric,missing-method`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_cdf`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_cdf-methods`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_cdf,MixARGaussian,missing,missing,numeric-method`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_cdf,MixARGaussian,numeric,missing,numeric-method`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_cdf,MixARGaussian,numeric,numeric,missing-method`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_cdf,MixARgen,missing,missing,numeric-method`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_cdf,MixARgen,numeric,missing,numeric-method`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  [`mix_cdf,MixARgen,numeric,numeric,missing-method`](https://geobosh.github.io/mixAR/reference/mix_pdf-methods.md)
+  : Conditional pdf's and cdf's of MixAR models
+- [`mix_qf()`](https://geobosh.github.io/mixAR/reference/mix_qf-methods.md)
+  : Conditional quantile functions of MixAR models
+- [`mix_location()`](https://geobosh.github.io/mixAR/reference/mix_moment.md)
+  [`mix_variance()`](https://geobosh.github.io/mixAR/reference/mix_moment.md)
+  [`mix_central_moment()`](https://geobosh.github.io/mixAR/reference/mix_moment.md)
+  [`mix_moment()`](https://geobosh.github.io/mixAR/reference/mix_moment.md)
+  [`mix_kurtosis()`](https://geobosh.github.io/mixAR/reference/mix_moment.md)
+  [`mix_ekurtosis()`](https://geobosh.github.io/mixAR/reference/mix_moment.md)
+  : Conditional moments of MixAR models
+- [`multiStep_dist()`](https://geobosh.github.io/mixAR/reference/multiStep_dist-methods.md)
+  : Multi-step predictions for MixAR models
+
+## Simulation of mixAR time series
+
+- [`mixARnoise_sim()`](https://geobosh.github.io/mixAR/reference/mixARnoise_sim.md)
+  : Simulate white noise series from a list of functions and vector of
+  regimes
+- [`mixAR_sim()`](https://geobosh.github.io/mixAR/reference/mixAR_sim.md)
+  [`mixAny_sim()`](https://geobosh.github.io/mixAR/reference/mixAR_sim.md)
+  : Simulate from MixAR models
+
+## mixAR models
+
+- [`MixARGaussian-class`](https://geobosh.github.io/mixAR/reference/MixARGaussian-class.md)
+  [`MixARGaussian`](https://geobosh.github.io/mixAR/reference/MixARGaussian-class.md)
+  : mixAR models with Gaussian noise components
+
+- [`MixARgen-class`](https://geobosh.github.io/mixAR/reference/MixARgen-class.md)
+  [`mixARgen`](https://geobosh.github.io/mixAR/reference/MixARgen-class.md)
+  :
+
+  Class `"MixARgen"`
+
+- [`MixAR-class`](https://geobosh.github.io/mixAR/reference/MixAR-class.md)
+  :
+
+  Class `"MixAR"` — mixture autoregressive models
+
+- [`mixAR()`](https://geobosh.github.io/mixAR/reference/mixAR-methods.md)
+  : Create MixAR objects
+
+- [`exampleModels`](https://geobosh.github.io/mixAR/reference/exampleModels.md)
+  : MixAR models for examples and testing
+
+- [`show_diff()`](https://geobosh.github.io/mixAR/reference/show_diff.md)
+  : Show differences between two models
+
+- [`make_fcond_lik()`](https://geobosh.github.io/mixAR/reference/make_fcond_lik-methods.md)
+  : Create a function for computation of conditional likelihood
+
+- [`get_edist-methods`](https://geobosh.github.io/mixAR/reference/get_edist-methods.md)
+  [`get_edist,MixAR-method`](https://geobosh.github.io/mixAR/reference/get_edist-methods.md)
+  [`get_edist,MixARGaussian-method`](https://geobosh.github.io/mixAR/reference/get_edist-methods.md)
+  [`get_edist,MixARgen-method`](https://geobosh.github.io/mixAR/reference/get_edist-methods.md)
+  :
+
+  Methods for function `get_edist` in package mixAR
+
+- [`mix_ncomp()`](https://geobosh.github.io/mixAR/reference/mix_ncomp-methods.md)
+  : Number of rows or columns of a MixComp object
+
+- [`row_lengths-methods`](https://geobosh.github.io/mixAR/reference/row_length-methods.md)
+  [`row_lengths`](https://geobosh.github.io/mixAR/reference/row_length-methods.md)
+  [`row_lengths,ANY-method`](https://geobosh.github.io/mixAR/reference/row_length-methods.md)
+  [`row_lengths,MixAR-method`](https://geobosh.github.io/mixAR/reference/row_length-methods.md)
+  [`row_lengths,raggedCoef-method`](https://geobosh.github.io/mixAR/reference/row_length-methods.md)
+  :
+
+  Methods for function `row_lengths` in package mixAR
+
+## Multivariate mixAR (mixVAR) models
+
+- [`mixVAR_sim()`](https://geobosh.github.io/mixAR/reference/mixVAR_sim.md)
+  : Simulate from multivariate MixAR models
+
+- [`mixVARfit()`](https://geobosh.github.io/mixAR/reference/mixVARfit.md)
+  : Fit mixture vector autoregressive models
+
+- [`MixVAR-class`](https://geobosh.github.io/mixAR/reference/MixVAR-class.md)
+  :
+
+  Class `"MixVAR"` — mixture vector autoregressive models
+
+- [`MixVARGaussian-class`](https://geobosh.github.io/mixAR/reference/MixVARGaussian-class.md)
+  [`MixVARGaussian`](https://geobosh.github.io/mixAR/reference/MixVARGaussian-class.md)
+  : MixVAR models with multivariate Gaussian noise components
+
+- [`fit_mixVAR()`](https://geobosh.github.io/mixAR/reference/fit_mixVAR-methods.md)
+  : Fit mixture vector autoregressive models
+
+- [`raggedCoefV-class`](https://geobosh.github.io/mixAR/reference/raggedCoefV-class.md)
+  [`raggedCoefV`](https://geobosh.github.io/mixAR/reference/raggedCoefV-class.md)
+  [`[,raggedCoefV,numeric,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefV-class.md)
+  [`[,raggedCoefV,numeric,ANY,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefV-class.md)
+  [`[,raggedCoefV,numeric,missing,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefV-class.md)
+  [`[,raggedCoefV,missing,numeric,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefV-class.md)
+  [`[,raggedCoefV,numeric,numeric,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefV-class.md)
+  [`[[,raggedCoefV,missing,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefV-class.md)
+  [`[[,raggedCoefV,numeric,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefV-class.md)
+  [`[,raggedCoefV,missing,ANY,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefV-class.md)
+  :
+
+  Class `"raggedCoefV"` — ragged list
+
+## Bayesian utilities for mixAR models
+
+- [`Choose_pk()`](https://geobosh.github.io/mixAR/reference/Choose_pk.md)
+  : Choose the autoregressive order of MixAR components
+- [`sampZpi()`](https://geobosh.github.io/mixAR/reference/sampZpi.md)
+  [`sampMuShift()`](https://geobosh.github.io/mixAR/reference/sampZpi.md)
+  [`sampSigmaTau()`](https://geobosh.github.io/mixAR/reference/sampZpi.md)
+  : Sampling functions for Bayesian analysis of mixture autoregressive
+  models
+- [`bx_dx()`](https://geobosh.github.io/mixAR/reference/bx_dx.md) :
+  RJMCMC move for AR order selection of mixture autoregressive models
+- [`label_switch()`](https://geobosh.github.io/mixAR/reference/label_switch.md)
+  : A posteriori relabelling of a Markov chain
+
+## Mixture distributions
+
+Compute properties of mixture distributions.
+
+- [`dist_norm`](https://geobosh.github.io/mixAR/reference/dist_norm.md)
+  : Functions for the standard normal distribution
+- [`fdist_stdnorm()`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`fdist_stdt()`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`fn_stdt()`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`b_show()`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`distlist()`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`ed_nparam`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`ed_parse()`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`ed_skeleton()`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`ed_src`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`ed_stdnorm`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`ed_stdt`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`ed_stdt0`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`ed_stdt1`](https://geobosh.github.io/mixAR/reference/fnoise.md)
+  [`ft_stdt`](https://geobosh.github.io/mixAR/reference/fnoise.md) :
+  Generator functions for noise distributions
+- [`get_edist()`](https://geobosh.github.io/mixAR/reference/noise_dist.md)
+  [`noise_dist()`](https://geobosh.github.io/mixAR/reference/noise_dist.md)
+  [`noise_rand()`](https://geobosh.github.io/mixAR/reference/noise_dist.md)
+  [`noise_params()`](https://geobosh.github.io/mixAR/reference/noise_dist.md)
+  [`set_noise_params()`](https://geobosh.github.io/mixAR/reference/noise_dist.md)
+  : Internal mixAR functions
+- [`stdnormmoment()`](https://geobosh.github.io/mixAR/reference/stdnormmoment.md)
+  [`stdnormabsmoment()`](https://geobosh.github.io/mixAR/reference/stdnormmoment.md)
+  [`stdtmoment()`](https://geobosh.github.io/mixAR/reference/stdnormmoment.md)
+  [`stdtabsmoment()`](https://geobosh.github.io/mixAR/reference/stdnormmoment.md)
+  [`tabsmoment()`](https://geobosh.github.io/mixAR/reference/stdnormmoment.md)
+  : Compute moments and absolute moments of standardised-t and normal
+  distributions
+
+## mixAR parameters
+
+mixAR parameters.
+
+- [`parameters()`](https://geobosh.github.io/mixAR/reference/parameters.md)
+  [`` `parameters<-`() ``](https://geobosh.github.io/mixAR/reference/parameters.md)
+  : Set or extract the parameters of MixAR objects
+- [`isStable()`](https://geobosh.github.io/mixAR/reference/isStable.md)
+  : Check if a MixAR model is stable
+- [`lik_params()`](https://geobosh.github.io/mixAR/reference/lik_params.md)
+  : Vector of parameters of a MixAR model
+- [`lik_params_bounds()`](https://geobosh.github.io/mixAR/reference/lik_params_bounds.md)
+  : Give natural limits for parameters of a MixAR model.
+- [`mixAR_switch()`](https://geobosh.github.io/mixAR/reference/mixAR_switch.md)
+  [`mixAR_permute()`](https://geobosh.github.io/mixAR/reference/mixAR_switch.md)
+  : Relabel the components of a MixAR model
+- [`predict_coef()`](https://geobosh.github.io/mixAR/reference/predict_coef.md)
+  : Exact predictive parameters for multi-step MixAR prediction
+- [`tomarparambyComp()`](https://geobosh.github.io/mixAR/reference/tomarparambyComp.md)
+  [`tomarparambyType()`](https://geobosh.github.io/mixAR/reference/tomarparambyComp.md)
+  [`permuteArpar()`](https://geobosh.github.io/mixAR/reference/tomarparambyComp.md)
+  : Translations of my old MixAR Mathematica functions
+
+## Operators and functions
+
+Operators and functions for computations with components of mixAR
+models.
+
+- [`inner()`](https://geobosh.github.io/mixAR/reference/inner.md) :
+
+  Generalised inner product and methods for class `"MixComp"`
+
+- [`` `%of%` ``](https://geobosh.github.io/mixAR/reference/percent_of.md)
+  : Infix operator to apply functions to matrix-like objects
+
+## Computations with noise distributions of mixAR models
+
+Computations involving noise distributions of mixAR models.
+
+- [`noise_dist-methods`](https://geobosh.github.io/mixAR/reference/noise_dist-methods.md)
+  [`noise_dist,MixAR-method`](https://geobosh.github.io/mixAR/reference/noise_dist-methods.md)
+  [`noise_dist,MixARGaussian-method`](https://geobosh.github.io/mixAR/reference/noise_dist-methods.md)
+  [`noise_dist,MixARgen-method`](https://geobosh.github.io/mixAR/reference/noise_dist-methods.md)
+  :
+
+  Methods for function `noise_dist` in package mixAR
+
+- [`noise_moment()`](https://geobosh.github.io/mixAR/reference/noise_moment-methods.md)
+  : Compute moments of the noise components
+
+- [`noise_params-methods`](https://geobosh.github.io/mixAR/reference/noise_params-methods.md)
+  [`noise_params,MixAR-method`](https://geobosh.github.io/mixAR/reference/noise_params-methods.md)
+  [`noise_params,MixARgen-method`](https://geobosh.github.io/mixAR/reference/noise_params-methods.md)
+  :
+
+  Methods for function `noise_params` in package mixAR
+
+- [`noise_rand-methods`](https://geobosh.github.io/mixAR/reference/noise_rand-methods.md)
+  [`noise_rand,MixAR-method`](https://geobosh.github.io/mixAR/reference/noise_rand-methods.md)
+  [`noise_rand,MixARGaussian-method`](https://geobosh.github.io/mixAR/reference/noise_rand-methods.md)
+  [`noise_rand,MixARgen-method`](https://geobosh.github.io/mixAR/reference/noise_rand-methods.md)
+  :
+
+  Methods for function `noise_rand` in package mixAR
+
+## Computations with components of mixAR models
+
+Computations involving components of mixAR models.
+
+- [`MixComp-class`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`dim,MixComp-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`-,MixComp,missing-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`-,MixComp,numeric-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`-,numeric,MixComp-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`*,character,MixComp-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`*,function,MixComp-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`*,MixComp,MixComp-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`*,MixComp,numeric-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`*,numeric,MixComp-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`/,MixComp,numeric-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`/,numeric,MixComp-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`+,MixComp,numeric-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`+,numeric,MixComp-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  [`^,MixComp,numeric-method`](https://geobosh.github.io/mixAR/reference/MixComp-class.md)
+  :
+
+  Class `"MixComp"` — manipulation of MixAR time series
+
+- [`mix_ek()`](https://geobosh.github.io/mixAR/reference/mix_ek.md) :
+  Function and methods to compute component residuals for MixAR models
+
+- [`mix_hatk()`](https://geobosh.github.io/mixAR/reference/mix_hatk.md)
+  : Compute component predictions for MixAR models
+
+- [`raghat1()`](https://geobosh.github.io/mixAR/reference/raghat1.md) :
+  Filter a time series with options to shift and scale
+
+## EM and other utilities for mixAR models
+
+EM and other utilities for mixAR models.
+
+- [`em_est_dist()`](https://geobosh.github.io/mixAR/reference/em_est_dist.md)
+  : Optimise scale parameters in MixARgen models
+- [`tauetk2sigmahat()`](https://geobosh.github.io/mixAR/reference/em_est_sigma.md)
+  [`em_est_sigma()`](https://geobosh.github.io/mixAR/reference/em_est_sigma.md)
+  : Update the scale parameters of MixAR models
+- [`em_rinit()`](https://geobosh.github.io/mixAR/reference/em_rinit.md)
+  [`etk2tau()`](https://geobosh.github.io/mixAR/reference/em_rinit.md) :
+  Gaussian EM-step with random initialisation
+- [`em_tau()`](https://geobosh.github.io/mixAR/reference/em_tau.md)
+  [`em_tau_safe()`](https://geobosh.github.io/mixAR/reference/em_tau.md)
+  : Compute probabilities for the observations to belong to each of the
+  components
+- [`est_templ()`](https://geobosh.github.io/mixAR/reference/est_templ.md)
+  : Create estimation templates from MixAR model objects
+- [`cond_loglik()`](https://geobosh.github.io/mixAR/reference/cond_loglik.md)
+  [`cond_loglikS()`](https://geobosh.github.io/mixAR/reference/cond_loglik.md)
+  : Log-likelihood of MixAR models
+- [`marg_loglik()`](https://geobosh.github.io/mixAR/reference/marg_loglik.md)
+  : Calculate marginal loglikelihood at high density points of a MAR
+  model.
+- [`mixAR_cond_probs()`](https://geobosh.github.io/mixAR/reference/mixAR_cond_probs.md)
+  : The E-step of the EM algorithm for MixAR models
+- [`mixARemFixedPoint()`](https://geobosh.github.io/mixAR/reference/mixARemFixedPoint.md)
+  [`mixARgenemFixedPoint()`](https://geobosh.github.io/mixAR/reference/mixARemFixedPoint.md)
+  : EM estimation for mixture autoregressive models
+- [`mixgenMstep()`](https://geobosh.github.io/mixAR/reference/mixgenMstep.md)
+  : M-step for models from class MixARgen
+- [`tauCorrelate()`](https://geobosh.github.io/mixAR/reference/mixMstep.md)
+  [`tau2arcoef()`](https://geobosh.github.io/mixAR/reference/mixMstep.md)
+  [`mixMstep()`](https://geobosh.github.io/mixAR/reference/mixMstep.md)
+  : Internal functions for estimation of MixAR models with Gaussian
+  components
+- [`mixFilter()`](https://geobosh.github.io/mixAR/reference/mixFilter.md)
+  : Filter time series with MixAR filters
+- [`mixSubsolve()`](https://geobosh.github.io/mixAR/reference/mixSubsolve.md)
+  : Support for EM estimation of MixAR models, internal function.
+- [`randomArCoefficients()`](https://geobosh.github.io/mixAR/reference/randomArCoefficients.md)
+  [`randomMarParametersKernel()`](https://geobosh.github.io/mixAR/reference/randomArCoefficients.md)
+  [`randomMarResiduals()`](https://geobosh.github.io/mixAR/reference/randomArCoefficients.md)
+  [`tsDesignMatrixExtended()`](https://geobosh.github.io/mixAR/reference/randomArCoefficients.md)
+  : Random initial values for MixAR estimation
+- [`tau2probhat()`](https://geobosh.github.io/mixAR/reference/tau2probhat.md)
+  : Estimate probabilities of a MixAR model from tau.
+
+## Ragged coefficients
+
+Ragged coefficients.
+
+- [`raggedCoef()`](https://geobosh.github.io/mixAR/reference/raggedCoef-class.md)
+  :
+
+  Class `"raggedCoef"` — ragged list objects
+
+- [`raggedCoefS-class`](https://geobosh.github.io/mixAR/reference/raggedCoefS-class.md)
+  [`raggedCoefS`](https://geobosh.github.io/mixAR/reference/raggedCoefS-class.md)
+  [`[,raggedCoefS,missing,missing,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefS-class.md)
+  [`[,raggedCoefS,numeric,missing,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefS-class.md)
+  [`[,raggedCoefS,missing,numeric,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefS-class.md)
+  [`[,raggedCoefS,numeric,numeric,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefS-class.md)
+  [`[[,raggedCoefS,ANY,missing-method`](https://geobosh.github.io/mixAR/reference/raggedCoefS-class.md)
+  [`[[,raggedCoefS,ANY,ANY-method`](https://geobosh.github.io/mixAR/reference/raggedCoefS-class.md)
+  [`[[<-,raggedCoefS,ANY,ANY,numeric-method`](https://geobosh.github.io/mixAR/reference/raggedCoefS-class.md)
+  [`[[<-,raggedCoefS,ANY,missing,list-method`](https://geobosh.github.io/mixAR/reference/raggedCoefS-class.md)
+  :
+
+  Class `"raggedCoefS"` — ragged list
+
+- [`rag_modify()`](https://geobosh.github.io/mixAR/reference/ragged.md)
+  [`ragged2vec()`](https://geobosh.github.io/mixAR/reference/ragged.md)
+  : Small utilities for ragged objects
+
+- [`ragged2char()`](https://geobosh.github.io/mixAR/reference/ragged2char.md)
+  : Convert a ragged list into a matrix of characters
+
+## Datasets
+
+- [`PortfolioData1`](https://geobosh.github.io/mixAR/reference/PortfolioData1.md)
+  : Closing prices of four stocks
+
+## Other methods
+
+- [`mix_location-methods`](https://geobosh.github.io/mixAR/reference/mix_location-methods.md)
+  [`mix_location,MixAR,missing,missing,missing-method`](https://geobosh.github.io/mixAR/reference/mix_location-methods.md)
+  [`mix_location,MixAR,missing,missing,numeric-method`](https://geobosh.github.io/mixAR/reference/mix_location-methods.md)
+  [`mix_location,MixAR,numeric,missing,missing-method`](https://geobosh.github.io/mixAR/reference/mix_location-methods.md)
+  [`mix_location,MixAR,numeric,numeric,missing-method`](https://geobosh.github.io/mixAR/reference/mix_location-methods.md)
+  : Conditional mean of MixAR models
+- [`mix_moment-methods`](https://geobosh.github.io/mixAR/reference/mix_moment-methods.md)
+  [`mix_moment,MixAR,missing,missing,numeric-method`](https://geobosh.github.io/mixAR/reference/mix_moment-methods.md)
+  : Methods for mix_moment
+- [`mix_central_moment-methods`](https://geobosh.github.io/mixAR/reference/mix_central_moment-methods.md)
+  [`mix_central_moment,MixAR,missing,missing,numeric-method`](https://geobosh.github.io/mixAR/reference/mix_central_moment-methods.md)
+  : Methods for mix_central_moment
+- [`mix_variance-methods`](https://geobosh.github.io/mixAR/reference/mix_variance-methods.md)
+  [`mix_variance,MixAR,missing,missing,missing-method`](https://geobosh.github.io/mixAR/reference/mix_variance-methods.md)
+  [`mix_variance,MixAR,missing,missing,numeric-method`](https://geobosh.github.io/mixAR/reference/mix_variance-methods.md)
+  [`mix_variance,MixAR,numeric,numeric,missing-method`](https://geobosh.github.io/mixAR/reference/mix_variance-methods.md)
+  : Methods for mix_variance
+
+## Experimental (may be change/renamed/removed)
+
+- [`simuExperiment()`](https://geobosh.github.io/mixAR/reference/simuExperiment.md)
+  : Perform simulation experiments
+
+## Internal utility functions
+
+- [`adjustLengths()`](https://geobosh.github.io/mixAR/reference/adjustLengths.md)
+  : Adjust the length of the second argument to be the same as that of
+  the first one
+
+- [`.canonic_coef()`](https://geobosh.github.io/mixAR/reference/xxcanonic_coef.md)
+  : Put core MixAR coefficients into a canonical form, internal function
+
+- [`companion_matrix()`](https://geobosh.github.io/mixAR/reference/companion_matrix.md)
+  : Create a companion matrix from a vector
+
+- [`err_k()`](https://geobosh.github.io/mixAR/reference/err_k.md) :
+  Utility function for MixAR
+
+- [`err()`](https://geobosh.github.io/mixAR/reference/err.md) :
+  Calculate component specific error terms under MixAR model
+
+- [`initialize-methods`](https://geobosh.github.io/mixAR/reference/initialize-methods.md)
+  [`initialize,MixAR-method`](https://geobosh.github.io/mixAR/reference/initialize-methods.md)
+  [`initialize,raggedCoef-method`](https://geobosh.github.io/mixAR/reference/initialize-methods.md)
+  [`initialize,raggedCoefS-method`](https://geobosh.github.io/mixAR/reference/initialize-methods.md)
+  [`initialize,MixARgen-method`](https://geobosh.github.io/mixAR/reference/initialize-methods.md)
+  [`initialize,raggedCoefV-method`](https://geobosh.github.io/mixAR/reference/initialize-methods.md)
+  [`initialize,MixVAR-method`](https://geobosh.github.io/mixAR/reference/initialize-methods.md)
+  :
+
+  Methods for function `initialize` in package mixAR
+
+- [`lastn()`](https://geobosh.github.io/mixAR/reference/lastn.md) :
+  Extract the last n elements of a vector
+
+- [`permn_cols()`](https://geobosh.github.io/mixAR/reference/permn_cols.md)
+  : All permutations of the columns of a matrix
+
+- [`ui()`](https://geobosh.github.io/mixAR/reference/ui.md) : Utility
+  function for mixAR
+
