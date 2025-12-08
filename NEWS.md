@@ -1,10 +1,12 @@
-# mixAR 0.22.8.9000 (CRAN)
+# mixAR 0.22.8.9000
 
 - fixed a typo in a `stop()` string 
   (fixes issue #1, reported by @beliavski).
 
+- added ORCID ids of the authors.
 
-# mixAR 0.22.8 (CRAN)
+
+# mixAR 0.22.8
 
 - fixed 'Lost braces' NOTE on CRAN.
 
@@ -12,13 +14,13 @@
   NOTE on CRAN.
 
 
-# mixAR 0.22.7 (CRAN)
+# mixAR 0.22.7
 
 - fixed CRAN warning "`\item` in `\describe` must have non-empty label" in a
   couple of Rd files.
 
 
-# mixAR 0.22.6 (CRAN)
+# mixAR 0.22.6
 
 - `fit_mixAR` was failing for some mixAR models with Gaussian components when
   the AR order of a component was zero. (reported by Lu Cao)
@@ -36,13 +38,13 @@
 - numerous fixes and improvements.
 
 
-# mixAR 0.22.5 (CRAN)
+# mixAR 0.22.5
 
 - in tests, include `check.environment = FALSE` in calls to expect_equal() to
   accommodate for a change in `all.equal()` in `R-devel`.
 
 
-# mixAR 0.22.4 (CRAN)
+# mixAR 0.22.4
 
 - `tsdiag` has been extensively revamped. It now is more user friendly and
    offers more diagnostics. The object returned by it has a class and a print
@@ -58,7 +60,7 @@
 - relaxed some comparison tests raising "Additional issues" on CRAN.
 
 
-# mixAR 0.22.3 (CRAN)
+# mixAR 0.22.3
 
 - there are now no commented out examples
 
@@ -68,18 +70,18 @@
   for the examples.
 
 
-# mixAR 0.22.2
+# mixAR 0.22.2 (Not on CRAN)
 
 - reduced the time taken by `R CMD check`.
 
 
-# mixAR 0.22.1
+# mixAR 0.22.1 (Not on CRAN)
 
 - added missing import from stats4.
 
 - in `README.md`, now using absolute paths to linked pages on the package website.
 
 
-# mixAR 0.22.0
+# mixAR 0.22.0 (Not on CRAN)
 
 - first public version

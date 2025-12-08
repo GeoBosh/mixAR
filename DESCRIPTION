@@ -5,10 +5,12 @@ Version: 0.22.8.9000
 Authors@R: c( person(given = c("Georgi", "N."), 
                      family = "Boshnakov", 
                      role = c("aut", "cre"), 
-                     email = "georgi.boshnakov@manchester.ac.uk"), 
+                     email = "georgi.boshnakov@manchester.ac.uk",
+		     comment = c(ORCID = "0000-0003-2839-346X")), 
 	      person(given = "Davide", 
 	             family = "Ravagli", 
-	             role = "aut", email = "davide.ravagli@manchester.ac.uk") )
+	             role = "aut", email = "davide.ravagli@manchester.ac.uk",
+		     comment = c(ORCID = "0000-0001-7146-7685")) )
 Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
 Description: Model time series using mixture autoregressive (MAR)
              models.  Implemented are frequentist (EM) and Bayesian
