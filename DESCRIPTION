@@ -11,7 +11,6 @@ Authors@R: c( person(given = c("Georgi", "N."),
 	             family = "Ravagli", 
 	             role = "aut", email = "davide.ravagli@manchester.ac.uk",
 		     comment = c(ORCID = "0000-0001-7146-7685")) )
-Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
 Description: Model time series using mixture autoregressive (MAR)
              models.  Implemented are frequentist (EM) and Bayesian
              methods for estimation, prediction and model
@@ -28,7 +27,7 @@ Imports: stats, graphics, utils, stats4, BB, combinat, timeDate,
 Suggests: fma, testthat, covr
 RdMacros: Rdpack
 URL: https://geobosh.github.io/mixAR/ (doc),
-     https://github.com/GeoBosh/mixAR/ (devel)
+     https://CRAN.R-project.org/package=mixAR/
 BugReports: https://github.com/GeoBosh/mixAR/issues
 Collate: raggedCoef.R raggedCoefS.R mixComp.R mixAR.R mixARcalc.R
         mixutil.R dist.R predict.R mix_se.R obs_info_matrix.R
@@ -38,8 +37,3 @@ Collate: raggedCoef.R raggedCoefS.R mixComp.R mixAR.R mixARcalc.R
         tsdiag.R mixAR_diag.R devel.R em0.R emGaussian.R emgen.R
         00marmath.R exmodels.R mixARsim.R
 Encoding: UTF-8
-RoxygenNote: 7.1.1
-NeedsCompilation: no
-Packaged: 2021-01-06 19:24:55 UTC; georgi
-Author: Georgi N. Boshnakov [aut, cre],
-  Davide Ravagli [aut]
