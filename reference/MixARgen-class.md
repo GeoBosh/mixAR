@@ -143,50 +143,50 @@ exampleModels$WL_ibm_gen@dist
 #> [[1]]$logpdf
 #> function (x) 
 #> log(dnorm(x))
-#> <bytecode: 0x561e12091d98>
-#> <environment: 0x561e12091458>
+#> <bytecode: 0x55d83f259b68>
+#> <environment: 0x55d83f255c10>
 #> 
 #> [[1]]$Fscore
 #> function (x) 
 #> -x
-#> <bytecode: 0x561e12095538>
-#> <environment: 0x561e12091458>
+#> <bytecode: 0x55d83f25d308>
+#> <environment: 0x55d83f255c10>
 #> 
 #> [[1]]$xFscore
 #> function (x) 
 #> -x^2
-#> <bytecode: 0x561e12094f88>
-#> <environment: 0x561e12091458>
+#> <bytecode: 0x55d83f25cd58>
+#> <environment: 0x55d83f255c10>
 #> 
 #> [[1]]$Parscore
 #> function () 
 #> 0
-#> <bytecode: 0x561e12094968>
-#> <environment: 0x561e12091458>
+#> <bytecode: 0x55d83f25c738>
+#> <environment: 0x55d83f255c10>
 #> 
 #> [[1]]$get_param
 #> function () 
 #> numeric()
-#> <bytecode: 0x561e12094460>
-#> <environment: 0x561e12091458>
+#> <bytecode: 0x55d83f25c230>
+#> <environment: 0x55d83f255c10>
 #> 
 #> [[1]]$set_param
 #> function () 
 #> stop("Standard normal has no parameters to set.")
-#> <bytecode: 0x561e12093f20>
-#> <environment: 0x561e12091458>
+#> <bytecode: 0x55d83f25bcf0>
+#> <environment: 0x55d83f255c10>
 #> 
 #> [[1]]$any_param
 #> function () 
 #> param_flag
-#> <bytecode: 0x561e120939a8>
-#> <environment: 0x561e12091458>
+#> <bytecode: 0x55d83f25b778>
+#> <environment: 0x55d83f255c10>
 #> 
 #> [[1]]$show
 #> function () 
 #> "Standard normal distribution"
-#> <bytecode: 0x561e120972d0>
-#> <environment: 0x561e12091458>
+#> <bytecode: 0x55d83f25f0a0>
+#> <environment: 0x55d83f255c10>
 #> 
 #> 
 noise_dist(exampleModels$WL_ibm_gen, "cdf")
@@ -264,8 +264,8 @@ noise_dist(exampleModels$WL_ibm_gen, "Fscore")
 #> [[1]]
 #> function (x) 
 #> -x
-#> <bytecode: 0x561e12095538>
-#> <environment: 0x561e12091458>
+#> <bytecode: 0x55d83f25d308>
+#> <environment: 0x55d83f255c10>
 #> 
 
 prob   <- exampleModels$WL_ibm@prob

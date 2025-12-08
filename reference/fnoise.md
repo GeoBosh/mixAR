@@ -129,204 +129,204 @@ fn_stdt(c(20, 30, 40), fixed = FALSE)
 #> [[1]]$pdf
 #> function (x) 
 #> dstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c863e8>
-#> <environment: 0x561e1f521d90>
+#> <bytecode: 0x55d83f682ca0>
+#> <environment: 0x55d84b20eb48>
 #> 
 #> [[1]]$cdf
 #> function (x) 
 #> pstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c86110>
-#> <environment: 0x561e1f521d90>
+#> <bytecode: 0x55d83f6829c8>
+#> <environment: 0x55d84b20eb48>
 #> 
 #> [[1]]$rand
 #> function (n) 
 #> rstd(n, nu = nu[k])
-#> <bytecode: 0x561e12c85e38>
-#> <environment: 0x561e1f521d90>
+#> <bytecode: 0x55d83f6826f0>
+#> <environment: 0x55d84b20eb48>
 #> 
 #> [[1]]$logpdf
 #> function (x) 
 #> log(dstd(x, nu = nu[k]))
-#> <bytecode: 0x561e12c85b60>
-#> <environment: 0x561e1f521d90>
+#> <bytecode: 0x55d83f682418>
+#> <environment: 0x55d84b20eb48>
 #> 
 #> [[1]]$Fscore
 #> function (x) 
 #> -x * (1 + nu[k])/(x^2 + nu[k] - 2)
-#> <bytecode: 0x561e12c85818>
-#> <environment: 0x561e1f521d90>
+#> <bytecode: 0x55d83f6820d0>
+#> <environment: 0x55d84b20eb48>
 #> 
 #> [[1]]$xFscore
 #> function (x) 
 #> -x^2 * (1 + nu[k])/(x^2 + nu[k] - 2)
-#> <bytecode: 0x561e12c850e0>
-#> <environment: 0x561e1f521d90>
+#> <bytecode: 0x55d83f6857c8>
+#> <environment: 0x55d84b20eb48>
 #> 
 #> [[1]]$Parscore
 #> function (x) 
 #> param_score_stdt(x, nu[k])
-#> <bytecode: 0x561e12c88730>
-#> <environment: 0x561e1f521d90>
+#> <bytecode: 0x55d83f684fb0>
+#> <environment: 0x55d84b20eb48>
 #> 
 #> [[1]]$get_param
 #> function () 
 #> nu[k]
-#> <bytecode: 0x561e12c88490>
-#> <environment: 0x561e1f521d90>
+#> <bytecode: 0x55d83f684d10>
+#> <environment: 0x55d84b20eb48>
 #> 
 #> [[1]]$set_param
 #> function (x) 
 #> nu[k] <<- x
-#> <bytecode: 0x561e12c88340>
-#> <environment: 0x561e1f521d90>
+#> <bytecode: 0x55d83f684bc0>
+#> <environment: 0x55d84b20eb48>
 #> 
 #> [[1]]$any_param
 #> function () 
 #> param_flag
-#> <bytecode: 0x561e12c87fc0>
-#> <environment: 0x561e1f521d90>
+#> <bytecode: 0x55d83f6847d0>
+#> <environment: 0x55d84b20eb48>
 #> 
 #> [[1]]$show
 #> function () 
 #> paste("Student t with", format(nu[[k]], digits = 4), "df")
-#> <bytecode: 0x561e12c87e70>
-#> <environment: 0x561e1f521d90>
+#> <bytecode: 0x55d83f684530>
+#> <environment: 0x55d84b20eb48>
 #> 
 #> 
 #> [[2]]
 #> [[2]]$pdf
 #> function (x) 
 #> dstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c863e8>
-#> <environment: 0x561e1f5255a0>
+#> <bytecode: 0x55d83f682ca0>
+#> <environment: 0x55d84b20e528>
 #> 
 #> [[2]]$cdf
 #> function (x) 
 #> pstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c86110>
-#> <environment: 0x561e1f5255a0>
+#> <bytecode: 0x55d83f6829c8>
+#> <environment: 0x55d84b20e528>
 #> 
 #> [[2]]$rand
 #> function (n) 
 #> rstd(n, nu = nu[k])
-#> <bytecode: 0x561e12c85e38>
-#> <environment: 0x561e1f5255a0>
+#> <bytecode: 0x55d83f6826f0>
+#> <environment: 0x55d84b20e528>
 #> 
 #> [[2]]$logpdf
 #> function (x) 
 #> log(dstd(x, nu = nu[k]))
-#> <bytecode: 0x561e12c85b60>
-#> <environment: 0x561e1f5255a0>
+#> <bytecode: 0x55d83f682418>
+#> <environment: 0x55d84b20e528>
 #> 
 #> [[2]]$Fscore
 #> function (x) 
 #> -x * (1 + nu[k])/(x^2 + nu[k] - 2)
-#> <bytecode: 0x561e12c85818>
-#> <environment: 0x561e1f5255a0>
+#> <bytecode: 0x55d83f6820d0>
+#> <environment: 0x55d84b20e528>
 #> 
 #> [[2]]$xFscore
 #> function (x) 
 #> -x^2 * (1 + nu[k])/(x^2 + nu[k] - 2)
-#> <bytecode: 0x561e12c850e0>
-#> <environment: 0x561e1f5255a0>
+#> <bytecode: 0x55d83f6857c8>
+#> <environment: 0x55d84b20e528>
 #> 
 #> [[2]]$Parscore
 #> function (x) 
 #> param_score_stdt(x, nu[k])
-#> <bytecode: 0x561e12c88730>
-#> <environment: 0x561e1f5255a0>
+#> <bytecode: 0x55d83f684fb0>
+#> <environment: 0x55d84b20e528>
 #> 
 #> [[2]]$get_param
 #> function () 
 #> nu[k]
-#> <bytecode: 0x561e12c88490>
-#> <environment: 0x561e1f5255a0>
+#> <bytecode: 0x55d83f684d10>
+#> <environment: 0x55d84b20e528>
 #> 
 #> [[2]]$set_param
 #> function (x) 
 #> nu[k] <<- x
-#> <bytecode: 0x561e12c88340>
-#> <environment: 0x561e1f5255a0>
+#> <bytecode: 0x55d83f684bc0>
+#> <environment: 0x55d84b20e528>
 #> 
 #> [[2]]$any_param
 #> function () 
 #> param_flag
-#> <bytecode: 0x561e12c87fc0>
-#> <environment: 0x561e1f5255a0>
+#> <bytecode: 0x55d83f6847d0>
+#> <environment: 0x55d84b20e528>
 #> 
 #> [[2]]$show
 #> function () 
 #> paste("Student t with", format(nu[[k]], digits = 4), "df")
-#> <bytecode: 0x561e12c87e70>
-#> <environment: 0x561e1f5255a0>
+#> <bytecode: 0x55d83f684530>
+#> <environment: 0x55d84b20e528>
 #> 
 #> 
 #> [[3]]
 #> [[3]]$pdf
 #> function (x) 
 #> dstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c863e8>
-#> <environment: 0x561e1f524f80>
+#> <bytecode: 0x55d83f682ca0>
+#> <environment: 0x55d84b20df08>
 #> 
 #> [[3]]$cdf
 #> function (x) 
 #> pstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c86110>
-#> <environment: 0x561e1f524f80>
+#> <bytecode: 0x55d83f6829c8>
+#> <environment: 0x55d84b20df08>
 #> 
 #> [[3]]$rand
 #> function (n) 
 #> rstd(n, nu = nu[k])
-#> <bytecode: 0x561e12c85e38>
-#> <environment: 0x561e1f524f80>
+#> <bytecode: 0x55d83f6826f0>
+#> <environment: 0x55d84b20df08>
 #> 
 #> [[3]]$logpdf
 #> function (x) 
 #> log(dstd(x, nu = nu[k]))
-#> <bytecode: 0x561e12c85b60>
-#> <environment: 0x561e1f524f80>
+#> <bytecode: 0x55d83f682418>
+#> <environment: 0x55d84b20df08>
 #> 
 #> [[3]]$Fscore
 #> function (x) 
 #> -x * (1 + nu[k])/(x^2 + nu[k] - 2)
-#> <bytecode: 0x561e12c85818>
-#> <environment: 0x561e1f524f80>
+#> <bytecode: 0x55d83f6820d0>
+#> <environment: 0x55d84b20df08>
 #> 
 #> [[3]]$xFscore
 #> function (x) 
 #> -x^2 * (1 + nu[k])/(x^2 + nu[k] - 2)
-#> <bytecode: 0x561e12c850e0>
-#> <environment: 0x561e1f524f80>
+#> <bytecode: 0x55d83f6857c8>
+#> <environment: 0x55d84b20df08>
 #> 
 #> [[3]]$Parscore
 #> function (x) 
 #> param_score_stdt(x, nu[k])
-#> <bytecode: 0x561e12c88730>
-#> <environment: 0x561e1f524f80>
+#> <bytecode: 0x55d83f684fb0>
+#> <environment: 0x55d84b20df08>
 #> 
 #> [[3]]$get_param
 #> function () 
 #> nu[k]
-#> <bytecode: 0x561e12c88490>
-#> <environment: 0x561e1f524f80>
+#> <bytecode: 0x55d83f684d10>
+#> <environment: 0x55d84b20df08>
 #> 
 #> [[3]]$set_param
 #> function (x) 
 #> nu[k] <<- x
-#> <bytecode: 0x561e12c88340>
-#> <environment: 0x561e1f524f80>
+#> <bytecode: 0x55d83f684bc0>
+#> <environment: 0x55d84b20df08>
 #> 
 #> [[3]]$any_param
 #> function () 
 #> param_flag
-#> <bytecode: 0x561e12c87fc0>
-#> <environment: 0x561e1f524f80>
+#> <bytecode: 0x55d83f6847d0>
+#> <environment: 0x55d84b20df08>
 #> 
 #> [[3]]$show
 #> function () 
 #> paste("Student t with", format(nu[[k]], digits = 4), "df")
-#> <bytecode: 0x561e12c87e70>
-#> <environment: 0x561e1f524f80>
+#> <bytecode: 0x55d83f684530>
+#> <environment: 0x55d84b20df08>
 #> 
 #> 
 
@@ -367,20 +367,20 @@ noise_dist(mo_tf, "pdf")
 #> [[1]]
 #> function (x) 
 #> dstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c863e8>
-#> <environment: 0x561e20e25ec8>
+#> <bytecode: 0x55d83f682ca0>
+#> <environment: 0x55d84d5dab90>
 #> 
 #> [[2]]
 #> function (x) 
 #> dstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c863e8>
-#> <environment: 0x561e20e258a8>
+#> <bytecode: 0x55d83f682ca0>
+#> <environment: 0x55d84d5de3a0>
 #> 
 #> [[3]]
 #> function (x) 
 #> dstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c863e8>
-#> <environment: 0x561e20e25288>
+#> <bytecode: 0x55d83f682ca0>
+#> <environment: 0x55d84d5ddd80>
 #> 
 parameters(mo_tf)
 #>  [1]  2.0000  2.0000  1.0000  0.5439  0.4176  0.0385  0.0000  0.0000  0.0000
@@ -395,204 +395,204 @@ get_edist(mo_tf)
 #> [[1]]$pdf
 #> function (x) 
 #> dstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c863e8>
-#> <environment: 0x561e1ffc12c0>
+#> <bytecode: 0x55d83f682ca0>
+#> <environment: 0x55d84eafac08>
 #> 
 #> [[1]]$cdf
 #> function (x) 
 #> pstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c86110>
-#> <environment: 0x561e1ffc12c0>
+#> <bytecode: 0x55d83f6829c8>
+#> <environment: 0x55d84eafac08>
 #> 
 #> [[1]]$rand
 #> function (n) 
 #> rstd(n, nu = nu[k])
-#> <bytecode: 0x561e12c85e38>
-#> <environment: 0x561e1ffc12c0>
+#> <bytecode: 0x55d83f6826f0>
+#> <environment: 0x55d84eafac08>
 #> 
 #> [[1]]$logpdf
 #> function (x) 
 #> log(dstd(x, nu = nu[k]))
-#> <bytecode: 0x561e12c85b60>
-#> <environment: 0x561e1ffc12c0>
+#> <bytecode: 0x55d83f682418>
+#> <environment: 0x55d84eafac08>
 #> 
 #> [[1]]$Fscore
 #> function (x) 
 #> -x * (1 + nu[k])/(x^2 + nu[k] - 2)
-#> <bytecode: 0x561e12c85818>
-#> <environment: 0x561e1ffc12c0>
+#> <bytecode: 0x55d83f6820d0>
+#> <environment: 0x55d84eafac08>
 #> 
 #> [[1]]$xFscore
 #> function (x) 
 #> -x^2 * (1 + nu[k])/(x^2 + nu[k] - 2)
-#> <bytecode: 0x561e12c850e0>
-#> <environment: 0x561e1ffc12c0>
+#> <bytecode: 0x55d83f6857c8>
+#> <environment: 0x55d84eafac08>
 #> 
 #> [[1]]$Parscore
 #> function (x) 
 #> param_score_stdt(x, nu[k])
-#> <bytecode: 0x561e12c88730>
-#> <environment: 0x561e1ffc12c0>
+#> <bytecode: 0x55d83f684fb0>
+#> <environment: 0x55d84eafac08>
 #> 
 #> [[1]]$get_param
 #> function () 
 #> nu[k]
-#> <bytecode: 0x561e12c88490>
-#> <environment: 0x561e1ffc12c0>
+#> <bytecode: 0x55d83f684d10>
+#> <environment: 0x55d84eafac08>
 #> 
 #> [[1]]$set_param
 #> function (x) 
 #> nu[k] <<- x
-#> <bytecode: 0x561e12c88340>
-#> <environment: 0x561e1ffc12c0>
+#> <bytecode: 0x55d83f684bc0>
+#> <environment: 0x55d84eafac08>
 #> 
 #> [[1]]$any_param
 #> function () 
 #> param_flag
-#> <bytecode: 0x561e12c87fc0>
-#> <environment: 0x561e1ffc12c0>
+#> <bytecode: 0x55d83f6847d0>
+#> <environment: 0x55d84eafac08>
 #> 
 #> [[1]]$show
 #> function () 
 #> paste("Student t with", format(nu[[k]], digits = 4), "df")
-#> <bytecode: 0x561e12c87e70>
-#> <environment: 0x561e1ffc12c0>
+#> <bytecode: 0x55d83f684530>
+#> <environment: 0x55d84eafac08>
 #> 
 #> 
 #> [[2]]
 #> [[2]]$pdf
 #> function (x) 
 #> dstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c863e8>
-#> <environment: 0x561e1ffc0ca0>
+#> <bytecode: 0x55d83f682ca0>
+#> <environment: 0x55d84eafa5e8>
 #> 
 #> [[2]]$cdf
 #> function (x) 
 #> pstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c86110>
-#> <environment: 0x561e1ffc0ca0>
+#> <bytecode: 0x55d83f6829c8>
+#> <environment: 0x55d84eafa5e8>
 #> 
 #> [[2]]$rand
 #> function (n) 
 #> rstd(n, nu = nu[k])
-#> <bytecode: 0x561e12c85e38>
-#> <environment: 0x561e1ffc0ca0>
+#> <bytecode: 0x55d83f6826f0>
+#> <environment: 0x55d84eafa5e8>
 #> 
 #> [[2]]$logpdf
 #> function (x) 
 #> log(dstd(x, nu = nu[k]))
-#> <bytecode: 0x561e12c85b60>
-#> <environment: 0x561e1ffc0ca0>
+#> <bytecode: 0x55d83f682418>
+#> <environment: 0x55d84eafa5e8>
 #> 
 #> [[2]]$Fscore
 #> function (x) 
 #> -x * (1 + nu[k])/(x^2 + nu[k] - 2)
-#> <bytecode: 0x561e12c85818>
-#> <environment: 0x561e1ffc0ca0>
+#> <bytecode: 0x55d83f6820d0>
+#> <environment: 0x55d84eafa5e8>
 #> 
 #> [[2]]$xFscore
 #> function (x) 
 #> -x^2 * (1 + nu[k])/(x^2 + nu[k] - 2)
-#> <bytecode: 0x561e12c850e0>
-#> <environment: 0x561e1ffc0ca0>
+#> <bytecode: 0x55d83f6857c8>
+#> <environment: 0x55d84eafa5e8>
 #> 
 #> [[2]]$Parscore
 #> function (x) 
 #> param_score_stdt(x, nu[k])
-#> <bytecode: 0x561e12c88730>
-#> <environment: 0x561e1ffc0ca0>
+#> <bytecode: 0x55d83f684fb0>
+#> <environment: 0x55d84eafa5e8>
 #> 
 #> [[2]]$get_param
 #> function () 
 #> nu[k]
-#> <bytecode: 0x561e12c88490>
-#> <environment: 0x561e1ffc0ca0>
+#> <bytecode: 0x55d83f684d10>
+#> <environment: 0x55d84eafa5e8>
 #> 
 #> [[2]]$set_param
 #> function (x) 
 #> nu[k] <<- x
-#> <bytecode: 0x561e12c88340>
-#> <environment: 0x561e1ffc0ca0>
+#> <bytecode: 0x55d83f684bc0>
+#> <environment: 0x55d84eafa5e8>
 #> 
 #> [[2]]$any_param
 #> function () 
 #> param_flag
-#> <bytecode: 0x561e12c87fc0>
-#> <environment: 0x561e1ffc0ca0>
+#> <bytecode: 0x55d83f6847d0>
+#> <environment: 0x55d84eafa5e8>
 #> 
 #> [[2]]$show
 #> function () 
 #> paste("Student t with", format(nu[[k]], digits = 4), "df")
-#> <bytecode: 0x561e12c87e70>
-#> <environment: 0x561e1ffc0ca0>
+#> <bytecode: 0x55d83f684530>
+#> <environment: 0x55d84eafa5e8>
 #> 
 #> 
 #> [[3]]
 #> [[3]]$pdf
 #> function (x) 
 #> dstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c863e8>
-#> <environment: 0x561e1ffc0680>
+#> <bytecode: 0x55d83f682ca0>
+#> <environment: 0x55d84eafddf8>
 #> 
 #> [[3]]$cdf
 #> function (x) 
 #> pstd(x, nu = nu[k])
-#> <bytecode: 0x561e12c86110>
-#> <environment: 0x561e1ffc0680>
+#> <bytecode: 0x55d83f6829c8>
+#> <environment: 0x55d84eafddf8>
 #> 
 #> [[3]]$rand
 #> function (n) 
 #> rstd(n, nu = nu[k])
-#> <bytecode: 0x561e12c85e38>
-#> <environment: 0x561e1ffc0680>
+#> <bytecode: 0x55d83f6826f0>
+#> <environment: 0x55d84eafddf8>
 #> 
 #> [[3]]$logpdf
 #> function (x) 
 #> log(dstd(x, nu = nu[k]))
-#> <bytecode: 0x561e12c85b60>
-#> <environment: 0x561e1ffc0680>
+#> <bytecode: 0x55d83f682418>
+#> <environment: 0x55d84eafddf8>
 #> 
 #> [[3]]$Fscore
 #> function (x) 
 #> -x * (1 + nu[k])/(x^2 + nu[k] - 2)
-#> <bytecode: 0x561e12c85818>
-#> <environment: 0x561e1ffc0680>
+#> <bytecode: 0x55d83f6820d0>
+#> <environment: 0x55d84eafddf8>
 #> 
 #> [[3]]$xFscore
 #> function (x) 
 #> -x^2 * (1 + nu[k])/(x^2 + nu[k] - 2)
-#> <bytecode: 0x561e12c850e0>
-#> <environment: 0x561e1ffc0680>
+#> <bytecode: 0x55d83f6857c8>
+#> <environment: 0x55d84eafddf8>
 #> 
 #> [[3]]$Parscore
 #> function (x) 
 #> param_score_stdt(x, nu[k])
-#> <bytecode: 0x561e12c88730>
-#> <environment: 0x561e1ffc0680>
+#> <bytecode: 0x55d83f684fb0>
+#> <environment: 0x55d84eafddf8>
 #> 
 #> [[3]]$get_param
 #> function () 
 #> nu[k]
-#> <bytecode: 0x561e12c88490>
-#> <environment: 0x561e1ffc0680>
+#> <bytecode: 0x55d83f684d10>
+#> <environment: 0x55d84eafddf8>
 #> 
 #> [[3]]$set_param
 #> function (x) 
 #> nu[k] <<- x
-#> <bytecode: 0x561e12c88340>
-#> <environment: 0x561e1ffc0680>
+#> <bytecode: 0x55d83f684bc0>
+#> <environment: 0x55d84eafddf8>
 #> 
 #> [[3]]$any_param
 #> function () 
 #> param_flag
-#> <bytecode: 0x561e12c87fc0>
-#> <environment: 0x561e1ffc0680>
+#> <bytecode: 0x55d83f6847d0>
+#> <environment: 0x55d84eafddf8>
 #> 
 #> [[3]]$show
 #> function () 
 #> paste("Student t with", format(nu[[k]], digits = 4), "df")
-#> <bytecode: 0x561e12c87e70>
-#> <environment: 0x561e1ffc0680>
+#> <bytecode: 0x55d83f684530>
+#> <environment: 0x55d84eafddf8>
 #> 
 #> 
 noise_params(mo_tf)

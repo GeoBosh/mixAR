@@ -28,7 +28,9 @@ compatibility will be kept.
 
 ## Author
 
-Georgi N. Boshnakov \[aut, cre\], Davide Ravagli \[aut\]
+Georgi N. Boshnakov \[aut, cre\] (ORCID:
+\<https://orcid.org/0000-0003-2839-346X\>), Davide Ravagli \[aut\]
+(ORCID: \<https://orcid.org/0000-0001-7146-7685\>)
 
 Maintainer: Georgi N. Boshnakov \<georgi.boshnakov@manchester.ac.uk\>
 
